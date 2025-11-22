@@ -38,8 +38,3 @@ npm install
 ```
 npm run dev
 ```
-
-
-
-
-# beauty-store-website
