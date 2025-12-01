@@ -6,6 +6,7 @@ import { INITIAL_SERVICES, TRANSLATIONS, GALLERIES } from './constants';
 import Layout from './components/Layout';
 import Chatbot from './components/Chatbot';
 import AdminDashboard from './components/AdminDashboard';
+import ServiceDetail from './components/ServiceDetail';
 import { Camera, Star, Calendar, MapPin, ShoppingBag, Trash2, ArrowRight } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -171,30 +172,40 @@ const App: React.FC = () => {
 
           return (
             <div key={service.id} className="bg-white group hover:shadow-xl transition-all duration-300 border border-stone-100 overflow-hidden flex flex-col">
-              <div className="h-64 overflow-hidden relative">
+              <Link to={`/services/${service.id}`} className="h-64 overflow-hidden relative block">
                 <img 
                   src={service.image} 
                   alt={service.name} 
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" 
                 />
-              </div>
+              </Link>
               <div className="p-6 text-center flex-grow flex flex-col">
                 <span className="text-xs text-gold-500 uppercase tracking-widest font-bold">{service.category}</span>
-                <h3 className="font-serif text-2xl my-2">{service.name}</h3>
+                <Link to={`/services/${service.id}`}>
+                  <h3 className="font-serif text-2xl my-2 hover:text-gold-600 transition-colors">{service.name}</h3>
+                </Link>
                 <p className="text-stone-500 text-sm mb-4 flex-grow">{service.description}</p>
                 <div className="text-lg font-bold text-stone-900 mb-4">${service.price}</div>
                 
-                <button 
-                  onClick={handleAdd}
-                  disabled={isAdded}
-                  className={`w-full py-3 px-4 uppercase text-xs font-bold tracking-widest transition-colors duration-300 ${
-                    isAdded 
-                      ? 'bg-green-600 text-white' 
-                      : 'bg-stone-900 text-white hover:bg-gold-500'
-                  }`}
-                >
-                  {isAdded ? t.servicePage.added : t.servicePage.addToCart}
-                </button>
+                <div className="flex gap-2">
+                  <button 
+                    onClick={handleAdd}
+                    disabled={isAdded}
+                    className={`flex-1 py-3 px-4 uppercase text-xs font-bold tracking-widest transition-colors duration-300 ${
+                      isAdded 
+                        ? 'bg-green-600 text-white' 
+                        : 'bg-stone-900 text-white hover:bg-gold-500'
+                    }`}
+                  >
+                    {isAdded ? t.servicePage.added : t.servicePage.addToCart}
+                  </button>
+                  <Link 
+                    to={`/services/${service.id}`}
+                    className="px-4 py-3 border border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white transition-colors text-xs font-bold uppercase"
+                  >
+                    View
+                  </Link>
+                </div>
               </div>
             </div>
           );
@@ -429,6 +440,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/:id" element={<ServiceDetail services={services} onAddToCart={addToCart} />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/booking" element={<BookingPage />} />
