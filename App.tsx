@@ -203,7 +203,7 @@ const App: React.FC = () => {
                     to={`/services/${service.id}`}
                     className="px-4 py-3 border border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white transition-colors text-xs font-bold uppercase"
                   >
-                    View
+                    {t.serviceDetail.view}
                   </Link>
                 </div>
               </div>
@@ -440,7 +440,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/:id" element={<ServiceDetail services={services} onAddToCart={addToCart} />} />
+          <Route path="/services/:id" element={<ServiceDetail services={services} onAddToCart={addToCart} currentLang={currentLang} />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/booking" element={<BookingPage />} />
