@@ -60,6 +60,34 @@ export interface Translation {
     addToCart: string;
     added: string;
   };
+  serviceDetail: {
+    back: string;
+    rating: string;
+    perSession: string;
+    depositRequired: string;
+    toSecureBooking: string;
+    whatsIncluded: string;
+    duration: string;
+    bookingLabel: string;
+    advanceRequired: string;
+    bookNow: string;
+    serviceDetails: string;
+    importantInfo: string;
+    importantInfoItems: {
+      arrive: string;
+      cancellation: string;
+      consultation: string;
+      patchTest: string;
+    };
+    youMayLike: string;
+    notFound: string;
+    backToServices: string;
+    view: string;
+    durationMakeup: string;
+    durationNails: string;
+    durationTattooing: string;
+    durationPhotography: string;
+  };
   cart: {
     title: string;
     empty: string;

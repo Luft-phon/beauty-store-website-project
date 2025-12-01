@@ -66,6 +66,34 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       teamTitle: 'Meet The Artists'
     },
     servicePage: { addToCart: 'Add to Cart', added: 'Added' },
+    serviceDetail: {
+      back: 'Back',
+      rating: 'rating',
+      perSession: 'per session',
+      depositRequired: 'deposit',
+      toSecureBooking: 'required to secure booking',
+      whatsIncluded: "What's Included",
+      duration: 'Duration',
+      bookingLabel: 'Booking',
+      advanceRequired: 'Advance required',
+      bookNow: 'Book Now',
+      serviceDetails: 'Service Details',
+      importantInfo: 'Important Information',
+      importantInfoItems: {
+        arrive: 'Please arrive 10 minutes early for your appointment',
+        cancellation: 'Cancellations require 24-hour notice',
+        consultation: 'Consultation available before booking',
+        patchTest: 'Patch test may be required for certain services'
+      },
+      youMayLike: 'You May Also Like',
+      notFound: 'Service Not Found',
+      backToServices: 'Back to Services',
+      view: 'View',
+      durationMakeup: '60-90 min',
+      durationNails: '60-90 min',
+      durationTattooing: '60-90 min',
+      durationPhotography: '2-8 hours'
+    },
     cart: {
       title: 'Your Shopping Cart',
       empty: 'Your cart is currently empty.',
@@ -104,6 +132,34 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       teamTitle: 'Đội Ngũ Nghệ Sĩ'
     },
     servicePage: { addToCart: 'Thêm vào giỏ', added: 'Đã thêm' },
+    serviceDetail: {
+      back: 'Quay lại',
+      rating: 'đánh giá',
+      perSession: 'mỗi buổi',
+      depositRequired: 'đặt cọc',
+      toSecureBooking: 'cần thiết để đặt lịch',
+      whatsIncluded: 'Bao gồm những gì',
+      duration: 'Thời gian',
+      bookingLabel: 'Đặt lịch',
+      advanceRequired: 'Yêu cầu đặt trước',
+      bookNow: 'Đặt ngay',
+      serviceDetails: 'Chi tiết dịch vụ',
+      importantInfo: 'Thông tin quan trọng',
+      importantInfoItems: {
+        arrive: 'Vui lòng đến sớm 10 phút trước giờ hẹn',
+        cancellation: 'Hủy lịch cần thông báo trước 24 giờ',
+        consultation: 'Tư vấn miễn phí trước khi đặt lịch',
+        patchTest: 'Có thể yêu cầu kiểm tra da cho một số dịch vụ'
+      },
+      youMayLike: 'Bạn có thể thích',
+      notFound: 'Không tìm thấy dịch vụ',
+      backToServices: 'Quay lại dịch vụ',
+      view: 'Xem',
+      durationMakeup: '60-90 phút',
+      durationNails: '60-90 phút',
+      durationTattooing: '60-90 phút',
+      durationPhotography: '2-8 giờ'
+    },
     cart: {
       title: 'Giỏ Hàng Của Bạn',
       empty: 'Giỏ hàng của bạn đang trống.',
@@ -142,6 +198,34 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       teamTitle: 'Rencontrez Les Artistes'
     },
     servicePage: { addToCart: 'Ajouter au panier', added: 'Ajouté' },
+    serviceDetail: {
+      back: 'Retour',
+      rating: 'note',
+      perSession: 'par séance',
+      depositRequired: 'acompte',
+      toSecureBooking: 'requis pour réserver',
+      whatsIncluded: 'Ce qui est inclus',
+      duration: 'Durée',
+      bookingLabel: 'Réservation',
+      advanceRequired: 'Réservation anticipée requise',
+      bookNow: 'Réserver maintenant',
+      serviceDetails: 'Détails du service',
+      importantInfo: 'Informations importantes',
+      importantInfoItems: {
+        arrive: 'Veuillez arriver 10 minutes en avance',
+        cancellation: 'Les annulations nécessitent un préavis de 24 heures',
+        consultation: 'Consultation disponible avant la réservation',
+        patchTest: 'Un test cutané peut être requis pour certains services'
+      },
+      youMayLike: 'Vous aimerez aussi',
+      notFound: 'Service non trouvé',
+      backToServices: 'Retour aux services',
+      view: 'Voir',
+      durationMakeup: '60-90 min',
+      durationNails: '60-90 min',
+      durationTattooing: '60-90 min',
+      durationPhotography: '2-8 heures'
+    },
     cart: {
       title: 'Votre Panier',
       empty: 'Votre panier est vide.',
@@ -180,6 +264,34 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       teamTitle: '认识我们的艺术家'
     },
     servicePage: { addToCart: '加入购物车', added: '已添加' },
+    serviceDetail: {
+      back: '返回',
+      rating: '评分',
+      perSession: '每次',
+      depositRequired: '定金',
+      toSecureBooking: '预订所需',
+      whatsIncluded: '包含内容',
+      duration: '时长',
+      bookingLabel: '预订',
+      advanceRequired: '需提前预订',
+      bookNow: '立即预订',
+      serviceDetails: '服务详情',
+      importantInfo: '重要信息',
+      importantInfoItems: {
+        arrive: '请提前10分钟到达预约地点',
+        cancellation: '取消需提前24小时通知',
+        consultation: '预订前可咨询',
+        patchTest: '某些服务可能需要皮肤测试'
+      },
+      youMayLike: '您可能也喜欢',
+      notFound: '未找到服务',
+      backToServices: '返回服务列表',
+      view: '查看',
+      durationMakeup: '60-90分钟',
+      durationNails: '60-90分钟',
+      durationTattooing: '60-90分钟',
+      durationPhotography: '2-8小时'
+    },
     cart: {
       title: '您的购物车',
       empty: '您的购物车是空的。',
@@ -218,6 +330,34 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       teamTitle: '아티스트 소개'
     },
     servicePage: { addToCart: '장바구니 담기', added: '추가됨' },
+    serviceDetail: {
+      back: '뒤로',
+      rating: '평점',
+      perSession: '회당',
+      depositRequired: '보증금',
+      toSecureBooking: '예약에 필요',
+      whatsIncluded: '포함 사항',
+      duration: '소요 시간',
+      bookingLabel: '예약',
+      advanceRequired: '사전 예약 필요',
+      bookNow: '지금 예약',
+      serviceDetails: '서비스 상세',
+      importantInfo: '중요 정보',
+      importantInfoItems: {
+        arrive: '예약 시간 10분 전에 도착해 주세요',
+        cancellation: '취소는 24시간 전에 통보해야 합니다',
+        consultation: '예약 전 상담 가능',
+        patchTest: '일부 서비스의 경우 피부 테스트가 필요할 수 있습니다'
+      },
+      youMayLike: '추천 서비스',
+      notFound: '서비스를 찾을 수 없습니다',
+      backToServices: '서비스 목록으로',
+      view: '보기',
+      durationMakeup: '60-90분',
+      durationNails: '60-90분',
+      durationTattooing: '60-90분',
+      durationPhotography: '2-8시간'
+    },
     cart: {
       title: '장바구니',
       empty: '장바구니가 비어 있습니다.',
