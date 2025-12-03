@@ -47,6 +47,55 @@ export interface Translation {
     subtitle: string;
     cta: string;
   };
+  homepage: {
+    statistics: {
+      clients: string;
+      rating: string;
+      years: string;
+      awards: string;
+    };
+    sections: {
+      ourServices: string;
+      ourServicesDesc: string;
+      featuredServices: string;
+      featuredServicesDesc: string;
+      whyChooseUs: string;
+      whyChooseUsDesc: string;
+      howItWorks: string;
+      howItWorksDesc: string;
+      clientReviews: string;
+      clientReviewsDesc: string;
+    };
+    categories: {
+      makeup: { name: string; description: string; };
+      nails: { name: string; description: string; };
+      tattooing: { name: string; description: string; };
+      photography: { name: string; description: string; };
+    };
+    features: {
+      quality: { title: string; description: string; };
+      experts: { title: string; description: string; };
+      hygiene: { title: string; description: string; };
+      personalized: { title: string; description: string; };
+    };
+    process: {
+      step1: { title: string; description: string; };
+      step2: { title: string; description: string; };
+      step3: { title: string; description: string; };
+      step4: { title: string; description: string; };
+    };
+    cta: {
+      title: string;
+      subtitle: string;
+      button: string;
+    };
+    buttons: {
+      explore: string;
+      learnMore: string;
+      viewAll: string;
+      addToCart: string;
+    };
+  };
   aboutPage: {
     title: string;
     subtitle: string;

@@ -27,6 +27,91 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       subtitle: 'Premier Makeup, Nails, Tattooing & Photography', 
       cta: 'Book Appointment' 
     },
+    homepage: {
+      statistics: {
+        clients: 'Happy Clients',
+        rating: 'Average Rating',
+        years: 'Years Experience',
+        awards: 'Industry Awards'
+      },
+      sections: {
+        ourServices: 'Our Services',
+        ourServicesDesc: 'Discover our comprehensive range of beauty and wedding services, crafted to perfection by our expert team.',
+        featuredServices: 'Featured Services',
+        featuredServicesDesc: 'Our most popular services, trusted by thousands of satisfied clients.',
+        whyChooseUs: 'Why Choose Us',
+        whyChooseUsDesc: 'Excellence in every detail, care in every service.',
+        howItWorks: 'How It Works',
+        howItWorksDesc: 'Your journey to beauty, simplified in four easy steps.',
+        clientReviews: 'Client Reviews',
+        clientReviewsDesc: "Don't just take our word for it – hear from our satisfied clients."
+      },
+      categories: {
+        makeup: {
+          name: 'Makeup',
+          description: 'Professional makeup artistry for all occasions, from natural glam to bold bridal looks.'
+        },
+        nails: {
+          name: 'Nails',
+          description: 'Expert nail care and art, featuring the latest trends in manicures and pedicures.'
+        },
+        tattooing: {
+          name: 'Tattooing',
+          description: 'Semi-permanent makeup including microblading and ombre powder brows by certified artists.'
+        },
+        photography: {
+          name: 'Photography',
+          description: 'Capture your special moments with our professional wedding and portrait photography.'
+        }
+      },
+      features: {
+        quality: {
+          title: 'Premium Quality',
+          description: 'We use only the finest products and latest techniques to ensure exceptional results every time.'
+        },
+        experts: {
+          title: 'Expert Team',
+          description: 'Our certified professionals bring years of experience and passion to every service.'
+        },
+        hygiene: {
+          title: 'Hygiene First',
+          description: 'Strict sanitization protocols and premium-grade equipment for your safety and comfort.'
+        },
+        personalized: {
+          title: 'Personalized Care',
+          description: 'Every client receives tailored attention and customized solutions for their unique needs.'
+        }
+      },
+      process: {
+        step1: {
+          title: 'Book Online',
+          description: 'Choose your service and preferred date/time through our easy booking system.'
+        },
+        step2: {
+          title: 'Consultation',
+          description: 'Meet with our experts to discuss your vision and customize your service.'
+        },
+        step3: {
+          title: 'Experience',
+          description: 'Relax and enjoy your service in our comfortable, luxurious environment.'
+        },
+        step4: {
+          title: 'Follow-Up',
+          description: 'Receive aftercare instructions and schedule any follow-up appointments.'
+        }
+      },
+      cta: {
+        title: 'Ready to Transform Your Look?',
+        subtitle: 'Book your appointment today and experience the difference',
+        button: 'Get Started'
+      },
+      buttons: {
+        explore: 'Explore',
+        learnMore: 'Learn More',
+        viewAll: 'View All Services',
+        addToCart: 'Add to Cart'
+      }
+    },
     aboutPage: {
       title: 'Our Story',
       subtitle: 'A sanctuary of beauty and artistry.',
@@ -109,6 +194,91 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: 'Vẻ Đẹp Tinh Tế', 
       subtitle: 'Trang Điểm, Nail, Phun Xăm & Nhiếp Ảnh', 
       cta: 'Đặt Lịch Ngay' 
+    },
+    homepage: {
+      statistics: {
+        clients: 'Khách Hàng Hài Lòng',
+        rating: 'Đánh Giá Trung Bình',
+        years: 'Năm Kinh Nghiệm',
+        awards: 'Giải Thưởng Nghành'
+      },
+      sections: {
+        ourServices: 'Dịch Vụ Của Chúng Tôi',
+        ourServicesDesc: 'Khám phá đầy đủ các dịch vụ làm đẹp và cưới hỏi, được tạo ra hoàn hảo bởi đội ngũ chuyên gia của chúng tôi.',
+        featuredServices: 'Dịch Vụ Nổi Bật',
+        featuredServicesDesc: 'Các dịch vụ phổ biến nhất của chúng tôi, được hàng ngàn khách hàng tin tưởng.',
+        whyChooseUs: 'Tại Sao Chọn Chúng Tôi',
+        whyChooseUsDesc: 'Xuất sắc trong từng chi tiết, chăm sóc trong mỗi dịch vụ.',
+        howItWorks: 'Quy Trình Làm Việc',
+        howItWorksDesc: 'Hành trình làm đẹp của bạn, đơn giản hóa trong bốn bước dễ dàng.',
+        clientReviews: 'Đánh Giá Khách Hàng',
+        clientReviewsDesc: 'Đừng chỉ tin lời chúng tôi – hãy nghe từ khách hàng hài lòng của chúng tôi.'
+      },
+      categories: {
+        makeup: {
+          name: 'Trang Điểm',
+          description: 'Nghệ thuật trang điểm chuyên nghiệp cho mọi dịp, từ trang điểm tự nhiên đến cô dâu quyến rũ.'
+        },
+        nails: {
+          name: 'Làm Nail',
+          description: 'Chăm sóc và nghệ thuật móng chuyên gia, theo xu hướng mới nhất trong làm đẹp móng tay và móng chân.'
+        },
+        tattooing: {
+          name: 'Phun Xăm',
+          description: 'Trang điểm bán vĩnh cửu bao gồm microblading và phun xăm chân mày ombre bởi nghệ sĩ được chứng nhận.'
+        },
+        photography: {
+          name: 'Nhiếp Ảnh',
+          description: 'Ghi lại những khoảnh khắc đặc biệt của bạn với dịch vụ chụp ảnh cưới và chân dung chuyên nghiệp của chúng tôi.'
+        }
+      },
+      features: {
+        quality: {
+          title: 'Chất Lượng Cao Cấp',
+          description: 'Chúng tôi chỉ sử dụng các sản phẩm tốt nhất và kỹ thuật mới nhất để đảm bảo kết quả xuất sắc mỗi lần.'
+        },
+        experts: {
+          title: 'Đội Ngũ Chuyên Gia',
+          description: 'Các chuyên gia được chứng nhận của chúng tôi mang đến nhiều năm kinh nghiệm và đam mê cho mỗi dịch vụ.'
+        },
+        hygiene: {
+          title: 'Vệ Sinh Là Ưu Tiên',
+          description: 'Quy trình khử trùng nghiêm ngặt và thiết bị cấp cao cho sự an toàn và thoải mái của bạn.'
+        },
+        personalized: {
+          title: 'Chăm Sóc Cá Nhân Hóa',
+          description: 'Mỗi khách hàng nhận được sự quan tâm riêng biệt và giải pháp tùy chỉnh cho nhu cầu độc đáo của họ.'
+        }
+      },
+      process: {
+        step1: {
+          title: 'Đặt Lịch Online',
+          description: 'Chọn dịch vụ và ngày/giờ ưa thích của bạn thông qua hệ thống đặt lịch dễ dàng của chúng tôi.'
+        },
+        step2: {
+          title: 'Tư Vấn',
+          description: 'Gặp gỡ các chuyên gia của chúng tôi để thảo luận về tầm nhìn và tùy chỉnh dịch vụ của bạn.'
+        },
+        step3: {
+          title: 'Trải Nghiệm',
+          description: 'Thư giãn và tận hưởng dịch vụ của bạn trong môi trường thoải mái, sang trọng của chúng tôi.'
+        },
+        step4: {
+          title: 'Theo Dõi',
+          description: 'Nhận hướng dẫn chăm sóc sau dịch vụ và đặt lịch hẹn theo dõi nếu cần.'
+        }
+      },
+      cta: {
+        title: 'Sẵn Sàng Thay Đổi Diện Mạo?',
+        subtitle: 'Đặt lịch hẹn của bạn ngay hôm nay và trải nghiệm sự khác biệt',
+        button: 'Bắt Đầu Ngay'
+      },
+      buttons: {
+        explore: 'Khám Phá',
+        learnMore: 'Tìm Hiểu Thêm',
+        viewAll: 'Xem Tất Cả Dịch Vụ',
+        addToCart: 'Thêm Vào Giỏ'
+      }
     },
     aboutPage: {
       title: 'Câu Chuyện Của Chúng Tôi',
@@ -193,6 +363,91 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       subtitle: 'Maquillage, Ongles, Tatouage & Photographie', 
       cta: 'Prendre Rendez-vous' 
     },
+    homepage: {
+      statistics: {
+        clients: 'Clients Satisfaits',
+        rating: 'Note Moyenne',
+        years: 'Ans d\'Expérience',
+        awards: 'Prix de l\'Industrie'
+      },
+      sections: {
+        ourServices: 'Nos Services',
+        ourServicesDesc: 'Découvrez notre gamme complète de services de beauté et de mariage, parfaitement réalisés par notre équipe d\'experts.',
+        featuredServices: 'Services Vedettes',
+        featuredServicesDesc: 'Nos services les plus populaires, approuvés par des milliers de clients satisfaits.',
+        whyChooseUs: 'Pourquoi Nous Choisir',
+        whyChooseUsDesc: 'L\'excellence dans chaque détail, le soin dans chaque service.',
+        howItWorks: 'Comment Ça Marche',
+        howItWorksDesc: 'Votre parcours beauté, simplifié en quatre étapes faciles.',
+        clientReviews: 'Avis Clients',
+        clientReviewsDesc: 'Ne nous croyez pas sur parole – écoutez nos clients satisfaits.'
+      },
+      categories: {
+        makeup: {
+          name: 'Maquillage',
+          description: 'Artistry de maquillage professionnel pour toutes les occasions, du naturel quotidien au glamour de la mariée.'
+        },
+        nails: {
+          name: 'Ongles',
+          description: 'Soins des ongles experts et nail art, suivant les dernières tendances en beauté des ongles et des pieds.'
+        },
+        tattooing: {
+          name: 'Tatouage',
+          description: 'Maquillage semi-permanent incluant le microblading et le tatouage sourcils ombré par des artistes certifiés.'
+        },
+        photography: {
+          name: 'Photographie',
+          description: 'Capturez vos moments spéciaux avec nos services de photographie de mariage et de portrait professionnels.'
+        }
+      },
+      features: {
+        quality: {
+          title: 'Qualité Premium',
+          description: 'Nous utilisons uniquement les meilleurs produits et les techniques les plus récentes pour garantir des résultats exceptionnels à chaque fois.'
+        },
+        experts: {
+          title: 'Équipe d\'Experts',
+          description: 'Nos professionnels certifiés apportent des années d\'expérience et de passion à chaque service.'
+        },
+        hygiene: {
+          title: 'Hygiène Prioritaire',
+          description: 'Protocoles de stérilisation stricts et équipement de qualité médicale pour votre sécurité et votre confort.'
+        },
+        personalized: {
+          title: 'Soins Personnalisés',
+          description: 'Chaque client reçoit une attention individuelle et des solutions personnalisées pour ses besoins uniques.'
+        }
+      },
+      process: {
+        step1: {
+          title: 'Réservation en Ligne',
+          description: 'Choisissez votre service et la date/heure préférée via notre système de réservation facile.'
+        },
+        step2: {
+          title: 'Consultation',
+          description: 'Rencontrez nos experts pour discuter de votre vision et personnaliser votre service.'
+        },
+        step3: {
+          title: 'Expérience',
+          description: 'Détendez-vous et profitez de votre service dans notre environnement confortable et luxueux.'
+        },
+        step4: {
+          title: 'Suivi',
+          description: 'Recevez des conseils d\'entretien et planifiez des rendez-vous de suivi si nécessaire.'
+        }
+      },
+      cta: {
+        title: 'Prêt à Transformer Votre Look?',
+        subtitle: 'Réservez votre rendez-vous aujourd\'hui et découvrez la différence',
+        button: 'Commencer'
+      },
+      buttons: {
+        explore: 'Explorer',
+        learnMore: 'En Savoir Plus',
+        viewAll: 'Voir Tous les Services',
+        addToCart: 'Ajouter au Panier'
+      }
+    },
     aboutPage: {
       title: 'Notre Histoire',
       subtitle: 'Un sanctuaire de beauté et d\'art.',
@@ -276,6 +531,91 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       subtitle: '化妆, 美甲, 纹绣 & 摄影', 
       cta: '立即预约' 
     },
+    homepage: {
+      statistics: {
+        clients: '满意客户',
+        rating: '平均评分',
+        years: '年经验',
+        awards: '行业奖项'
+      },
+      sections: {
+        ourServices: '我们的服务',
+        ourServicesDesc: '探索我们全面的美容和婚礼服务，由我们的专家团队完美打造。',
+        featuredServices: '精选服务',
+        featuredServicesDesc: '我们最受欢迎的服务，得到数千名满意客户的信赖。',
+        whyChooseUs: '为什么选择我们',
+        whyChooseUsDesc: '每个细节都追求卓越，每项服务都用心关怀。',
+        howItWorks: '工作流程',
+        howItWorksDesc: '您的美丽之旅，简化为四个简单步骤。',
+        clientReviews: '客户评价',
+        clientReviewsDesc: '不要只听我们说——听听我们满意客户的声音。'
+      },
+      categories: {
+        makeup: {
+          name: '化妆',
+          description: '专业化妆艺术，适合各种场合，从日常自然妆到新娘魅力妆。'
+        },
+        nails: {
+          name: '美甲',
+          description: '专业美甲护理和艺术，紧跟手部和足部美容的最新趋势。'
+        },
+        tattooing: {
+          name: '纹绣',
+          description: '半永久化妆，包括由认证艺术家进行的微针和渐变眉纹绣。'
+        },
+        photography: {
+          name: '摄影',
+          description: '用我们的专业婚礼和肖像摄影服务捕捉您的特殊时刻。'
+        }
+      },
+      features: {
+        quality: {
+          title: '优质品质',
+          description: '我们只使用最好的产品和最新的技术，每次都确保出色的结果。'
+        },
+        experts: {
+          title: '专家团队',
+          description: '我们的认证专业人员为每项服务带来多年的经验和热情。'
+        },
+        hygiene: {
+          title: '卫生优先',
+          description: '严格的消毒程序和医疗级设备，确保您的安全和舒适。'
+        },
+        personalized: {
+          title: '个性化护理',
+          description: '每位客户都会得到个性化的关注和针对其独特需求的定制解决方案。'
+        }
+      },
+      process: {
+        step1: {
+          title: '在线预约',
+          description: '通过我们简单的预约系统选择您的服务和首选日期/时间。'
+        },
+        step2: {
+          title: '咨询',
+          description: '与我们的专家会面，讨论您的愿景并定制您的服务。'
+        },
+        step3: {
+          title: '体验',
+          description: '在我们舒适豪华的环境中放松并享受您的服务。'
+        },
+        step4: {
+          title: '跟进',
+          description: '接收护理指导，如有需要可安排后续预约。'
+        }
+      },
+      cta: {
+        title: '准备好改变您的形象了吗？',
+        subtitle: '今天就预约，体验不同之处',
+        button: '立即开始'
+      },
+      buttons: {
+        explore: '探索',
+        learnMore: '了解更多',
+        viewAll: '查看所有服务',
+        addToCart: '添加到购物车'
+      }
+    },
     aboutPage: {
       title: '我们的故事',
       subtitle: '美丽与艺术的殿堂。',
@@ -358,6 +698,91 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: '디테일의 우아함', 
       subtitle: '메이크업, 네일, 반영구 & 웨딩 촬영', 
       cta: '예약하기' 
+    },
+    homepage: {
+      statistics: {
+        clients: '만족한 고객',
+        rating: '평균 평점',
+        years: '년 경력',
+        awards: '업계 수상'
+      },
+      sections: {
+        ourServices: '우리의 서비스',
+        ourServicesDesc: '전문가 팀이 완벽하게 제작한 전체 뷰티 및 웨딩 서비스를 탐색해보세요.',
+        featuredServices: '특선 서비스',
+        featuredServicesDesc: '수천 명의 만족한 고객들이 신뢰하는 가장 인기 있는 서비스입니다.',
+        whyChooseUs: '우리를 선택하는 이유',
+        whyChooseUsDesc: '모든 세부 사항의 탁월함, 모든 서비스의 관리.',
+        howItWorks: '작동 방식',
+        howItWorksDesc: '귀하의 뷰티 여정을 네 가지 간단한 단계로 단순화했습니다.',
+        clientReviews: '고객 리뷰',
+        clientReviewsDesc: '우리 말만 믿지 마시고 만족한 고객의 이야기를 들어보세요.'
+      },
+      categories: {
+        makeup: {
+          name: '메이크업',
+          description: '일상적인 자연스러운 메이크업부터 화려한 신부 메이크업까지 모든 경우를 위한 전문 메이크업 아티스트리.'
+        },
+        nails: {
+          name: '네일',
+          description: '손과 발의 아름다움에 대한 최신 트렌드를 따르는 전문 네일 케어 및 네일 아트.'
+        },
+        tattooing: {
+          name: '반영구',
+          description: '인증된 아티스트의 마이크로블레이딩 및 옴브레 눈썹 타투를 포함한 반영구 화장.'
+        },
+        photography: {
+          name: '사진 촬영',
+          description: '전문 웨딩 및 인물 사진 서비스로 특별한 순간을 포착하세요.'
+        }
+      },
+      features: {
+        quality: {
+          title: '프리미엄 품질',
+          description: '매번 뛰어난 결과를 보장하기 위해 최고의 제품과 최신 기술만 사용합니다.'
+        },
+        experts: {
+          title: '전문가 팀',
+          description: '인증된 전문가들이 각 서비스에 수년간의 경험과 열정을 가져옵니다.'
+        },
+        hygiene: {
+          title: '위생 우선',
+          description: '귀하의 안전과 편안함을 위한 엄격한 살균 프로토콜과 의료용 장비.'
+        },
+        personalized: {
+          title: '맞춤형 케어',
+          description: '각 고객은 독특한 요구사항에 맞는 개별적인 관심과 맞춤형 솔루션을 받습니다.'
+        }
+      },
+      process: {
+        step1: {
+          title: '온라인 예약',
+          description: '간편한 예약 시스템을 통해 서비스와 선호하는 날짜/시간을 선택하세요.'
+        },
+        step2: {
+          title: '상담',
+          description: '전문가를 만나 비전을 논의하고 서비스를 맞춤화하세요.'
+        },
+        step3: {
+          title: '경험',
+          description: '편안하고 럭셔리한 환경에서 서비스를 받으며 휴식을 취하세요.'
+        },
+        step4: {
+          title: '후속 조치',
+          description: '관리 지침을 받고 필요시 후속 예약을 잡으세요.'
+        }
+      },
+      cta: {
+        title: '외모를 바꿀 준비가 되셨나요?',
+        subtitle: '오늘 예약하고 차이를 경험하세요',
+        button: '시작하기'
+      },
+      buttons: {
+        explore: '탐색',
+        learnMore: '더 알아보기',
+        viewAll: '모든 서비스 보기',
+        addToCart: '장바구니에 추가'
+      }
     },
     aboutPage: {
       title: '우리의 이야기',

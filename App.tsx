@@ -101,15 +101,21 @@ const App: React.FC = () => {
         <div className="bg-stone-50 border-y border-stone-200">
           <div className="max-w-7xl mx-auto px-4 py-12 md:py-16">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-              {MOCK_STATISTICS.map((stat) => (
-                <div key={stat.id} className="text-center group">
-                  <div className="text-gold-500 flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-                    {getIconForStat(stat.icon)}
+              {MOCK_STATISTICS.map((stat) => {
+                const translationKey = stat.id === 'clients' ? t.homepage.statistics.clients :
+                                      stat.id === 'rating' ? t.homepage.statistics.rating :
+                                      stat.id === 'experience' ? t.homepage.statistics.years :
+                                      t.homepage.statistics.awards;
+                return (
+                  <div key={stat.id} className="text-center group">
+                    <div className="text-gold-500 flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                      {getIconForStat(stat.icon)}
+                    </div>
+                    <div className="font-serif text-3xl md:text-4xl text-stone-900 mb-2">{stat.value}</div>
+                    <div className="text-stone-600 text-sm uppercase tracking-wider">{translationKey}</div>
                   </div>
-                  <div className="font-serif text-3xl md:text-4xl text-stone-900 mb-2">{stat.value}</div>
-                  <div className="text-stone-600 text-sm uppercase tracking-wider">{stat.label}</div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -117,34 +123,40 @@ const App: React.FC = () => {
         {/* Services Categories */}
         <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">Our Services</h2>
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">{t.homepage.sections.ourServices}</h2>
             <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
             <p className="text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
-              Discover our comprehensive range of beauty and wedding services, crafted to perfection by our expert team.
+              {t.homepage.sections.ourServicesDesc}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {MOCK_CATEGORIES.map((category) => (
-              <a 
-                href={category.link}
-                key={category.id} 
-                className="group flex flex-col items-center text-center p-6 md:p-8 border border-stone-100 hover:shadow-xl hover:border-gold-200 transition-all duration-300 rounded-sm bg-white"
-              >
-                <div className="mb-4 md:mb-6 text-gold-500 group-hover:scale-110 group-hover:text-gold-600 transition-all duration-300">
-                  {getIconForCategory(category.icon)}
-                </div>
-                <h3 className="font-serif text-xl md:text-2xl mb-3 text-stone-900 group-hover:text-gold-600 transition-colors">
-                  {category.name}
-                </h3>
-                <p className="text-stone-500 text-sm leading-relaxed mb-4">
-                  {category.description}
-                </p>
-                <span className="text-gold-600 text-sm font-medium uppercase tracking-wider group-hover:gap-2 flex items-center gap-1 transition-all">
-                  Explore <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                </span>
-              </a>
-            ))}
+            {MOCK_CATEGORIES.map((category) => {
+              const categoryTranslation = category.id === 'makeup' ? t.homepage.categories.makeup :
+                                         category.id === 'nails' ? t.homepage.categories.nails :
+                                         category.id === 'tattooing' ? t.homepage.categories.tattooing :
+                                         t.homepage.categories.photography;
+              return (
+                <a 
+                  href={category.link}
+                  key={category.id} 
+                  className="group flex flex-col items-center text-center p-6 md:p-8 border border-stone-100 hover:shadow-xl hover:border-gold-200 transition-all duration-300 rounded-sm bg-white"
+                >
+                  <div className="mb-4 md:mb-6 text-gold-500 group-hover:scale-110 group-hover:text-gold-600 transition-all duration-300">
+                    {getIconForCategory(category.icon)}
+                  </div>
+                  <h3 className="font-serif text-xl md:text-2xl mb-3 text-stone-900 group-hover:text-gold-600 transition-colors">
+                    {categoryTranslation.name}
+                  </h3>
+                  <p className="text-stone-500 text-sm leading-relaxed mb-4">
+                    {categoryTranslation.description}
+                  </p>
+                  <span className="text-gold-600 text-sm font-medium uppercase tracking-wider group-hover:gap-2 flex items-center gap-1 transition-all">
+                    {t.homepage.buttons.explore} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </a>
+              );
+            })}
           </div>
         </div>
 
@@ -152,10 +164,10 @@ const App: React.FC = () => {
         <div className="bg-stone-50 py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12 md:mb-16">
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">Featured Services</h2>
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">{t.homepage.sections.featuredServices}</h2>
               <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
               <p className="text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
-                Our most popular services, trusted by thousands of satisfied clients.
+                {t.homepage.sections.featuredServicesDesc}
               </p>
             </div>
 
@@ -181,13 +193,13 @@ const App: React.FC = () => {
                         to={`/service/${service.id}`}
                         className="flex-1 text-center py-2 px-4 border border-stone-300 text-stone-700 hover:bg-stone-50 transition-colors text-sm font-medium"
                       >
-                        Learn More
+                        {t.homepage.buttons.learnMore}
                       </Link>
                       <button
                         onClick={() => addToCart(service)}
                         className="flex-1 py-2 px-4 bg-gold-500 text-white hover:bg-gold-600 transition-colors text-sm font-medium"
                       >
-                        Add to Cart
+                        {t.homepage.buttons.addToCart}
                       </button>
                     </div>
                   </div>
@@ -200,7 +212,7 @@ const App: React.FC = () => {
                 href="#/services"
                 className="inline-flex items-center gap-2 px-6 md:px-8 py-3 border-2 border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white transition-all duration-300 text-sm font-medium uppercase tracking-wider group"
               >
-                View All Services
+                {t.homepage.buttons.viewAll}
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
@@ -210,23 +222,29 @@ const App: React.FC = () => {
         {/* Why Choose Us */}
         <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">Why Choose Us</h2>
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">{t.homepage.sections.whyChooseUs}</h2>
             <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
             <p className="text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
-              Excellence in every detail, care in every service.
+              {t.homepage.sections.whyChooseUsDesc}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {MOCK_WHY_CHOOSE_US.map((item) => (
-              <div key={item.id} className="text-center p-6 group hover:bg-stone-50 transition-colors duration-300 rounded-sm">
-                <div className="text-gold-500 flex justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {getIconForFeature(item.icon)}
+            {MOCK_WHY_CHOOSE_US.map((item) => {
+              const featureTranslation = item.id === 'quality' ? t.homepage.features.quality :
+                                        item.id === 'experts' ? t.homepage.features.experts :
+                                        item.id === 'hygiene' ? t.homepage.features.hygiene :
+                                        t.homepage.features.personalized;
+              return (
+                <div key={item.id} className="text-center p-6 group hover:bg-stone-50 transition-colors duration-300 rounded-sm">
+                  <div className="text-gold-500 flex justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    {getIconForFeature(item.icon)}
+                  </div>
+                  <h3 className="font-serif text-xl md:text-2xl text-stone-900 mb-3">{featureTranslation.title}</h3>
+                  <p className="text-stone-600 text-sm leading-relaxed">{featureTranslation.description}</p>
                 </div>
-                <h3 className="font-serif text-xl md:text-2xl text-stone-900 mb-3">{item.title}</h3>
-                <p className="text-stone-600 text-sm leading-relaxed">{item.description}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -234,28 +252,34 @@ const App: React.FC = () => {
         <div className="bg-gradient-to-br from-stone-900 to-stone-800 text-white py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12 md:mb-16">
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-4">How It Works</h2>
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-4">{t.homepage.sections.howItWorks}</h2>
               <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
               <p className="text-stone-300 max-w-2xl mx-auto text-base md:text-lg px-4">
-                Your journey to beauty, simplified in four easy steps.
+                {t.homepage.sections.howItWorksDesc}
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6">
-              {MOCK_PROCESS_STEPS.map((step, index) => (
-                <div key={step.id} className="relative">
-                  <div className="text-center">
-                    <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 rounded-full border-2 border-gold-500 flex items-center justify-center bg-stone-800">
-                      <span className="font-serif text-2xl md:text-3xl text-gold-500">{step.step}</span>
+              {MOCK_PROCESS_STEPS.map((step, index) => {
+                const stepTranslation = step.id === 'booking' ? t.homepage.process.step1 :
+                                       step.id === 'consultation' ? t.homepage.process.step2 :
+                                       step.id === 'service' ? t.homepage.process.step3 :
+                                       t.homepage.process.step4;
+                return (
+                  <div key={step.id} className="relative">
+                    <div className="text-center">
+                      <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 rounded-full border-2 border-gold-500 flex items-center justify-center bg-stone-800">
+                        <span className="font-serif text-2xl md:text-3xl text-gold-500">{step.step}</span>
+                      </div>
+                      <h3 className="font-serif text-xl md:text-2xl mb-3">{stepTranslation.title}</h3>
+                      <p className="text-stone-300 text-sm leading-relaxed">{stepTranslation.description}</p>
                     </div>
-                    <h3 className="font-serif text-xl md:text-2xl mb-3">{step.title}</h3>
-                    <p className="text-stone-300 text-sm leading-relaxed">{step.description}</p>
+                    {index < MOCK_PROCESS_STEPS.length - 1 && (
+                      <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gold-500/30 -translate-x-1/2"></div>
+                    )}
                   </div>
-                  {index < MOCK_PROCESS_STEPS.length - 1 && (
-                    <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gold-500/30 -translate-x-1/2"></div>
-                  )}
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -263,10 +287,10 @@ const App: React.FC = () => {
         {/* Testimonials */}
         <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">Client Reviews</h2>
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">{t.homepage.sections.clientReviews}</h2>
             <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
             <p className="text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
-              Don't just take our word for it – hear from our satisfied clients.
+              {t.homepage.sections.clientReviewsDesc}
             </p>
           </div>
 
@@ -302,16 +326,16 @@ const App: React.FC = () => {
           </div>
           <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-4 md:mb-6 max-w-4xl">
-              Ready to Transform Your Look?
+              {t.homepage.cta.title}
             </h2>
             <p className="text-stone-200 text-base md:text-lg mb-8 md:mb-10 max-w-2xl">
-              Book your appointment today and experience the difference
+              {t.homepage.cta.subtitle}
             </p>
             <a 
               href="#/booking"
               className="px-6 sm:px-8 py-3 md:py-4 bg-gold-500 text-white hover:bg-gold-600 transition-all duration-300 uppercase tracking-widest text-xs sm:text-sm font-bold inline-flex items-center gap-2 group shadow-lg"
             >
-              Get Started
+              {t.homepage.cta.button}
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
