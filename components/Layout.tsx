@@ -2,17 +2,20 @@
 import React, { useState } from 'react';
 import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Menu, X, Globe, Phone, Mail, Instagram, Facebook, ShoppingBag } from 'lucide-react';
-import { Language } from '../types';
+import { Language, Theme } from '../types';
 import { TRANSLATIONS } from '../constants';
+import ThemeSelector from './ThemeSelector';
 
 interface LayoutProps {
   children: React.ReactNode;
   currentLang: Language;
   onLanguageChange: (lang: Language) => void;
+  currentTheme: Theme;
+  onThemeChange: (theme: Theme) => void;
   cartCount: number;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange, cartCount }) => {
+const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange, currentTheme, onThemeChange, cartCount }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const t = TRANSLATIONS[currentLang];
@@ -58,6 +61,12 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
               <Link to="/booking" className="px-5 py-2 bg-stone-900 text-white text-sm uppercase tracking-widest hover:bg-gold-500 transition-colors">
                 {t.nav.booking}
               </Link>
+              
+              {/* Theme Switcher */}
+              <ThemeSelector 
+                currentTheme={currentTheme}
+                onThemeChange={onThemeChange}
+              />
               
               {/* Language Switcher */}
               <div className="relative">
