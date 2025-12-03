@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 import { Language, Service } from './types';
 import { INITIAL_SERVICES, TRANSLATIONS, GALLERIES } from './constants';
+import { MOCK_CATEGORIES, MOCK_STATISTICS, MOCK_WHY_CHOOSE_US, MOCK_FEATURED_SERVICE_IDS, MOCK_TESTIMONIALS, MOCK_PROCESS_STEPS } from './data';
 import Layout from './components/Layout';
 import Chatbot from './components/Chatbot';
 import AdminDashboard from './components/AdminDashboard';
 import ServiceDetail from './components/ServiceDetail';
-import { Camera, Star, Calendar, MapPin, ShoppingBag, Trash2, ArrowRight } from 'lucide-react';
+import { Camera, Star, Calendar, MapPin, ShoppingBag, Trash2, ArrowRight, Users, Award, Shield, Heart, Sparkles, Trophy, CheckCircle } from 'lucide-react';
 
 const App: React.FC = () => {
   const [currentLang, setCurrentLang] = useState<Language>(Language.EN);
@@ -33,53 +34,291 @@ const App: React.FC = () => {
 
   // Page Components defined locally to access 't' and 'services'
   
-  const Home = () => (
-    <div>
-      {/* Hero */}
-      <div className="relative h-[80vh] w-full overflow-hidden">
-        <div className="absolute inset-0">
-          <img 
-            src="https://picsum.photos/id/325/1920/1080" 
-            alt="Background" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/30"></div>
-        </div>
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
-          <h1 className="font-serif text-5xl md:text-7xl text-white mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-            {t.hero.title}
-          </h1>
-          <p className="text-stone-200 text-lg md:text-xl tracking-wider uppercase mb-10 max-w-2xl animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-            {t.hero.subtitle}
-          </p>
-          <a 
-            href="#/booking" 
-            className="px-8 py-3 border border-white text-white hover:bg-white hover:text-stone-900 transition-all duration-300 uppercase tracking-widest text-sm font-bold animate-in fade-in duration-1000 delay-500"
-          >
-            {t.hero.cta}
-          </a>
-        </div>
-      </div>
+  const Home = () => {
+    const featuredServices = services.filter(s => MOCK_FEATURED_SERVICE_IDS.includes(s.id));
+    const recentTestimonials = MOCK_TESTIMONIALS.slice(0, 3);
 
-      {/* Intro Categories */}
-      <div className="max-w-7xl mx-auto px-4 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {['Makeup', 'Nails', 'Tattooing', 'Photography'].map((cat, idx) => (
-                <div key={idx} className="flex flex-col items-center text-center p-6 border border-stone-100 hover:shadow-lg transition-shadow duration-300 rounded-sm">
-                    <div className="mb-4 text-gold-500">
-                        {idx === 0 && <Star size={32} />}
-                        {idx === 1 && <div className="w-8 h-8 rounded-full border-2 border-gold-500" />}
-                        {idx === 2 && <div className="w-8 h-1 bg-gold-500 rotate-45" />}
-                        {idx === 3 && <Camera size={32} />}
-                    </div>
-                    <h3 className="font-serif text-xl mb-2">{cat}</h3>
-                    <p className="text-stone-500 text-sm">Premium services tailored to your needs.</p>
+    const getIconForCategory = (iconType: string) => {
+      switch(iconType) {
+        case 'star': return <Star size={32} />;
+        case 'circle': return <div className="w-8 h-8 rounded-full border-2 border-gold-500" />;
+        case 'brush': return <div className="w-8 h-1 bg-gold-500 rotate-45" />;
+        case 'camera': return <Camera size={32} />;
+        default: return <Star size={32} />;
+      }
+    };
+
+    const getIconForStat = (iconType: string) => {
+      switch(iconType) {
+        case 'users': return <Users size={32} />;
+        case 'star': return <Star size={32} />;
+        case 'calendar': return <Calendar size={32} />;
+        case 'award': return <Award size={32} />;
+        default: return <Star size={32} />;
+      }
+    };
+
+    const getIconForFeature = (iconType: string) => {
+      switch(iconType) {
+        case 'trophy': return <Trophy size={40} />;
+        case 'shield': return <Shield size={40} />;
+        case 'heart': return <Heart size={40} />;
+        case 'sparkles': return <Sparkles size={40} />;
+        default: return <Trophy size={40} />;
+      }
+    };
+
+    return (
+      <div>
+        {/* Hero */}
+        <div className="relative h-[85vh] md:h-[90vh] w-full overflow-hidden">
+          <div className="absolute inset-0">
+            <img 
+              src="https://picsum.photos/id/325/1920/1080" 
+              alt="Hero Background" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
+          </div>
+          <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white mb-4 md:mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 max-w-5xl">
+              {t.hero.title}
+            </h1>
+            <p className="text-stone-200 text-base sm:text-lg md:text-xl tracking-wider uppercase mb-8 md:mb-10 max-w-2xl animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 px-4">
+              {t.hero.subtitle}
+            </p>
+            <a 
+              href="#/booking" 
+              className="px-6 sm:px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-stone-900 transition-all duration-300 uppercase tracking-widest text-xs sm:text-sm font-bold animate-in fade-in duration-1000 delay-500 inline-flex items-center gap-2 group"
+            >
+              {t.hero.cta}
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+        </div>
+
+        {/* Statistics Bar */}
+        <div className="bg-stone-50 border-y border-stone-200">
+          <div className="max-w-7xl mx-auto px-4 py-12 md:py-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              {MOCK_STATISTICS.map((stat) => (
+                <div key={stat.id} className="text-center group">
+                  <div className="text-gold-500 flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                    {getIconForStat(stat.icon)}
+                  </div>
+                  <div className="font-serif text-3xl md:text-4xl text-stone-900 mb-2">{stat.value}</div>
+                  <div className="text-stone-600 text-sm uppercase tracking-wider">{stat.label}</div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Services Categories */}
+        <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">Our Services</h2>
+            <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
+            <p className="text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
+              Discover our comprehensive range of beauty and wedding services, crafted to perfection by our expert team.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {MOCK_CATEGORIES.map((category) => (
+              <a 
+                href={category.link}
+                key={category.id} 
+                className="group flex flex-col items-center text-center p-6 md:p-8 border border-stone-100 hover:shadow-xl hover:border-gold-200 transition-all duration-300 rounded-sm bg-white"
+              >
+                <div className="mb-4 md:mb-6 text-gold-500 group-hover:scale-110 group-hover:text-gold-600 transition-all duration-300">
+                  {getIconForCategory(category.icon)}
+                </div>
+                <h3 className="font-serif text-xl md:text-2xl mb-3 text-stone-900 group-hover:text-gold-600 transition-colors">
+                  {category.name}
+                </h3>
+                <p className="text-stone-500 text-sm leading-relaxed mb-4">
+                  {category.description}
+                </p>
+                <span className="text-gold-600 text-sm font-medium uppercase tracking-wider group-hover:gap-2 flex items-center gap-1 transition-all">
+                  Explore <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </span>
+              </a>
             ))}
+          </div>
+        </div>
+
+        {/* Featured Services */}
+        <div className="bg-stone-50 py-16 md:py-24">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">Featured Services</h2>
+              <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
+              <p className="text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
+                Our most popular services, trusted by thousands of satisfied clients.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {featuredServices.map((service) => (
+                <div key={service.id} className="bg-white rounded-sm overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 group">
+                  <div className="relative h-64 overflow-hidden">
+                    <img 
+                      src={service.image} 
+                      alt={service.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 right-4 bg-gold-500 text-white px-3 py-1 text-sm font-medium rounded-full">
+                      ${service.price}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <div className="text-xs uppercase tracking-wider text-gold-600 mb-2">{service.category}</div>
+                    <h3 className="font-serif text-xl md:text-2xl text-stone-900 mb-3">{service.name}</h3>
+                    <p className="text-stone-600 text-sm mb-4 line-clamp-2">{service.description}</p>
+                    <div className="flex gap-3">
+                      <Link 
+                        to={`/service/${service.id}`}
+                        className="flex-1 text-center py-2 px-4 border border-stone-300 text-stone-700 hover:bg-stone-50 transition-colors text-sm font-medium"
+                      >
+                        Learn More
+                      </Link>
+                      <button
+                        onClick={() => addToCart(service)}
+                        className="flex-1 py-2 px-4 bg-gold-500 text-white hover:bg-gold-600 transition-colors text-sm font-medium"
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center mt-10 md:mt-12">
+              <a 
+                href="#/services"
+                className="inline-flex items-center gap-2 px-6 md:px-8 py-3 border-2 border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white transition-all duration-300 text-sm font-medium uppercase tracking-wider group"
+              >
+                View All Services
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Why Choose Us */}
+        <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">Why Choose Us</h2>
+            <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
+            <p className="text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
+              Excellence in every detail, care in every service.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {MOCK_WHY_CHOOSE_US.map((item) => (
+              <div key={item.id} className="text-center p-6 group hover:bg-stone-50 transition-colors duration-300 rounded-sm">
+                <div className="text-gold-500 flex justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  {getIconForFeature(item.icon)}
+                </div>
+                <h3 className="font-serif text-xl md:text-2xl text-stone-900 mb-3">{item.title}</h3>
+                <p className="text-stone-600 text-sm leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* How It Works */}
+        <div className="bg-gradient-to-br from-stone-900 to-stone-800 text-white py-16 md:py-24">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-4">How It Works</h2>
+              <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
+              <p className="text-stone-300 max-w-2xl mx-auto text-base md:text-lg px-4">
+                Your journey to beauty, simplified in four easy steps.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6">
+              {MOCK_PROCESS_STEPS.map((step, index) => (
+                <div key={step.id} className="relative">
+                  <div className="text-center">
+                    <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 rounded-full border-2 border-gold-500 flex items-center justify-center bg-stone-800">
+                      <span className="font-serif text-2xl md:text-3xl text-gold-500">{step.step}</span>
+                    </div>
+                    <h3 className="font-serif text-xl md:text-2xl mb-3">{step.title}</h3>
+                    <p className="text-stone-300 text-sm leading-relaxed">{step.description}</p>
+                  </div>
+                  {index < MOCK_PROCESS_STEPS.length - 1 && (
+                    <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gold-500/30 -translate-x-1/2"></div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Testimonials */}
+        <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">Client Reviews</h2>
+            <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
+            <p className="text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
+              Don't just take our word for it – hear from our satisfied clients.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {recentTestimonials.map((testimonial) => (
+              <div key={testimonial.id} className="bg-stone-50 p-6 md:p-8 rounded-sm border border-stone-100 hover:border-gold-200 hover:shadow-lg transition-all duration-300">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} size={16} className="fill-gold-500 text-gold-500" />
+                  ))}
+                </div>
+                <p className="text-stone-700 italic mb-6 leading-relaxed">"{testimonial.text}"</p>
+                <div className="border-t border-stone-200 pt-4">
+                  <div className="font-medium text-stone-900">{testimonial.author}</div>
+                  {testimonial.service && (
+                    <div className="text-sm text-stone-500 mt-1">{testimonial.service}</div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Banner */}
+        <div className="relative h-[50vh] md:h-[60vh] w-full overflow-hidden">
+          <div className="absolute inset-0">
+            <img 
+              src="https://picsum.photos/id/1027/1920/600" 
+              alt="CTA Background" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/50"></div>
+          </div>
+          <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-4 md:mb-6 max-w-4xl">
+              Ready to Transform Your Look?
+            </h2>
+            <p className="text-stone-200 text-base md:text-lg mb-8 md:mb-10 max-w-2xl">
+              Book your appointment today and experience the difference
+            </p>
+            <a 
+              href="#/booking"
+              className="px-6 sm:px-8 py-3 md:py-4 bg-gold-500 text-white hover:bg-gold-600 transition-all duration-300 uppercase tracking-widest text-xs sm:text-sm font-bold inline-flex items-center gap-2 group shadow-lg"
+            >
+              Get Started
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const AboutPage = () => (
     <div className="animate-in fade-in duration-500">

@@ -35,3 +35,23 @@ export type {
 export { 
   TRANSLATIONS 
 } from './translations.data';
+
+// Homepage Data
+export {
+  MOCK_HOME_HERO,
+  MOCK_CATEGORIES,
+  MOCK_STATISTICS,
+  MOCK_WHY_CHOOSE_US,
+  MOCK_FEATURED_SERVICE_IDS,
+  MOCK_PROCESS_STEPS,
+  MOCK_CTA_BANNER
+} from './homepage.data';
+
+export type {
+  HomeHeroData,
+  CategoryFeature,
+  StatisticItem,
+  WhyChooseUsItem,
+  ProcessStep,
+  CTABanner
+} from './homepage.data';
