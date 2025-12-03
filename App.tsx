@@ -202,7 +202,7 @@ const App: React.FC = () => {
                     <p className="text-stone-600 text-sm mb-4 line-clamp-2">{service.description}</p>
                     <div className="flex gap-3">
                       <Link 
-                        to={`/service/${service.id}`}
+                        to={`/services/${service.id}`}
                         className="flex-1 text-center py-2 px-4 border border-stone-300 text-stone-700 hover:bg-stone-50 transition-colors text-sm font-medium"
                       >
                         {t.homepage.buttons.learnMore}
