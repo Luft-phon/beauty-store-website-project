@@ -25,13 +25,16 @@ beauty-store-website-project/
 │   ├── AdminDashboard.tsx         
 │   ├── Chatbot.tsx                
 │   ├── Layout.tsx                 
-│   └── ServiceDetail.tsx          
+│   ├── ServiceDetail.tsx
+│   └── ThemeSelector.tsx          # Color theme switcher
 │
 ├── 📁 config/                      # ⚙️ Configuration
-│   └── app.config.ts              # App settings, feature flags, API config
+│   ├── app.config.ts              # App settings, feature flags, API config
+│   └── theme.config.ts            # Color theme configurations
 │
 ├── 🔧 constants.ts                 # Legacy exports (backward compatibility)
 ├── 🎨 types.ts                     # TypeScript type definitions
+├── 💅 theme.css                    # Global theme styles
 ├── 🚀 App.tsx                      # Main application
 ├── 📄 index.tsx                    # Entry point
 ├── 📋 vite.config.ts              # Vite configuration

@@ -1,0 +1,272 @@
+/* Global Theme Styles */
+
+/* Apply theme colors to body and root elements */
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+/* Update Tailwind's stone colors to use theme variables */
+.bg-stone-50 {
+  background-color: var(--color-backgroundAlt) !important;
+}
+
+.bg-stone-900 {
+  background-color: var(--color-textDark) !important;
+}
+
+.text-stone-200 {
+  color: var(--color-primaryLight) !important;
+}
+
+.text-stone-600 {
+  color: var(--color-textLight) !important;
+}
+
+.text-stone-900 {
+  color: var(--color-textDark) !important;
+}
+
+.text-stone-500 {
+  color: var(--color-textLight) !important;
+}
+
+.border-stone-100 {
+  border-color: var(--color-borderLight) !important;
+}
+
+.border-stone-200 {
+  border-color: var(--color-border) !important;
+}
+
+/* Update gold colors to use theme accent */
+.bg-gold-500 {
+  background-color: var(--color-accent) !important;
+}
+
+.bg-gold-600 {
+  background-color: var(--color-accentHover) !important;
+}
+
+.text-gold-500 {
+  color: var(--color-accent) !important;
+}
+
+.text-gold-600 {
+  color: var(--color-accentHover) !important;
+}
+
+.border-gold-500 {
+  border-color: var(--color-accent) !important;
+}
+
+.border-gold-200 {
+  border-color: var(--color-accent) !important;
+  opacity: 0.5;
+}
+
+.hover\:bg-gold-500:hover {
+  background-color: var(--color-accent) !important;
+}
+
+.hover\:bg-gold-600:hover {
+  background-color: var(--color-accentHover) !important;
+}
+
+.hover\:text-gold-500:hover {
+  color: var(--color-accent) !important;
+}
+
+.hover\:text-gold-600:hover {
+  color: var(--color-accentHover) !important;
+}
+
+.hover\:border-gold-200:hover {
+  border-color: var(--color-accent) !important;
+  opacity: 0.5;
+}
+
+.focus\:border-gold-500:focus {
+  border-color: var(--color-accent) !important;
+}
+
+/* Background color for white elements */
+.bg-white {
+  background-color: var(--color-background) !important;
+}
+
+/* Hover effects for backgrounds */
+.hover\:bg-stone-50:hover {
+  background-color: var(--color-backgroundAlt) !important;
+}
+
+.hover\:bg-stone-900:hover {
+  background-color: var(--color-textDark) !important;
+}
+
+.hover\:text-stone-900:hover {
+  color: var(--color-textDark) !important;
+}
+
+/* Card and container backgrounds */
+.bg-white\/90 {
+  background-color: var(--color-background) !important;
+  opacity: 0.9;
+}
+
+/* Shadow colors */
+.shadow-sm,
+.shadow-md,
+.shadow-lg,
+.shadow-xl,
+.hover\:shadow-xl:hover {
+  box-shadow: 0 4px 6px var(--color-shadow), 0 1px 3px var(--color-shadow);
+}
+
+/* Button styles */
+button.bg-stone-900,
+a.bg-stone-900 {
+  background-color: var(--color-textDark) !important;
+}
+
+button.text-stone-700,
+.text-stone-700 {
+  color: var(--color-text) !important;
+}
+
+/* Form elements */
+input.bg-stone-50,
+select.bg-stone-50,
+textarea.bg-stone-50 {
+  background-color: var(--color-backgroundAlt) !important;
+}
+
+input.border-stone-200,
+select.border-stone-200,
+textarea.border-stone-200 {
+  border-color: var(--color-border) !important;
+}
+
+/* Navigation active states */
+.text-gold-500.font-semibold {
+  color: var(--color-accent) !important;
+}
+
+/* Gradient overlays - maintain but work with theme */
+.bg-gradient-to-b {
+  /* Gradients remain as is for hero sections */
+}
+
+/* Price tags and badges */
+.bg-red-500 {
+  background-color: #ef4444;
+  /* Keep red for delete/remove actions */
+}
+
+.hover\:text-red-500:hover {
+  color: #ef4444;
+  /* Keep red for delete/remove actions */
+}
+
+/* Ensure proper contrast for text on backgrounds */
+.text-white {
+  color: #ffffff !important;
+}
+
+.border-white {
+  border-color: #ffffff !important;
+}
+
+.hover\:bg-white:hover {
+  background-color: #ffffff !important;
+}
+
+/* CTA Banner specific styles */
+.bg-gradient-to-br {
+  /* Gradients for banners use theme overlay */
+  background: linear-gradient(to bottom right, var(--color-textDark), var(--color-text)) !important;
+}
+
+/* Ensure icons inherit theme colors */
+svg {
+  color: inherit;
+}
+
+/* Responsive utilities maintain theme */
+@media (max-width: 768px) {
+  /* Theme colors apply across all breakpoints */
+}
+
+/* Testimonial and card hover states */
+.hover\:border-gold-200:hover {
+  border-color: var(--color-accent) !important;
+  opacity: 0.7;
+}
+
+/* Statistics and metrics */
+.text-stone-400 {
+  color: var(--color-textLight) !important;
+  opacity: 0.8;
+}
+
+/* Footer and secondary text */
+.text-stone-300 {
+  color: var(--color-primaryLight) !important;
+}
+
+/* Ensure theme transitions smoothly */
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+
+/* Prevent transition on page load */
+.no-transition {
+  transition: none !important;
+}
+
+/* Backdrop for modals and dropdowns */
+.backdrop-blur-md {
+  background-color: var(--color-background);
+  opacity: 0.95;
+}
+
+/* Primary colored elements */
+.text-primary {
+  color: var(--color-primary) !important;
+}
+
+.bg-primary {
+  background-color: var(--color-primary) !important;
+}
+
+/* Accent colored elements */
+.text-accent {
+  color: var(--color-accent) !important;
+}
+
+.bg-accent {
+  background-color: var(--color-accent) !important;
+}
+
+/* Custom utilities for theme */
+.theme-border {
+  border-color: var(--color-border);
+}
+
+.theme-text {
+  color: var(--color-text);
+}
+
+.theme-bg {
+  background-color: var(--color-background);
+}
+
+.theme-accent {
+  color: var(--color-accent);
+}
+
+.theme-accent-bg {
+  background-color: var(--color-accent);
+}

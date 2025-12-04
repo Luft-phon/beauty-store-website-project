@@ -1,9 +1,10 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link } from 'react-router-dom';
-import { Language, Service } from './types';
+import { Language, Service, Theme } from './types';
 import { INITIAL_SERVICES, TRANSLATIONS, GALLERIES } from './constants';
 import { MOCK_CATEGORIES, MOCK_STATISTICS, MOCK_WHY_CHOOSE_US, MOCK_FEATURED_SERVICE_IDS, MOCK_TESTIMONIALS, MOCK_PROCESS_STEPS } from './data';
+import { getInitialTheme, saveTheme, applyThemeVariables } from './config/theme.config';
 import Layout from './components/Layout';
 import Chatbot from './components/Chatbot';
 import AdminDashboard from './components/AdminDashboard';
@@ -12,9 +13,20 @@ import { Camera, Star, Calendar, MapPin, ShoppingBag, Trash2, ArrowRight, Users,
 
 const App: React.FC = () => {
   const [currentLang, setCurrentLang] = useState<Language>(Language.EN);
+  const [currentTheme, setCurrentTheme] = useState<Theme>(getInitialTheme());
   const [services, setServices] = useState<Service[]>(INITIAL_SERVICES);
   const [cart, setCart] = useState<Service[]>([]);
   const t = TRANSLATIONS[currentLang];
+
+  // Apply theme on mount and when theme changes
+  useEffect(() => {
+    applyThemeVariables(currentTheme);
+    saveTheme(currentTheme);
+  }, [currentTheme]);
+
+  const handleThemeChange = (theme: Theme) => {
+    setCurrentTheme(theme);
+  };
 
   const handleUpdateService = (updated: Service) => {
     setServices(prev => prev.map(s => s.id === updated.id ? updated : s));
@@ -190,7 +202,7 @@ const App: React.FC = () => {
                     <p className="text-stone-600 text-sm mb-4 line-clamp-2">{service.description}</p>
                     <div className="flex gap-3">
                       <Link 
-                        to={`/service/${service.id}`}
+                        to={`/services/${service.id}`}
                         className="flex-1 text-center py-2 px-4 border border-stone-300 text-stone-700 hover:bg-stone-50 transition-colors text-sm font-medium"
                       >
                         {t.homepage.buttons.learnMore}
@@ -699,7 +711,13 @@ const App: React.FC = () => {
 
   return (
     <HashRouter>
-      <Layout currentLang={currentLang} onLanguageChange={setCurrentLang} cartCount={cart.length}>
+      <Layout 
+        currentLang={currentLang} 
+        onLanguageChange={setCurrentLang} 
+        currentTheme={currentTheme}
+        onThemeChange={handleThemeChange}
+        cartCount={cart.length}
+      >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<ServicesPage />} />
