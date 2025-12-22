@@ -49,7 +49,7 @@ export const config = {
    * Application Metadata
    */
   app: {
-    name: 'Lumière Beauty & Wedding',
+    name: 'lecharmebeauteboutique',
     version: '1.0.0',
     defaultLanguage: 'English',
   },

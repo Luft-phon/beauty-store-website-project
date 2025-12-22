@@ -141,8 +141,8 @@ export const MOCK_COMPANY_INFO: CompanyInfo = {
     weekend: 'Sat-Sun: 10:00 AM - 6:00 PM'
   },
   social: {
-    instagram: 'https://instagram.com/lumierebeauty',
-    facebook: 'https://facebook.com/lumierebeauty',
-    pinterest: 'https://pinterest.com/lumierebeauty'
+    instagram: 'https://instagram.com/lecharmebeauteboutique',
+    facebook: 'https://facebook.com/lecharmebeauteboutique',
+    pinterest: 'https://pinterest.com/lecharmebeauteboutique'
   }
 };
