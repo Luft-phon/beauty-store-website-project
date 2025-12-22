@@ -4,7 +4,7 @@ import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 import { Language, Service, Theme } from './types';
 import { INITIAL_SERVICES, TRANSLATIONS, GALLERIES } from './constants';
 import { MOCK_CATEGORIES, MOCK_STATISTICS, MOCK_WHY_CHOOSE_US, MOCK_FEATURED_SERVICE_IDS, MOCK_TESTIMONIALS, MOCK_PROCESS_STEPS } from './data';
-import { getInitialTheme, saveTheme, applyThemeVariables } from './config/theme.config';
+import { applyThemeVariables } from './config/theme.config';
 import Layout from './components/Layout';
 import Chatbot from './components/Chatbot';
 import AdminDashboard from './components/AdminDashboard';
@@ -13,20 +13,14 @@ import { Camera, Star, Calendar, MapPin, ShoppingBag, Trash2, ArrowRight, Users,
 
 const App: React.FC = () => {
   const [currentLang, setCurrentLang] = useState<Language>(Language.EN);
-  const [currentTheme, setCurrentTheme] = useState<Theme>(getInitialTheme());
   const [services, setServices] = useState<Service[]>(INITIAL_SERVICES);
   const [cart, setCart] = useState<Service[]>([]);
   const t = TRANSLATIONS[currentLang];
 
-  // Apply theme on mount and when theme changes
+  // Apply Light Sand theme on mount (permanent theme)
   useEffect(() => {
-    applyThemeVariables(currentTheme);
-    saveTheme(currentTheme);
-  }, [currentTheme]);
-
-  const handleThemeChange = (theme: Theme) => {
-    setCurrentTheme(theme);
-  };
+    applyThemeVariables(Theme.LIGHT_SAND);
+  }, []);
 
   const handleUpdateService = (updated: Service) => {
     setServices(prev => prev.map(s => s.id === updated.id ? updated : s));
@@ -714,8 +708,6 @@ const App: React.FC = () => {
       <Layout 
         currentLang={currentLang} 
         onLanguageChange={setCurrentLang} 
-        currentTheme={currentTheme}
-        onThemeChange={handleThemeChange}
         cartCount={cart.length}
       >
         <Routes>

@@ -8,9 +8,7 @@ export enum Language {
 }
 
 export enum Theme {
-  WARM_BEIGE = 'warm-beige',
-  LIGHT_SAND = 'light-sand',
-  OFF_WHITE = 'off-white'
+  LIGHT_SAND = 'light-sand'
 }
 
 export interface ThemeColors {
