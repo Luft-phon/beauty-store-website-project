@@ -116,7 +116,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: 'Our Story',
       subtitle: 'A sanctuary of beauty and artistry.',
       storyTitle: 'Where Passion Meets Perfection',
-      storyText: 'Founded in 2020, Lumière Beauty & Wedding began with a simple vision: to create a space where every client feels like the most beautiful version of themselves. We combine traditional techniques with modern artistry to deliver exceptional results.',
+      storyText: 'Founded in 2020, lecharmebeauteboutique began with a simple vision: to create a space where every client feels like the most beautiful version of themselves. We combine traditional techniques with modern artistry to deliver exceptional results.',
       philosophyTitle: 'Our Philosophy',
       philosophyText: 'We believe that true beauty lies in the details. Whether it is the precise stroke of a brow tattoo, the perfect shade of polish, or capturing a fleeting moment of love, we dedicate ourselves to perfection.',
       teamTitle: 'Meet The Artists'
@@ -284,7 +284,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: 'Câu Chuyện Của Chúng Tôi',
       subtitle: 'Nơi tôn vinh vẻ đẹp và nghệ thuật.',
       storyTitle: 'Khi Đam Mê Gặp Sự Hoàn Hảo',
-      storyText: 'Được thành lập vào năm 2020, Lumière Beauty & Wedding bắt đầu với một tầm nhìn đơn giản: tạo ra một không gian nơi mọi khách hàng đều cảm thấy mình xinh đẹp nhất. Chúng tôi kết hợp kỹ thuật truyền thống với nghệ thuật hiện đại để mang lại kết quả vượt trội.',
+      storyText: 'Được thành lập vào năm 2020, lecharmebeauteboutique bắt đầu với một tầm nhìn đơn giản: tạo ra một không gian nơi mọi khách hàng đều cảm thấy mình xinh đẹp nhất. Chúng tôi kết hợp kỹ thuật truyền thống với nghệ thuật hiện đại để mang lại kết quả vượt trội.',
       philosophyTitle: 'Triết Lý Của Chúng Tôi',
       philosophyText: 'Chúng tôi tin rằng vẻ đẹp đích thực nằm ở những chi tiết. Dù là một đường phun xăm chân mày tinh tế, màu sơn móng hoàn hảo hay khoảnh khắc tình yêu được ghi lại, chúng tôi luôn tận tâm vì sự hoàn hảo.',
       teamTitle: 'Đội Ngũ Nghệ Sĩ'
@@ -452,7 +452,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: 'Notre Histoire',
       subtitle: 'Un sanctuaire de beauté et d\'art.',
       storyTitle: 'Où la passion rencontre la perfection',
-      storyText: 'Fondée en 2020, Lumière Beauty & Wedding a débuté avec une vision simple : créer un espace où chaque client se sent la plus belle version d\'elle-même. Nous combinons techniques traditionnelles et art moderne.',
+      storyText: 'Fondée en 2020, lecharmebeauteboutique a débuté avec une vision simple : créer un espace où chaque client se sent la plus belle version d\'elle-même. Nous combinons techniques traditionnelles et art moderne.',
       philosophyTitle: 'Notre Philosophie',
       philosophyText: 'Nous croyons que la vraie beauté réside dans les détails. Qu\'il s\'agisse du trait précis d\'un tatouage de sourcils, de la teinte parfaite de vernis ou de la capture d\'un moment d\'amour, nous nous consacrons à la perfection.',
       teamTitle: 'Rencontrez Les Artistes'
@@ -620,7 +620,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: '我们的故事',
       subtitle: '美丽与艺术的殿堂。',
       storyTitle: '当激情遇上完美',
-      storyText: 'Lumière Beauty & Wedding 成立于 2020 年，其愿景很简单：创造一个让每位客户都感觉自己最美丽的空间。我们将传统技术与现代艺术相结合，提供卓越的效果。',
+      storyText: 'lecharmebeauteboutique 成立于 2020 年，其愿景很简单：创造一个让每位客户都感觉自己最美丽的空间。我们将传统技术与现代艺术相结合，提供卓越的效果。',
       philosophyTitle: '我们的理念',
       philosophyText: '我们相信真正的美在于细节。无论是精准的眉部纹绣、完美的指甲色调，还是捕捉稍纵即逝的爱情时刻，我们都致力于追求完美。',
       teamTitle: '认识我们的艺术家'
@@ -788,7 +788,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       title: '우리의 이야기',
       subtitle: '아름다움과 예술의 안식처.',
       storyTitle: '열정이 완벽을 만날 때',
-      storyText: '2020년에 설립된 Lumière Beauty & Wedding은 모든 고객이 자신의 가장 아름다운 모습을 발견할 수 있는 공간을 만들겠다는 단순한 비전으로 시작했습니다. 우리는 전통적인 기술과 현대적인 예술성을 결합하여 탁월한 결과를 제공합니다.',
+      storyText: '2020년에 설립된 lecharmebeauteboutique은 모든 고객이 자신의 가장 아름다운 모습을 발견할 수 있는 공간을 만들겠다는 단순한 비전으로 시작했습니다. 우리는 전통적인 기술과 현대적인 예술성을 결합하여 탁월한 결과를 제공합니다.',
       philosophyTitle: '우리의 철학',
       philosophyText: '우리는 진정한 아름다움이 디테일에 있다고 믿습니다. 정교한 눈썹 문신, 완벽한 매니큐어 색조, 찰나의 사랑을 포착하는 것까지, 우리는 완벽을 위해 헌신합니다.',
       teamTitle: '아티스트 소개'

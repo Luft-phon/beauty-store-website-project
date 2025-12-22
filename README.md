@@ -1,4 +1,4 @@
-<h1 align="center"> Lumière Beauty & Wedding </h1>
+<h1 align="center"> lecharmebeauteboutique </h1>
 <p align="center">A premium beauty salon and wedding services website with modern e-commerce features, AI chatbot, and multi-language support.</p>
  <div  align="center" >
    <!-- <img alt="Beauty Store Preview" src="./preview.gif"/> -->

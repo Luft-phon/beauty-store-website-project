@@ -7,6 +7,31 @@ export enum Language {
   KO = '한국어'
 }
 
+export enum Theme {
+  LIGHT_SAND = 'light-sand'
+}
+
+export interface ThemeColors {
+  name: string;
+  displayName: string;
+  colors: {
+    primary: string;
+    primaryLight: string;
+    primaryDark: string;
+    secondary: string;
+    accent: string;
+    accentHover: string;
+    background: string;
+    backgroundAlt: string;
+    text: string;
+    textLight: string;
+    textDark: string;
+    border: string;
+    borderLight: string;
+    shadow: string;
+  };
+}
+
 export interface Service {
   id: string;
   category: 'Makeup' | 'Nails' | 'Tattooing' | 'Photography';
