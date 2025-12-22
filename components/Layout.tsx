@@ -34,7 +34,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
             
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => window.location.hash = '/'}>
-              <span className="font-serif text-2xl font-bold text-stone-900 tracking-tighter">LUMIÈRE</span>
+              <span className="font-serif text-2xl font-bold text-stone-900 tracking-tighter">lecharmebeauteboutique</span>
             </div>
 
             {/* Desktop Nav */}
@@ -137,7 +137,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
             <div>
-              <h3 className="font-serif text-2xl mb-4">LUMIÈRE</h3>
+              <h3 className="font-serif text-2xl mb-4">lecharmebeauteboutique</h3>
               <p className="text-stone-400 text-sm leading-relaxed max-w-xs mx-auto md:mx-0">
                 Dedicated to enhancing your natural beauty through exceptional artistry and care.
               </p>
@@ -148,7 +148,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
                 <Phone size={16} /> <span>(555) 123-4567</span>
               </div>
               <div className="flex items-center space-x-2 text-stone-400 text-sm">
-                <Mail size={16} /> <span>hello@lumierebeauty.com</span>
+                <Mail size={16} /> <span>hello@lecharmebeauteboutique.com</span>
               </div>
             </div>
             <div className="flex flex-col items-center md:items-end">
@@ -160,7 +160,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
             </div>
           </div>
           <div className="border-t border-stone-800 mt-10 pt-6 text-center text-xs text-stone-500">
-            <p>&copy; {new Date().getFullYear()} Lumière Beauty & Wedding. {t.footer.rights}</p>
+            <p>&copy; {new Date().getFullYear()} lecharmebeauteboutique. {t.footer.rights}</p>
           </div>
         </div>
       </footer>
