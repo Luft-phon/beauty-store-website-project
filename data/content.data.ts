@@ -23,10 +23,12 @@ export interface GalleryImage {
 export interface Testimonial {
   id: string;
   author: string;
+  location: string;
   rating: number;
   text: string;
   service?: string;
   date?: string;
+  image: string;
 }
 
 export const MOCK_TEAM_MEMBERS: TeamMember[] = [
@@ -67,27 +69,43 @@ export const MOCK_GALLERY_IMAGES: GalleryImage[] = [
 export const MOCK_TESTIMONIALS: Testimonial[] = [
   {
     id: '1',
-    author: 'Jessica M.',
+    author: 'Ali Tufan',
+    location: 'New York, USA',
     rating: 5,
-    text: 'Absolutely amazing experience! Sarah did my bridal makeup and I felt like a princess. Highly recommend!',
+    text: 'I absolutely love the products I purchased from this boutique! The quality is exceptional, and my skin has never looked better. The packaging is also beautiful, making it a luxurious experience every time I use them. Highly recommend!',
     service: 'Bridal Makeup',
-    date: '2024-11-15'
+    date: '2024-11-15',
+    image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80&w=800'
   },
   {
     id: '2',
-    author: 'Michael T.',
+    author: 'Jessica M.',
+    location: 'Los Angeles, CA',
     rating: 5,
-    text: 'David captured our wedding perfectly. Every photo tells a story. Thank you!',
+    text: 'Absolutely amazing experience! Sarah did my bridal makeup and I felt like a princess. The attention to detail was incredible and the look lasted all night long.',
     service: 'Wedding Day Coverage',
-    date: '2024-10-22'
+    date: '2024-10-22',
+    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=800'
   },
   {
     id: '3',
-    author: 'Amanda K.',
+    author: 'Michael T.',
+    location: 'Chicago, IL',
     rating: 5,
-    text: 'Elena is a true artist. My eyebrows look natural and perfect. Best decision ever!',
-    service: 'Ombre Powder Brows',
-    date: '2024-11-01'
+    text: 'David captured our wedding perfectly. Every photo tells a story. We are so grateful for these memories that we will cherish forever.',
+    service: 'Wedding Photography',
+    date: '2024-11-01',
+    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    id: '4',
+    author: 'Emily R.',
+    location: 'Miami, FL',
+    rating: 5,
+    text: 'The best skincare advice I have ever received. My complexion is glowing and I feel so much more confident. Thank you Lumière!',
+    service: 'Skincare Consultation',
+    date: '2024-12-05',
+    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=800'
   }
 ];
 
