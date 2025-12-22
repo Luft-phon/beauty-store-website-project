@@ -1,70 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lecharmebeauteboutique</title>
-    <link rel="stylesheet" href="/theme.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Lato', 'sans-serif'],
-              serif: ['Cormorant Garamond', 'serif'],
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LE'CHARME Beauty Boutique</title>
+  <link rel="stylesheet" href="/theme.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Outfit:wght@100..900&family=Sen:wght@400..800&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/png" href="public/images/logo/logo2.png" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Lato', 'sans-serif'],
+            serif: ['Cormorant', 'serif'],
+            outfit: ['Outfit', 'sans-serif'],
+            sen: ['Sen', 'sans-serif'],
+            bebasNeue: ['Bebas+Neue', 'sans-serif'],
+          },
+          colors: {
+            gold: {
+              100: '#F9F1D8',
+              300: '#EEDCA0',
+              500: '#D4AF37',
+              700: '#AA8C2C',
             },
-            colors: {
-              gold: {
-                100: '#F9F1D8',
-                300: '#EEDCA0',
-                500: '#D4AF37',
-                700: '#AA8C2C',
-              },
-              rose: {
-                50: '#FFF5F7',
-                100: '#FFE4EB',
-              }
+            rose: {
+              50: '#FFF5F7',
+              100: '#FFE4EB',
             }
           }
         }
       }
-    </script>
-    <style>
-      :root {
-        /* Light Sand Theme - Permanent colors */
-        --color-primary: #D9CFC1;
-        --color-primaryLight: #EAE4DA;
-        --color-primaryDark: #C4B8A9;
-        --color-secondary: #B5A491;
-        --color-accent: #C8997C;
-        --color-accentHover: #B8896C;
-        --color-background: #F7F3EE;
-        --color-backgroundAlt: #EBE5DC;
-        --color-text: #4A3F35;
-        --color-textLight: #756A5E;
-        --color-textDark: #332B24;
-        --color-border: #D4CAB9;
-        --color-borderLight: #E3DDD1;
-        --color-shadow: rgba(74, 63, 53, 0.1);
-      }
-      
-      body {
-        scroll-behavior: smooth;
-      }
-      /* Hide scrollbar for Chrome, Safari and Opera */
-      .no-scrollbar::-webkit-scrollbar {
-          display: none;
-      }
-      /* Hide scrollbar for IE, Edge and Firefox */
-      .no-scrollbar {
-          -ms-overflow-style: none;  /* IE and Edge */
-          scrollbar-width: none;  /* Firefox */
-      }
-    </style>
+    }
+  </script>
+  <style>
+    :root {
+      /* Light Sand Theme - Permanent colors */
+      --color-primary: #D9CFC1;
+      --color-primaryLight: #EAE4DA;
+      --color-primaryDark: #C4B8A9;
+      --color-secondary: #B5A491;
+      --color-accent: #C8997C;
+      --color-accentHover: #B8896C;
+      --color-background: #F7F3EE;
+      --color-backgroundAlt: #EBE5DC;
+      --color-text: #4A3F35;
+      --color-textLight: #756A5E;
+      --color-textDark: #332B24;
+      --color-border: #D4CAB9;
+      --color-borderLight: #E3DDD1;
+      --color-shadow: rgba(74, 63, 53, 0.1);
+    }
+
+    body {
+      scroll-behavior: smooth;
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -78,10 +89,12 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-stone-50 text-stone-800 antialiased">
-    <div id="root"></div>
+
+<body class="bg-stone-50 text-stone-800 antialiased">
+  <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>
