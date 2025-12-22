@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { HashRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Language, Service, Theme } from './types';
 import { INITIAL_SERVICES, TRANSLATIONS, GALLERIES } from './constants';
 import { MOCK_CATEGORIES, MOCK_STATISTICS, MOCK_WHY_CHOOSE_US, MOCK_FEATURED_SERVICE_IDS, MOCK_TESTIMONIALS, MOCK_PROCESS_STEPS } from './data';
@@ -95,13 +95,13 @@ const App: React.FC = () => {
             <p className="text-stone-200 text-base sm:text-lg md:text-xl tracking-wider uppercase mb-8 md:mb-10 max-w-2xl animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 px-4">
               {t.hero.subtitle}
             </p>
-            <a
-              href="#/booking"
+            <Link
+              to="/booking"
               className="px-6 sm:px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-stone-900 transition-all duration-300 uppercase tracking-widest text-xs sm:text-sm font-bold animate-in fade-in duration-1000 delay-500 inline-flex items-center gap-2 group"
             >
               {t.hero.cta}
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -197,7 +197,7 @@ const App: React.FC = () => {
                     <h3 className="font-serif text-xl md:text-2xl text-stone-900 mb-3">{service.name}</h3>
                     <p className="text-stone-600 text-sm mb-4 line-clamp-2">{service.description}</p>
                     <div className="flex gap-3">
-                      <Link 
+                      <Link
                         to={`/services/${service.id}`}
                         className="flex-1 text-center py-2 px-4 border border-stone-300 text-stone-700 hover:bg-stone-50 transition-colors text-sm font-medium"
                       >
@@ -216,13 +216,13 @@ const App: React.FC = () => {
             </div>
 
             <div className="text-center mt-10 md:mt-12">
-              <a
-                href="#/services"
+              <Link
+                to="/services"
                 className="inline-flex items-center gap-2 px-6 md:px-8 py-3 border-2 border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white transition-all duration-300 text-sm font-medium uppercase tracking-wider group"
               >
                 {t.homepage.buttons.viewAll}
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -312,13 +312,13 @@ const App: React.FC = () => {
             <p className="text-stone-200 text-base md:text-lg mb-8 md:mb-10 max-w-2xl">
               {t.homepage.cta.subtitle}
             </p>
-            <a
-              href="#/booking"
+            <Link
+              to="/booking"
               className="px-6 sm:px-8 py-3 md:py-4 bg-gold-500 text-white hover:bg-gold-600 transition-all duration-300 uppercase tracking-widest text-xs sm:text-sm font-bold inline-flex items-center gap-2 group shadow-lg"
             >
               {t.homepage.cta.button}
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -680,10 +680,10 @@ const App: React.FC = () => {
   );
 
   return (
-    <HashRouter>
-      <Layout 
-        currentLang={currentLang} 
-        onLanguageChange={setCurrentLang} 
+    <BrowserRouter>
+      <Layout
+        currentLang={currentLang}
+        onLanguageChange={setCurrentLang}
         cartCount={cart.length}
       >
         <Routes>
@@ -699,7 +699,7 @@ const App: React.FC = () => {
         </Routes>
       </Layout>
       <Chatbot language={currentLang} services={services} />
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
