@@ -24,7 +24,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     },
     hero: {
       title: 'Elegance in Every Detail',
-      subtitle: 'Premier Makeup, Nails, Tattooing & Photography',
+      subtitle: 'Premier Makeup, Makeup Classes, & Photography',
       cta: 'Book Appointment'
     },
     homepage: {
@@ -51,13 +51,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           name: 'Makeup',
           description: 'Professional makeup artistry for all occasions, from natural glam to bold bridal looks.'
         },
-        nails: {
-          name: 'Nails',
-          description: 'Expert nail care and art, featuring the latest trends in manicures and pedicures.'
+        photoshoot: {
+          name: 'Photoshoot / Stage',
+          description: 'Specialized makeup and styling for photoshoots, stage performances, and media events.'
         },
-        tattooing: {
-          name: 'Tattooing',
-          description: 'Semi-permanent makeup including microblading and ombre powder brows by certified artists.'
+        partyEvent: {
+          name: 'Party / Event',
+          description: 'Glamorous makeup services for parties, social events, and special occasions.'
         },
         photography: {
           name: 'Photography',
@@ -111,6 +111,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         viewAll: 'View All Services',
         addToCart: 'Add to Cart'
       }
+    },
+    contactPage: {
+      text: "We would love to hear from you. Whether it's for a bridal consultation or a quick inquiry about our brow services, our team is ready to assist.",
+      location: 'Studio Location',
+      locationText: '7862 Warner Ave Ste A, Huntington Beach, CA, United States, California',
+      dm: 'DM us to reserve your spot',
+      dmText: 'Learn. Practice. Glow with confidence.',
     },
     aboutPage: {
       title: 'Our Story',
@@ -177,6 +184,84 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       success: 'Booking Confirmed!',
       emptyRedirect: 'Your cart is empty. Please select services first.'
     },
+    services: {
+      'photoshoot-combo': {
+        name: 'Photoshoot / Stage Combo',
+        description: 'Designed for camera and stage lighting. Includes long-lasting, HD-ready makeup, advanced contouring & highlighting, eye definition, and professional hair styling tailored to your concept. \n ✔ High-end makeup products \n ✔ All types of false lashes included'
+      },
+      'premium-combo': {
+        name: 'Premium Combo',
+        description: 'Includes skin cleansing, priming, foundation, eye makeup, contour & blush, brows & lipstick using mid-range makeup products. \n ✔ Natural false lashes included \n ✔ Hair styling: simple curls or straightening (your choice)'
+      },
+      'premium-makeup': {
+        name: 'Premium Makeup Only',
+        description: 'Professional makeup application using mid-range products. \n ✔ Natural false lashes included.'
+      },
+      'premium-hair': {
+        name: 'Premium Hair Only',
+        description: 'Simple curls or straightening tailored to your event.'
+      },
+      'deluxe-combo': {
+        name: 'Deluxe Combo',
+        description: 'Includes skin cleansing, toner, serum, moisturizing, priming, foundation, eye makeup, full-face contour, blush, powder, highlight & lipstick using high-end makeup products. \n ✔ All types of false lashes included \n ✔ Hair styling: any style of your choice'
+      },
+      'deluxe-makeup': {
+        name: 'Deluxe Makeup Only',
+        description: 'Full pampering makeup session using high-end products. \n ✔ All types of false lashes included.'
+      },
+      'deluxe-hair': {
+        name: 'Deluxe Hair Only',
+        description: 'Any hairstyle of your choice for your special occasion.'
+      },
+      'bridal-1': {
+        name: 'Bridal Makeup & Hair (1 time)',
+        description: 'Complete bridal look for your ceremony or reception.'
+      },
+      'bridal-2': {
+        name: 'Bridal Makeup & 2 Hair Changes',
+        description: '1 morning Makeup & Hair + 1 touchup & 1 hair change.'
+      },
+      'bridal-3': {
+        name: 'Bridal Makeup & Hair + Layout Changes',
+        description: 'Morning & evening makeup and hair changes to keep you looking perfect all day.'
+      },
+      'bridal-4': {
+        name: 'Bridal All-Day Service',
+        description: 'MUA will accompany the bride throughout the day and adjust makeup & hair as needed until the evening ceremony ends. \n🎁 Complimentary manicure included'
+      },
+      'wedding-guest-combo': {
+        name: 'Wedding Guest Makeup & Hair',
+        description: 'For moms, relatives, bridesmaids, etc.'
+      },
+      'wedding-guest-makeup': {
+        name: 'Wedding Guest Makeup Only',
+        description: 'Professional makeup for wedding guests.'
+      },
+      'wedding-guest-hair': {
+        name: 'Wedding Guest Hair Only',
+        description: 'Professional hair styling for wedding guests.'
+      },
+      'groom-combo': {
+        name: 'Groom Makeup & Hair',
+        description: 'Grooming service for the groom.'
+      },
+      'groom-makeup': {
+        name: 'Groom Makeup Only',
+        description: 'Makeup grooming for the groom.'
+      },
+      'bridal-trial': {
+        name: 'Bridal Trial / Pre-Wedding Photoshoot',
+        description: '4–6 hours trying different looks and styles. Perfect for pre-wedding photos or finding your wedding day look.'
+      },
+      'class-private': {
+        name: '1:1 Private Makeup Class',
+        description: '3 days, 3 hours per day. Flexible dates/times. Includes skincare & makeup products, Professional Brush Set, Brush Case, Beauty Blender, and Mini Beauty Portrait Photoshoot.'
+      },
+      'class-group': {
+        name: 'Group Makeup Class (4 students)',
+        description: '3 days, 3 hours per day. Held on weekends (Fri-Sun). Includes skincare & makeup products, Professional Brush Set, Brush Case, Beauty Blender, and Mini Beauty Portrait Photoshoot.'
+      }
+    },
     footer: {
       rights: 'All rights reserved. Management rights reserved.'
     }
@@ -193,7 +278,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     },
     hero: {
       title: 'Vẻ Đẹp Tinh Tế',
-      subtitle: 'Trang Điểm, Nail, Phun Xăm & Nhiếp Ảnh',
+      subtitle: 'Trang Điểm Cao Cấp, Lớp Học Trang Điểm & Nhiếp Ảnh',
       cta: 'Đặt Lịch Ngay'
     },
     homepage: {
@@ -220,13 +305,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           name: 'Trang Điểm',
           description: 'Nghệ thuật trang điểm chuyên nghiệp cho mọi dịp, từ trang điểm tự nhiên đến cô dâu quyến rũ.'
         },
-        nails: {
-          name: 'Làm Nail',
-          description: 'Chăm sóc và nghệ thuật móng chuyên gia, theo xu hướng mới nhất trong làm đẹp móng tay và móng chân.'
+        photoshoot: {
+          name: 'Chụp Ảnh / Sân Khấu',
+          description: 'Trang điểm và tạo mẫu chuyên biệt cho chụp ảnh, biểu diễn sân khấu và sự kiện truyền thông.'
         },
-        tattooing: {
-          name: 'Phun Xăm',
-          description: 'Trang điểm bán vĩnh cửu bao gồm microblading và phun xăm chân mày ombre bởi nghệ sĩ được chứng nhận.'
+        partyEvent: {
+          name: 'Tiệc / Sự Kiện',
+          description: 'Dịch vụ trang điểm quyến rũ cho các bữa tiệc, sự kiện xã hội và các dịp đặc biệt.'
         },
         photography: {
           name: 'Nhiếp Ảnh',
@@ -280,6 +365,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         viewAll: 'Xem Tất Cả Dịch Vụ',
         addToCart: 'Thêm Vào Giỏ'
       }
+    },
+    contactPage: {
+      text: "Chúng tôi rất mong nhận được phản hồi từ bạn. Dù là tư vấn đám cưới hay thắc mắc nhanh về dịch vụ làm đẹp, đội ngũ của chúng tôi luôn sẵn sàng hỗ trợ.",
+      location: 'Địa điểm Studio',
+      locationText: '7862 Warner Ave Ste A, Huntington Beach, CA, Hoa Kỳ',
+      dm: 'Nhắn tin để đặt chỗ',
+      dmText: 'Học hỏi. Thực hành. Tự tin tỏa sáng.',
     },
     aboutPage: {
       title: 'Câu Chuyện Của Chúng Tôi',
@@ -346,6 +438,84 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       success: 'Đã Đặt Lịch!',
       emptyRedirect: 'Giỏ hàng trống. Vui lòng chọn dịch vụ trước.'
     },
+    services: {
+      'photoshoot-combo': {
+        name: 'Combo Chụp Ảnh / Sân Khấu',
+        description: 'Được thiết kế cho ánh sáng máy ảnh và sân khấu. Bao gồm trang điểm lâu trôi, chuẩn HD, contour & highlight nâng cao, trang điểm mắt sắc sảo và làm tóc chuyên nghiệp theo concept của bạn. \n ✔ Sản phẩm trang điểm cao cấp \n ✔ Bao gồm mọi loại mi giả'
+      },
+      'premium-combo': {
+        name: 'Combo Cao Cấp',
+        description: 'Bao gồm làm sạch da, kem lót, kem nền, trang điểm mắt, contour & má hồng, lông mày & son môi sử dụng các sản phẩm tầm trung. \n ✔ Bao gồm mi giả tự nhiên \n ✔ Làm tóc: uốn nhẹ hoặc duỗi thẳng (tùy chọn)'
+      },
+      'premium-makeup': {
+        name: 'Trang Điểm Cao Cấp',
+        description: 'Trang điểm chuyên nghiệp sử dụng các sản phẩm tầm trung. \n ✔ Bao gồm mi giả tự nhiên.'
+      },
+      'premium-hair': {
+        name: 'Làm Tóc Cao Cấp',
+        description: 'Uốn nhẹ hoặc duỗi thẳng phù hợp với sự kiện của bạn.'
+      },
+      'deluxe-combo': {
+        name: 'Combo Sang Trọng',
+        description: 'Bao gồm làm sạch da, toner, serum, dưỡng ẩm, kem lót, kem nền, trang điểm mắt, contour toàn mặt, má hồng, phấn phủ, highlight & son môi sử dụng các sản phẩm cao cấp. \n ✔ Bao gồm mọi loại mi giả \n ✔ Làm tóc: bất kỳ kiểu tóc nào bạn chọn'
+      },
+      'deluxe-makeup': {
+        name: 'Trang Điểm Sang Trọng',
+        description: 'Buổi trang điểm chăm sóc toàn diện sử dụng các sản phẩm cao cấp. \n ✔ Bao gồm mọi loại mi giả.'
+      },
+      'deluxe-hair': {
+        name: 'Làm Tóc Sang Trọng',
+        description: 'Bất kỳ kiểu tóc nào bạn chọn cho dịp đặc biệt của mình.'
+      },
+      'bridal-1': {
+        name: 'Trang Điểm & Làm Tóc Cô Dâu (1 lần)',
+        description: 'Vẻ ngoài hoàn hảo cho lễ cưới hoặc tiệc chiêu đãi của bạn.'
+      },
+      'bridal-2': {
+        name: 'Trang Điểm Cô Dâu & 2 Kiểu Tóc',
+        description: '1 lần Trang điểm & Làm tóc buổi sáng + 1 lần dặm lại & 1 lần thay đổi kiểu tóc.'
+      },
+      'bridal-3': {
+        name: 'Trang Điểm & Làm Tóc Cô Dâu + Thay Đổi Layout',
+        description: 'Thay đổi trang điểm và làm tóc sáng & tối để bạn luôn hoàn hảo suốt cả ngày.'
+      },
+      'bridal-4': {
+        name: 'Dịch Vụ Cô Dâu Cả Ngày',
+        description: 'Chuyên gia trang điểm sẽ đi cùng cô dâu suốt cả ngày và chỉnh sửa trang điểm & làm tóc khi cần thiết cho đến khi tiệc tối kết thúc. \n🎁 Tặng kèm làm móng tay miễn phí'
+      },
+      'wedding-guest-combo': {
+        name: 'Trang Điểm & Làm Tóc Khách Mời',
+        description: 'Dành cho mẹ, họ hàng, phụ dâu, v.v.'
+      },
+      'wedding-guest-makeup': {
+        name: 'Trang Điểm Khách Mời',
+        description: 'Trang điểm chuyên nghiệp cho khách mời đám cưới.'
+      },
+      'wedding-guest-hair': {
+        name: 'Làm Tóc Khách Mời',
+        description: 'Làm tóc chuyên nghiệp cho khách mời đám cưới.'
+      },
+      'groom-combo': {
+        name: 'Trang Điểm & Làm Tóc Chú Rể',
+        description: 'Dịch vụ chăm sóc diện mạo cho chú rể.'
+      },
+      'groom-makeup': {
+        name: 'Trang Điểm Chú Rể',
+        description: 'Trang điểm nhẹ nhàng cho chú rể.'
+      },
+      'bridal-trial': {
+        name: 'Trang Điểm Thử Cô Dâu / Chụp Ảnh Pre-Wedding',
+        description: '4–6 giờ thử các phong cách khác nhau. Hoàn hảo cho chụp ảnh pre-wedding hoặc tìm kiếm phong cách ngày cưới của bạn.'
+      },
+      'class-private': {
+        name: 'Lớp Học Trang Điểm Cá Nhân 1:1',
+        description: '3 ngày, 3 giờ mỗi ngày. Thời gian linh hoạt. Bao gồm sản phẩm dưỡng da & trang điểm, Bộ Cọ Chuyên Nghiệp, Túi Đựng Cọ, Mút Trang Điểm, và Chụp Ảnh Chân Dung Beauty Mini.'
+      },
+      'class-group': {
+        name: 'Lớp Học Trang Điểm Nhóm (4 học viên)',
+        description: '3 ngày, 3 giờ mỗi ngày. Tổ chức vào cuối tuần (Thứ 6 - Chủ Nhật). Bao gồm sản phẩm dưỡng da & trang điểm, Bộ Cọ Chuyên Nghiệp, Túi Đựng Cọ, Mút Trang Điểm, và Chụp Ảnh Chân Dung Beauty Mini.'
+      }
+    },
     footer: {
       rights: 'Bảo lưu mọi quyền.'
     }
@@ -362,7 +532,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     },
     hero: {
       title: 'L\'élégance dans les détails',
-      subtitle: 'Maquillage, Ongles, Tatouage & Photographie',
+      subtitle: 'Maquillage Haut de Gamme, Cours de Maquillage & Photographie',
       cta: 'Prendre Rendez-vous'
     },
     homepage: {
@@ -389,13 +559,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           name: 'Maquillage',
           description: 'Artistry de maquillage professionnel pour toutes les occasions, du naturel quotidien au glamour de la mariée.'
         },
-        nails: {
-          name: 'Ongles',
-          description: 'Soins des ongles experts et nail art, suivant les dernières tendances en beauté des ongles et des pieds.'
+        photoshoot: {
+          name: 'Séance Photo / Scène',
+          description: 'Maquillage et coiffure spécialisés pour les séances photo, les spectacles et les événements médiatiques.'
         },
-        tattooing: {
-          name: 'Tatouage',
-          description: 'Maquillage semi-permanent incluant le microblading et le tatouage sourcils ombré par des artistes certifiés.'
+        partyEvent: {
+          name: 'Fête / Événement',
+          description: 'Services de maquillage glamour pour les fêtes, les événements sociaux et les occasions spéciales.'
         },
         photography: {
           name: 'Photographie',
@@ -449,6 +619,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         viewAll: 'Voir Tous les Services',
         addToCart: 'Ajouter au Panier'
       }
+    },
+    contactPage: {
+      text: "Nous serions ravis de vous entendre. Que ce soit pour une consultation de mariage ou une simple question sur nos services de sourcils, notre équipe est prête à vous aider.",
+      location: 'Emplacement du Studio',
+      locationText: '7862 Warner Ave Ste A, Huntington Beach, CA, États-Unis, Californie',
+      dm: 'Envoyez-nous un DM pour réserver',
+      dmText: 'Apprenez. Pratiquez. Rayonnez de confiance.',
     },
     aboutPage: {
       title: 'Notre Histoire',
@@ -515,6 +692,84 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       success: 'Réservation confirmée!',
       emptyRedirect: 'Votre panier est vide. Veuillez d\'abord sélectionner des services.'
     },
+    services: {
+      'photoshoot-combo': {
+        name: 'Combo Photoshoot / Scène',
+        description: 'Conçu pour l\'éclairage de caméra et de scène. Comprend maquillage longue tenue, prêt pour la HD, contouring & highlighting avancés, définition des yeux et coiffure professionnelle adaptée à votre concept. \n ✔ Produits de maquillage haut de gamme \n ✔ Tous types de faux cils inclus'
+      },
+      'premium-combo': {
+        name: 'Combo Premium',
+        description: 'Comprend nettoyage de la peau, base, fond de teint, maquillage des yeux, contour & blush, sourcils & rouge à lèvres avec des produits de maquillage de moyenne gamme. \n ✔ Faux cils naturels inclus \n ✔ Coiffure : boucles simples ou lissage (au choix)'
+      },
+      'premium-makeup': {
+        name: 'Maquillage Premium Seul',
+        description: 'Application de maquillage professionnel utilisant des produits de moyenne gamme. \n ✔ Faux cils naturels inclus.'
+      },
+      'premium-hair': {
+        name: 'Coiffure Premium Seule',
+        description: 'Boucles simples ou lissage adaptés à votre événement.'
+      },
+      'deluxe-combo': {
+        name: 'Combo Deluxe',
+        description: 'Comprend nettoyage de la peau, lotion, sérum, hydratation, base, fond de teint, maquillage des yeux, contour complet du visage, blush, poudre, highlight & rouge à lèvres avec des produits haut de gamme. \n ✔ Tous types de faux cils inclus \n ✔ Coiffure : le style de votre choix'
+      },
+      'deluxe-makeup': {
+        name: 'Maquillage Deluxe Seul',
+        description: 'Session de maquillage complète utilisant des produits haut de gamme. \n ✔ Tous types de faux cils inclus.'
+      },
+      'deluxe-hair': {
+        name: 'Coiffure Deluxe Seule',
+        description: 'Tout style de coiffure de votre choix pour votre occasion spéciale.'
+      },
+      'bridal-1': {
+        name: 'Maquillage & Coiffure Mariée (1 fois)',
+        description: 'Look complet de mariée pour votre cérémonie ou réception.'
+      },
+      'bridal-2': {
+        name: 'Maquillage Mariée & 2 Changements Coiffure',
+        description: '1 Maquillage & Coiffure le matin + 1 retouche & 1 changement de coiffure.'
+      },
+      'bridal-3': {
+        name: 'Maquillage & Coiffure Mariée + Changements de Look',
+        description: 'Changements de maquillage et coiffure matin & soir pour un look parfait toute la journée.'
+      },
+      'bridal-4': {
+        name: 'Service Mariée Journée Complète',
+        description: 'La maquilleuse accompagnera la mariée tout au long de la journée et ajustera le maquillage & la coiffure si nécessaire jusqu\'à la fin de la cérémonie du soir. \n🎁 Manucure offerte'
+      },
+      'wedding-guest-combo': {
+        name: 'Maquillage & Coiffure Invité Mariage',
+        description: 'Pour les mamans, les proches, les demoiselles d\'honneur, etc.'
+      },
+      'wedding-guest-makeup': {
+        name: 'Maquillage Invité Mariage Seul',
+        description: 'Maquillage professionnel pour les invités de mariage.'
+      },
+      'wedding-guest-hair': {
+        name: 'Coiffure Invité Mariage Seule',
+        description: 'Coiffure professionnelle pour les invités de mariage.'
+      },
+      'groom-combo': {
+        name: 'Maquillage & Coiffure Marié',
+        description: 'Service de toilettage pour le marié.'
+      },
+      'groom-makeup': {
+        name: 'Maquillage Marié Seul',
+        description: 'Maquillage de toilettage pour le marié.'
+      },
+      'bridal-trial': {
+        name: 'Essai Mariée / Photoshoot Pré-Mariage',
+        description: '4–6 heures pour essayer différents looks et styles. Parfait pour les photos pré-mariage ou pour trouver votre look du jour J.'
+      },
+      'class-private': {
+        name: 'Cours de Maquillage Privé 1:1',
+        description: '3 jours, 3 heures par jour. Dates/horaires flexibles. Comprend les produits de soin & maquillage, Set de Pinceaux Professionnels, Étui à Pinceaux, Beauty Blender et Mini Séance Photo Portrait Beauté.'
+      },
+      'class-group': {
+        name: 'Cours de Maquillage de Groupe (4 élèves)',
+        description: '3 jours, 3 heures par jour. Organisé le week-end (Ven-Dim). Comprend les produits de soin & maquillage, Set de Pinceaux Professionnels, Étui à Pinceaux, Beauty Blender et Mini Séance Photo Portrait Beauté.'
+      }
+    },
     footer: {
       rights: 'Tous droits réservés.'
     }
@@ -531,7 +786,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     },
     hero: {
       title: '细节中的优雅',
-      subtitle: '化妆, 美甲, 纹绣 & 摄影',
+      subtitle: '高级化妆，化妆课程 & 摄影',
       cta: '立即预约'
     },
     homepage: {
@@ -558,13 +813,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           name: '化妆',
           description: '专业化妆艺术，适合各种场合，从日常自然妆到新娘魅力妆。'
         },
-        nails: {
-          name: '美甲',
-          description: '专业美甲护理和艺术，紧跟手部和足部美容的最新趋势。'
+        photoshoot: {
+          name: '摄影 / 舞台',
+          description: '专为摄影、舞台表演和媒体活动提供的专业化妆和造型服务。'
         },
-        tattooing: {
-          name: '纹绣',
-          description: '半永久化妆，包括由认证艺术家进行的微针和渐变眉纹绣。'
+        partyEvent: {
+          name: '派对 / 活动',
+          description: '为派对、社交活动和特殊场合提供的迷人化妆服务。'
         },
         photography: {
           name: '摄影',
@@ -618,6 +873,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         viewAll: '查看所有服务',
         addToCart: '添加到购物车'
       }
+    },
+    contactPage: {
+      text: '我们期待与您联系。无论是新娘造型咨询，还是眉部服务的简单询问，我们的团队随时为您服务。',
+      location: '工作室地址',
+      locationText: '7862 Warner Ave Ste A, Huntington Beach, CA, 美国加利福尼亚州',
+      dm: '私信我们预留名额',
+      dmText: '学习。实践。自信闪耀。',
     },
     aboutPage: {
       title: '我们的故事',
@@ -684,6 +946,84 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       success: '预约成功!',
       emptyRedirect: '您的购物车是空的。请先选择服务。'
     },
+    services: {
+      'photoshoot-combo': {
+        name: '摄影 / 舞台组合',
+        description: '专为相机和舞台灯光设计。包括持久、高清化妆、高级轮廓和高光、眼部定义以及根据您的概念量身定制的专业发型设计。 \n ✔ 高端化妆产品 \n ✔ 包含所有类型的假睫毛'
+      },
+      'premium-combo': {
+        name: '高级组合',
+        description: '包括皮肤清洁、打底、粉底、眼妆、轮廓和腮红、眉毛和口红，使用中档化妆产品。 \n ✔ 包含自然款假睫毛 \n ✔ 发型设计：简单的卷发或直发（任选）'
+      },
+      'premium-makeup': {
+        name: '仅高级化妆',
+        description: '使用中档产品的专业化妆服务。 \n ✔ 包含自然款假睫毛。'
+      },
+      'premium-hair': {
+        name: '仅高级发型',
+        description: '适合您活动的简单卷发或直发。'
+      },
+      'deluxe-combo': {
+        name: '豪华组合',
+        description: '包括皮肤清洁、爽肤水、精华液、保湿、打底、粉底、眼妆、全脸轮廓、腮红、散粉、高光和口红，使用高端化妆产品。 \n ✔ 包含所有类型的假睫毛 \n ✔ 发型设计：您选择的任何款式'
+      },
+      'deluxe-makeup': {
+        name: '仅豪华化妆',
+        description: '使用高端产品的全面呵护化妆流程。 \n ✔ 包含所有类型的假睫毛。'
+      },
+      'deluxe-hair': {
+        name: '仅豪华发型',
+        description: '为您特殊场合设计的任何发型。'
+      },
+      'bridal-1': {
+        name: '新娘化妆和发型（1次）',
+        description: '为您典礼或招待会打造的完整新娘造型。'
+      },
+      'bridal-2': {
+        name: '新娘化妆和2次发型更换',
+        description: '1次早晨化妆和发型 + 1次补妆 & 1次发型更换。'
+      },
+      'bridal-3': {
+        name: '新娘化妆和发型 + 造型更换',
+        description: '早晚化妆和发型更换，让您全天保持完美。'
+      },
+      'bridal-4': {
+        name: '新娘全天服务',
+        description: '化妆师将全天陪同新娘，并根据需要调整妆容和发型，直到晚宴结束。 \n🎁 赠送免费美甲'
+      },
+      'wedding-guest-combo': {
+        name: '婚礼嘉宾化妆和发型',
+        description: '适合妈妈、亲戚、伴娘等。'
+      },
+      'wedding-guest-makeup': {
+        name: '仅婚礼嘉宾化妆',
+        description: '为婚礼嘉宾提供的专业化妆。'
+      },
+      'wedding-guest-hair': {
+        name: '仅婚礼嘉宾发型',
+        description: '为婚礼嘉宾提供的专业发型设计。'
+      },
+      'groom-combo': {
+        name: '新郎化妆和发型',
+        description: '为新郎提供的仪容整理服务。'
+      },
+      'groom-makeup': {
+        name: '仅新郎化妆',
+        description: '为新郎提供的化妆整理。'
+      },
+      'bridal-trial': {
+        name: '新娘试妆 / 婚纱照拍摄',
+        description: '4–6小时尝试不同的造型和风格。非常适合婚纱照拍摄或寻找您的婚礼当天造型。'
+      },
+      'class-private': {
+        name: '1:1 私人化妆课',
+        description: '3天，每天3小时。时间灵活。包括护肤和化妆产品、专业刷具套装、刷具包、美妆蛋和迷你美妆人像拍摄。'
+      },
+      'class-group': {
+        name: '小组化妆课（4名学生）',
+        description: '3天，每天3小时。周末举行（周五-周日）。包括护肤和化妆产品、专业刷具套装、刷具包、美妆蛋和迷你美妆人像拍摄。'
+      }
+    },
     footer: {
       rights: '版权所有。'
     }
@@ -700,7 +1040,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     },
     hero: {
       title: '디테일의 우아함',
-      subtitle: '메이크업, 네일, 반영구 & 웨딩 촬영',
+      subtitle: '프리미엄 메이크업, 메이크업 클래스 & 사진 촬영',
       cta: '예약하기'
     },
     homepage: {
@@ -727,13 +1067,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
           name: '메이크업',
           description: '일상적인 자연스러운 메이크업부터 화려한 신부 메이크업까지 모든 경우를 위한 전문 메이크업 아티스트리.'
         },
-        nails: {
-          name: '네일',
-          description: '손과 발의 아름다움에 대한 최신 트렌드를 따르는 전문 네일 케어 및 네일 아트.'
+        photoshoot: {
+          name: '사진 촬영 / 무대',
+          description: '사진 촬영, 무대 공연 및 미디어 이벤트를 위한 전문 메이크업 및 스타일링.'
         },
-        tattooing: {
-          name: '반영구',
-          description: '인증된 아티스트의 마이크로블레이딩 및 옴브레 눈썹 타투를 포함한 반영구 화장.'
+        partyEvent: {
+          name: '파티 / 이벤트',
+          description: '파티, 사교 행사 및 특별한 날을 위한 화려한 메이크업 서비스.'
         },
         photography: {
           name: '사진 촬영',
@@ -787,6 +1127,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         viewAll: '모든 서비스 보기',
         addToCart: '장바구니에 추가'
       }
+    },
+    contactPage: {
+      text: '고객님의 연락을 기다립니다. 웨딩 상담이든 눈썹 시술에 대한 간단한 문의든, 저희 팀이 언제든 도와드릴 준비가 되어 있습니다.',
+      location: '스튜디오 위치',
+      locationText: '7862 Warner Ave Ste A, Huntington Beach, CA, 미국, 캘리포니아',
+      dm: '예약을 위해 DM을 보내주세요',
+      dmText: '배우고, 연습하고, 자신감 있게 빛나세요.',
     },
     aboutPage: {
       title: '우리의 이야기',
@@ -852,6 +1199,84 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       confirm: '예약 확정',
       success: '예약이 확정되었습니다!',
       emptyRedirect: '장바구니가 비어 있습니다. 서비스를 먼저 선택해주세요.'
+    },
+    services: {
+      'photoshoot-combo': {
+        name: '화보 / 무대 콤보',
+        description: '카메라 및 무대 조명을 위해 설계되었습니다. 롱래스팅, HD 준비 메이크업, 고급 컨투어링 & 하이라이팅, 눈매 교정, 컨셉에 맞춘 전문 헤어 스타일링이 포함됩니다. \n ✔ 최고급 메이크업 제품 사용 \n ✔ 모든 종류의 속눈썹 포함'
+      },
+      'premium-combo': {
+        name: '프리미엄 콤보',
+        description: '피부 클렌징, 프라이밍, 파운데이션, 아이 메이크업, 컨투어링 & 블러쉬, 눈썹 & 립스틱이 포함되며 중급 메이크업 제품을 사용합니다. \n ✔ 자연스러운 속눈썹 포함 \n ✔ 헤어 스타일링: 간단한 컬 또는 스트레이트 (선택 가능)'
+      },
+      'premium-makeup': {
+        name: '프리미엄 메이크업',
+        description: '중급 제품을 사용하는 전문 메이크업 서비스. \n ✔ 자연스러운 속눈썹 포함.'
+      },
+      'premium-hair': {
+        name: '프리미엄 헤어',
+        description: '행사에 맞춘 간단한 컬 또는 스트레이트 헤어.'
+      },
+      'deluxe-combo': {
+        name: '디럭스 콤보',
+        description: '피부 클렌징, 토너, 세럼, 보습, 프라이밍, 파운데이션, 아이 메이크업, 풀 페이스 컨투어링, 블러쉬, 파우더, 하이라이트 & 립스틱이 포함되며 최고급 메이크업 제품을 사용합니다. \n ✔ 모든 종류의 속눈썹 포함 \n ✔ 헤어 스타일링: 원하시는 모든 스타일'
+      },
+      'deluxe-makeup': {
+        name: '디럭스 메이크업',
+        description: '최고급 제품을 사용하는 풀 케어 메이크업 세션. \n ✔ 모든 종류의 속눈썹 포함.'
+      },
+      'deluxe-hair': {
+        name: '디럭스 헤어',
+        description: '특별한 날을 위해 원하시는 모든 헤어스타일.'
+      },
+      'bridal-1': {
+        name: '신부 메이크업 & 헤어 (1회)',
+        description: '결혼식이나 피로연을 위한 완벽한 신부 룩.'
+      },
+      'bridal-2': {
+        name: '신부 메이크업 & 헤어 2회',
+        description: '오전 메이크업 & 헤어 1회 + 터치업 1회 & 헤어 변경 1회.'
+      },
+      'bridal-3': {
+        name: '신부 메이크업 & 헤어 + 레이아웃 변경',
+        description: '하루 종일 완벽함을 유지하기 위한 오전 & 저녁 메이크업 및 헤어 변경.'
+      },
+      'bridal-4': {
+        name: '신부 올데이 서비스',
+        description: '메이크업 아티스트가 하루 종일 신부님과 동행하며 저녁 예식이 끝날 때까지 필요에 따라 메이크업 & 헤어를 수정해 드립니다. \n🎁 무료 매니큐어 포함'
+      },
+      'wedding-guest-combo': {
+        name: '하객 메이크업 & 헤어',
+        description: '어머니, 친척, 신부 들러리 등을 위한 서비스.'
+      },
+      'wedding-guest-makeup': {
+        name: '하객 메이크업',
+        description: '결혼식 하객을 위한 전문 메이크업.'
+      },
+      'wedding-guest-hair': {
+        name: '하객 헤어',
+        description: '결혼식 하객을 위한 전문 헤어 스타일링.'
+      },
+      'groom-combo': {
+        name: '신랑 메이크업 & 헤어',
+        description: '신랑님을 위한 그루밍 서비스.'
+      },
+      'groom-makeup': {
+        name: '신랑 메이크업',
+        description: '신랑님을 위한 메이크업 그루밍.'
+      },
+      'bridal-trial': {
+        name: '신부 리허설 / 웨딩 촬영',
+        description: '4–6시간 동안 다양한 룩과 스타일 시도. 웨딩 촬영이나 본식 스타일을 찾는 데 완벽합니다.'
+      },
+      'class-private': {
+        name: '1:1 프라이빗 메이크업 클래스',
+        description: '3일, 하루 3시간. 날짜/시간 조정 가능. 스킨케어 & 메이크업 제품, 전문가용 브러쉬 세트, 브러쉬 케이스, 뷰티 블렌더, 미니 뷰티 포트레이트 촬영 포함.'
+      },
+      'class-group': {
+        name: '그룹 메이크업 클래스 (4명)',
+        description: '3일, 하루 3시간. 주말 진행 (금-일). 스킨케어 & 메이크업 제품, 전문가용 브러쉬 세트, 브러쉬 케이스, 뷰티 블렌더, 미니 뷰티 포트레이트 촬영 포함.'
+      }
     },
     footer: {
       rights: 'All rights reserved.'
