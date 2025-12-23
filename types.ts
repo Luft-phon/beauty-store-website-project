@@ -126,6 +126,7 @@ export interface Translation {
     subtitle: string;
     storyTitle: string;
     storyText: string;
+    text: string;
     philosophyTitle: string;
     philosophyText: string;
     teamTitle: string;

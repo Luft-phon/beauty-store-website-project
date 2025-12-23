@@ -153,7 +153,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
 
               {/* Newsletter */}
               <div className="mb-10">
-                <p className="text-stone-800 text-sm mb-6 leading-relaxed max-w-md">
+                <p className="font-sen text-stone-800 text-sm mb-6 leading-relaxed max-w-md">
                   Sign up to receive email updates with new arrivals, deals and more... unsubscribe anytime.
                 </p>
                 <form className="flex flex-col sm:flex-row gap-0 max-w-sm" onSubmit={(e) => e.preventDefault()}>
@@ -191,11 +191,11 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
               <div>
                 <h4 className="uppercase tracking-widest text-xs font-bold mb-6 text-stone-900">Site Map</h4>
                 <ul className="space-y-3 text-sm text-stone-600">
-                  <li><Link to="/about" className="hover:text-black transition-colors">About Us</Link></li>
-                  <li><Link to="/services" className="hover:text-black transition-colors">Services</Link></li>
-                  <li><Link to="/gallery" className="hover:text-black transition-colors">Gallery</Link></li>
-                  <li><Link to="/booking" className="hover:text-black transition-colors">Book Now</Link></li>
-                  <li><Link to="/contact" className="hover:text-black transition-colors">Find A Studio</Link></li>
+                  <li><Link to="/about" className="font-sen hover:text-black transition-colors">About Us</Link></li>
+                  <li><Link to="/services" className="font-sen hover:text-black transition-colors">Services</Link></li>
+                  <li><Link to="/gallery" className="font-sen hover:text-black transition-colors">Gallery</Link></li>
+                  <li><Link to="/booking" className="font-sen hover:text-black transition-colors">Book Now</Link></li>
+                  <li><Link to="/contact" className="font-sen hover:text-black transition-colors">Find A Studio</Link></li>
                 </ul>
               </div>
 
@@ -203,9 +203,9 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
               <div>
                 <h4 className="uppercase tracking-widest text-xs font-bold mb-6 text-stone-900">Assistance</h4>
                 <ul className="space-y-3 text-sm text-stone-600">
-                  <li><Link to="/contact" className="hover:text-black transition-colors">Contact</Link></li>
-                  <li><Link to="#" className="hover:text-black transition-colors">Terms of Service</Link></li>
-                  <li><Link to="#" className="hover:text-black transition-colors">Privacy Policy</Link></li>
+                  <li><Link to="/contact" className="font-sen hover:text-black transition-colors">Contact</Link></li>
+                  <li><Link to="#" className="font-sen hover:text-black transition-colors">Terms of Service</Link></li>
+                  <li><Link to="#" className="font-sen hover:text-black transition-colors">Privacy Policy</Link></li>
                 </ul>
               </div>
             </div>

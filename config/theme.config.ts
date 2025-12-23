@@ -9,27 +9,28 @@ export const LIGHT_SAND_THEME: ThemeColors = {
     primary: '#D9CFC1',        // Light sand
     primaryLight: '#EAE4DA',   // Pale sand
     primaryDark: '#C4B8A9',    // Taupe
-    
+
     // Secondary - Neutral earth tones
     secondary: '#B5A491',      // Medium taupe
-    
+
     // Accent - Desert rose/Terracotta
     accent: '#C8997C',         // Desert rose
     accentHover: '#B8896C',    // Darker terracotta
-    
+
     // Backgrounds
     background: '#F7F3EE',     // Soft sand white
-    backgroundAlt: '#EBE5DC',  // Light taupe background
-    
+    // backgroundAlt: '#EBE5DC',  // Light taupe background
+    backgroundAlt: '#FFFFFF',  // Light taupe background
+
     // Text colors
     text: '#4A3F35',          // Dark taupe brown
     textLight: '#756A5E',     // Medium gray-brown
     textDark: '#332B24',      // Deep brown
-    
+
     // Borders
     border: '#D4CAB9',        // Sand border
     borderLight: '#E3DDD1',   // Pale sand border
-    
+
     // Shadow
     shadow: 'rgba(74, 63, 53, 0.1)' // Neutral shadow
   }
@@ -39,7 +40,7 @@ export const LIGHT_SAND_THEME: ThemeColors = {
 export const applyThemeVariables = (theme: Theme = Theme.LIGHT_SAND) => {
   const root = document.documentElement;
   const colors = LIGHT_SAND_THEME.colors;
-  
+
   // Set CSS custom properties
   root.style.setProperty('--color-primary', colors.primary);
   root.style.setProperty('--color-primaryLight', colors.primaryLight);
