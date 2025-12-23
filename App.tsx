@@ -368,7 +368,7 @@ const App: React.FC = () => {
           <div className="relative">
             <div className="absolute -top-4 -left-4 w-full h-full border-2 border-gold-200 z-0"></div>
             <img
-              src="public/images/logo/owner.jpg"
+              src="/images/logo/owner.jpg"
               alt="Our Story"
               className="relative z-10 shadow-xl w-full"
             />
