@@ -9,9 +9,11 @@ import Layout from './components/Layout';
 import Chatbot from './components/Chatbot';
 import AdminDashboard from './components/AdminDashboard';
 import ServiceDetail from './components/ServiceDetail';
+import { ServiceCard } from './components/ServiceCard';
 import PaymentForm from './components/PaymentForm';
 import TestimonialsSection from './components/TestimonialsSection';
 import { Camera, Star, Calendar, MapPin, ShoppingBag, Trash2, ArrowRight, Users, Award, Shield, Heart, Sparkles, Trophy, CheckCircle } from 'lucide-react';
+import { FadeInSection } from './components/FadeInSection';
 
 const App: React.FC = () => {
   const [currentLang, setCurrentLang] = useState<Language>(Language.EN);
@@ -88,25 +90,25 @@ const App: React.FC = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
           </div>
-          <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
+          <FadeInSection className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
             <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white mb-4 md:mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 max-w-5xl">
               {t.hero.title}
             </h1>
-            <p className="text-stone-200 text-base sm:text-lg md:text-xl tracking-wider uppercase mb-8 md:mb-10 max-w-2xl animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 px-4">
+            <p className="font-sen text-stone-200 text-base sm:text-lg md:text-xl tracking-wider uppercase mb-8 md:mb-10 max-w-2xl animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 px-4">
               {t.hero.subtitle}
             </p>
             <Link
-              to="/booking"
-              className="px-6 sm:px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-stone-900 transition-all duration-300 uppercase tracking-widest text-xs sm:text-sm font-bold animate-in fade-in duration-1000 delay-500 inline-flex items-center gap-2 group"
+              to="/services"
+              className="px-6 sm:px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-stone-900 transition-all duration-175 uppercase tracking-widest text-xs sm:text-sm font-bold animate-in fade-in duration-500 delay-50 inline-flex items-center gap-2 group"
             >
               {t.hero.cta}
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
-          </div>
+          </FadeInSection>
         </div>
 
         {/* Statistics Bar */}
-        <div className="bg-stone-50 border-y border-stone-200">
+        <FadeInSection className="bg-stone-50 border-y border-stone-200">
           <div className="max-w-7xl mx-auto px-4 py-12 md:py-16">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               {MOCK_STATISTICS.map((stat) => {
@@ -119,17 +121,17 @@ const App: React.FC = () => {
                     <div className="text-gold-500 flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                       {getIconForStat(stat.icon)}
                     </div>
-                    <div className="font-serif text-3xl md:text-4xl text-stone-900 mb-2">{stat.value}</div>
+                    <div className="font-outfit text-3xl md:text-4xl text-stone-900 mb-2">{stat.value}</div>
                     <div className="text-stone-600 text-sm uppercase tracking-wider">{translationKey}</div>
                   </div>
                 );
               })}
             </div>
           </div>
-        </div>
+        </FadeInSection>
 
         {/* Services Categories */}
-        <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
+        <FadeInSection className="max-w-7xl mx-auto px-4 py-16 md:py-24">
           <div className="text-center mb-12 md:mb-16">
             {/* <h2 className="font-serif uppercase text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">{t.homepage.sections.ourServices}</h2> */}
             <span className="block font-serif text-5xl uppercase font-bold text-stone-900 tracking-tighter pb-4 ">
@@ -145,8 +147,8 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {MOCK_CATEGORIES.map((category) => {
               const categoryTranslation = category.id === 'makeup' ? t.homepage.categories.makeup :
-                category.id === 'nails' ? t.homepage.categories.nails :
-                  category.id === 'tattooing' ? t.homepage.categories.tattooing :
+                category.id === 'Photoshoot' ? t.homepage.categories.photoshoot :
+                  category.id === 'PartyEvent' ? t.homepage.categories.partyEvent :
                     t.homepage.categories.photography;
               return (
                 <a
@@ -160,7 +162,7 @@ const App: React.FC = () => {
                   <h3 className="font-serif text-xl md:text-2xl mb-3 text-stone-900 group-hover:text-gold-600 transition-colors">
                     {categoryTranslation.name}
                   </h3>
-                  <p className="text-stone-500 text-sm leading-relaxed mb-4">
+                  <p className="font-sen text-stone-500 text-sm leading-relaxed mb-4">
                     {categoryTranslation.description}
                   </p>
                   <span className="text-gold-600 text-sm font-medium uppercase tracking-wider group-hover:gap-2 flex items-center gap-1 transition-all">
@@ -170,13 +172,12 @@ const App: React.FC = () => {
               );
             })}
           </div>
-        </div>
+        </FadeInSection>
 
         {/* Featured Services */}
-        <div className="bg-stone-50 py-16 md:py-24">
+        {/* <FadeInSection className="bg-stone-50 py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12 md:mb-16">
-              {/* <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">{t.homepage.sections.featuredServices}</h2> */}
               <span className="block font-serif text-5xl uppercase font-bold text-stone-900 tracking-tighter pb-4 ">
                 {t.homepage.sections.featuredServices}
               </span>
@@ -232,14 +233,17 @@ const App: React.FC = () => {
               </Link>
             </div>
           </div>
-        </div>
+        </FadeInSection> */}
 
         {/* Why Choose Us */}
-        <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
+        <FadeInSection className="max-w-7xl mx-auto px-4 py-16 md:py-24">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">{t.homepage.sections.whyChooseUs}</h2>
+            {/* <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">{t.homepage.sections.whyChooseUs}</h2> */}
+            <span className="block font-serif text-5xl uppercase font-bold text-stone-900 tracking-tighter pb-4 ">
+              {t.homepage.sections.whyChooseUs}
+            </span>
             <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
-            <p className="text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
+            <p className="font-sen text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
               {t.homepage.sections.whyChooseUsDesc}
             </p>
           </div>
@@ -255,21 +259,24 @@ const App: React.FC = () => {
                   <div className="text-gold-500 flex justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                     {getIconForFeature(item.icon)}
                   </div>
-                  <h3 className="font-serif text-xl md:text-2xl text-stone-900 mb-3">{featureTranslation.title}</h3>
+                  <h3 className="font-sen font-serif text-xl md:text-2xl text-stone-900 mb-3">{featureTranslation.title}</h3>
                   <p className="text-stone-600 text-sm leading-relaxed">{featureTranslation.description}</p>
                 </div>
               );
             })}
           </div>
-        </div>
+        </FadeInSection>
 
         {/* How It Works */}
-        <div className="bg-gradient-to-br from-stone-900 to-stone-800 text-white py-16 md:py-24">
+        <FadeInSection className="bg-gradient-to-br from-stone-900 to-stone-800 text-white py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12 md:mb-16">
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-4">{t.homepage.sections.howItWorks}</h2>
+              {/* <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-4">{t.homepage.sections.howItWorks}</h2> */}
+              <span className="block font-serif text-5xl uppercase font-bold tracking-tighter pb-4 ">
+                {t.homepage.sections.howItWorks}
+              </span>
               <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
-              <p className="text-stone-300 max-w-2xl mx-auto text-base md:text-lg px-4">
+              <p className="font-sen text-stone-300 max-w-2xl mx-auto text-base md:text-lg px-4">
                 {t.homepage.sections.howItWorksDesc}
               </p>
             </div>
@@ -287,7 +294,7 @@ const App: React.FC = () => {
                         <span className="font-serif text-2xl md:text-3xl text-gold-500">{step.step}</span>
                       </div>
                       <h3 className="font-serif text-xl md:text-2xl mb-3">{stepTranslation.title}</h3>
-                      <p className="text-stone-300 text-sm leading-relaxed">{stepTranslation.description}</p>
+                      <p className="font-sen text-stone-300 text-sm leading-relaxed">{stepTranslation.description}</p>
                     </div>
                     {index < MOCK_PROCESS_STEPS.length - 1 && (
                       <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gold-500/30 -translate-x-1/2"></div>
@@ -297,13 +304,15 @@ const App: React.FC = () => {
               })}
             </div>
           </div>
-        </div>
+        </FadeInSection>
 
         {/* Testimonials */}
-        <TestimonialsSection testimonials={MOCK_TESTIMONIALS} />
+        <FadeInSection>
+          <TestimonialsSection testimonials={MOCK_TESTIMONIALS} />
+        </FadeInSection>
 
         {/* CTA Banner */}
-        <div className="relative h-[50vh] md:h-[60vh] w-full overflow-hidden">
+        <FadeInSection className="relative h-[50vh] md:h-[60vh] w-full overflow-hidden">
           <div className="absolute inset-0">
             <img
               src="https://picsum.photos/id/1027/1920/600"
@@ -316,7 +325,7 @@ const App: React.FC = () => {
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-4 md:mb-6 max-w-4xl">
               {t.homepage.cta.title}
             </h2>
-            <p className="text-stone-200 text-base md:text-lg mb-8 md:mb-10 max-w-2xl">
+            <p className="font-sen text-stone-200 text-base md:text-lg mb-8 md:mb-10 max-w-2xl">
               {t.homepage.cta.subtitle}
             </p>
             <Link
@@ -327,13 +336,13 @@ const App: React.FC = () => {
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
-        </div>
+        </FadeInSection>
       </div>
     );
   };
 
   const AboutPage = () => (
-    <div className="animate-in fade-in duration-500">
+    <FadeInSection className="animate-in fade-in duration-500">
       {/* About Hero */}
       <div className="relative h-[40vh] w-full overflow-hidden">
         <div className="absolute inset-0">
@@ -388,67 +397,57 @@ const App: React.FC = () => {
         {/* Team */}
 
       </div>
-    </div>
+    </FadeInSection>
   );
 
-  const ServicesPage = () => (
-    <div className="max-w-7xl mx-auto px-4 py-16">
-      <h2 className="font-serif text-4xl text-center mb-12">{t.nav.services}</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.map(service => {
-          const [isAdded, setIsAdded] = useState(false);
+  const ServicesPage = ({ category }: { category?: string }) => {
+    // Filter services based on category prop
+    // If category is "Makeup", we also include "Packages" as per common user expectation for beauty sites, or keep it strict?
+    // User asked to "separate makeup, education class, photoshoot".
+    // I will keep it strict for now but ensure the filtered list is correct.
+    const filteredServices = category
+      ? services.filter(s => s.category.toLowerCase() === category.toLowerCase())
+      : services;
 
-          const handleAdd = () => {
-            addToCart(service);
-            setIsAdded(true);
-            setTimeout(() => setIsAdded(false), 2000);
-          };
+    const pageTitle = category ? `${category} Services` : t.nav.services;
 
-          return (
-            <div key={service.id} className="bg-white group hover:shadow-xl transition-all duration-300 border border-stone-100 overflow-hidden flex flex-col">
-              <Link to={`/services/${service.id}`} className="h-64 overflow-hidden relative block">
-                <img
-                  src={service.image}
-                  alt={service.name}
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                />
-              </Link>
-              <div className="p-6 text-center flex-grow flex flex-col">
-                <span className="text-xs text-gold-500 uppercase tracking-widest font-bold">{service.category}</span>
-                <Link to={`/services/${service.id}`}>
-                  <h3 className="font-serif text-2xl my-2 hover:text-gold-600 transition-colors">{service.name}</h3>
-                </Link>
-                <p className="text-stone-500 text-sm mb-4 flex-grow">{service.description}</p>
-                <div className="text-lg font-bold text-stone-900 mb-4">${service.price}</div>
+    return (
+      <FadeInSection className="max-w-7xl mx-auto px-4 py-16">
+        {/* <h2 className="font-serif uppercase text-5xl text-center mb-12">{pageTitle}</h2> */}
+        <h2 className="font-serif uppercase text-5xl text-center mb-12">
+          {category === 'PartyEvent' ? 'Party / Event' :
+            category === 'Photoshoot' ? 'Photoshoot / Stage' :
+              category === 'Guest' ? 'Guest' :
+                category === 'Bridal' ? 'Bridal' :
+                  category === 'Education' ? 'Private Classes' :
+                    'Services'}
+        </h2>
+        {/* Category Navigation Tabs */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <Link to="/services" className={`font-outfit px-6 py-2 uppercase text-xs tracking-widest font-bold border transition-all ${!category ? 'bg-stone-900 text-white border-stone-900' : 'text-stone-600 border-stone-200 hover:border-gold-500 hover:text-gold-500'}`}>All</Link>
+          <Link to="/services/party" className={`font-outfit px-6 py-2 uppercase text-xs tracking-widest font-bold border transition-all ${category === 'PartyEvent' ? 'bg-stone-900 text-white border-stone-900' : 'text-stone-600 border-stone-200 hover:border-gold-500 hover:text-gold-500'}`}>Party Makeup</Link>
+          <Link to="/services/photoshoot" className={`font-outfit px-6 py-2 uppercase text-xs tracking-widest font-bold border transition-all ${category === 'Photoshoot' ? 'bg-stone-900 text-white border-stone-900' : 'text-stone-600 border-stone-200 hover:border-gold-500 hover:text-gold-500'}`}>Photoshoot/Stage</Link>
+          <Link to="/services/bridal" className={`font-outfit px-6 py-2 uppercase text-xs tracking-widest font-bold border transition-all ${category === 'Bridal' ? 'bg-stone-900 text-white border-stone-900' : 'text-stone-600 border-stone-200 hover:border-gold-500 hover:text-gold-500'}`}>Bridal Packages</Link>
+          <Link to="/services/guest" className={`font-outfit px-6 py-2 uppercase text-xs tracking-widest font-bold border transition-all ${category === 'Guest' ? 'bg-stone-900 text-white border-stone-900' : 'text-stone-600 border-stone-200 hover:border-gold-500 hover:text-gold-500'}`}>Guest Services</Link>
+          <Link to="/services/education" className={`font-outfit px-6 py-2 uppercase text-xs tracking-widest font-bold border transition-all ${category === 'Education' ? 'bg-stone-900 text-white border-stone-900' : 'text-stone-600 border-stone-200 hover:border-gold-500 hover:text-gold-500'}`}>Classes</Link>
+        </div>
 
-                <div className="flex gap-2">
-                  <button
-                    onClick={handleAdd}
-                    disabled={isAdded}
-                    className={`flex-1 py-3 px-4 uppercase text-xs font-bold tracking-widest transition-colors duration-300 ${isAdded
-                      ? 'bg-green-600 text-white'
-                      : 'bg-stone-900 text-white hover:bg-gold-500'
-                      }`}
-                  >
-                    {isAdded ? t.servicePage.added : t.servicePage.addToCart}
-                  </button>
-                  <Link
-                    to={`/services/${service.id}`}
-                    className="px-4 py-3 border border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white transition-colors text-xs font-bold uppercase"
-                  >
-                    {t.serviceDetail.view}
-                  </Link>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
+        <div className="font-sen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredServices.map(service => (
+            <ServiceCard
+              key={service.id}
+              service={service}
+              t={t}
+              addToCart={addToCart}
+            />
+          ))}
+        </div>
+      </FadeInSection>
+    );
+  };
 
   const GalleryPage = () => (
-    <div className="max-w-7xl mx-auto px-4 py-16">
+    <FadeInSection className="max-w-7xl mx-auto px-4 py-16">
       <h2 className="font-serif text-4xl text-center mb-4">{t.nav.gallery}</h2>
       <p className="text-center text-stone-500 mb-12 tracking-widest uppercase text-sm">Real Clients, Real Moments</p>
       <div className="columns-1 md:columns-3 gap-4 space-y-4">
@@ -458,7 +457,7 @@ const App: React.FC = () => {
           </div>
         ))}
       </div>
-    </div>
+    </FadeInSection>
   );
 
   const CartPage = () => {
@@ -478,7 +477,7 @@ const App: React.FC = () => {
     }
 
     return (
-      <div className="max-w-5xl mx-auto px-4 py-16">
+      <FadeInSection className="max-w-5xl mx-auto px-4 py-16">
         <h2 className="font-serif text-4xl text-center mb-12">{t.cart.title}</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Item List */}
@@ -526,7 +525,7 @@ const App: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </FadeInSection>
     );
   };
 
@@ -634,7 +633,7 @@ const App: React.FC = () => {
   };
 
   const ContactPage = () => (
-    <div className="max-w-7xl mx-auto px-4 py-16">
+    <FadeInSection className="max-w-7xl mx-auto px-4 py-16">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div className="space-y-8">
           {/* <h2 className="font-serif text-4xl mb-4">{t.nav.contact}</h2> */}
@@ -642,21 +641,21 @@ const App: React.FC = () => {
             {t.nav.contact}
           </span>
           <p className="font-sen text-stone-600 leading-relaxed">
-            We would love to hear from you. Whether it's for a bridal consultation or a quick inquiry about our brow services, our team is ready to assist.
+            {t.contactPage.text}
           </p>
           <div className="space-y-4">
             <div className="flex items-center space-x-4">
               <div className="w-10 h-10 bg-gold-100 flex items-center justify-center text-gold-700 rounded-full">✨</div>
               <div>
-                <h4 className="font-bold text-stone-900">Studio Location</h4>
-                <p className="font-sen text-stone-500 text-sm">7862 Warner Ave Ste A, Huntington Beach, CA, United States, California</p>
+                <h4 className="font-bold text-stone-900">{t.contactPage.location}</h4>
+                <p className="font-sen text-stone-500 text-sm">{t.contactPage.locationText}</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
               <div className="w-10 h-10 bg-gold-100 flex items-center justify-center text-gold-700 rounded-full">📩</div>
               <div>
-                <h4 className="font-bold text-stone-900">DM us to reserve your spot</h4>
-                <p className="font-sen text-stone-500 text-sm">Learn. Practice. Glow with confidence.</p>
+                <h4 className="font-bold text-stone-900">{t.contactPage.dm}</h4>
+                <p className="font-sen text-stone-500 text-sm">{t.contactPage.dmText}</p>
               </div>
             </div>
           </div>
@@ -675,7 +674,7 @@ const App: React.FC = () => {
 
         </div>
       </div>
-    </div>
+    </FadeInSection>
   );
 
   return (
@@ -687,7 +686,13 @@ const App: React.FC = () => {
       >
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/party" element={<ServicesPage category="PartyEvent" />} />
+          <Route path="/services/photoshoot" element={<ServicesPage category="Photoshoot" />} />
+          <Route path="/services/bridal" element={<ServicesPage category="Bridal" />} />
+          <Route path="/services/guest" element={<ServicesPage category="Guest" />} />
+          <Route path="/services/education" element={<ServicesPage category="Education" />} />
           <Route path="/services/:id" element={<ServiceDetail services={services} onAddToCart={addToCart} currentLang={currentLang} />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/cart" element={<CartPage />} />
