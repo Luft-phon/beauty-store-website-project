@@ -46,11 +46,14 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
   const getBenefits = () => {
     switch (service.category) {
       case 'Makeup':
+      case 'PartyEvent':
+      case 'Guest':
+      case 'Bridal':
         return ['Professional makeup artist', 'Premium products used', 'Complimentary touch-up kit', 'Photo-ready finish', 'Skin consultation included'];
-      case 'Nails':
-        return ['Long-lasting gel formula', 'Cuticle care & shaping', 'Hand/foot massage', 'Sterilized tools', 'Wide color selection'];
-      case 'Tattooing':
-        return ['Semi-permanent results', 'Natural-looking finish', 'Numbing cream provided', 'Free touch-up session', 'Aftercare kit included'];
+      case 'Photoshoot':
+        return ['HD-ready makeup application', 'Studio lighting optimized', 'Hair styling included', 'Touch-ups available', 'Concept consultation'];
+      case 'Education':
+        return ['Professional tools included', 'Completion certificate', 'Hands-on practice', 'Model provided', 'Theory & technique'];
       case 'Photography':
         return ['Professional photographers', 'High-resolution images', 'Online gallery access', 'Edited & retouched photos', 'Print rights included'];
       default:
@@ -62,9 +65,16 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
 
   const getDuration = () => {
     switch (service.category) {
-      case 'Makeup': return t.serviceDetail.durationMakeup;
-      case 'Nails': return t.serviceDetail.durationNails;
-      case 'Tattooing': return t.serviceDetail.durationTattooing;
+      case 'Makeup':
+      case 'PartyEvent':
+      case 'Guest':
+        return t.serviceDetail.durationMakeup;
+      case 'Bridal':
+        return '2-4 hours';
+      case 'Photoshoot':
+        return '2-3 hours';
+      case 'Education':
+        return '3-4 hours';
       case 'Photography': return t.serviceDetail.durationPhotography;
       default: return '60-90 min';
     }

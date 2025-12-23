@@ -54,18 +54,18 @@ export const MOCK_CATEGORIES: CategoryFeature[] = [
     link: '#/services?category=Makeup'
   },
   {
-    id: 'nails',
-    name: 'Nails',
-    description: 'Expert nail care and art, featuring the latest trends in manicures and pedicures.',
-    icon: 'circle',
-    link: '#/services?category=Nails'
+    id: 'Photoshoot',
+    name: 'Photoshoot / Stage',
+    description: 'Specialized makeup and styling for photoshoots, stage performances, and media events.',
+    icon: 'camera',
+    link: '#/services/photoshoot'
   },
   {
-    id: 'tattooing',
-    name: 'Tattooing',
-    description: 'Semi-permanent makeup including microblading and ombre powder brows by certified artists.',
-    icon: 'brush',
-    link: '#/services?category=Tattooing'
+    id: 'PartyEvent',
+    name: 'Party / Event',
+    description: 'glamorous makeup services for parties, social events, and special occasions.',
+    icon: 'star',
+    link: '#/services/party'
   },
   {
     id: 'photography',
@@ -145,25 +145,25 @@ export interface ProcessStep {
 
 export const MOCK_PROCESS_STEPS: ProcessStep[] = [
   {
-    id: 'step1',
+    id: 'booking',
     step: 1,
     title: 'Book Online',
     description: 'Choose your service and preferred date/time through our easy booking system.'
   },
   {
-    id: 'step2',
+    id: 'consultation',
     step: 2,
     title: 'Consultation',
     description: 'Meet with our experts to discuss your vision and customize your service.'
   },
   {
-    id: 'step3',
+    id: 'service',
     step: 3,
     title: 'Experience',
     description: 'Relax and enjoy your service in our comfortable, luxurious environment.'
   },
   {
-    id: 'step4',
+    id: 'followUp',
     step: 4,
     title: 'Follow-Up',
     description: 'Receive aftercare instructions and schedule any follow-up appointments.'

@@ -13,6 +13,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange, cartCount }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isServicesMenuOpen, setIsServicesMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const t = TRANSLATIONS[currentLang];
   const location = useLocation();
@@ -46,7 +47,28 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
             <div className="hidden md:flex items-center space-x-8">
               <Link to="/" className={navClasses('/')}>{t.nav.home}</Link>
               <Link to="/about" className={navClasses('/about')}>{t.nav.about}</Link>
-              <Link to="/services" className={navClasses('/services')}>{t.nav.services}</Link>
+              {/* Services Dropdown */}
+              <div
+                className="relative group"
+                onMouseEnter={() => setIsServicesMenuOpen(true)}
+                onMouseLeave={() => setIsServicesMenuOpen(false)}
+              >
+                <div className="flex items-center gap-1 cursor-pointer">
+                  <Link to="/services" className={navClasses('/services')}>{t.nav.services}</Link>
+                </div>
+
+                {/* Dropdown Menu */}
+                <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 w-48 transition-all duration-300 ${isServicesMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+                  <div className="bg-white shadow-xl border border-stone-100 rounded-sm overflow-hidden py-2 w-64">
+                    <Link to="/services" className="block px-4 py-3 text-xs uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">All Services</Link>
+                    <Link to="/services/party" className="block px-4 py-3 text-xs uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Party / Event Makeup</Link>
+                    <Link to="/services/photoshoot" className="block px-4 py-3 text-xs uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Photoshoot / Stage</Link>
+                    <Link to="/services/bridal" className="block px-4 py-3 text-xs uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Bridal Packages</Link>
+                    <Link to="/services/guest" className="block px-4 py-3 text-xs uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Guest Services</Link>
+                    <Link to="/services/education" className="block px-4 py-3 text-xs uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Personal Makeup Classes</Link>
+                  </div>
+                </div>
+              </div>
               <Link to="/gallery" className={navClasses('/gallery')}>{t.nav.gallery}</Link>
               <Link to="/contact" className={navClasses('/contact')}>{t.nav.contact}</Link>
 
@@ -115,7 +137,17 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
           <div className="md:hidden bg-white border-b border-stone-100">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
               <Link to="/" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.home}</Link>
-              <Link to="/services" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.services}</Link>
+              {/* Mobile Services Submenu */}
+              <div className="w-full text-center">
+                <Link to="/services" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.services}</Link>
+                <div className="bg-stone-50 py-2 space-y-2">
+                  <Link to="/services/party" onClick={() => setIsMenuOpen(false)} className="block text-xs text-stone-500 hover:text-gold-500 uppercase tracking-widest">Party / Event</Link>
+                  <Link to="/services/photoshoot" onClick={() => setIsMenuOpen(false)} className="block text-xs text-stone-500 hover:text-gold-500 uppercase tracking-widest">Photoshoot / Stage</Link>
+                  <Link to="/services/bridal" onClick={() => setIsMenuOpen(false)} className="block text-xs text-stone-500 hover:text-gold-500 uppercase tracking-widest">Bridal Packages</Link>
+                  <Link to="/services/guest" onClick={() => setIsMenuOpen(false)} className="block text-xs text-stone-500 hover:text-gold-500 uppercase tracking-widest">Guest Services</Link>
+                  <Link to="/services/education" onClick={() => setIsMenuOpen(false)} className="block text-xs text-stone-500 hover:text-gold-500 uppercase tracking-widest">Classes</Link>
+                </div>
+              </div>
               <Link to="/gallery" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.gallery}</Link>
               <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.contact}</Link>
               <Link to="/booking" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 font-bold text-gold-700 uppercase text-sm tracking-widest">{t.nav.booking}</Link>
