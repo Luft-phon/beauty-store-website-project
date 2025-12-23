@@ -34,7 +34,7 @@ export interface ThemeColors {
 
 export interface Service {
   id: string;
-  category: 'Makeup' | 'Nails' | 'Tattooing' | 'Photography';
+  category: 'Makeup' | 'Nails' | 'Tattooing' | 'Photography' | 'Bridal' | 'PartyEvent' | 'Photoshoot' | 'Guest' | 'Education';
   name: string;
   description: string;
   price: number;
@@ -93,8 +93,8 @@ export interface Translation {
     };
     categories: {
       makeup: { name: string; description: string; };
-      nails: { name: string; description: string; };
-      tattooing: { name: string; description: string; };
+      photoshoot: { name: string; description: string; };
+      partyEvent: { name: string; description: string; };
       photography: { name: string; description: string; };
     };
     features: {
@@ -130,6 +130,13 @@ export interface Translation {
     philosophyTitle: string;
     philosophyText: string;
     teamTitle: string;
+  };
+  contactPage: {
+    text: string;
+    location: string;
+    locationText: string;
+    dm: string;
+    dmText: string;
   };
   servicePage: {
     addToCart: string;
@@ -186,6 +193,7 @@ export interface Translation {
     success: string;
     emptyRedirect: string;
   };
+  services: Record<string, { name: string; description: string; }>;
   footer: {
     rights: string;
   };
