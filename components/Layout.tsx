@@ -1,7 +1,6 @@
-
-import React, { useState } from 'react';
-import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { Menu, X, Globe, Phone, Mail, Instagram, Facebook, ShoppingBag } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X, Globe, Phone, Mail, Instagram, Facebook, ShoppingBag, Youtube } from 'lucide-react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
 
@@ -17,6 +16,12 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const t = TRANSLATIONS[currentLang];
   const location = useLocation();
+  const navigate = useNavigate();
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -31,10 +36,10 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
       <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-stone-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            
+
             {/* Logo */}
-            <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => window.location.hash = '/'}>
-              <span className="font-serif text-2xl font-bold text-stone-900 tracking-tighter">lecharmebeauteboutique</span>
+            <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => navigate('/')}>
+              <span className="font-serif text-2xl font-bold text-stone-900 tracking-tighter">LE'CHARME</span>
             </div>
 
             {/* Desktop Nav */}
@@ -44,7 +49,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
               <Link to="/services" className={navClasses('/services')}>{t.nav.services}</Link>
               <Link to="/gallery" className={navClasses('/gallery')}>{t.nav.gallery}</Link>
               <Link to="/contact" className={navClasses('/contact')}>{t.nav.contact}</Link>
-              
+
               {/* Cart Icon */}
               <Link to="/cart" className="relative text-stone-600 hover:text-gold-500 transition-colors">
                 <ShoppingBag size={20} />
@@ -58,17 +63,17 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
               <Link to="/booking" className="px-5 py-2 bg-stone-900 text-white text-sm uppercase tracking-widest hover:bg-gold-500 transition-colors">
                 {t.nav.booking}
               </Link>
-              
+
               {/* Language Switcher */}
               <div className="relative">
-                <button 
+                <button
                   onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
                   className="flex items-center space-x-1 text-stone-600 hover:text-gold-500"
                 >
                   <Globe size={18} />
                   <span className="text-xs">{currentLang.split(' ')[0]}</span>
                 </button>
-                
+
                 {isLangMenuOpen && (
                   <div className="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg py-1 border border-stone-100">
                     {Object.values(Language).map((lang) => (
@@ -114,11 +119,11 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
               <Link to="/gallery" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.gallery}</Link>
               <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.contact}</Link>
               <Link to="/booking" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 font-bold text-gold-700 uppercase text-sm tracking-widest">{t.nav.booking}</Link>
-               <Link to="/admin" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-gray-400 uppercase text-xs tracking-widest">{t.nav.admin}</Link>
+              <Link to="/admin" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-gray-400 uppercase text-xs tracking-widest">{t.nav.admin}</Link>
               <div className="flex space-x-2 py-2">
                 {Object.values(Language).map((lang) => (
                   <button key={lang} onClick={() => { onLanguageChange(lang); setIsMenuOpen(false); }} className="text-xs border border-stone-200 px-2 py-1 rounded">
-                    {lang === Language.VI ? 'VI' : lang === Language.EN ? 'EN' : lang.substring(0,2).toUpperCase()}
+                    {lang === Language.VI ? 'VI' : lang === Language.EN ? 'EN' : lang.substring(0, 2).toUpperCase()}
                   </button>
                 ))}
               </div>
@@ -133,34 +138,87 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
       </main>
 
       {/* Footer */}
-      <footer className="bg-stone-900 text-white py-12">
+      <footer className="bg-white text-stone-900 pt-16 pb-12 border-t border-stone-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-            <div>
-              <h3 className="font-serif text-2xl mb-4">lecharmebeauteboutique</h3>
-              <p className="text-stone-400 text-sm leading-relaxed max-w-xs mx-auto md:mx-0">
-                Dedicated to enhancing your natural beauty through exceptional artistry and care.
-              </p>
-            </div>
-            <div className="flex flex-col items-center md:items-start space-y-2">
-              <h4 className="uppercase tracking-widest text-sm font-bold mb-2">Contact</h4>
-              <div className="flex items-center space-x-2 text-stone-400 text-sm">
-                <Phone size={16} /> <span>(555) 123-4567</span>
+          <div className="flex flex-col lg:flex-row justify-between gap-12 lg:gap-24">
+
+            {/* Left Column: Brand, Newsletter, Socials */}
+            <div className="flex-1 max-w-lg">
+              {/* Logo */}
+              <div className="mb-12">
+                <Link to="/" className="font-bebasNeue text-6xl tracking-tighter uppercase font-bold text-black" onClick={() => window.scrollTo(0, 0)}>
+                  LE'CHARME
+                </Link>
               </div>
-              <div className="flex items-center space-x-2 text-stone-400 text-sm">
-                <Mail size={16} /> <span>hello@lecharmebeauteboutique.com</span>
+
+              {/* Newsletter */}
+              <div className="mb-10">
+                <p className="font-sen text-stone-800 text-sm mb-6 leading-relaxed max-w-md">
+                  Sign up to receive email updates with new arrivals, deals and more... unsubscribe anytime.
+                </p>
+                <form className="flex flex-col sm:flex-row gap-0 max-w-sm" onSubmit={(e) => e.preventDefault()}>
+                  <input
+                    type="email"
+                    placeholder="ENTER EMAIL"
+                    className="flex-grow bg-white border border-stone-300 px-4 py-3 text-xs tracking-widest outline-none focus:border-black transition-colors uppercase placeholder:text-stone-400 rounded-none appearance-none"
+                  />
+                  <button
+                    type="submit"
+                    className="bg-black text-white px-8 py-3 text-xs font-bold tracking-widest uppercase hover:bg-stone-800 transition-colors whitespace-nowrap"
+                  >
+                    Submit
+                  </button>
+                </form>
+                <p className="text-[10px] text-stone-500 mt-3 leading-tight max-w-sm">
+                  By clicking "Submit" you agree to receive emails from Le'Charme Beauty and agree to our privacy policy and terms of use.
+                </p>
+              </div>
+
+              {/* Social Icons */}
+              <div className="flex items-center space-x-6 mt-12">
+                <a href="https://www.instagram.com/lecharme.beauteboutique" className="bg-black text-white p-2 rounded-full hover:bg-stone-700 transition-colors">
+                  <Instagram size={16} />
+                </a>
+                <a href="https://www.facebook.com/lecharmebeauteboutique" className="bg-black text-white p-2 rounded-full hover:bg-stone-700 transition-colors">
+                  <Facebook size={16} fill="white" className="stroke-none" />
+                </a>
               </div>
             </div>
-            <div className="flex flex-col items-center md:items-end">
-               <h4 className="uppercase tracking-widest text-sm font-bold mb-4">Follow Us</h4>
-               <div className="flex space-x-4">
-                 <a href="#" className="hover:text-gold-500 transition-colors"><Instagram /></a>
-                 <a href="#" className="hover:text-gold-500 transition-colors"><Facebook /></a>
-               </div>
+
+            {/* Right Columns: Links */}
+            <div className="flex flex-row gap-16 lg:gap-32">
+              {/* Site Map */}
+              <div>
+                <h4 className="uppercase tracking-widest text-xs font-bold mb-6 text-stone-900">Site Map</h4>
+                <ul className="space-y-3 text-sm text-stone-600">
+                  <li><Link to="/about" className="font-sen hover:text-black transition-colors">About Us</Link></li>
+                  <li><Link to="/services" className="font-sen hover:text-black transition-colors">Services</Link></li>
+                  <li><Link to="/gallery" className="font-sen hover:text-black transition-colors">Gallery</Link></li>
+                  <li><Link to="/booking" className="font-sen hover:text-black transition-colors">Book Now</Link></li>
+                  <li><Link to="/contact" className="font-sen hover:text-black transition-colors">Find A Studio</Link></li>
+                </ul>
+              </div>
+
+              {/* Assistance */}
+              <div>
+                <h4 className="uppercase tracking-widest text-xs font-bold mb-6 text-stone-900">Assistance</h4>
+                <ul className="space-y-3 text-sm text-stone-600">
+                  <li><Link to="/contact" className="font-sen hover:text-black transition-colors">Contact</Link></li>
+                  <li><Link to="#" className="font-sen hover:text-black transition-colors">Terms of Service</Link></li>
+                  <li><Link to="#" className="font-sen hover:text-black transition-colors">Privacy Policy</Link></li>
+                </ul>
+              </div>
             </div>
+
           </div>
-          <div className="border-t border-stone-800 mt-10 pt-6 text-center text-xs text-stone-500">
-            <p>&copy; {new Date().getFullYear()} lecharmebeauteboutique. {t.footer.rights}</p>
+
+          <div className="mt-20 pt-8 border-t border-stone-100 flex flex-col md:flex-row justify-between items-center text-[10px] text-stone-400 uppercase tracking-widest">
+            <div className="flex space-x-4 mb-4 md:mb-0">
+              <span>&copy; {new Date().getFullYear()} Le'Charme Beauty Boutique</span>
+            </div>
+            <div>
+              <span className="cursor-pointer hover:text-black"><Globe size={14} className="inline mr-1" /> United States (USD $)</span>
+            </div>
           </div>
         </div>
       </footer>
