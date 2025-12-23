@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { HashRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Language, Service, Theme } from './types';
 import { INITIAL_SERVICES, TRANSLATIONS, GALLERIES } from './constants';
 import { MOCK_CATEGORIES, MOCK_STATISTICS, MOCK_WHY_CHOOSE_US, MOCK_FEATURED_SERVICE_IDS, MOCK_TESTIMONIALS, MOCK_PROCESS_STEPS } from './data';
@@ -95,13 +95,13 @@ const App: React.FC = () => {
             <p className="text-stone-200 text-base sm:text-lg md:text-xl tracking-wider uppercase mb-8 md:mb-10 max-w-2xl animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 px-4">
               {t.hero.subtitle}
             </p>
-            <a
-              href="#/booking"
+            <Link
+              to="/booking"
               className="px-6 sm:px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-stone-900 transition-all duration-300 uppercase tracking-widest text-xs sm:text-sm font-bold animate-in fade-in duration-1000 delay-500 inline-flex items-center gap-2 group"
             >
               {t.hero.cta}
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -131,11 +131,15 @@ const App: React.FC = () => {
         {/* Services Categories */}
         <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">{t.homepage.sections.ourServices}</h2>
+            {/* <h2 className="font-serif uppercase text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">{t.homepage.sections.ourServices}</h2> */}
+            <span className="block font-serif text-5xl uppercase font-bold text-stone-900 tracking-tighter pb-4 ">
+              {t.homepage.sections.ourServices}
+            </span>
             <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
-            <p className="text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
+            <p className="font-sen text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
               {t.homepage.sections.ourServicesDesc}
             </p>
+
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -172,9 +176,12 @@ const App: React.FC = () => {
         <div className="bg-stone-50 py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12 md:mb-16">
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">{t.homepage.sections.featuredServices}</h2>
+              {/* <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">{t.homepage.sections.featuredServices}</h2> */}
+              <span className="block font-serif text-5xl uppercase font-bold text-stone-900 tracking-tighter pb-4 ">
+                {t.homepage.sections.featuredServices}
+              </span>
               <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
-              <p className="text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
+              <p className="font-sen text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
                 {t.homepage.sections.featuredServicesDesc}
               </p>
             </div>
@@ -197,7 +204,7 @@ const App: React.FC = () => {
                     <h3 className="font-serif text-xl md:text-2xl text-stone-900 mb-3">{service.name}</h3>
                     <p className="text-stone-600 text-sm mb-4 line-clamp-2">{service.description}</p>
                     <div className="flex gap-3">
-                      <Link 
+                      <Link
                         to={`/services/${service.id}`}
                         className="flex-1 text-center py-2 px-4 border border-stone-300 text-stone-700 hover:bg-stone-50 transition-colors text-sm font-medium"
                       >
@@ -216,13 +223,13 @@ const App: React.FC = () => {
             </div>
 
             <div className="text-center mt-10 md:mt-12">
-              <a
-                href="#/services"
+              <Link
+                to="/services"
                 className="inline-flex items-center gap-2 px-6 md:px-8 py-3 border-2 border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white transition-all duration-300 text-sm font-medium uppercase tracking-wider group"
               >
                 {t.homepage.buttons.viewAll}
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -312,13 +319,13 @@ const App: React.FC = () => {
             <p className="text-stone-200 text-base md:text-lg mb-8 md:mb-10 max-w-2xl">
               {t.homepage.cta.subtitle}
             </p>
-            <a
-              href="#/booking"
+            <Link
+              to="/booking"
               className="px-6 sm:px-8 py-3 md:py-4 bg-gold-500 text-white hover:bg-gold-600 transition-all duration-300 uppercase tracking-widest text-xs sm:text-sm font-bold inline-flex items-center gap-2 group shadow-lg"
             >
               {t.homepage.cta.button}
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -337,29 +344,31 @@ const App: React.FC = () => {
           />
           <div className="absolute inset-0 bg-stone-900/40"></div>
         </div>
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 text-white">
+        {/* <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 text-white">
           <h1 className="font-serif text-4xl md:text-5xl mb-4">{t.aboutPage.title}</h1>
           <p className="uppercase tracking-widest text-sm opacity-90">{t.aboutPage.subtitle}</p>
-        </div>
+        </div> */}
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-20">
         {/* Our Story */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
           <div className="space-y-6">
-            <h2 className="font-serif text-3xl text-stone-900">{t.aboutPage.storyTitle}</h2>
+            <span className="block font-serif text-5xl uppercase font-bold text-stone-900 tracking-tighter pb-4 ">
+              {t.aboutPage.storyTitle}
+            </span>
             <div className="w-16 h-0.5 bg-gold-500"></div>
-            <p className="text-stone-600 leading-relaxed text-lg">
+            <p className="font-sen text-stone-600 leading-relaxed text-lg">
               {t.aboutPage.storyText}
             </p>
-            <p className="text-stone-600 leading-relaxed">
-              From the delicate brush strokes of our makeup artists to the capturing eyes of our photographers, we pride ourselves on a multidisciplinary approach that ensures your special days are not just remembered, but cherished.
+            <p className="font-sen text-stone-600 leading-relaxed text-lg">
+              {t.aboutPage.text}
             </p>
           </div>
           <div className="relative">
             <div className="absolute -top-4 -left-4 w-full h-full border-2 border-gold-200 z-0"></div>
             <img
-              src="https://picsum.photos/id/129/800/600"
+              src="public/images/logo/owner.jpg"
               alt="Our Story"
               className="relative z-10 shadow-xl w-full"
             />
@@ -368,35 +377,16 @@ const App: React.FC = () => {
 
         {/* Philosophy */}
         <div className="bg-stone-50 p-12 text-center rounded-lg border border-stone-100 mb-20">
-          <h2 className="font-serif text-3xl mb-6">{t.aboutPage.philosophyTitle}</h2>
-          <p className="max-w-3xl mx-auto text-stone-600 text-lg leading-relaxed italic">
+          <span className="block font-serif text-5xl uppercase font-bold text-stone-900 tracking-tighter pb-4">
+            {t.aboutPage.philosophyTitle}
+          </span>
+          <p className="font-sen max-w-3xl mx-auto text-stone-600 text-lg leading-relaxed italic">
             "{t.aboutPage.philosophyText}"
           </p>
         </div>
 
         {/* Team */}
-        <div className="text-center">
-          <h2 className="font-serif text-3xl mb-12">{t.aboutPage.teamTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { name: 'Sarah L.', role: 'Lead Makeup Artist', img: 'https://picsum.photos/id/64/400/400' },
-              { name: 'David C.', role: 'Senior Photographer', img: 'https://picsum.photos/id/91/400/400' },
-              { name: 'Elena R.', role: 'Brow Specialist', img: 'https://picsum.photos/id/338/400/400' },
-            ].map((member, i) => (
-              <div key={i} className="group">
-                <div className="overflow-hidden mb-4 rounded-sm relative">
-                  <img
-                    src={member.img}
-                    alt={member.name}
-                    className="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
-                  />
-                </div>
-                <h3 className="font-serif text-xl">{member.name}</h3>
-                <p className="text-stone-500 text-sm uppercase tracking-wide">{member.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+
       </div>
     </div>
   );
@@ -647,43 +637,52 @@ const App: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 py-16">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div className="space-y-8">
-          <h2 className="font-serif text-4xl mb-4">{t.nav.contact}</h2>
-          <p className="text-stone-600 leading-relaxed">
+          {/* <h2 className="font-serif text-4xl mb-4">{t.nav.contact}</h2> */}
+          <span className="block font-serif text-5xl uppercase font-bold text-stone-900 tracking-tighter pb-4 ">
+            {t.nav.contact}
+          </span>
+          <p className="font-sen text-stone-600 leading-relaxed">
             We would love to hear from you. Whether it's for a bridal consultation or a quick inquiry about our brow services, our team is ready to assist.
           </p>
           <div className="space-y-4">
             <div className="flex items-center space-x-4">
-              <div className="w-10 h-10 bg-gold-100 flex items-center justify-center text-gold-700 rounded-full"><MapPin size={20} /></div>
+              <div className="w-10 h-10 bg-gold-100 flex items-center justify-center text-gold-700 rounded-full">✨</div>
               <div>
                 <h4 className="font-bold text-stone-900">Studio Location</h4>
-                <p className="text-stone-500 text-sm">123 Elegance Blvd, Beverly Hills, CA 90210</p>
+                <p className="font-sen text-stone-500 text-sm">7862 Warner Ave Ste A, Huntington Beach, CA, United States, California</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <div className="w-10 h-10 bg-gold-100 flex items-center justify-center text-gold-700 rounded-full"><Calendar size={20} /></div>
+              <div className="w-10 h-10 bg-gold-100 flex items-center justify-center text-gold-700 rounded-full">📩</div>
               <div>
-                <h4 className="font-bold text-stone-900">Business Hours</h4>
-                <p className="text-stone-500 text-sm">Mon-Sat: 09:00 - 19:00</p>
+                <h4 className="font-bold text-stone-900">DM us to reserve your spot</h4>
+                <p className="font-sen text-stone-500 text-sm">Learn. Practice. Glow with confidence.</p>
               </div>
             </div>
           </div>
         </div>
         <div className="h-80 lg:h-auto bg-stone-200 rounded-lg overflow-hidden relative">
           {/* Mock Map */}
-          <img src="https://picsum.photos/seed/map/800/600" alt="Map" className="w-full h-full object-cover opacity-50 grayscale" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="bg-white px-4 py-2 shadow-md rounded font-bold text-stone-800">Google Maps Integration Placeholder</span>
-          </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6637.523321302982!2d-117.99309988862174!3d33.71511567317428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd26f40dc08565%3A0x46046ac72361e233!2s7862%20Warner%20Ave%2C%20Huntington%20Beach%2C%20CA%2092647!5e0!3m2!1sen!2sus!4v1766431718271!5m2!1sen!2sus"
+            width={600}
+            height={450}
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+
         </div>
       </div>
     </div>
   );
 
   return (
-    <HashRouter>
-      <Layout 
-        currentLang={currentLang} 
-        onLanguageChange={setCurrentLang} 
+    <BrowserRouter>
+      <Layout
+        currentLang={currentLang}
+        onLanguageChange={setCurrentLang}
         cartCount={cart.length}
       >
         <Routes>
@@ -699,7 +698,7 @@ const App: React.FC = () => {
         </Routes>
       </Layout>
       <Chatbot language={currentLang} services={services} />
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
