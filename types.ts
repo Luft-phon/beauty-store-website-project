@@ -173,6 +173,7 @@ export interface Translation {
   cart: {
     title: string;
     empty: string;
+    browseHint: string;
     subtotal: string;
     total: string;
     proceed: string;
@@ -194,6 +195,11 @@ export interface Translation {
     emptyRedirect: string;
   };
   services: Record<string, { name: string; description: string; }>;
+  testimonials: Record<string, {
+    author: string;
+    location: string;
+    text: string;
+  }>;
   footer: {
     rights: string;
   };
