@@ -94,12 +94,12 @@ const App: React.FC = () => {
             <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white mb-4 md:mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 max-w-5xl">
               {t.hero.title}
             </h1>
-            <p className="font-sen text-stone-200 text-base sm:text-lg md:text-xl tracking-wider uppercase mb-8 md:mb-10 max-w-2xl animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 px-4">
+            <p className="font-sen text-stone-200 text-base sm:text-lg md:text-xl tracking-wider mb-8 md:mb-10 max-w-2xl animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 px-4">
               {t.hero.subtitle}
             </p>
             <Link
               to="/services"
-              className="px-6 sm:px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-stone-900 transition-all duration-175 uppercase tracking-widest text-xs sm:text-sm font-bold animate-in fade-in duration-500 delay-50 inline-flex items-center gap-2 group"
+              className="font-outfit px-6 sm:px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-stone-900 transition-all duration-175 uppercase tracking-widest text-xs sm:text-sm font-bold animate-in fade-in duration-500 delay-50 inline-flex items-center gap-2 group"
             >
               {t.hero.cta}
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -260,7 +260,7 @@ const App: React.FC = () => {
                     {getIconForFeature(item.icon)}
                   </div>
                   <h3 className="font-sen font-serif text-xl md:text-2xl text-stone-900 mb-3">{featureTranslation.title}</h3>
-                  <p className="text-stone-600 text-sm leading-relaxed">{featureTranslation.description}</p>
+                  <p className="font-sen text-stone-600 text-sm leading-relaxed">{featureTranslation.description}</p>
                 </div>
               );
             })}
@@ -308,7 +308,14 @@ const App: React.FC = () => {
 
         {/* Testimonials */}
         <FadeInSection>
-          <TestimonialsSection testimonials={MOCK_TESTIMONIALS} />
+          <TestimonialsSection
+            testimonials={MOCK_TESTIMONIALS.map(item => {
+              const trans = t.testimonials?.[item.id];
+              return trans ? { ...item, ...trans } : item;
+            })}
+            title={t.homepage.sections.clientReviews}
+            subtitle={t.homepage.sections.clientReviewsDesc}
+          />
         </FadeInSection>
 
         {/* CTA Banner */}
@@ -448,8 +455,11 @@ const App: React.FC = () => {
 
   const GalleryPage = () => (
     <FadeInSection className="max-w-7xl mx-auto px-4 py-16">
-      <h2 className="font-serif text-4xl text-center mb-4">{t.nav.gallery}</h2>
-      <p className="text-center text-stone-500 mb-12 tracking-widest uppercase text-sm">Real Clients, Real Moments</p>
+      {/* <h2 className="font-serif text-4xl text-center mb-4">{t.nav.gallery}</h2> */}
+      <span className="block font-serif text-5xl uppercase text-center font-bold text-stone-900 tracking-tighter pb-4 ">
+        {t.nav.gallery}
+      </span>
+      <p className="font-sen text-center text-stone-500 mb-12 tracking-widest text-sm">Real Clients, Real Moments</p>
       <div className="columns-1 md:columns-3 gap-4 space-y-4">
         {GALLERIES.map((src, idx) => (
           <div key={idx} className="break-inside-avoid overflow-hidden rounded-sm">
@@ -468,7 +478,7 @@ const App: React.FC = () => {
         <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
           <ShoppingBag size={64} className="text-stone-300 mb-6" />
           <h2 className="font-serif text-3xl mb-4">{t.cart.empty}</h2>
-          <p className="text-stone-500 mb-8">Please browse our services to add items to your cart.</p>
+          <p className="text-stone-500 mb-8">{t.cart.browseHint}</p>
           <Link to="/services" className="px-8 py-3 bg-stone-900 text-white uppercase tracking-widest text-sm font-bold hover:bg-gold-500 transition-colors">
             {t.cart.continue}
           </Link>

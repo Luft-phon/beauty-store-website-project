@@ -164,6 +164,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     cart: {
       title: 'Your Shopping Cart',
       empty: 'Your cart is currently empty.',
+      browseHint: 'Please browse our services to add items to your cart.',
       subtotal: 'Subtotal',
       total: 'Total',
       proceed: 'Proceed to Booking',
@@ -260,6 +261,28 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       'class-group': {
         name: 'Group Makeup Class (4 students)',
         description: '3 days, 3 hours per day. Held on weekends (Fri-Sun). Includes skincare & makeup products, Professional Brush Set, Brush Case, Beauty Blender, and Mini Beauty Portrait Photoshoot.'
+      }
+    },
+    testimonials: {
+      '1': {
+        author: 'Ali Tufan',
+        location: 'New York, USA',
+        text: 'I absolutely love the products I purchased from this boutique! The quality is exceptional, and my skin has never looked better. The packaging is also beautiful, making it a luxurious experience every time I use them. Highly recommend!'
+      },
+      '2': {
+        author: 'Jessica M.',
+        location: 'Los Angeles, CA',
+        text: 'Absolutely amazing experience! Sarah did my bridal makeup and I felt like a princess. The attention to detail was incredible and the look lasted all night long.'
+      },
+      '3': {
+        author: 'Michael T.',
+        location: 'Chicago, IL',
+        text: 'David captured our wedding perfectly. Every photo tells a story. We are so grateful for these memories that we will cherish forever.'
+      },
+      '4': {
+        author: 'Emily R.',
+        location: 'Miami, FL',
+        text: 'The best skincare advice I have ever received. My complexion is glowing and I feel so much more confident. Thank you Lumière!'
       }
     },
     footer: {
@@ -418,6 +441,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     cart: {
       title: 'Giỏ Hàng Của Bạn',
       empty: 'Giỏ hàng của bạn đang trống.',
+      browseHint: 'Vui lòng xem qua các dịch vụ của chúng tôi để thêm vào giỏ hàng.',
       subtotal: 'Tạm tính',
       total: 'Tổng cộng',
       proceed: 'Tiến hành đặt lịch',
@@ -514,6 +538,28 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       'class-group': {
         name: 'Lớp Học Trang Điểm Nhóm (4 học viên)',
         description: '3 ngày, 3 giờ mỗi ngày. Tổ chức vào cuối tuần (Thứ 6 - Chủ Nhật). Bao gồm sản phẩm dưỡng da & trang điểm, Bộ Cọ Chuyên Nghiệp, Túi Đựng Cọ, Mút Trang Điểm, và Chụp Ảnh Chân Dung Beauty Mini.'
+      }
+    },
+    testimonials: {
+      '1': {
+        author: 'Ali Tufan',
+        location: 'New York, Mỹ',
+        text: 'Tôi cực kỳ yêu thích các sản phẩm tôi đã mua từ cửa hàng này! Chất lượng thật đặc biệt, và làn da của tôi chưa bao giờ trông đẹp hơn thế. Bao bì cũng rất đẹp, tạo cảm giác sang trọng mỗi khi tôi sử dụng. Rất khuyến khích!'
+      },
+      '2': {
+        author: 'Jessica M.',
+        location: 'Los Angeles, CA',
+        text: 'Trải nghiệm tuyệt vời! Sarah đã trang điểm cho đám cưới của tôi và tôi cảm thấy như một công chúa. Sự chú ý đến từng chi tiết thật đáng kinh ngạc và lớp trang điểm giữ được suốt đêm.'
+      },
+      '3': {
+        author: 'Michael T.',
+        location: 'Chicago, IL',
+        text: 'David đã ghi lại đám cưới của chúng tôi một cách hoàn hảo. Mỗi bức ảnh kể một câu chuyện. Chúng tôi rất biết ơn những kỷ niệm này mà chúng tôi sẽ trân trọng mãi mãi.'
+      },
+      '4': {
+        author: 'Emily R.',
+        location: 'Miami, FL',
+        text: 'Lời khuyên chăm sóc da tốt nhất mà tôi từng nhận được. Làn da của tôi đang tỏa sáng và tôi cảm thấy tự tin hơn nhiều. Cảm ơn Lumière!'
       }
     },
     footer: {
@@ -672,6 +718,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     cart: {
       title: 'Votre Panier',
       empty: 'Votre panier est vide.',
+      browseHint: 'Veuillez consulter nos services pour ajouter des articles à votre panier.',
       subtotal: 'Sous-total',
       total: 'Total',
       proceed: 'Procéder à la réservation',
@@ -768,6 +815,28 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       'class-group': {
         name: 'Cours de Maquillage de Groupe (4 élèves)',
         description: '3 jours, 3 heures par jour. Organisé le week-end (Ven-Dim). Comprend les produits de soin & maquillage, Set de Pinceaux Professionnels, Étui à Pinceaux, Beauty Blender et Mini Séance Photo Portrait Beauté.'
+      }
+    },
+    testimonials: {
+      '1': {
+        author: 'Ali Tufan',
+        location: 'New York, USA',
+        text: 'J\'adore absolument les produits que j\'ai achetés dans cette boutique ! La qualité est exceptionnelle et ma peau n\'a jamais été aussi belle. L\'emballage est également magnifique, ce qui en fait une expérience luxueuse à chaque fois. Je recommande vivement !'
+      },
+      '2': {
+        author: 'Jessica M.',
+        location: 'Los Angeles, CA',
+        text: 'Une expérience absolument incroyable ! Sarah a réalisé mon maquillage de mariée et je me suis sentie comme une princesse. Le souci du détail était incroyable et le look a tenu toute la nuit.'
+      },
+      '3': {
+        author: 'Michael T.',
+        location: 'Chicago, IL',
+        text: 'David a parfaitement capturé notre mariage. Chaque photo raconte une histoire. Nous sommes tellement reconnaissants pour ces souvenirs que nous chérirons pour toujours.'
+      },
+      '4': {
+        author: 'Emily R.',
+        location: 'Miami, FL',
+        text: 'Les meilleurs conseils de soins de la peau que j\'ai jamais reçus. Mon teint est éclatant et je me sens tellement plus confiante. Merci Lumière !'
       }
     },
     footer: {
@@ -926,6 +995,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     cart: {
       title: '您的购物车',
       empty: '您的购物车是空的。',
+      browseHint: '请浏览我们的服务以将项目添加到您的购物车。',
       subtotal: '小计',
       total: '总计',
       proceed: '进行预约',
@@ -1022,6 +1092,28 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       'class-group': {
         name: '小组化妆课（4名学生）',
         description: '3天，每天3小时。周末举行（周五-周日）。包括护肤和化妆产品、专业刷具套装、刷具包、美妆蛋和迷你美妆人像拍摄。'
+      }
+    },
+    testimonials: {
+      '1': {
+        author: 'Ali Tufan',
+        location: 'New York, USA',
+        text: '我非常喜欢我在这家精品店购买的产品！质量非常好，我的皮肤从未像现在这样好。包装也很漂亮，每次使用都感觉奢华。强烈推荐！'
+      },
+      '2': {
+        author: 'Jessica M.',
+        location: 'Los Angeles, CA',
+        text: '绝妙的体验！Sarah为我做了新娘妆，我感觉像公主一样。细节处理得令人难以置信，妆容持续了一整晚。'
+      },
+      '3': {
+        author: 'Michael T.',
+        location: 'Chicago, IL',
+        text: 'David完美地捕捉了我们的婚礼。每张照片都在讲述一个故事。我们非常感激这些我们将永远珍藏的回忆。'
+      },
+      '4': {
+        author: 'Emily R.',
+        location: 'Miami, FL',
+        text: '我也收到过的最好的护肤建议。我的肤色焕发光彩，我感觉更加自信了。谢谢Lumière！'
       }
     },
     footer: {
@@ -1180,6 +1272,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     cart: {
       title: '장바구니',
       empty: '장바구니가 비어 있습니다.',
+      browseHint: '장바구니에 아이템을 추가하려면 서비스를 둘러보세요.',
       subtotal: '소계',
       total: '합계',
       proceed: '예약 진행',
@@ -1276,6 +1369,28 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       'class-group': {
         name: '그룹 메이크업 클래스 (4명)',
         description: '3일, 하루 3시간. 주말 진행 (금-일). 스킨케어 & 메이크업 제품, 전문가용 브러쉬 세트, 브러쉬 케이스, 뷰티 블렌더, 미니 뷰티 포트레이트 촬영 포함.'
+      }
+    },
+    testimonials: {
+      '1': {
+        author: 'Ali Tufan',
+        location: 'New York, USA',
+        text: '이 부티크에서 구매한 제품들이 정말 마음에 듭니다! 품질이 탁월하고 제 피부가 이렇게 좋아 보인 적이 없었습니다. 패키지도 아름다워서 사용할 때마다 럭셔리한 경험을 선사합니다. 강력 추천합니다!'
+      },
+      '2': {
+        author: 'Jessica M.',
+        location: 'Los Angeles, CA',
+        text: '정말 놀라운 경험이었습니다! Sarah가 제 신부 메이크업을 해 주었고 저는 공주가 된 기분이었습니다. 디테일에 대한 관심이 놀라웠고 룩이 밤새 지속되었습니다.'
+      },
+      '3': {
+        author: 'Michael T.',
+        location: 'Chicago, IL',
+        text: 'David는 우리 결혼식을 완벽하게 담아냈습니다. 모든 사진이 이야기를 담고 있습니다. 영원히 간직할 이러한 추억에 대해 정말 감사드립니다.'
+      },
+      '4': {
+        author: 'Emily R.',
+        location: 'Miami, FL',
+        text: '제가 받아본 최고의 스킨케어 조언입니다. 제 안색이 빛나고 훨씬 더 자신감이 생겼습니다. 감사합니다 Lumière!'
       }
     },
     footer: {
