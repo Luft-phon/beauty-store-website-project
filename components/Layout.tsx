@@ -82,9 +82,9 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
                 )}
               </Link>
 
-              <Link to="/booking" className="px-5 py-2 bg-stone-900 text-white text-sm uppercase tracking-widest hover:bg-gold-500 transition-colors">
+              {/* <Link to="/booking" className="px-5 py-2 bg-stone-900 text-white text-sm uppercase tracking-widest hover:bg-gold-500 transition-colors">
                 {t.nav.booking}
-              </Link>
+              </Link> */}
 
               {/* Language Switcher */}
               <div className="relative">
