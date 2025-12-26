@@ -65,9 +65,9 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
                     <Star size={40} fill="currentColor" />
                 </div>
                 <h2 className="font-serif text-3xl mb-4">{t.booking.success}</h2>
-                <p className="text-stone-600 mb-8">We have received your deposit and appointment details.</p>
-                {apiStatus === 'loading' && <p className="text-stone-500 mb-6">Adding to calendar...</p>}
-                {apiStatus === 'success' && calendarLink && (
+                <p className="font-sen text-stone-600 mb-8">We have received your deposit and appointment details.</p>
+                {/* {apiStatus === 'loading' && <p className="text-stone-500 mb-6">Adding to calendar...</p>} */}
+                {/* {apiStatus === 'success' && calendarLink && (
                     <div className="mb-8">
                         <p className="text-green-600 mb-4 font-bold">Successfully added to our calendar!</p>
                         <a
@@ -80,15 +80,16 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
                             View on Google Calendar
                         </a>
                     </div>
-                )}
+                )} */}
                 {apiStatus === 'error' && (
                     <div className="mb-6">
                         <p className="text-red-500 font-bold mb-1">Error: {errorMessage}</p>
-                        <p className="text-stone-500 text-sm">Could not automatically add to calendar. Please try the manual link below.</p>
+                        {/* <p className="text-stone-500 text-sm">Could not automatically add to calendar. Please try the manual link below.</p> */}
+                        <p className="text-stone-500 text-sm">Could not automatically add to booking calendar. Please try to book your appointment again</p>
                     </div>
                 )}
                 {/* Fallback Manual Link */}
-                {bookingDetails && (
+                {/* {bookingDetails && (
                     <a
                         href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Beauty Appointment')}&details=${encodeURIComponent('Appointment at Le’Charme Beauté Boutique')}&location=${encodeURIComponent('7862 Warner Ave Ste A, Huntington Beach, CA')}&add=${encodeURIComponent(MOCK_COMPANY_INFO.email)}&dates=${(() => {
                             const dateParts = bookingDetails.date.split('-');
@@ -111,8 +112,8 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
                         <Calendar size={18} />
                         Add to Google Calendar
                     </a>
-                )}
-                <button onClick={() => setBooked(false)} className="text-gold-700 underline hover:text-gold-500">Book another</button>
+                )} */}
+                <a href="/services" className="text-gold-700 underline hover:text-gold-500">Book another</a>
             </div>
         );
     }
