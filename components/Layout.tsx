@@ -40,7 +40,8 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
 
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => navigate('/')}>
-              <span className="font-serif text-2xl font-bold text-stone-900 tracking-tighter">LE'CHARME</span>
+              {/* <span className="font-serif text-2xl font-bold text-stone-900 tracking-tighter">LE'CHARME</span> */}
+              <img src="/images/logo/logo3.png" alt="LE'CHARME" className="w-24 h-24 object-cover rounded-md" />
             </div>
 
             {/* Desktop Nav */}
