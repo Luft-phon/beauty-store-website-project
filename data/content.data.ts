@@ -133,7 +133,7 @@ export interface CompanyInfo {
 export const MOCK_COMPANY_INFO: CompanyInfo = {
   name: 'Lumière Beauty & Wedding',
   tagline: 'Elegance in Every Detail',
-  email: 'hello@lumierebeauty.com',
+  email: 'thanhphongchupanh@gmail.com',
   phone: '+1 (555) 123-4567',
   address: '123 Beauty Lane, Suite 100, Los Angeles, CA 90001',
   hours: {

@@ -12,6 +12,7 @@ import ServiceDetail from './components/ServiceDetail';
 import { ServiceCard } from './components/ServiceCard';
 import PaymentForm from './components/PaymentForm';
 import TestimonialsSection from './components/TestimonialsSection';
+import BookingPage from './components/BookingPage';
 import { Camera, Star, Calendar, MapPin, ShoppingBag, Trash2, ArrowRight, Users, Award, Shield, Heart, Sparkles, Trophy, CheckCircle } from 'lucide-react';
 import { FadeInSection } from './components/FadeInSection';
 
@@ -539,108 +540,7 @@ const App: React.FC = () => {
     );
   };
 
-  const BookingPage = () => {
-    const [booked, setBooked] = useState(false);
-    const totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
-    const depositAmount = cart.length * 50;
 
-    const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault();
-      setBooked(true);
-      clearCart();
-      // In a real app, this would send data to backend
-    };
-
-    if (booked) {
-      return (
-        <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
-          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6 text-green-600">
-            <Star size={40} fill="currentColor" />
-          </div>
-          <h2 className="font-serif text-3xl mb-4">{t.booking.success}</h2>
-          <p className="text-stone-600 mb-8">We have received your deposit and appointment details.</p>
-          <button onClick={() => setBooked(false)} className="text-gold-700 underline hover:text-gold-500">Book another</button>
-        </div>
-      );
-    }
-
-    if (cart.length === 0) {
-      return (
-        <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
-          <ShoppingBag size={64} className="text-stone-300 mb-6" />
-          <h2 className="font-serif text-3xl mb-4">{t.booking.emptyRedirect}</h2>
-          <Link to="/services" className="px-8 py-3 bg-stone-900 text-white uppercase tracking-widest text-sm font-bold hover:bg-gold-500 transition-colors">
-            {t.cart.continue}
-          </Link>
-        </div>
-      );
-    }
-
-    return (
-      <div className="max-w-4xl mx-auto px-4 py-16">
-        <h2 className="font-serif text-4xl text-center mb-12">{t.booking.title}</h2>
-
-        <div className="grid grid-cols-1 gap-12">
-          <div className="bg-white p-8 shadow-lg border border-stone-100">
-            <div className="mb-8 pb-8 border-b border-stone-100">
-              <h3 className="font-serif text-2xl mb-4">{t.booking.summary}</h3>
-              <div className="flex justify-between text-stone-600 mb-2">
-                <span>{cart.length} {t.booking.items}</span>
-                <span className="font-bold">${totalAmount}</span>
-              </div>
-              <div className="flex justify-between text-gold-600 font-medium">
-                <span>{t.booking.deposit} Required</span>
-                <span>${depositAmount}</span>
-              </div>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-stone-500 mb-2">{t.booking.name}</label>
-                  <input required type="text" className="w-full bg-stone-50 border border-stone-200 p-3 rounded focus:border-gold-500 outline-none" />
-                </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-stone-500 mb-2">{t.booking.email}</label>
-                  <input required type="email" className="w-full bg-stone-50 border border-stone-200 p-3 rounded focus:border-gold-500 outline-none" />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-stone-500 mb-2">{t.booking.selectDate}</label>
-                  <input required type="date" className="w-full bg-stone-50 border border-stone-200 p-3 rounded focus:border-gold-500 outline-none" />
-                </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-stone-500 mb-2">{t.booking.selectTime}</label>
-                  <select className="w-full bg-stone-50 border border-stone-200 p-3 rounded focus:border-gold-500 outline-none">
-                    <option>09:00 AM</option>
-                    <option>10:00 AM</option>
-                    <option>11:00 AM</option>
-                    <option>12:00 PM</option>
-                    <option>01:00 PM</option>
-                    <option>02:00 PM</option>
-                    <option>03:00 PM</option>
-                    <option>04:00 PM</option>
-                    <option>05:00 PM</option>
-                  </select>
-                </div>
-              </div>
-
-              <PaymentForm />
-
-              <div className="pt-6 border-t border-stone-100">
-                <button type="submit" className="w-full bg-stone-900 text-white py-4 uppercase tracking-widest font-bold hover:bg-gold-500 transition-colors duration-300">
-                  {t.booking.deposit} (${depositAmount}) & {t.booking.confirm}
-                </button>
-                <p className="text-center text-xs text-stone-400 mt-4">Secure payment processing provided by Stripe (Mock).</p>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    );
-  };
 
   const ContactPage = () => (
     <FadeInSection className="max-w-7xl mx-auto px-4 py-16">
@@ -706,7 +606,7 @@ const App: React.FC = () => {
           <Route path="/services/:id" element={<ServiceDetail services={services} onAddToCart={addToCart} currentLang={currentLang} />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/booking" element={<BookingPage />} />
+          <Route path="/booking" element={<BookingPage t={t} cart={cart} clearCart={clearCart} />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/admin" element={<AdminDashboard services={services} onUpdateService={handleUpdateService} />} />
