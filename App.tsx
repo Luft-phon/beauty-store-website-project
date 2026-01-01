@@ -13,6 +13,9 @@ import { ServiceCard } from './components/ServiceCard';
 import PaymentForm from './components/PaymentForm';
 import TestimonialsSection from './components/TestimonialsSection';
 import BookingPage from './components/BookingPage';
+import PaymentSuccess from './components/PaymentSuccess';
+import PaymentCanceled from './components/PaymentCanceled';
+import PaymentError from './components/PaymentError';
 import { Camera, Star, Calendar, MapPin, ShoppingBag, Trash2, ArrowRight, Users, Award, Shield, Heart, Sparkles, Trophy, CheckCircle } from 'lucide-react';
 import { FadeInSection } from './components/FadeInSection';
 
@@ -152,9 +155,8 @@ const App: React.FC = () => {
                   category.id === 'PartyEvent' ? t.homepage.categories.partyEvent :
                     t.homepage.categories.photography;
               return (
-                <a
-                  href={category.link}
-                  key={category.id}
+                <Link
+                  to="/services"
                   className="group flex flex-col items-center text-center p-6 md:p-8 border border-stone-100 hover:shadow-xl hover:border-gold-200 transition-all duration-300 rounded-sm bg-white"
                 >
                   <div className="mb-4 md:mb-6 text-gold-500 group-hover:scale-110 group-hover:text-gold-600 transition-all duration-300">
@@ -169,7 +171,7 @@ const App: React.FC = () => {
                   <span className="text-gold-600 text-sm font-medium uppercase tracking-wider group-hover:gap-2 flex items-center gap-1 transition-all">
                     {t.homepage.buttons.explore} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </span>
-                </a>
+                </Link>
               );
             })}
           </div>
@@ -479,7 +481,7 @@ const App: React.FC = () => {
         <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
           <ShoppingBag size={64} className="text-stone-300 mb-6" />
           <h2 className="font-serif text-3xl mb-4">{t.cart.empty}</h2>
-          <p className="text-stone-500 mb-8">{t.cart.browseHint}</p>
+          <p className="font-sen text-stone-500 mb-8">{t.cart.browseHint}</p>
           <Link to="/services" className="px-8 py-3 bg-stone-900 text-white uppercase tracking-widest text-sm font-bold hover:bg-gold-500 transition-colors">
             {t.cart.continue}
           </Link>
@@ -490,6 +492,7 @@ const App: React.FC = () => {
     return (
       <FadeInSection className="max-w-5xl mx-auto px-4 py-16">
         <h2 className="font-serif text-4xl text-center mb-12">{t.cart.title}</h2>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Item List */}
           <div className="lg:col-span-2 space-y-6">
@@ -526,7 +529,7 @@ const App: React.FC = () => {
                 <span>{t.cart.total}</span>
                 <span>${totalAmount}</span>
               </div>
-              <Link to="/booking" className="block w-full bg-stone-900 text-white text-center py-4 uppercase tracking-widest font-bold hover:bg-gold-500 transition-colors duration-300 flex items-center justify-center space-x-2">
+              <Link to="/booking" className="rounded-[5px] py-4 block w-full bg-stone-900 text-white text-center uppercase tracking-widest font-bold hover:bg-gold-500 transition-colors duration-300 flex items-center justify-center space-x-2">
                 <span>{t.cart.proceed}</span>
                 <ArrowRight size={18} />
               </Link>
@@ -606,6 +609,9 @@ const App: React.FC = () => {
           <Route path="/services/:id" element={<ServiceDetail services={services} onAddToCart={addToCart} currentLang={currentLang} />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/payment-canceled" element={<PaymentCanceled />} />
+          <Route path="/payment-error" element={<PaymentError />} />
           <Route path="/booking" element={<BookingPage t={t} cart={cart} clearCart={clearCart} />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />

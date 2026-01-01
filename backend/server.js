@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import Stripe from 'stripe';
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -83,7 +84,7 @@ app.post('/api/calendar/create-event', async (req, res) => {
                 ],
             },
         };
-        const calendarId = process.env.GOOGLE_CALENDAR_ID || 'thanhphongchupanh@gmail.com';
+        const calendarId = process.env.GOOGLE_CALENDAR_ID;
 
         console.log(`Attempting to create event in calendar: ${calendarId}`);
         const response = await calendar.events.insert({
@@ -97,6 +98,44 @@ app.post('/api/calendar/create-event', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error', details: error.message });
     }
 });
+
+
+// API Endpoint to do payment
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+const YOUR_DOMAIN = process.env.CLIENT_DOMAIN;
+
+app.post('/create-checkout-session', async (req, res) => {
+    try {
+        const { items } = req.body;
+
+        const line_items = items.map(item => ({
+            price_data: {
+                currency: 'usd',
+                product_data: {
+                    name: item.name,
+                    images: item.image ? [item.image] : [],
+                },
+                unit_amount: Math.round(item.price * 100), // convert to cents
+            },
+            quantity: 1,
+        }));
+
+        const session = await stripe.checkout.sessions.create({
+            line_items: line_items,
+            mode: 'payment',
+            success_url: `${YOUR_DOMAIN}/payment-success`,
+            cancel_url: `${YOUR_DOMAIN}/payment-canceled`,
+        });
+
+        res.json({ url: session.url });
+    } catch (error) {
+        console.error('Stripe error:', error);
+        res.status(500).json({ error: 'Failed to create checkout session' });
+    }
+});
+
+
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
