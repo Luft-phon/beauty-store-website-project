@@ -117,7 +117,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       location: 'Studio Location',
       locationText: '7862 Warner Ave Ste A, Huntington Beach, CA, United States, California',
       dm: 'DM us to reserve your spot',
-      dmText: 'Learn. Practice. Glow with confidence.',
+      dmText: 'lecharme.beauteboutique@gmail.com',
     },
     aboutPage: {
       title: 'Our Story',
@@ -394,7 +394,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       location: 'Địa điểm Studio',
       locationText: '7862 Warner Ave Ste A, Huntington Beach, CA, Hoa Kỳ',
       dm: 'Nhắn tin để đặt chỗ',
-      dmText: 'Học hỏi. Thực hành. Tự tin tỏa sáng.',
+      dmText: 'lecharme.beauteboutique@gmail.com',
     },
     aboutPage: {
       title: 'Câu Chuyện Của Chúng Tôi',
@@ -671,7 +671,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       location: 'Emplacement du Studio',
       locationText: '7862 Warner Ave Ste A, Huntington Beach, CA, États-Unis, Californie',
       dm: 'Envoyez-nous un DM pour réserver',
-      dmText: 'Apprenez. Pratiquez. Rayonnez de confiance.',
+      dmText: 'lecharme.beauteboutique@gmail.com',
     },
     aboutPage: {
       title: 'Notre Histoire',
@@ -948,7 +948,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       location: '工作室地址',
       locationText: '7862 Warner Ave Ste A, Huntington Beach, CA, 美国加利福尼亚州',
       dm: '私信我们预留名额',
-      dmText: '学习。实践。自信闪耀。',
+      dmText: 'lecharme.beauteboutique@gmail.com',
     },
     aboutPage: {
       title: '我们的故事',
@@ -1225,7 +1225,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       location: '스튜디오 위치',
       locationText: '7862 Warner Ave Ste A, Huntington Beach, CA, 미국, 캘리포니아',
       dm: '예약을 위해 DM을 보내주세요',
-      dmText: '배우고, 연습하고, 자신감 있게 빛나세요.',
+      dmText: 'lecharme.beauteboutique@gmail.com',
     },
     aboutPage: {
       title: '우리의 이야기',

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Language, Service, Theme } from './types';
 import { INITIAL_SERVICES, TRANSLATIONS, GALLERIES } from './constants';
-import { MOCK_CATEGORIES, MOCK_STATISTICS, MOCK_WHY_CHOOSE_US, MOCK_FEATURED_SERVICE_IDS, MOCK_TESTIMONIALS, MOCK_PROCESS_STEPS } from './data';
+import { MOCK_CATEGORIES, MOCK_STATISTICS, MOCK_WHY_CHOOSE_US, MOCK_FEATURED_SERVICE_IDS, MOCK_TESTIMONIALS, MOCK_PROCESS_STEPS, MOCK_COMPANY_INFO } from './data';
 import { applyThemeVariables } from './config/theme.config';
 import Layout from './components/Layout';
 
@@ -571,6 +571,13 @@ const App: React.FC = () => {
                 <p className="font-sen text-stone-500 text-sm">{t.contactPage.dmText}</p>
               </div>
             </div>
+            <div className="flex items-center space-x-4">
+              <div className="w-10 h-10 bg-gold-100 flex items-center justify-center text-gold-700 rounded-full">📩</div>
+              <div>
+                <h4 className="font-bold text-stone-900">Hotline</h4>
+                <p className="font-sen text-stone-500 text-sm">{MOCK_COMPANY_INFO.phone}</p>
+              </div>
+            </div>
           </div>
         </div>
         <div className="h-80 lg:h-auto bg-stone-200 rounded-lg overflow-hidden relative">
@@ -596,6 +603,7 @@ const App: React.FC = () => {
         currentLang={currentLang}
         onLanguageChange={setCurrentLang}
         cartCount={cart.length}
+        services={services}
       >
         <Routes>
           <Route path="/" element={<Home />} />
