@@ -131,11 +131,11 @@ export interface CompanyInfo {
 }
 
 export const MOCK_COMPANY_INFO: CompanyInfo = {
-  name: 'Lumière Beauty & Wedding',
+  name: 'Le’Charme Beauté Boutique',
   tagline: 'Elegance in Every Detail',
-  email: 'thanhphongchupanh@gmail.com',
-  phone: '+1 (555) 123-4567',
-  address: '123 Beauty Lane, Suite 100, Los Angeles, CA 90001',
+  email: 'lecharme.beauteboutique@gmail.com',
+  phone: '(714)-466-4152',
+  address: '7862 Warner Ave STE A, Huntington Beach, CA 92646 (Studio #23, inside Sola Salons)',
   hours: {
     weekday: 'Mon-Fri: 9:00 AM - 7:00 PM',
     weekend: 'Sat-Sun: 10:00 AM - 6:00 PM'

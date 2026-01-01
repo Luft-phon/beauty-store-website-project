@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Globe, Phone, Mail, Instagram, Facebook, ShoppingBag, Youtube } from 'lucide-react';
-import { Language } from '../types';
+import { Language, Service } from '../types';
+import Chatbot from './Chatbot';
 import { TRANSLATIONS } from '../constants';
 
 interface LayoutProps {
@@ -9,9 +10,10 @@ interface LayoutProps {
   currentLang: Language;
   onLanguageChange: (lang: Language) => void;
   cartCount: number;
+  services: Service[];
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange, cartCount }) => {
+const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange, cartCount, services }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesMenuOpen, setIsServicesMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
@@ -255,6 +257,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
           </div>
         </div>
       </footer>
+      <Chatbot language={currentLang} services={services} />
     </div>
   );
 };

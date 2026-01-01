@@ -6,8 +6,13 @@ export const sendMessageToGemini = async (
   contextData: string
 ): Promise<string> => {
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-    
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    if (!apiKey) {
+      console.error("Gemini API key is missing. Please set VITE_GEMINI_API_KEY in your .env file.");
+      return "System Error: Gemini API key is not configured. Please contact the administrator.";
+    }
+    const ai = new GoogleGenAI({ apiKey });
+
     const systemInstruction = `
       You are "Lumi", the intelligent assistant for Lumière Beauty & Wedding.
       We offer Makeup, Nails, Cosmetic Tattooing (Brows/Lips), and Wedding Photography.
@@ -36,6 +41,6 @@ export const sendMessageToGemini = async (
     return response.text || "I apologize, I am having trouble connecting right now.";
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "Sorry, I am currently offline. Please contact us directly by phone.";
+    return "Sorry, I am currently offline. Please contact us directly by phone: (714)-466-4152.";
   }
 };
