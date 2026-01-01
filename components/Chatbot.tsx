@@ -12,7 +12,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ language, services }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: `Hello! I am Lumi. How can I help you today?`, timestamp: new Date() }
+    { role: 'model', text: `Hello! Welcome to Le’Charme Beauté Boutique. How can I help you today?`, timestamp: new Date() }
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -69,7 +69,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ language, services }) => {
           <div className="bg-stone-900 text-white p-4 flex justify-between items-center">
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="font-serif font-bold tracking-wide">Lumi AI Assistant</span>
+              <span className="font-serif font-bold tracking-wide"> Le’Charme Beauté Boutique</span>
             </div>
             <button onClick={() => setIsOpen(false)} className="text-stone-400 hover:text-white">
               <X size={20} />
@@ -84,26 +84,25 @@ const Chatbot: React.FC<ChatbotProps> = ({ language, services }) => {
                 className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div
-                  className={`max-w-[80%] p-3 rounded-2xl text-sm shadow-sm ${
-                    msg.role === 'user'
-                      ? 'bg-stone-800 text-white rounded-tr-none'
-                      : 'bg-white text-stone-800 border border-stone-100 rounded-tl-none'
-                  }`}
+                  className={`max-w-[80%] p-3 rounded-2xl text-sm shadow-sm ${msg.role === 'user'
+                    ? 'bg-stone-800 text-white rounded-tr-none'
+                    : 'bg-white text-stone-800 border border-stone-100 rounded-tl-none'
+                    }`}
                 >
                   {msg.text}
                 </div>
               </div>
             ))}
             {isLoading && (
-               <div className="flex justify-start">
-                 <div className="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm border border-stone-100">
-                   <div className="flex space-x-1">
-                     <div className="w-2 h-2 bg-stone-300 rounded-full animate-bounce"></div>
-                     <div className="w-2 h-2 bg-stone-300 rounded-full animate-bounce delay-75"></div>
-                     <div className="w-2 h-2 bg-stone-300 rounded-full animate-bounce delay-150"></div>
-                   </div>
-                 </div>
-               </div>
+              <div className="flex justify-start">
+                <div className="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm border border-stone-100">
+                  <div className="flex space-x-1">
+                    <div className="w-2 h-2 bg-stone-300 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-stone-300 rounded-full animate-bounce delay-75"></div>
+                    <div className="w-2 h-2 bg-stone-300 rounded-full animate-bounce delay-150"></div>
+                  </div>
+                </div>
+              </div>
             )}
             <div ref={messagesEndRef} />
           </div>
