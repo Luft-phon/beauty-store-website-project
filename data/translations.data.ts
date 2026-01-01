@@ -167,7 +167,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       browseHint: 'Please browse our services to add items to your cart.',
       subtotal: 'Subtotal',
       total: 'Total',
-      proceed: 'Proceed to Booking',
+      proceed: 'Checkout',
       continue: 'Continue Shopping',
       remove: 'Remove'
     },
@@ -444,7 +444,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       browseHint: 'Vui lòng xem qua các dịch vụ của chúng tôi để thêm vào giỏ hàng.',
       subtotal: 'Tạm tính',
       total: 'Tổng cộng',
-      proceed: 'Tiến hành đặt lịch',
+      proceed: 'Thanh Toán',
       continue: 'Tiếp tục xem dịch vụ',
       remove: 'Xóa'
     },
@@ -721,7 +721,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       browseHint: 'Veuillez consulter nos services pour ajouter des articles à votre panier.',
       subtotal: 'Sous-total',
       total: 'Total',
-      proceed: 'Procéder à la réservation',
+      proceed: 'Paiement',
       continue: 'Continuer vos achats',
       remove: 'Retirer'
     },
@@ -998,7 +998,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       browseHint: '请浏览我们的服务以将项目添加到您的购物车。',
       subtotal: '小计',
       total: '总计',
-      proceed: '进行预约',
+      proceed: '结账',
       continue: '继续购物',
       remove: '移除'
     },
@@ -1275,7 +1275,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       browseHint: '장바구니에 아이템을 추가하려면 서비스를 둘러보세요.',
       subtotal: '소계',
       total: '합계',
-      proceed: '예약 진행',
+      proceed: '결제',
       continue: '쇼핑 계속하기',
       remove: '삭제'
     },

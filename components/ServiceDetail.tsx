@@ -122,7 +122,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
                 <span className='text-stone-500 text-sm md:text-base'>{t.serviceDetail.perSession}</span>
               </div>
               <p className='text-xs md:text-sm text-stone-400 mt-2'>
-                <span className='text-gold-600 font-medium'>$50 {t.serviceDetail.depositRequired}</span> {t.serviceDetail.toSecureBooking}
+                <span className='text-gold-600 font-medium'>50% {t.serviceDetail.depositRequired}</span> {t.serviceDetail.toSecureBooking}
               </p>
             </div>
             <div>
@@ -161,7 +161,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
                 <ShoppingBag size={20} />
                 <span>{isAdded ? t.servicePage.added : t.servicePage.addToCart}</span>
               </button>
-              <Link to='/booking' className='w-full py-3 md:py-4 px-6 flex items-center justify-center space-x-3 border-2 border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white uppercase text-xs md:text-sm font-bold tracking-widest transition-all duration-300'>
+              <Link to='/booking' className='w-full py-3 md:py-4 px-6 flex items-center justify-center space-x-3 border-2 border-stone-900 text-stone-900 hover:bg-stone-900 hover:!text-white uppercase text-xs md:text-sm font-bold tracking-widest transition-all duration-300'>
                 <Calendar size={20} />
                 <span>{t.serviceDetail.bookNow}</span>
               </Link>
