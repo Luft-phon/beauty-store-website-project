@@ -83,9 +83,9 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
                 )}
               </Link>
 
-              {/* <Link to="/booking" className="px-5 py-2 bg-stone-900 text-white text-sm uppercase tracking-widest hover:bg-gold-500 transition-colors">
+              <Link to="/booking" className="rounded-[3px] px-5 py-2 bg-stone-900 text-white text-sm uppercase tracking-widest hover:bg-gold-500 transition-colors">
                 {t.nav.booking}
-              </Link> */}
+              </Link>
 
               {/* Language Switcher */}
               <div className="relative">
@@ -152,7 +152,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
               <Link to="/gallery" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.gallery}</Link>
               <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.contact}</Link>
               <Link to="/booking" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 font-bold text-gold-700 uppercase text-sm tracking-widest">{t.nav.booking}</Link>
-              <Link to="/admin" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-gray-400 uppercase text-xs tracking-widest">{t.nav.admin}</Link>
+              {/* <Link to="/admin" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-gray-400 uppercase text-xs tracking-widest">{t.nav.admin}</Link> */}
               <div className="flex space-x-2 py-2">
                 {Object.values(Language).map((lang) => (
                   <button key={lang} onClick={() => { onLanguageChange(lang); setIsMenuOpen(false); }} className="text-xs border border-stone-200 px-2 py-1 rounded">
