@@ -10,44 +10,54 @@ const PaymentSuccess: React.FC = () => {
     const [message, setMessage] = useState('Verifying payment and securing your appointment...');
     const hasFetched = useRef(false);
 
+    type PendingBooking = {
+        clientName?: string;
+        clientEmail?: string;
+        phone?: string;
+        serviceName?: string;
+        date?: string;
+        time?: string;
+    };
+
+    const [pendingBooking, setPendingBooking] = useState<PendingBooking | null>(null);
+
     useEffect(() => {
         const createEvent = async () => {
             if (hasFetched.current) return;
             hasFetched.current = true;
 
-            const pendingBooking = localStorage.getItem('pendingBooking');
-            if (!pendingBooking) {
-                setStatus('success'); // Payment success, but no booking data to process (maybe lost or direct access)
+            const raw = localStorage.getItem('pendingBooking');
+
+            if (!raw) {
+                setStatus('success');
                 setMessage('Payment received! Please contact us if you do not receive a booking confirmation.');
                 return;
             }
 
+            const bookingData = JSON.parse(raw);
+
+            // ✅ LƯU VÀO STATE ĐỂ HIỂN THỊ
+            setPendingBooking(bookingData);
+
             try {
-                const bookingData = JSON.parse(pendingBooking);
-                // const response = await fetch(`http://localhost:3001/api/calendar/create-event`, {
                 const response = await fetch(`https://beauty-store-website-project.onrender.com/api/calendar/create-event`, {
+                    // const response = await fetch('http://localhost:3001/api/calendar/create-event', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(bookingData),
                 });
-
-                const data = await response.json();
 
                 if (response.ok) {
                     setStatus('success');
                     setMessage('Thank you for your deposit. Your appointment has been secured.');
                     localStorage.removeItem('pendingBooking');
                 } else {
-                    console.error('Booking Error:', data);
                     setStatus('error');
-                    setMessage('Payment successful, but we could not automatically create the calendar event. Please verify with the salon.');
+                    setMessage('Payment successful, but we could not automatically create the calendar event.');
                 }
-            } catch (error) {
-                console.error('Network Error:', error);
+            } catch {
                 setStatus('error');
-                setMessage('Payment successful, but a network error occurred while securing the booking.');
+                setMessage('Payment successful, but a network error occurred.');
             }
         };
 
@@ -93,8 +103,45 @@ const PaymentSuccess: React.FC = () => {
                             </div>
                         )}
                         <div className="flex justify-between">
-                            <span>Email Confirmation:</span>
-                            <span>{status === 'success' ? 'Sent automatically' : 'Pending'}</span>
+                            <span>Email:</span>
+                            {pendingBooking && (
+                                <div className="space-y-2 text-sm">
+                                    <div className="flex justify-between">
+                                        <span>{pendingBooking.clientEmail}</span>
+                                    </div>
+                                </div>
+                            )}
+
+                        </div>
+                        <div className="flex justify-between">
+                            <span>Date:</span>
+                            {pendingBooking && (
+                                <div className="space-y-2 text-sm">
+                                    <div className="flex justify-between">
+                                        <span>{pendingBooking.date}</span>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                        <div className="flex justify-between">
+                            <span>Time:</span>
+                            {pendingBooking && (
+                                <div className="space-y-2 text-sm">
+                                    <div className="flex justify-between">
+                                        <span>{pendingBooking.time}</span>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                        <div className="flex justify-between">
+                            <span>Service:</span>
+                            {pendingBooking && (
+                                <div className="space-y-2 text-sm">
+                                    <div className="flex justify-between">
+                                        <span>{pendingBooking.serviceName}</span>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
