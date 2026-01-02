@@ -23,7 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 .env
-lecharme-482300-deb18f3af005.json
+# lecharme-482300-deb18f3af005.json
 out.txt
 err.txt
 
