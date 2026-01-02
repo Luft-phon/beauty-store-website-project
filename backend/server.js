@@ -66,18 +66,24 @@ app.post('/api/calendar/create-event', async (req, res) => {
             return res.status(400).json({ error: 'Missing required fields' });
         }
 
-        // Expect: date = YYYY-MM-DD, time = HH:mm
+        // date: YYYY-MM-DD, time: HH:mm
         const [year, month, day] = date.split('-').map(Number);
         const [hours, minutes] = time.split(':').map(Number);
 
-        if (
-            [year, month, day, hours, minutes].some(n => Number.isNaN(n))
-        ) {
+        if ([year, month, day, hours, minutes].some(Number.isNaN)) {
             return res.status(400).json({ error: 'Invalid date or time format' });
         }
 
-        const startDateTime = new Date(year, month - 1, day, hours, minutes);
-        const endDateTime = new Date(startDateTime.getTime() + 90 * 60000);
+        // 🔹 Create UTC Date
+        const startDateTime = `${date}T${time}:00`;
+
+        // 60 minutes
+        const [h, m] = time.split(':').map(Number);
+        const endHour = h + 1;
+        const endTime = `${String(endHour).padStart(2, '0')}:${m}`;
+
+        const endDateTime = `${date}T${endTime}:00`;
+
 
         const authClient = await getAuthClient();
         const calendar = google.calendar({ version: 'v3', auth: authClient });
@@ -87,19 +93,12 @@ app.post('/api/calendar/create-event', async (req, res) => {
             location: '7862 Warner Ave Ste A, Huntington Beach, CA',
             description: `Client: ${clientName}\nEmail: ${clientEmail}\nService: ${serviceName}`,
             start: {
-                dateTime: startDateTime.toISOString(),
+                dateTime: startDateTime,
                 timeZone: 'America/Los_Angeles',
             },
             end: {
-                dateTime: endDateTime.toISOString(),
+                dateTime: endDateTime,
                 timeZone: 'America/Los_Angeles',
-            },
-            reminders: {
-                useDefault: false,
-                overrides: [
-                    { method: 'email', minutes: 24 * 60 },
-                    { method: 'popup', minutes: 30 },
-                ],
             },
         };
 
@@ -115,6 +114,7 @@ app.post('/api/calendar/create-event', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
 
 
 // API Endpoint to do payment
