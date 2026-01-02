@@ -61,40 +61,39 @@ const getAuthClient = async () => {
 app.post('/api/calendar/create-event', async (req, res) => {
     try {
         const { clientName, clientEmail, serviceName, date, time } = req.body;
+
         if (!clientName || !clientEmail || !serviceName || !date || !time) {
             return res.status(400).json({ error: 'Missing required fields' });
         }
+
+        // Expect: date = YYYY-MM-DD, time = HH:mm
+        const [year, month, day] = date.split('-').map(Number);
+        const [hours, minutes] = time.split(':').map(Number);
+
+        if (
+            [year, month, day, hours, minutes].some(n => Number.isNaN(n))
+        ) {
+            return res.status(400).json({ error: 'Invalid date or time format' });
+        }
+
+        const startDateTime = new Date(year, month - 1, day, hours, minutes);
+        const endDateTime = new Date(startDateTime.getTime() + 90 * 60000);
+
         const authClient = await getAuthClient();
         const calendar = google.calendar({ version: 'v3', auth: authClient });
-        // Parse date and time to create start/end ISO strings
-        // Time format expected: "HH:MM AM/PM" (e.g. "09:00 AM")
-        const dateParts = date.split('-'); // YYYY-MM-DD
-        const timeParts = time.match(/(\d+):(\d+) (AM|PM)/);
-        let startDateTime = new Date();
-        if (dateParts && timeParts) {
-            let hours = parseInt(timeParts[1]);
-            const minutes = parseInt(timeParts[2]);
-            const isPM = timeParts[3] === 'PM';
-            if (isPM && hours !== 12) hours += 12;
-            if (!isPM && hours === 12) hours = 0;
-            // Note: Month is 0-indexed in JS Date
-            startDateTime = new Date(parseInt(dateParts[0]), parseInt(dateParts[1]) - 1, parseInt(dateParts[2]), hours, minutes);
-        }
-        const endDateTime = new Date(startDateTime.getTime() + 90 * 60000); // Default 90 minutes duration
-        // Create the event
+
         const event = {
             summary: `Appointment: ${serviceName} - ${clientName}`,
             location: '7862 Warner Ave Ste A, Huntington Beach, CA',
             description: `Client: ${clientName}\nEmail: ${clientEmail}\nService: ${serviceName}`,
             start: {
                 dateTime: startDateTime.toISOString(),
-                timeZone: 'America/Los_Angeles', // Adjust to your timezone
+                timeZone: 'America/Los_Angeles',
             },
             end: {
                 dateTime: endDateTime.toISOString(),
                 timeZone: 'America/Los_Angeles',
             },
-            description: `Client: ${clientName}\nEmail: ${clientEmail}\nService: ${serviceName}`,
             reminders: {
                 useDefault: false,
                 overrides: [
@@ -103,18 +102,17 @@ app.post('/api/calendar/create-event', async (req, res) => {
                 ],
             },
         };
-        const calendarId = process.env.GOOGLE_CALENDAR_ID;
 
-        console.log(`Attempting to create event in calendar: ${calendarId}`);
         const response = await calendar.events.insert({
-            calendarId: calendarId,
+            calendarId: process.env.GOOGLE_CALENDAR_ID,
             requestBody: event,
         });
-        console.log('Event created:', response.data.htmlLink);
+
         res.status(200).json({ success: true, link: response.data.htmlLink });
+
     } catch (error) {
         console.error('Error creating event:', error);
-        res.status(500).json({ error: 'Internal Server Error', details: error.message });
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 });
 
