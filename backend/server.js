@@ -18,24 +18,43 @@ const SCOPES = ['https://www.googleapis.com/auth/calendar'];
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-    throw new Error('GOOGLE_APPLICATION_CREDENTIALS is not set');
-}
+// Google Calendar Credentials
+// Determine which method to use: JSON content env var (Cloud) or File path env var (Local)
+let KEYFILEPATH;
+const GOOGLE_CREDENTIALS_JSON = process.env.GOOGLE_CREDENTIALS_JSON;
+const GOOGLE_APPLICATION_CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS;
 
-const KEYFILEPATH = path.resolve(process.env.GOOGLE_APPLICATION_CREDENTIALS);
+if (!GOOGLE_CREDENTIALS_JSON && !GOOGLE_APPLICATION_CREDENTIALS) {
+    console.warn('WARNING: Neither GOOGLE_CREDENTIALS_JSON nor GOOGLE_APPLICATION_CREDENTIALS is set. Calendar features will fail.');
+} else if (GOOGLE_APPLICATION_CREDENTIALS) {
+    KEYFILEPATH = path.resolve(GOOGLE_APPLICATION_CREDENTIALS);
+}
 
 
 // Helper to get authenticated JWT client
 const getAuthClient = async () => {
     try {
-        const auth = new google.auth.GoogleAuth({
-            keyFile: KEYFILEPATH,
-            scopes: SCOPES,
-        });
-        return await auth.getClient();
+        if (GOOGLE_CREDENTIALS_JSON) {
+            const credentials = JSON.parse(GOOGLE_CREDENTIALS_JSON);
+            const auth = new google.auth.GoogleAuth({
+                credentials,
+                scopes: SCOPES,
+            });
+            return await auth.getClient();
+        }
+
+        if (KEYFILEPATH) {
+            const auth = new google.auth.GoogleAuth({
+                keyFile: KEYFILEPATH,
+                scopes: SCOPES,
+            });
+            return await auth.getClient();
+        }
+
+        throw new Error("No Google Credentials available.");
     } catch (error) {
         console.error("Error loading credentials:", error);
-        throw new Error("Failed to load Google credentials. Please check your .env file and ensure the JSON key file exists.");
+        throw new Error("Failed to load Google credentials. Check your environment variables.");
     }
 };
 // API Endpoint to create an event
@@ -101,7 +120,11 @@ app.post('/api/calendar/create-event', async (req, res) => {
 
 
 // API Endpoint to do payment
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
+if (!STRIPE_SECRET_KEY) {
+    console.warn('WARNING: STRIPE_SECRET_KEY is not set. Payment features will fail.');
+}
+const stripe = new Stripe(STRIPE_SECRET_KEY);
 
 const YOUR_DOMAIN = process.env.CLIENT_DOMAIN;
 
@@ -131,7 +154,8 @@ app.post('/create-checkout-session', async (req, res) => {
         res.json({ url: session.url });
     } catch (error) {
         console.error('Stripe error:', error);
-        res.status(500).json({ error: 'Failed to create checkout session' });
+        // Return actual error message for debugging purposes
+        res.status(500).json({ error: 'Failed to create checkout session', details: error.message });
     }
 });
 
