@@ -19,7 +19,7 @@ export const config = {
   api: {
     baseUrl: import.meta.env.VITE_API_BASE_URL || '/api',
     timeout: 10000, // 10 seconds
-    
+
     // Enable mock data (set to false when backend is ready)
     useMockData: import.meta.env.VITE_ENABLE_MOCK_DATA !== 'false',
   },
