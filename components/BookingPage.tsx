@@ -8,7 +8,6 @@ interface BookingPageProps {
     cart: Service[];
     clearCart: () => void;
 }
-
 const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
     const [booked, setBooked] = useState(false);
     const [apiStatus, setApiStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -42,7 +41,8 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
                 image: item.image
             }));
 
-            const response = await fetch('http://localhost:3001/create-checkout-session', {
+            // const response = await fetch(`http://localhost:3001/create-checkout-session`, {
+            const response = await fetch(`https://beauty-store-website-project.vercel.app/create-checkout-session`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
