@@ -24,8 +24,8 @@ const PaymentSuccess: React.FC = () => {
 
             try {
                 const bookingData = JSON.parse(pendingBooking);
-                const response = await fetch(`http://localhost:3001/api/calendar/create-event`, {
-                    // const response = await fetch(`https://beauty-store-website-project.vercel.app/api/calendar/create-event`, {
+                // const response = await fetch(`http://localhost:3001/api/calendar/create-event`, {
+                const response = await fetch(`https://beauty-store-website-project.onrender.com/api/calendar/create-event`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
