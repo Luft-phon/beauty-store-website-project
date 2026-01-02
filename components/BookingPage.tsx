@@ -149,15 +149,15 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
                             <div>
                                 <label className="block text-xs uppercase tracking-widest text-stone-500 mb-2">{t.booking.selectTime}</label>
                                 <select name="time" className="w-full bg-stone-50 border border-stone-200 p-3 rounded focus:border-gold-500 outline-none">
-                                    <option>09:00 AM</option>
-                                    <option>10:00 AM</option>
-                                    <option>11:00 AM</option>
-                                    <option>12:00 PM</option>
-                                    <option>01:00 PM</option>
-                                    <option>02:00 PM</option>
-                                    <option>03:00 PM</option>
-                                    <option>04:00 PM</option>
-                                    <option>05:00 PM</option>
+                                    <option value="09:00">09:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">01:00 PM</option>
+                                    <option value="14:00">02:00 PM</option>
+                                    <option value="15:00">03:00 PM</option>
+                                    <option value="16:00">04:00 PM</option>
+                                    <option value="17:00">05:00 PM</option>
                                 </select>
                             </div>
                         </div>
