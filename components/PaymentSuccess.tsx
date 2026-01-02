@@ -24,8 +24,8 @@ const PaymentSuccess: React.FC = () => {
 
             try {
                 const bookingData = JSON.parse(pendingBooking);
-
-                const response = await fetch('http://localhost:3001/api/calendar/create-event', {
+                // const response = await fetch(`http://localhost:3001/api/calendar/create-event`, {
+                const response = await fetch(`https://beauty-store-website-project.vercel.app/api/calendar/create-event`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -58,8 +58,8 @@ const PaymentSuccess: React.FC = () => {
         <div className="min-h-[80vh] flex items-center justify-center bg-stone-50 px-4">
             <FadeInSection className="max-w-xl w-full bg-white p-8 md:p-12 rounded-sm shadow-xl border border-stone-100 text-center">
                 <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 border ${status === 'success' ? 'bg-green-50 border-green-100' :
-                        status === 'error' ? 'bg-red-50 border-red-100' :
-                            'bg-gold-50 border-gold-100'
+                    status === 'error' ? 'bg-red-50 border-red-100' :
+                        'bg-gold-50 border-gold-100'
                     }`}>
                     {status === 'success' && <CheckCircle size={48} className="text-green-600" />}
                     {status === 'error' && <XCircle size={48} className="text-red-600" />}
@@ -80,8 +80,8 @@ const PaymentSuccess: React.FC = () => {
                         <div className="flex justify-between">
                             <span>Status:</span>
                             <span className={`${status === 'success' ? 'text-green-600' :
-                                    status === 'error' ? 'text-red-600' :
-                                        'text-gold-600'
+                                status === 'error' ? 'text-red-600' :
+                                    'text-gold-600'
                                 } font-bold uppercase tracking-wider`}>
                                 {status === 'success' ? 'Confirmed' : status === 'error' ? 'Attention Needed' : 'Finalizing...'}
                             </span>
