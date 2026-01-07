@@ -36,7 +36,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       },
       sections: {
         ourServices: 'Our Services',
-        ourServicesDesc: 'Discover our comprehensive range of beauty and wedding services, crafted to perfection by our expert team.',
+        ourServicesDesc: 'Discover our range of beauty and wedding services.',
         featuredServices: 'Featured Services',
         featuredServicesDesc: 'Our most popular services, trusted by thousands of satisfied clients.',
         whyChooseUs: 'Why Choose Us',
