@@ -153,9 +153,7 @@ textarea.border-stone-200 {
 }
 
 /* Gradient overlays - maintain but work with theme */
-.bg-gradient-to-b {
-  /* Gradients remain as is for hero sections */
-}
+
 
 /* Price tags and badges */
 .bg-red-500 {
@@ -269,4 +267,37 @@ svg {
 
 .theme-accent-bg {
   background-color: var(--color-accent);
+}
+
+/* Lenis Smooth Scrolling */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Hide Scrollbar */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }

@@ -29,7 +29,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
   const isActive = (path: string) => location.pathname === path;
 
   const navClasses = (path: string) => `
-    uppercase tracking-widest text-sm font-semibold transition-colors duration-300
+    font-serif uppercase tracking-widest text-base font-semibold transition-colors duration-300
     ${isActive(path) ? 'text-gold-500' : 'text-stone-600 hover:text-gold-500'}
   `;
 
@@ -63,12 +63,12 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
                 {/* Dropdown Menu */}
                 <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 w-48 transition-all duration-300 ${isServicesMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
                   <div className="bg-white shadow-xl border border-stone-100 rounded-sm overflow-hidden py-2 w-64">
-                    <Link to="/services" className="block px-4 py-3 text-xs uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">All Services</Link>
-                    <Link to="/services/party" className="block px-4 py-3 text-xs uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Party / Event Makeup</Link>
-                    <Link to="/services/photoshoot" className="block px-4 py-3 text-xs uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Photoshoot / Stage</Link>
-                    <Link to="/services/bridal" className="block px-4 py-3 text-xs uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Bridal Packages</Link>
-                    <Link to="/services/guest" className="block px-4 py-3 text-xs uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Guest Services</Link>
-                    <Link to="/services/education" className="block px-4 py-3 text-xs uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Personal Makeup Classes</Link>
+                    <Link to="/services" className="block px-4 py-3 text-sm uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">All Services</Link>
+                    <Link to="/services/party" className="block px-4 py-3 text-sm uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Party / Event Makeup</Link>
+                    <Link to="/services/photoshoot" className="block px-4 py-3 text-sm uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Photoshoot / Stage</Link>
+                    <Link to="/services/bridal" className="block px-4 py-3 text-sm uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Bridal Packages</Link>
+                    <Link to="/services/guest" className="block px-4 py-3 text-sm uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Guest Services</Link>
+                    <Link to="/services/education" className="block px-4 py-3 text-sm uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Personal Makeup Classes</Link>
                   </div>
                 </div>
               </div>
@@ -85,7 +85,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
                 )}
               </Link>
 
-              <Link to="/booking" className="rounded-[3px] px-5 py-2 bg-stone-900 text-white text-sm uppercase tracking-widest hover:bg-gold-500 transition-colors">
+              <Link to="/booking" className="rounded-[3px] px-5 py-2 bg-stone-900 text-white text-base uppercase tracking-widest hover:bg-gold-500 transition-colors">
                 {t.nav.booking}
               </Link>
 
