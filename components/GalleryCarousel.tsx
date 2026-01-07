@@ -170,12 +170,6 @@ export const GalleryCarousel: React.FC<GalleryCarouselProps> = ({ images }) => {
                 </button>
             </div>
 
-            {/* Floating helper */}
-            <div className="absolute bottom-4 right-4 md:right-0">
-                <button className="w-10 h-10 rounded-full border border-stone-300 flex items-center justify-center text-stone-400 hover:bg-stone-900 hover:text-white hover:border-transparent transition-all">
-                    <ArrowLeft className="w-4 h-4 rotate-90" />
-                </button>
-            </div>
         </div>
     );
 };

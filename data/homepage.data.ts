@@ -32,7 +32,7 @@ export interface WhyChooseUsItem {
   id: string;
   title: string;
   description: string;
-  icon: 'shield' | 'heart' | 'sparkles' | 'trophy';
+  icon: 'shield' | 'heart' | 'sparkles' | 'trophy' | 'award';
 }
 
 // Hero Section Data
@@ -116,7 +116,7 @@ export const MOCK_WHY_CHOOSE_US: WhyChooseUsItem[] = [
     id: 'experts',
     title: 'Expert Team',
     description: 'Our certified professionals bring years of experience and passion to every service.',
-    icon: 'trophy'
+    icon: 'award'
   },
   {
     id: 'hygiene',

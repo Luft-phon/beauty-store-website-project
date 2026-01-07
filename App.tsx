@@ -80,31 +80,32 @@ const App: React.FC = () => {
 
     const getIconForCategory = (iconType: string) => {
       switch (iconType) {
-        case 'star': return <Star size={32} />;
+        case 'star': return <Star size={32} strokeWidth={1} />;
         case 'circle': return <div className="w-8 h-8 rounded-full border-2 border-gold-500" />;
         case 'brush': return <div className="w-8 h-1 bg-gold-500 rotate-45" />;
-        case 'camera': return <Camera size={32} />;
-        default: return <Star size={32} />;
+        case 'camera': return <Camera size={32} strokeWidth={1} />;
+        default: return <Star size={32} strokeWidth={1} />;
       }
     };
 
     const getIconForStat = (iconType: string) => {
       switch (iconType) {
-        case 'users': return <Users size={32} />;
-        case 'star': return <Star size={32} />;
-        case 'calendar': return <Calendar size={32} />;
-        case 'award': return <Award size={32} />;
-        default: return <Star size={32} />;
+        case 'users': return <Users size={32} strokeWidth={1} />;
+        case 'star': return <Star size={32} strokeWidth={1} />;
+        case 'calendar': return <Calendar size={32} strokeWidth={1} />;
+        case 'award': return <Award size={32} strokeWidth={1} />;
+        default: return <Star size={32} strokeWidth={1} />;
       }
     };
 
     const getIconForFeature = (iconType: string) => {
       switch (iconType) {
-        case 'trophy': return <Trophy size={40} />;
-        case 'shield': return <Shield size={40} />;
-        case 'heart': return <Heart size={40} />;
-        case 'sparkles': return <Sparkles size={40} />;
-        default: return <Trophy size={40} />;
+        case 'trophy': return <Trophy size={48} strokeWidth={1} />;
+        case 'shield': return <Shield size={48} strokeWidth={1} />;
+        case 'heart': return <Heart size={48} strokeWidth={1} />;
+        case 'sparkles': return <Sparkles size={48} strokeWidth={1} />;
+        case 'award': return <Award size={48} strokeWidth={1} />;
+        default: return <Trophy size={48} strokeWidth={1} />;
       }
     };
 
@@ -162,19 +163,17 @@ const App: React.FC = () => {
 
         {/* Services Categories */}
         <FadeInSection className="max-w-7xl mx-auto px-4 py-16 md:py-24">
-          <div className="text-center mb-12 md:mb-16">
-            {/* <h2 className="font-serif uppercase text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">{t.homepage.sections.ourServices}</h2> */}
-            <span className="block font-serif text-5xl uppercase font-bold text-stone-900 tracking-tighter pb-4 ">
+          <div className="text-center mb-16 md:mb-24">
+            <span className="block font-serif text-4xl md:text-5xl uppercase tracking-wider text-[#4A3F35] mb-6">
               {t.homepage.sections.ourServices}
             </span>
-            <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
-            <p className="font-sen text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
+            <div className="w-12 h-[1px] bg-[#C8997C] mx-auto mb-8"></div>
+            <p className="font-sen text-stone-500 uppercase tracking-widest text-sm md:text-base max-w-2xl mx-auto px-4">
               {t.homepage.sections.ourServicesDesc}
             </p>
-
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-[1400px] mx-auto">
             {MOCK_CATEGORIES.map((category) => {
               const categoryTranslation = category.id === 'makeup' ? t.homepage.categories.makeup :
                 category.id === 'Photoshoot' ? t.homepage.categories.photoshoot :
@@ -182,20 +181,21 @@ const App: React.FC = () => {
                     t.homepage.categories.photography;
               return (
                 <Link
+                  key={category.id}
                   to="/services"
-                  className="group flex flex-col items-center text-center p-6 md:p-8 border border-stone-100 hover:shadow-xl hover:border-gold-200 transition-all duration-300 rounded-sm bg-white"
+                  className="group flex flex-col items-center text-center p-10 border-[0.5px] border-[#E5E0D8] bg-white transition-all duration-500 hover:border-[#C8997C] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
                 >
-                  <div className="mb-4 md:mb-6 text-gold-500 group-hover:scale-110 group-hover:text-gold-600 transition-all duration-300">
+                  <div className="mb-8 text-[#C8997C] group-hover:scale-110 transition-transform duration-500">
                     {getIconForCategory(category.icon)}
                   </div>
-                  <h3 className="font-serif text-xl md:text-2xl mb-3 text-stone-900 group-hover:text-gold-600 transition-colors">
+                  <h3 className="font-serif text-2xl text-[#4A3F35] mb-4 group-hover:text-[#C8997C] transition-colors tracking-wide">
                     {categoryTranslation.name}
                   </h3>
-                  <p className="font-sen text-stone-500 text-sm leading-relaxed mb-4">
+                  <p className="font-sen text-stone-500 text-sm leading-7 mb-8 min-h-[56px]">
                     {categoryTranslation.description}
                   </p>
-                  <span className="text-gold-600 text-sm font-medium uppercase tracking-wider group-hover:gap-2 flex items-center gap-1 transition-all">
-                    {t.homepage.buttons.explore} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  <span className="text-[#4A3F35] text-xs font-bold uppercase tracking-[0.2em] border-b border-[#E5E0D8] pb-2 group-hover:text-[#C8997C] group-hover:border-[#C8997C] transition-all duration-300">
+                    {t.homepage.buttons.explore}
                   </span>
                 </Link>
               );
@@ -203,137 +203,83 @@ const App: React.FC = () => {
           </div>
         </FadeInSection>
 
-        {/* Featured Services */}
-        {/* <FadeInSection className="bg-stone-50 py-16 md:py-24">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-12 md:mb-16">
-              <span className="block font-serif text-5xl uppercase font-bold text-stone-900 tracking-tighter pb-4 ">
-                {t.homepage.sections.featuredServices}
-              </span>
-              <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
-              <p className="font-sen text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
-                {t.homepage.sections.featuredServicesDesc}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {featuredServices.map((service) => (
-                <div key={service.id} className="bg-white rounded-sm overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 group">
-                  <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={service.image}
-                      alt={service.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-4 right-4 bg-gold-500 text-white px-3 py-1 text-sm font-medium rounded-full">
-                      ${service.price}
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <div className="text-xs uppercase tracking-wider text-gold-600 mb-2">{service.category}</div>
-                    <h3 className="font-serif text-xl md:text-2xl text-stone-900 mb-3">{service.name}</h3>
-                    <p className="text-stone-600 text-sm mb-4 line-clamp-2">{service.description}</p>
-                    <div className="flex gap-3">
-                      <Link
-                        to={`/services/${service.id}`}
-                        className="flex-1 text-center py-2 px-4 border border-stone-300 text-stone-700 hover:bg-stone-50 transition-colors text-sm font-medium"
-                      >
-                        {t.homepage.buttons.learnMore}
-                      </Link>
-                      <button
-                        onClick={() => addToCart(service)}
-                        className="flex-1 py-2 px-4 bg-gold-500 text-white hover:bg-gold-600 transition-colors text-sm font-medium"
-                      >
-                        {t.homepage.buttons.addToCart}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center mt-10 md:mt-12">
-              <Link
-                to="/services"
-                className="inline-flex items-center gap-2 px-6 md:px-8 py-3 border-2 border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white transition-all duration-300 text-sm font-medium uppercase tracking-wider group"
-              >
-                {t.homepage.buttons.viewAll}
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </div>
-        </FadeInSection> */}
-
-        {/* Why Choose Us */}
-        <FadeInSection className="max-w-7xl mx-auto px-4 py-16 md:py-24">
-          <div className="text-center mb-12 md:mb-16">
-            {/* <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-4">{t.homepage.sections.whyChooseUs}</h2> */}
-            <span className="block font-serif text-5xl uppercase font-bold text-stone-900 tracking-tighter pb-4 ">
-              {t.homepage.sections.whyChooseUs}
-            </span>
-            <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
-            <p className="font-sen text-stone-600 max-w-2xl mx-auto text-base md:text-lg px-4">
-              {t.homepage.sections.whyChooseUsDesc}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {MOCK_WHY_CHOOSE_US.map((item) => {
-              const featureTranslation = item.id === 'quality' ? t.homepage.features.quality :
-                item.id === 'experts' ? t.homepage.features.experts :
-                  item.id === 'hygiene' ? t.homepage.features.hygiene :
-                    t.homepage.features.personalized;
-              return (
-                <div key={item.id} className="text-center p-6 group hover:bg-stone-50 transition-colors duration-300 rounded-sm">
-                  <div className="text-gold-500 flex justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {getIconForFeature(item.icon)}
-                  </div>
-                  <h3 className="font-sen font-serif text-xl md:text-2xl text-stone-900 mb-3">{featureTranslation.title}</h3>
-                  <p className="font-sen text-stone-600 text-sm leading-relaxed">{featureTranslation.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </FadeInSection>
 
         {/* How It Works */}
-        <FadeInSection className="bg-gradient-to-br from-stone-900 to-stone-800 text-white py-16 md:py-24">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-12 md:mb-16">
-              {/* <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-4">{t.homepage.sections.howItWorks}</h2> */}
-              <span className="block font-serif text-5xl uppercase font-bold tracking-tighter pb-4 ">
+        <FadeInSection className="bg-[#FAF9F6] py-24">
+          <div className="max-w-[1400px] mx-auto px-4">
+            <div className="text-center mb-24">
+              <span className="block font-serif text-4xl md:text-5xl uppercase tracking-wider text-[#4A3F35] mb-6">
                 {t.homepage.sections.howItWorks}
               </span>
-              <div className="w-20 h-0.5 bg-gold-500 mx-auto mb-6"></div>
-              <p className="font-sen text-stone-300 max-w-2xl mx-auto text-base md:text-lg px-4">
+              <div className="w-12 h-[1px] bg-[#C8997C] mx-auto mb-8"></div>
+              <p className="font-sen text-stone-500 uppercase tracking-widest text-sm md:text-base max-w-2xl mx-auto px-4">
                 {t.homepage.sections.howItWorksDesc}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative">
+              {/* Connector Line (Desktop) */}
+              <div className="hidden lg:block absolute top-[2.5rem] left-[12%] right-[12%] h-[1px] bg-[#E5E0D8]"></div>
+
               {MOCK_PROCESS_STEPS.map((step, index) => {
                 const stepTranslation = step.id === 'booking' ? t.homepage.process.step1 :
                   step.id === 'consultation' ? t.homepage.process.step2 :
                     step.id === 'service' ? t.homepage.process.step3 :
                       t.homepage.process.step4;
+
                 return (
-                  <div key={step.id} className="relative">
-                    <div className="text-center">
-                      <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 rounded-full border-2 border-gold-500 flex items-center justify-center bg-stone-800">
-                        <span className="font-serif text-2xl md:text-3xl text-gold-500">{step.step}</span>
-                      </div>
-                      <h3 className="font-serif text-xl md:text-2xl mb-3">{stepTranslation.title}</h3>
-                      <p className="font-sen text-stone-300 text-sm leading-relaxed">{stepTranslation.description}</p>
+                  <div key={step.id} className="relative flex flex-col items-center text-center group">
+                    {/* Number Circle Background */}
+                    <div className="relative mb-8 bg-[#FAF9F6] px-4 z-10">
+                      <span className="font-serif text-6xl text-[#E5E0D8] group-hover:text-[#C8997C] transition-colors duration-500">
+                        0{step.step}
+                      </span>
                     </div>
-                    {index < MOCK_PROCESS_STEPS.length - 1 && (
-                      <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gold-500/30 -translate-x-1/2"></div>
-                    )}
+
+                    <h3 className="font-serif text-2xl text-[#4A3F35] mb-4 tracking-wide">
+                      {stepTranslation.title}
+                    </h3>
+                    <p className="font-sen text-stone-500 text-sm leading-7 max-w-[250px] mx-auto">
+                      {stepTranslation.description}
+                    </p>
                   </div>
                 );
               })}
             </div>
           </div>
         </FadeInSection>
+        {/* Why Choose Us */}
+        <FadeInSection className="max-w-7xl mx-auto px-4 py-16 md:py-24">
+          <div className="text-center mb-16 md:mb-24">
+            <span className="block font-serif text-4xl md:text-5xl uppercase tracking-wider text-[#4A3F35] mb-6">
+              {t.homepage.sections.whyChooseUs}
+            </span>
+            <div className="w-12 h-[1px] bg-[#C8997C] mx-auto mb-8"></div>
+            <p className="font-sen text-stone-500 uppercase tracking-widest text-sm md:text-base max-w-2xl mx-auto px-4">
+              {t.homepage.sections.whyChooseUsDesc}
+            </p>
+          </div>
+
+          <div className="max-w-[1400px] mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+            {MOCK_WHY_CHOOSE_US.map((item) => {
+              const featureTranslation = item.id === 'quality' ? t.homepage.features.quality :
+                item.id === 'experts' ? t.homepage.features.experts :
+                  item.id === 'hygiene' ? t.homepage.features.hygiene :
+                    t.homepage.features.personalized;
+              return (
+                <div key={item.id} className="flex flex-col items-center text-center group">
+                  <div className="mb-6 text-[#C8997C] transition-transform duration-500 group-hover:scale-110">
+                    {getIconForFeature(item.icon)}
+                  </div>
+                  <h3 className="font-serif text-2xl text-[#4A3F35] mb-4 mt-2">{featureTranslation.title}</h3>
+                  <p className="font-sen text-stone-500 text-sm leading-7 max-w-xs mx-auto">{featureTranslation.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </FadeInSection>
+
+
 
         {/* Testimonials */}
         <FadeInSection>
