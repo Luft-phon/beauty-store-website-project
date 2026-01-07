@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import Lenis from 'lenis';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Language, Service, Theme } from './types';
 import { INITIAL_SERVICES, TRANSLATIONS, GALLERIES } from './constants';
@@ -14,12 +15,15 @@ import PaymentForm from './components/PaymentForm';
 import TestimonialsSection from './components/TestimonialsSection';
 import BookingPage from './components/BookingPage';
 import PaymentSuccess from './components/PaymentSuccess';
+import LoadingIntro from './components/LoadingIntro';
 import PaymentCanceled from './components/PaymentCanceled';
 import PaymentError from './components/PaymentError';
 import { Camera, Star, Calendar, MapPin, ShoppingBag, Trash2, ArrowRight, Users, Award, Shield, Heart, Sparkles, Trophy, CheckCircle } from 'lucide-react';
 import { FadeInSection } from './components/FadeInSection';
+import { GalleryCarousel } from './components/GalleryCarousel';
 
 const App: React.FC = () => {
+  const [showIntro, setShowIntro] = useState(true);
   const [currentLang, setCurrentLang] = useState<Language>(Language.EN);
   const [services, setServices] = useState<Service[]>(INITIAL_SERVICES);
   const [cart, setCart] = useState<Service[]>([]);
@@ -28,6 +32,28 @@ const App: React.FC = () => {
   // Apply Light Sand theme on mount (permanent theme)
   useEffect(() => {
     applyThemeVariables(Theme.LIGHT_SAND);
+  }, []);
+
+  // Initialize Lenis smooth scrolling
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
   }, []);
 
   const handleUpdateService = (updated: Service) => {
@@ -462,14 +488,10 @@ const App: React.FC = () => {
       <span className="block font-serif text-5xl uppercase text-center font-bold text-stone-900 tracking-tighter pb-4 ">
         {t.nav.gallery}
       </span>
-      <p className="font-sen text-center text-stone-500 mb-12 tracking-widest text-sm">Real Clients, Real Moments</p>
-      <div className="columns-1 md:columns-3 gap-4 space-y-4">
-        {GALLERIES.map((src, idx) => (
-          <div key={idx} className="break-inside-avoid overflow-hidden rounded-sm">
-            <img src={src} alt={`Gallery ${idx}`} className="w-full hover:opacity-90 transition-opacity duration-300" />
-          </div>
-        ))}
-      </div>
+      <p className="font-sen text-center text-stone-500 tracking-widest text-sm">Real Clients, Real Moments</p>
+
+      <GalleryCarousel images={GALLERIES} />
+
     </FadeInSection>
   );
 
@@ -605,6 +627,7 @@ const App: React.FC = () => {
         cartCount={cart.length}
         services={services}
       >
+        {showIntro && <LoadingIntro onComplete={() => setShowIntro(false)} />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/" element={<Home />} />
