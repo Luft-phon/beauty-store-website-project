@@ -41,9 +41,10 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
           <div className="flex justify-between items-center h-20">
 
             {/* Logo */}
-            <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => navigate('/')}>
-              {/* <span className="font-serif text-2xl font-bold text-stone-900 tracking-tighter">LE'CHARME</span> */}
-              <img src="/images/logo/logo3.png" alt="LE'CHARME" className="w-24 h-24 object-cover rounded-md" />
+            <div className="flex-shrink-0 flex items-center cursor-pointer flex-col" onClick={() => navigate('/')}>
+              <span className="font-serif text-2xl font-bold text-stone-900 tracking-tighter">LE ' CHARME</span>
+              <span className="font-serif text-1xl font-bold text-stone-900 tracking-tighter tracking-widest uppercase">Beauté Boutique</span>
+              {/* <img src="/images/logo/logo4.png" alt="LE'CHARME" className="w-24 h-24 object-cover rounded-md" /> */}
             </div>
 
             {/* Desktop Nav */}
@@ -181,9 +182,11 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
             <div className="flex-1 max-w-lg">
               {/* Logo */}
               <div className="mb-12">
-                <Link to="/" className="font-bebasNeue text-6xl tracking-tighter uppercase font-bold text-black" onClick={() => window.scrollTo(0, 0)}>
+                {/* <Link to="/" className="font-bebasNeue text-6xl tracking-tighter uppercase font-bold text-black" onClick={() => window.scrollTo(0, 0)}>
                   LE'CHARME
-                </Link>
+                </Link> */}
+                <img src="/images/logo/logo4.png" alt="LE'CHARME" className="w-[250px] h-[100px] object-cover rounded-md" />
+
               </div>
 
               {/* Newsletter */}

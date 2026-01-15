@@ -161,13 +161,14 @@ export const MOCK_PROCESS_STEPS: ProcessStep[] = [
     step: 3,
     title: 'Experience',
     description: 'Relax and enjoy your service in our comfortable, luxurious environment.'
-  },
-  {
-    id: 'followUp',
-    step: 4,
-    title: 'Follow-Up',
-    description: 'Receive aftercare instructions and schedule any follow-up appointments.'
   }
+  // ,
+  // {
+  //   id: 'followUp',
+  //   step: 4,
+  //   title: 'Follow-Up',
+  //   description: 'Receive aftercare instructions and schedule any follow-up appointments.'
+  // }
 ];
 
 // CTA Banner

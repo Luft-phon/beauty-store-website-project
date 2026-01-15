@@ -114,11 +114,21 @@ const App: React.FC = () => {
         {/* Hero */}
         <div className="relative h-[85vh] md:h-[90vh] w-full overflow-hidden">
           <div className="absolute inset-0">
-            <img
+            {/* <img
               src="https://picsum.photos/id/325/1920/1080"
               alt="Hero Background"
               className="w-full h-full object-cover"
-            />
+            /> */}
+            <video
+              src="/images/logo/1.MP4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+            </video>
+
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
           </div>
           <FadeInSection className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
@@ -217,9 +227,9 @@ const App: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 relative">
               {/* Connector Line (Desktop) */}
-              <div className="hidden lg:block absolute top-[2.5rem] left-[12%] right-[12%] h-[1px] bg-[#E5E0D8]"></div>
+              <div className="hidden lg:block absolute top-[2.5rem] left-[16.5%] right-[16.5%] h-[1px] bg-[#E5E0D8]"></div>
 
               {MOCK_PROCESS_STEPS.map((step, index) => {
                 const stepTranslation = step.id === 'booking' ? t.homepage.process.step1 :
@@ -228,7 +238,7 @@ const App: React.FC = () => {
                       t.homepage.process.step4;
 
                 return (
-                  <div key={step.id} className="relative flex flex-col items-center text-center group">
+                  <div key={step.id} className="justify-center relative flex flex-col items-center text-center group">
                     {/* Number Circle Background */}
                     <div className="relative mb-8 bg-[#FAF9F6] px-4 z-10">
                       <span className="font-serif text-6xl text-[#E5E0D8] group-hover:text-[#C8997C] transition-colors duration-500">
@@ -329,7 +339,7 @@ const App: React.FC = () => {
       <div className="relative h-[40vh] w-full overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://picsum.photos/id/64/1920/800"
+            src="/images/logo/cover.jpg"
             alt="About Hero"
             className="w-full h-full object-cover"
           />
@@ -359,7 +369,7 @@ const App: React.FC = () => {
           <div className="relative">
             <div className="absolute -top-4 -left-4 w-full h-full border-2 border-gold-200 z-0"></div>
             <img
-              src="/images/logo/owner.jpg"
+              src="/images/logo/logo.jpg"
               alt="Our Story"
               className="relative z-10 shadow-xl w-full"
             />
@@ -377,6 +387,27 @@ const App: React.FC = () => {
         </div>
 
         {/* Team */}
+        <div className="mb-20">
+          <span className="block font-serif text-5xl uppercase font-bold text-center text-stone-900 tracking-tighter pb-12">
+            {t.aboutPage.teamTitle}
+          </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {t.aboutPage.teamMembers?.map((member, index) => (
+              <div key={index} className="flex flex-col items-center text-center group">
+                <div className="relative mb-6 w-48 h-48 overflow-hidden rounded-full border-4 border-stone-100 shadow-lg group-hover:border-gold-500 transition-all duration-500">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+                <h3 className="font-serif text-2xl text-stone-900 font-bold mb-2">{member.name}</h3>
+                <span className="font-outfit text-xs uppercase tracking-widest text-gold-600 font-bold mb-4 block">{member.role}</span>
+                <p className="font-sen text-stone-500 text-sm leading-relaxed max-w-xs">{member.bio}</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
       </div>
     </FadeInSection>

@@ -130,6 +130,12 @@ export interface Translation {
     philosophyTitle: string;
     philosophyText: string;
     teamTitle: string;
+    teamMembers: Array<{
+      name: string;
+      role: string;
+      bio: string;
+      image: string;
+    }>;
   };
   contactPage: {
     text: string;

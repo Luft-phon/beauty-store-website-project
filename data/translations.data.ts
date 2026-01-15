@@ -23,7 +23,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       admin: 'Admin'
     },
     hero: {
-      title: 'Elegance in Every Detail',
+      title: 'Beauté in Every Detail',
       subtitle: 'Premier Makeup, Makeup Classes, & Photography',
       cta: 'Book Appointment'
     },
@@ -49,11 +49,11 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       categories: {
         makeup: {
           name: 'Makeup',
-          description: 'Professional makeup artistry for all occasions, from natural glam to bold bridal looks.'
+          description: 'Specialize in personalized, high-end makeup that enhances your natural beauty and brings out your best features. Every look is crafted with precision, premium products, and an eye for detail.'
         },
         photoshoot: {
-          name: 'Photoshoot / Stage',
-          description: 'Specialized makeup and styling for photoshoots, stage performances, and media events.'
+          name: 'Wedding Dresses',
+          description: 'From classic to modern designs, our wedding dresses are chosen with an eye for detail, quality, and elegance—helping every bride find the perfect gown that reflects her unique style and love story.'
         },
         partyEvent: {
           name: 'Party / Event',
@@ -61,7 +61,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         },
         photography: {
           name: 'Photography',
-          description: 'Capture your special moments with our professional wedding and portrait photography.'
+          description: 'We create timeless, elegant photographs that capture your beauty, emotions, and most meaningful moments—naturally and beautifully.'
         }
       },
       features: {
@@ -84,20 +84,20 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       },
       process: {
         step1: {
-          title: 'Book Online',
-          description: 'Choose your service and preferred date/time through our easy booking system.'
-        },
-        step2: {
           title: 'Consultation',
           description: 'Meet with our experts to discuss your vision and customize your service.'
         },
+        step2: {
+          title: 'Customer Satisfaction',
+          description: 'Receive aftercare instructions and schedule any follow-up appointments.'
+        },
         step3: {
-          title: 'Experience',
-          description: 'Relax and enjoy your service in our comfortable, luxurious environment.'
+          title: 'Appointment Booking',
+          description: 'Choose your service and preferred date/time through our easy booking system.'
         },
         step4: {
-          title: 'Follow-Up',
-          description: 'Receive aftercare instructions and schedule any follow-up appointments.'
+          title: 'In',
+          description: 'Relax and enjoy your service in our comfortable, luxurious environment.'
         }
       },
       cta: {
@@ -127,7 +127,51 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       text: 'With a passion for artistry and an eye for detail, our team is dedicated to delivering flawless, long-lasting results for weddings, special events, photoshoots, and everyday elegance. From soft, timeless beauty to modern, editorial glamour, every look is customized with precision, premium products, and professional techniques.',
       philosophyTitle: 'Our Philosophy',
       philosophyText: 'We believe confidence is the most beautiful accessory. Our mission is to ensure every client feels polished, radiant, and unforgettable—because your most important moments deserve nothing less than perfection.',
-      teamTitle: 'Meet The Artists'
+      teamTitle: 'Meet The Artists',
+      teamMembers: [
+        {
+          name: 'Avy Nguyen',
+          role: 'Founder & Master Artist',
+          bio: 'With over 10 years of experience in the beauty industry, Vivian specializes in bridal and editorial makeup, bringing out the unique beauty in every client.',
+          image: '/images/logo/owner.jpg'
+        },
+        {
+          name: 'Tien Truong',
+          role: 'Senior Makeup Artist',
+          bio: 'Jessica creates flawless, long-lasting looks for any occasion. Her attention to detail ensures you look perfect from every angle.',
+          image: '/images/member/truong.jpg'
+        },
+        {
+          name: 'Hannah Nguyen',
+          role: 'Hair Stylist',
+          bio: 'A master of modern and classic hairstyles, Michael can create the perfect updo or waves to complement your makeup and complete your look.',
+          image: '/images/member/hannah.jpg'
+        },
+        {
+          name: 'Vick Nguyen',
+          role: 'Photographer',
+          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.',
+          image: '/images/member/vick.jpg'
+        },
+        {
+          name: 'Violet Nguyen',
+          role: 'Photographer',
+          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.',
+          image: '/images/member/violet.jpg'
+        },
+        {
+          name: 'Yani Truong',
+          role: 'Photographer',
+          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.',
+          image: '/images/member/yani.jpg'
+        },
+        {
+          name: 'Nhi Nguyen',
+          role: 'Photographer',
+          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.',
+          image: '/images/member/nhi.jpg'
+        }
+      ]
     },
     servicePage: {
       addToCart: 'Add to Cart',
@@ -300,7 +344,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       admin: 'Quản Lý'
     },
     hero: {
-      title: 'Vẻ Đẹp Tinh Tế',
+      title: 'Đẹp Trong Từng Đường Nét',
       subtitle: 'Trang Điểm Cao Cấp, Lớp Học Trang Điểm & Nhiếp Ảnh',
       cta: 'Đặt Lịch Ngay'
     },
@@ -404,6 +448,50 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       philosophyTitle: 'Triết Lý Của Chúng Tôi',
       philosophyText: 'Chúng tôi tin rằng vẻ đẹp đích thực nằm ở những chi tiết. Dù là một đường phun xăm chân mày tinh tế, màu sơn móng hoàn hảo hay khoảnh khắc tình yêu được ghi lại, chúng tôi luôn tận tâm vì sự hoàn hảo.',
       teamTitle: 'Đội Ngũ Nghệ Sĩ',
+      teamMembers: [
+        {
+          name: 'Avy Nguyen',
+          role: 'Nhà Sáng Lập & Chuyên Gia Chính',
+          bio: 'Với hơn 10 năm kinh nghiệm trong ngành làm đẹp, Vivian chuyên về trang điểm cô dâu và tạp chí, làm nổi bật vẻ đẹp độc đáo của mỗi khách hàng.',
+          image: '/images/logo/owner.jpg'
+        },
+        {
+          name: 'Tien Truong',
+          role: 'Chuyên Gia Trang Điểm Cấp Cao',
+          bio: 'Jessica tạo ra những vẻ ngoài hoàn hảo, lâu trôi cho mọi dịp. Sự chú ý đến từng chi tiết của cô ấy đảm bảo bạn trông hoàn hảo từ mọi góc độ.',
+          image: '/images/member/truong.jpg'
+        },
+        {
+          name: 'Hannah Nguyen',
+          role: 'Nhà Tạo Mẫu Tóc',
+          bio: 'Bậc thầy của các kiểu tóc hiện đại và cổ điển, Michael có thể tạo ra kiểu tóc búi hoặc sóng nước hoàn hảo để bổ sung cho lớp trang điểm của bạn.',
+          image: '/images/member/hannah.jpg'
+        },
+        {
+          name: 'Vick Nguyen',
+          role: 'Nhiếp Ảnh Gia',
+          bio: 'David ghi lại những khoảnh khắc bằng con mắt nghệ thuật. Cách tiếp cận thoải mái của anh ấy giúp khách hàng cảm thấy dễ chịu, tạo ra những bức chân dung tự nhiên.',
+          image: '/images/member/vick.jpg'
+        },
+        {
+          name: 'Violet Nguyen',
+          role: 'Nhiếp Ảnh Gia',
+          bio: 'David ghi lại những khoảnh khắc bằng con mắt nghệ thuật. Cách tiếp cận thoải mái của anh ấy giúp khách hàng cảm thấy dễ chịu, tạo ra những bức chân dung tự nhiên.',
+          image: '/images/member/violet.jpg'
+        },
+        {
+          name: 'Yani Truong',
+          role: 'Photographer',
+          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.',
+          image: '/images/member/yani.jpg'
+        },
+        {
+          name: 'Nhi Nguyen',
+          role: 'Photographer',
+          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.',
+          image: '/images/member/nhi.jpg'
+        }
+      ],
       text: 'Được thành lập vào năm 2020, lecharmebeauteboutique bắt đầu với một tầm nhìn đơn giản: tạo ra một không gian nơi mọi khách hàng đều cảm thấy mình xinh đẹp nhất. Chúng tôi kết hợp kỹ thuật truyền thống với nghệ thuật hiện đại để mang lại'
     },
     servicePage: {
@@ -577,7 +665,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       admin: 'Admin'
     },
     hero: {
-      title: 'L\'élégance dans les détails',
+      title: 'La beauté dans chaque détail',
       subtitle: 'Maquillage Haut de Gamme, Cours de Maquillage & Photographie',
       cta: 'Prendre Rendez-vous'
     },
@@ -681,6 +769,48 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       philosophyTitle: 'Notre Philosophie',
       philosophyText: 'Nous croyons que la vraie beauté réside dans les détails. Qu\'il s\'agisse du trait précis d\'un tatouage de sourcils, de la teinte parfaite de vernis ou de la capture d\'un moment d\'amour, nous nous consacrons à la perfection.',
       teamTitle: 'Rencontrez Les Artistes',
+      teamMembers: [
+        {
+          name: 'Avy Nguyen',
+          role: 'Fondatrice & Artiste Principale',
+          bio: "Avec plus de 10 ans d'expérience dans l'industrie de la beauté, Vivian se spécialise dans le maquillage de mariée et éditorial.",
+          image: '/images/logo/owner.jpg'
+        },
+        {
+          name: 'Tien Truong',
+          role: 'Maquilleuse Senior',
+          bio: 'Jessica crée des looks impeccables et durables pour toutes les occasions.',
+          image: '/images/member/truong.jpg'
+        },
+        {
+          name: 'Hannah Nguyen',
+          role: 'Coiffeur Styliste',
+          bio: 'Un maître des coiffures modernes et classiques, Michael peut créer le chignon ou les ondulations parfaits.',
+          image: '/images/member/hannah.jpg'
+        },
+        {
+          name: 'Vick Nguyen',
+          role: 'Photographe',
+          bio: "David capture des moments avec un œil artistique. Son approche détendue met les clients à l'aise.",
+          image: '/images/member/vick.jpg'
+        },
+        {
+          name: 'Violet Nguyen',
+          role: 'Photographe',
+          bio: "David capture des moments avec un œil artistique. Son approche détendue met les clients à l'aise.",
+          image: '/images/member/violet.jpg'
+        }, {
+          name: 'Yani Truong',
+          role: 'Photographer',
+          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.',
+          image: '/images/member/yani.jpg'
+        }, {
+          name: 'Nhi Nguyen',
+          role: 'Photographer',
+          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.',
+          image: '/images/member/nhi.jpg'
+        }
+      ],
       text: 'Depuis sa fondation en 2020, lecharmebeauteboutique a commencé avec une vision simple : créer un espace où chaque client se sent la plus belle version d\'elle-même. Nous combinons techniques traditionnelles et art moderne.'
     },
     servicePage: {
@@ -854,7 +984,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       admin: '管理'
     },
     hero: {
-      title: '细节中的优雅',
+      title: '美，尽在每一个细节',
       subtitle: '高级化妆，化妆课程 & 摄影',
       cta: '立即预约'
     },
@@ -958,6 +1088,49 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       philosophyTitle: '我们的理念',
       philosophyText: '我们相信真正的美在于细节。无论是精准的眉部纹绣、完美的指甲色调，还是捕捉稍纵即逝的爱情时刻，我们都致力于追求完美。',
       teamTitle: '认识我们的艺术家',
+      teamMembers: [
+        {
+          name: 'Avy Nguyen',
+          role: '创始人 & 首席艺术家',
+          bio: 'Vivian 拥有超过 10 年的美容行业经验，专攻新娘和时尚杂志化妆。',
+          image: '/images/logo/owner.jpg'
+        },
+        {
+          name: 'Tien Truong',
+          role: '高级化妆师',
+          bio: 'Jessica 为任何场合打造无瑕、持久的妆容。',
+          image: '/images/member/truong.jpg'
+        },
+        {
+          name: 'Hannah Nguyen',
+          role: '发型师',
+          bio: '现代和经典发型的大师，Michael 可以打造完美的发髻或卷发。',
+          image: '/images/member/hannah.jpg'
+        },
+        {
+          name: 'Vick Nguyen',
+          role: '摄影师',
+          bio: 'David 用艺术的眼光捕捉瞬间。他轻松的方式让客户感到自在。',
+          image: '/images/member/vick.jpg'
+        },
+        {
+          name: 'Violet Nguyen',
+          role: '摄影师',
+          bio: 'David 用艺术的眼光捕捉瞬间。他轻松的方式让客户感到自在。',
+          image: '/images/member/violet.jpg'
+        },
+        {
+          name: 'Yani Truong',
+          role: 'Photographer',
+          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.',
+          image: '/images/member/yani.jpg'
+        }, {
+          name: 'Nhi Nguyen',
+          role: 'Photographer',
+          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.',
+          image: '/images/member/nhi.jpg'
+        }
+      ],
       text: '自 2020 年成立以来，lecharmebeauteboutique 的愿景很简单：创建一个让每位客户都感觉自己最美丽的空间。我们将传统技术与现代艺术相结合，提供卓越的效果。'
     },
     servicePage: {
@@ -1131,7 +1304,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       admin: '관리'
     },
     hero: {
-      title: '디테일의 우아함',
+      title: '모든 디테일에 담긴 아름다움',
       subtitle: '프리미엄 메이크업, 메이크업 클래스 & 사진 촬영',
       cta: '예약하기'
     },
@@ -1235,6 +1408,49 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       philosophyTitle: '우리의 철학',
       philosophyText: '우리는 진정한 아름다움이 디테일에 있다고 믿습니다. 정교한 눈썹 문신, 완벽한 매니큐어 색조, 찰나의 사랑을 포착하는 것까지, 우리는 완벽을 위해 헌신합니다.',
       teamTitle: '아티스트 소개',
+      teamMembers: [
+        {
+          name: 'Avy Nguyen',
+          role: '설립자 & 마스터 아티스트',
+          bio: '뷰티 업계에서 10년 이상의 경력을 가진 Vivian은 신부 및 화보 메이크업을 전문으로 합니다.',
+          image: '/images/logo/owner.jpg'
+        },
+        {
+          name: 'Tien Truong',
+          role: '수석 메이크업 아티스트',
+          bio: 'Jessica는 모든 경우에 완벽하고 오래 지속되는 룩을 만듭니다.',
+          image: '/images/member/truong.jpg'
+        },
+        {
+          name: 'Hannah Nguyen',
+          role: '헤어 스타일리스트',
+          bio: '현대적이고 클래식한 헤어스타일의 장인인 Michael은 완벽한 업두나 웨이브를 연출합니다.',
+          image: '/images/member/hannah.jpg'
+        },
+        {
+          name: 'Vick Nguyen',
+          role: '사진 작가',
+          bio: 'David는 예술적인 눈으로 순간을 포착합니다. 편안한 접근 방식은 고객을 편안하게 만듭니다.',
+          image: '/images/member/vick.jpg'
+        },
+        {
+          name: 'Violet Nguyen',
+          role: '사진 작가',
+          bio: 'David는 예술적인 눈으로 순간을 포착합니다. 편안한 접근 방식은 고객을 편안하게 만듭니다.',
+          image: '/images/member/violet.jpg'
+        },
+        {
+          name: 'Yani Truong',
+          role: 'Photographer',
+          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.',
+          image: '/images/member/yani.jpg'
+        }, {
+          name: 'Nhi Nguyen',
+          role: 'Photographer',
+          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.',
+          image: '/images/member/nhi.jpg'
+        }
+      ],
       text: '2020년에 설립된 lecharmebeauteboutique은 모든 고객이 자신의 가장 아름다운 모습을 발견할 수 있는 공간을 만들겠다는 단순한 비전으로 시작했습니다. 우리는 전통적인 기술과 현대적인 예술성을 결합하여 탁월한 결과를 제공합니다.'
     },
     servicePage: {
