@@ -132,7 +132,7 @@ export interface CompanyInfo {
 
 export const MOCK_COMPANY_INFO: CompanyInfo = {
   name: 'Le’Charme Beauté Boutique',
-  tagline: 'Elegance in Every Detail',
+  tagline: 'Beauté in Every Detail',
   email: 'lecharme.beauteboutique@gmail.com',
   phone: '(714)-466-4152',
   address: '7862 Warner Ave STE A, Huntington Beach, CA 92646 (Studio #23, inside Sola Salons)',

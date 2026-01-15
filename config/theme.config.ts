@@ -18,7 +18,8 @@ export const LIGHT_SAND_THEME: ThemeColors = {
     accentHover: '#B8896C',    // Darker terracotta
 
     // Backgrounds
-    background: '#F7F3EE',     // Soft sand white
+    // background: '#F7F3EE',     // Soft sand white
+    background: '#efe4de',     // Soft sand white
     // backgroundAlt: '#EBE5DC',  // Light taupe background
     backgroundAlt: '#FFFFFF',  // Light taupe background
 
