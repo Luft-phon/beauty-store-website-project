@@ -182,8 +182,8 @@ export const MOCK_SERVICES: Service[] = [
     id: 'convenience',
     category: 'Fee',
     name: 'Convenience Fee',
-    description: 'A travel and convenience fee applies to all appointments requiring travel, starting at s50+ (determined by distance from our location). Fees apply per makeup artist.',
-    price: 595,
+    description: 'A travel and convenience fee applies to all appointments requiring travel, starting at s50+ (determined by distance from our location). Fees apply per makeup artist.\n \n 0-10 Miles: $50 \n 11-25 Miles: $100 \n 26-35 Miles: $150 \n 31-40 Miles: $200 \n Out of state: $250 Flat Rate \nCustomers are required to take care of flight tickets, hotels and Meals for the Make Up Artist if the location is out of state)',
+    price: 0,
     image: 'https://picsum.photos/id/338/800/600'
   },
   // products
