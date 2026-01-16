@@ -300,11 +300,23 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       },
       'class-private': {
         name: '1:1 Private Makeup Class',
-        description: '3 days, 3 hours per day. Flexible dates/times. Includes skincare & makeup products, Professional Brush Set, Brush Case, Beauty Blender, and Mini Beauty Portrait Photoshoot.'
+        description: '3 days, 3 hours per day. Flexible dates/times. \n✔ Includes skincare & makeup products\n✔ Professional Brush Set, Brush Case, Beauty Blender, and Mini Beauty Portrait Photoshoot.'
       },
       'class-group': {
         name: 'Group Makeup Class (4 students)',
-        description: '3 days, 3 hours per day. Held on weekends (Fri-Sun). Includes skincare & makeup products, Professional Brush Set, Brush Case, Beauty Blender, and Mini Beauty Portrait Photoshoot.'
+        description: '3 days, 3 hours per day. Held on weekends (Fri-Sun). \n✔ Includes skincare & makeup products\n✔ Professional Brush Set\n✔ Brush Case\n✔ Beauty Blender\n✔ Mini Beauty Portrait Photoshoot.'
+      },
+      'convenience': {
+        name: 'Convenience Fee',
+        description: 'A travel and convenience fee applies to all appointments requiring travel, starting at s50+ (determined by distance from our location).\n✔ Fees apply per makeup artist.'
+      },
+      'bridal-airbrush': {
+        name: 'Bridal Airbrush Products',
+        description: 'Bridal Airbrush Products are professional-grade makeup solutions designed for flawless, long-lasting bridal looks.\n ✔ Featuring a lightweight, breathable formula, they provide smooth, natural coverage that photographs beautifully and stays fresh all day.',
+      },
+      'event-airbrush': {
+        name: 'Event/Party/ Airbrush Products',
+        description: 'Professional makeup products designed for flawless, long-lasting looks at special events and parties.\n ✔ Lightweight and smooth, they deliver even coverage with a radiant finish that holds up under lights, heat, and long wear.',
       }
     },
     testimonials: {
@@ -621,11 +633,23 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       },
       'class-private': {
         name: 'Lớp Học Trang Điểm Cá Nhân 1:1',
-        description: '3 ngày, 3 giờ mỗi ngày. Thời gian linh hoạt. Bao gồm sản phẩm dưỡng da & trang điểm, Bộ Cọ Chuyên Nghiệp, Túi Đựng Cọ, Mút Trang Điểm, và Chụp Ảnh Chân Dung Beauty Mini.'
+        description: '3 ngày, 3 giờ mỗi ngày. Thời gian linh hoạt. \n✔ Bao gồm sản phẩm dưỡng da & trang điểm\n✔ Bộ Cọ Chuyên Nghiệp, Túi Đựng Cọ, Mút Trang Điểm, và Chụp Ảnh Chân Dung Beauty Mini.'
       },
       'class-group': {
         name: 'Lớp Học Trang Điểm Nhóm (4 học viên)',
-        description: '3 ngày, 3 giờ mỗi ngày. Tổ chức vào cuối tuần (Thứ 6 - Chủ Nhật). Bao gồm sản phẩm dưỡng da & trang điểm, Bộ Cọ Chuyên Nghiệp, Túi Đựng Cọ, Mút Trang Điểm, và Chụp Ảnh Chân Dung Beauty Mini.'
+        description: '3 ngày, 3 giờ mỗi ngày. Tổ chức vào cuối tuần (Thứ 6 - Chủ Nhật). \n✔ Bao gồm sản phẩm dưỡng da & trang điểm\n✔ Bộ Cọ Chuyên Nghiệp\n✔ Túi Đựng Cọ\n✔ Mút Trang Điểm\n✔ Chụp Ảnh Chân Dung Beauty Mini.'
+      },
+      'convenience': {
+        name: 'Phí Tiện Lợi',
+        description: 'Phí di chuyển và tiện lợi áp dụng cho tất cả các cuộc hẹn cần di chuyển, bắt đầu từ $50+ (xác định theo khoảng cách từ địa điểm của chúng tôi).\n✔ Phí áp dụng cho mỗi nghệ sĩ trang điểm.'
+      },
+      'bridal-airbrush': {
+        name: 'Sản Phẩm Airbrush Cô Dâu',
+        description: 'Sản phẩm Airbrush Cô Dâu là giải pháp trang điểm chuyên nghiệp được thiết kế cho vẻ ngoài cô dâu hoàn hảo, lâu trôi.\n ✔ Với công thức nhẹ, thoáng khí, chúng mang lại độ che phủ mịn màng, tự nhiên, lên hình đẹp và tươi tắn suốt cả ngày.',
+      },
+      'event-airbrush': {
+        name: 'Sản Phẩm Airbrush Tiệc / Sự Kiện',
+        description: 'Sản phẩm trang điểm chuyên nghiệp được thiết kế cho vẻ ngoài hoàn hảo, lâu trôi tại các sự kiện đặc biệt và bữa tiệc.\n ✔ Nhẹ và mịn, chúng mang lại độ che phủ đều với lớp nền rạng rỡ, chịu được ánh đèn, nhiệt độ và thời gian dài.',
       }
     },
     testimonials: {
@@ -940,11 +964,23 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       },
       'class-private': {
         name: 'Cours de Maquillage Privé 1:1',
-        description: '3 jours, 3 heures par jour. Dates/horaires flexibles. Comprend les produits de soin & maquillage, Set de Pinceaux Professionnels, Étui à Pinceaux, Beauty Blender et Mini Séance Photo Portrait Beauté.'
+        description: '3 jours, 3 heures par jour. Dates/horaires flexibles. \n✔ Comprend les produits de soin & maquillage\n✔ Set de Pinceaux Professionnels, Étui à Pinceaux, Beauty Blender et Mini Séance Photo Portrait Beauté.'
       },
       'class-group': {
         name: 'Cours de Maquillage de Groupe (4 élèves)',
-        description: '3 jours, 3 heures par jour. Organisé le week-end (Ven-Dim). Comprend les produits de soin & maquillage, Set de Pinceaux Professionnels, Étui à Pinceaux, Beauty Blender et Mini Séance Photo Portrait Beauté.'
+        description: '3 jours, 3 heures par jour. Organisé le week-end (Ven-Dim). \n✔ Comprend les produits de soin & maquillage\n✔ Set de Pinceaux Professionnels\n✔ Étui à Pinceaux\n✔ Beauty Blender\n✔ Mini Séance Photo Portrait Beauté.'
+      },
+      'convenience': {
+        name: 'Frais de Commodité',
+        description: 'Frais de déplacement et de commodité s\'appliquent à tous les rendez-vous nécessitant un déplacement, à partir de 50 $+ (déterminé par la distance de notre emplacement).\n✔ Les frais s\'appliquent par artiste maquilleur.'
+      },
+      'bridal-airbrush': {
+        name: 'Produits Airbrush Mariée',
+        description: 'Les produits Airbrush Mariée sont des solutions de maquillage de qualité professionnelle conçues pour des looks de mariée impeccables et durables.\n ✔ Dotés d\'une formule légère et respirante, ils offrent une couverture lisse et naturelle qui photographie magnifiquement et reste fraîche toute la journée.',
+      },
+      'event-airbrush': {
+        name: 'Produits Airbrush Événement / Fête',
+        description: 'Produits de maquillage professionnels conçus pour des looks impeccables et durables lors d\'événements spéciaux et de fêtes.\n ✔ Légers et lisses, ils offrent une couverture uniforme avec un fini radieux qui résiste aux lumières, à la chaleur et à une longue tenue.',
       }
     },
     testimonials: {
@@ -1260,11 +1296,23 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       },
       'class-private': {
         name: '1:1 私人化妆课',
-        description: '3天，每天3小时。时间灵活。包括护肤和化妆产品、专业刷具套装、刷具包、美妆蛋和迷你美妆人像拍摄。'
+        description: '3天，每天3小时。时间灵活。 \n✔ 包括护肤和化妆产品\n✔ 专业刷具套装、刷具包、美妆蛋和迷你美妆人像拍摄。'
       },
       'class-group': {
         name: '小组化妆课（4名学生）',
-        description: '3天，每天3小时。周末举行（周五-周日）。包括护肤和化妆产品、专业刷具套装、刷具包、美妆蛋和迷你美妆人像拍摄。'
+        description: '3天，每天3小时。周末举行（周五-周日）。 \n✔ 包括护肤和化妆产品\n✔ 专业刷具套装\n✔ 刷具包\n✔ 美妆蛋\n✔ 迷你美妆人像拍摄。'
+      },
+      'convenience': {
+        name: '便利费',
+        description: '所有需要出行的预约均需支付出行和便利费，起价$50+（根据距离我们地点的远近决定）。\n✔ 每个化妆师均需支付此费用。'
+      },
+      'bridal-airbrush': {
+        name: '新娘喷枪产品',
+        description: '新娘喷枪产品是专为打造完美、持久的新娘妆容而设计的专业级化妆解决方案。\n ✔ 采用轻盈、透气的配方，提供光滑、自然的遮瑕效果，拍照效果极佳，全天保持清新。',
+      },
+      'event-airbrush': {
+        name: '活动/派对喷枪产品',
+        description: '专为特殊活动和派对打造完美、持久妆容的专业化妆产品。\n ✔ 轻盈顺滑，提供均匀的遮瑕效果和光彩照人的妆效，在灯光、高温和长时间佩戴下依然持久。',
       }
     },
     testimonials: {
@@ -1580,11 +1628,23 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       },
       'class-private': {
         name: '1:1 프라이빗 메이크업 클래스',
-        description: '3일, 하루 3시간. 날짜/시간 조정 가능. 스킨케어 & 메이크업 제품, 전문가용 브러쉬 세트, 브러쉬 케이스, 뷰티 블렌더, 미니 뷰티 포트레이트 촬영 포함.'
+        description: '3일, 하루 3시간. 날짜/시간 조정 가능. \n✔ 스킨케어 & 메이크업 제품 포함\n✔ 전문가용 브러쉬 세트, 브러쉬 케이스, 뷰티 블렌더, 미니 뷰티 포트레이트 촬영 포함.'
       },
       'class-group': {
         name: '그룹 메이크업 클래스 (4명)',
-        description: '3일, 하루 3시간. 주말 진행 (금-일). 스킨케어 & 메이크업 제품, 전문가용 브러쉬 세트, 브러쉬 케이스, 뷰티 블렌더, 미니 뷰티 포트레이트 촬영 포함.'
+        description: '3일, 하루 3시간. 주말 진행 (금-일). \n✔ 스킨케어 & 메이크업 제품 포함\n✔ 전문가용 브러쉬 세트\n✔ 브러쉬 케이스\n✔ 뷰티 블렌더\n✔ 미니 뷰티 포트레이트 촬영 포함.'
+      },
+      'convenience': {
+        name: '출장비',
+        description: '출장이 필요한 모든 예약에는 출장 및 편의 비용이 적용되며, $50+부터 시작합니다 (저희 위치로부터의 거리에 따라 결정됨).\n✔ 메이크업 아티스트당 비용이 적용됩니다.'
+      },
+      'bridal-airbrush': {
+        name: '신부 에어브러시 제품',
+        description: '신부 에어브러시 제품은 결점 없고 오래 지속되는 신부 룩을 위해 설계된 전문가급 메이크업 솔루션입니다.\n ✔ 가볍고 통기성이 좋은 포뮬러로 매끄럽고 자연스러운 커버력을 제공하여 사진이 아름답게 나오며 하루 종일 상쾌함을 유지합니다.',
+      },
+      'event-airbrush': {
+        name: '이벤트/파티 에어브러시 제품',
+        description: '특별한 행사와 파티에서 결점 없고 오래 지속되는 룩을 위해 설계된 전문 메이크업 제품입니다.\n ✔ 가볍고 매끄러워 조명, 열, 장시간 착용에도 견디는 빛나는 마무리의 균일한 커버력을 제공합니다.',
       }
     },
     testimonials: {
@@ -1611,6 +1671,339 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     },
     footer: {
       rights: 'All rights reserved.'
+    }
+  },
+  [Language.ES]: {
+    nav: {
+      home: 'Inicio',
+      about: 'Nosotros',
+      services: 'Servicios',
+      gallery: 'Galería',
+      contact: 'Contacto',
+      booking: 'RESERVAR',
+      admin: 'Admin'
+    },
+    hero: {
+      title: 'Belleza en Cada Detalle',
+      subtitle: 'Maquillaje Premium, Clases de Maquillaje y Fotografía',
+      cta: 'Reservar Cita'
+    },
+    homepage: {
+      statistics: {
+        clients: 'Clientes Felices',
+        rating: 'Calificación',
+        years: 'Años de Exp.',
+        awards: 'Premios'
+      },
+      sections: {
+        ourServices: 'Nuestros Servicios',
+        ourServicesDesc: 'Descubra nuestra gama completa de servicios de belleza y bodas, elaborados a la perfección por nuestro equipo de expertos.',
+        featuredServices: 'Servicios Destacados',
+        featuredServicesDesc: 'Nuestros servicios más populares, en los que confían miles de clientes satisfechos.',
+        whyChooseUs: 'Por Qué Elegirnos',
+        whyChooseUsDesc: 'Excelencia en cada detalle, cuidado en cada servicio.',
+        howItWorks: 'Cómo Funciona',
+        howItWorksDesc: 'Su viaje de belleza, simplificado en cuatro sencillos pasos.',
+        clientReviews: 'Reseñas de Clientes',
+        clientReviewsDesc: 'No solo confíe en nuestra palabra: escuche a nuestros clientes satisfechos.'
+      },
+      categories: {
+        makeup: {
+          name: 'Maquillaje',
+          description: 'Arte de maquillaje profesional para cada ocasión, desde lo natural diario hasta el glamour nupcial.'
+        },
+        photoshoot: {
+          name: 'Sesión de Fotos / Escenario',
+          description: 'Maquillaje y peinado especializados para sesiones de fotos, actuaciones en el escenario y eventos mediáticos.'
+        },
+        partyEvent: {
+          name: 'Fiesta / Evento',
+          description: 'Servicios de maquillaje glamoroso para fiestas, eventos sociales y ocasiones especiales.'
+        },
+        photography: {
+          name: 'Fotografía',
+          description: 'Capture sus momentos especiales con nuestros servicios profesionales de fotografía de bodas y retratos.'
+        }
+      },
+      features: {
+        quality: {
+          title: 'Calidad Premium',
+          description: 'Solo utilizamos los mejores productos y las últimas técnicas para garantizar resultados excepcionales en todo momento.'
+        },
+        experts: {
+          title: 'Equipo Experto',
+          description: 'Nuestros profesionales certificados aportan años de experiencia y pasión a cada servicio.'
+        },
+        hygiene: {
+          title: 'Higiene Primero',
+          description: 'Protocolos estrictos de desinfección y equipos de grado médico para su seguridad y comodidad.'
+        },
+        personalized: {
+          title: 'Cuidado Personalizado',
+          description: 'Cada cliente recibe atención individual y soluciones personalizadas para sus necesidades únicas.'
+        }
+      },
+      process: {
+        step1: {
+          title: 'Reserva en Línea',
+          description: 'Elija su servicio y fecha/hora preferida a través de nuestro sencillo sistema de reservas.'
+        },
+        step2: {
+          title: 'Consulta',
+          description: 'Reúnase con nuestros expertos para discutir su visión y personalizar su servicio.'
+        },
+        step3: {
+          title: 'Experiencia',
+          description: 'Relájese y disfrute de su servicio en nuestro ambiente cómodo y lujoso.'
+        },
+        step4: {
+          title: 'Seguimiento',
+          description: 'Reciba instrucciones de cuidado posterior y programe citas de seguimiento si es necesario.'
+        }
+      },
+      cta: {
+        title: '¿Listo para Transformar tu Look?',
+        subtitle: 'Reserve su cita hoy y experimente la diferencia',
+        button: 'Empezar'
+      },
+      buttons: {
+        explore: 'Explorar',
+        learnMore: 'Saber Más',
+        viewAll: 'Ver Todos los Servicios',
+        addToCart: 'Añadir al Carrito'
+      }
+    },
+    contactPage: {
+      text: "Nos encantaría saber de usted. Ya sea para una consulta nupcial o una consulta rápida sobre nuestros servicios de cejas, nuestro equipo está listo para ayudar.",
+      location: 'Ubicación del Estudio',
+      locationText: '7862 Warner Ave Ste A, Huntington Beach, CA, Estados Unidos',
+      dm: 'Envíenos un DM para reservar',
+      dmText: 'lecharme.beauteboutique@gmail.com',
+    },
+    aboutPage: {
+      title: 'Nuestra Historia',
+      subtitle: 'Un santuario de belleza y arte.',
+      storyTitle: 'Cuando la Pasión Encuentra la Perfección',
+      storyText: 'Fundada en 2020, lecharmebeauteboutique comenzó con una visión simple: crear un espacio donde cada cliente se sienta su versión más hermosa. Combinamos técnicas tradicionales con arte moderno.',
+      philosophyTitle: 'Nuestra Filosofía',
+      philosophyText: 'Creemos que la verdadera belleza reside en los detalles. Ya sea el trazo preciso de un tatuaje de cejas, el tono perfecto de esmalte de uñas o capturar un momento fugaz de amor, estamos dedicados a la perfección.',
+      teamTitle: 'Conoce a los Artistas',
+      teamMembers: [
+        {
+          name: 'Avy Nguyen',
+          role: 'Fundadora y Artista Principal',
+          bio: 'Con más de 10 años de experiencia en la industria de la belleza, Vivian se especializa en maquillaje nupcial y editorial.',
+          image: '/images/logo/owner.jpg'
+        },
+        {
+          name: 'Tien Truong',
+          role: 'Maquilladora Senior',
+          bio: 'Jessica crea looks impecables y duraderos para cualquier ocasión.',
+          image: '/images/member/truong.jpg'
+        },
+        {
+          name: 'Hannah Nguyen',
+          role: 'Estilista de Cabello',
+          bio: 'Maestra de peinados modernos y clásicos, Michael puede crear el recogido u ondas perfectos.',
+          image: '/images/member/hannah.jpg'
+        },
+        {
+          name: 'Vick Nguyen',
+          role: 'Fotógrafo',
+          bio: 'David captura momentos con un ojo artístico. Su enfoque relajado hace que los clientes se sientan cómodos.',
+          image: '/images/member/vick.jpg'
+        },
+        {
+          name: 'Violet Nguyen',
+          role: 'Fotógrafo',
+          bio: 'David captura momentos con un ojo artístico. Su enfoque relajado hace que los clientes se sientan cómodos.',
+          image: '/images/member/violet.jpg'
+        },
+        {
+          name: 'Yani Truong',
+          role: 'Photographer',
+          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.',
+          image: '/images/member/yani.jpg'
+        },
+        {
+          name: 'Nhi Nguyen',
+          role: 'Photographer',
+          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.',
+          image: '/images/member/nhi.jpg'
+        }
+      ],
+      text: 'Fundada en 2020, lecharmebeauteboutique comenzó con una visión simple: crear un espacio donde cada cliente se sienta su versión más hermosa. Combinamos técnicas tradicionales con arte moderno.'
+    },
+    servicePage: {
+      addToCart: 'Añadir al Carrito',
+      added: 'Añadido'
+    },
+    serviceDetail: {
+      back: 'Atrás',
+      rating: 'calificación',
+      perSession: 'por sesión',
+      depositRequired: 'depósito',
+      toSecureBooking: 'requerido para reservar',
+      whatsIncluded: 'Qué está incluido',
+      duration: 'Duración',
+      bookingLabel: 'Reserva',
+      advanceRequired: 'Reserva anticipada requerida',
+      bookNow: 'Reservar Ahora',
+      serviceDetails: 'Detalles del Servicio',
+      importantInfo: 'Información Importante',
+      importantInfoItems: {
+        arrive: 'Por favor llegue 10 minutos antes de su cita',
+        cancellation: 'Las cancelaciones requieren 24 horas de aviso',
+        consultation: 'Consulta disponible antes de reservar',
+        patchTest: 'Puede requerirse prueba de parche para ciertos servicios'
+      },
+      youMayLike: 'También te puede gustar',
+      notFound: 'Servicio no encontrado',
+      backToServices: 'Volver a Servicios',
+      view: 'Ver',
+      durationMakeup: '60-90 min',
+      durationNails: '60-90 min',
+      durationTattooing: '60-90 min',
+      durationPhotography: '2-8 horas'
+    },
+    cart: {
+      title: 'Tu Carrito',
+      empty: 'Tu carrito está vacío.',
+      browseHint: 'Por favor navega por nuestros servicios para añadir artículos a tu carrito.',
+      subtotal: 'Subtotal',
+      total: 'Total',
+      proceed: 'Pagar',
+      continue: 'Continuar Comprando',
+      remove: 'Eliminar'
+    },
+    booking: {
+      title: 'Pago',
+      summary: 'Resumen del Pedido',
+      items: 'artículos',
+      selectDate: 'Seleccionar Fecha',
+      selectTime: 'Seleccionar Hora',
+      selectService: 'Seleccionar Servicio',
+      name: 'Tu Nombre',
+      email: 'Correo Electrónico',
+      deposit: 'Pagar Depósito',
+      confirm: 'Confirmar',
+      success: '¡Reserva Confirmada!',
+      emptyRedirect: 'Tu carrito está vacío. Por favor selecciona servicios primero.'
+    },
+    services: {
+      'photoshoot-combo': {
+        name: 'Combo Sesión de Fotos / Escenario',
+        description: 'Diseñado para iluminación de cámara y escenario. Incluye maquillaje de larga duración, listo para HD, contorno e iluminador avanzados, definición de ojos y peinado profesional adaptado a su concepto. \n ✔ Productos de maquillaje de alta gama \n ✔ Todo tipo de pestañas postizas incluidas'
+      },
+      'premium-combo': {
+        name: 'Combo Premium',
+        description: 'Incluye limpieza de piel, prebase, base, maquillaje de ojos, contorno y rubor, cejas y lápiz labial usando productos de gama media. \n ✔ Pestañas postizas naturales incluidas \n ✔ Peinado: rizos simples o alisado (a su elección)'
+      },
+      'premium-makeup': {
+        name: 'Solo Maquillaje Premium',
+        description: 'Aplicación de maquillaje profesional con productos de gama media. \n ✔ Pestañas postizas naturales incluidas.'
+      },
+      'premium-hair': {
+        name: 'Solo Peinado Premium',
+        description: 'Rizos simples o alisado adaptados a su evento.'
+      },
+      'deluxe-combo': {
+        name: 'Combo Deluxe',
+        description: 'Incluye limpieza de piel, tónico, suero, hidratación, prebase, base, maquillaje de ojos, contorno facial completo, rubor, polvo, iluminador y lápiz labial usando productos de alta gama. \n ✔ Todo tipo de pestañas postizas incluidas \n ✔ Peinado: cualquier estilo de su elección'
+      },
+      'deluxe-makeup': {
+        name: 'Solo Maquillaje Deluxe',
+        description: 'Sesión de maquillaje completa con productos de alta gama. \n ✔ Todo tipo de pestañas postizas incluidas.'
+      },
+      'deluxe-hair': {
+        name: 'Solo Peinado Deluxe',
+        description: 'Cualquier peinado de su elección para su ocasión especial.'
+      },
+      'bridal-1': {
+        name: 'Maquillaje y Peinado de Novia (1 vez)',
+        description: 'Look nupcial completo para su ceremonia o recepción.'
+      },
+      'bridal-2': {
+        name: 'Maquillaje de Novia y 2 Cambios de Peinado',
+        description: '1 Maquillaje y Peinado por la mañana + 1 retoque y 1 cambio de peinado.'
+      },
+      'bridal-3': {
+        name: 'Maquillaje y Peinado de Novia + Cambios de Look',
+        description: 'Cambios de maquillaje y peinado por la mañana y noche para mantenerla perfecta todo el día.'
+      },
+      'bridal-4': {
+        name: 'Servicio Nupcial de Todo el Día',
+        description: 'El maquillador acompañará a la novia durante todo el día y ajustará el maquillaje y peinado según sea necesario hasta que termine la ceremonia de la noche. \n🎁 Manicura de cortesía incluida'
+      },
+      'wedding-guest-combo': {
+        name: 'Maquillaje y Peinado de Invitado de Boda',
+        description: 'Para mamás, familiares, damas de honor, etc.'
+      },
+      'wedding-guest-makeup': {
+        name: 'Solo Maquillaje de Invitado',
+        description: 'Maquillaje profesional para invitados de boda.'
+      },
+      'wedding-guest-hair': {
+        name: 'Solo Peinado de Invitado',
+        description: 'Peinado profesional para invitados de boda.'
+      },
+      'groom-combo': {
+        name: 'Maquillaje y Peinado del Novio',
+        description: 'Servicio de arreglo personal para el novio.'
+      },
+      'groom-makeup': {
+        name: 'Solo Maquillaje del Novio',
+        description: 'Arreglo de maquillaje para el novio.'
+      },
+      'bridal-trial': {
+        name: 'Prueba de Novia / Sesión de Fotos Pre-Boda',
+        description: '4–6 horas probando diferentes looks y estilos. Perfecto para fotos pre-boda o encontrar su look del día de la boda.'
+      },
+      'class-private': {
+        name: 'Clase de Maquillaje Privada 1:1',
+        description: '3 días, 3 horas por día. Fechas/horas flexibles. \n✔ Incluye productos de cuidado de la piel y maquillaje\n✔ Set de Brochas Profesionales, Estuche de Brochas, Beauty Blender y Mini Sesión de Fotos de Retrato de Belleza.'
+      },
+      'class-group': {
+        name: 'Clase de Maquillaje en Grupo (4 estudiantes)',
+        description: '3 días, 3 horas por día. Se lleva a cabo los fines de semana (Vie-Dom). \n✔ Incluye productos de cuidado de la piel y maquillaje\n✔ Set de Brochas Profesionales\n✔ Estuche de Brochas\n✔ Beauty Blender\n✔ Mini Sesión de Fotos de Retrato de Belleza.'
+      },
+      'convenience': {
+        name: 'Tarifa de Conveniencia',
+        description: 'Se aplica una tarifa de viaje y conveniencia a todas las citas que requieren viaje, comenzando en $50+ (determinado por la distancia desde nuestra ubicación).\n✔ Las tarifas se aplican por maquillador.'
+      },
+      'bridal-airbrush': {
+        name: 'Productos de Aerógrafo para Novias',
+        description: 'Los productos de aerógrafo para novias son soluciones de maquillaje de grado profesional diseñadas para looks de novia impecables y duraderos.\n ✔ Con una fórmula ligera y transpirable, proporcionan una cobertura suave y natural que fotografía maravillosamente y se mantiene fresca todo el día.',
+      },
+      'event-airbrush': {
+        name: 'Productos de Aerógrafo para Eventos/Fiestas',
+        description: 'Productos de maquillaje profesionales diseñados para looks impecables y duraderos en eventos especiales y fiestas.\n ✔ Ligeros y suaves, ofrecen una cobertura uniforme con un acabado radiante que resiste las luces, el calor y el uso prolongado.',
+      }
+    },
+    testimonials: {
+      '1': {
+        author: 'Ali Tufan',
+        location: 'Nueva York, EE. UU.',
+        text: '¡Me encantan los productos que compré en esta boutique! La calidad es excepcional y mi piel nunca se ha visto mejor. El empaque también es hermoso, lo que lo convierte en una experiencia lujosa cada vez que los uso. ¡Muy recomendable!'
+      },
+      '2': {
+        author: 'Jessica M.',
+        location: 'Los Ángeles, CA',
+        text: '¡Una experiencia absolutamente increíble! Sarah hizo mi maquillaje de novia y me sentí como una princesa. La atención al detalle fue increíble y el look duró toda la noche.'
+      },
+      '3': {
+        author: 'Michael T.',
+        location: 'Chicago, IL',
+        text: 'David capturó nuestra boda perfectamente. Cada foto cuenta una historia. Estamos muy agradecidos por estos recuerdos que atesoraremos para siempre.'
+      },
+      '4': {
+        author: 'Emily R.',
+        location: 'Miami, FL',
+        text: 'El mejor consejo de cuidado de la piel que he recibido. Mi cutis está radiante y me siento mucho más segura. ¡Gracias Lumière!'
+      }
+    },
+    footer: {
+      rights: 'Todos los derechos reservados.'
     }
   }
 };

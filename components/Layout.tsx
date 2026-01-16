@@ -242,8 +242,8 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
                 <h4 className="uppercase tracking-widest text-xs font-bold mb-6 text-stone-900">Assistance</h4>
                 <ul className="space-y-3 text-sm text-stone-600">
                   <li><Link to="/contact" className="font-sen hover:text-black transition-colors">Contact</Link></li>
-                  <li><Link to="#" className="font-sen hover:text-black transition-colors">Terms of Service</Link></li>
-                  <li><Link to="#" className="font-sen hover:text-black transition-colors">Privacy Policy</Link></li>
+                  <li><Link to="/terms" className="font-sen hover:text-black transition-colors">Terms of Service</Link></li>
+                  <li><Link to="/policy" className="font-sen hover:text-black transition-colors">Privacy Policy</Link></li>
                 </ul>
               </div>
             </div>
