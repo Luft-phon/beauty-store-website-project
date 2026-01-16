@@ -107,14 +107,14 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
               ))}
             </div>
           </div>
-          <div className='space-y-4 md:space-y-6'>
+          <div className='font-sen space-y-4 md:space-y-6'>
             <div>
               <h1 className='font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-3'>{service.name}</h1>
               <div className='flex items-center space-x-2 mb-4 md:mb-6'>
                 <div className='flex text-gold-500'>{[...Array(5)].map((_, i) => (<Star key={i} size={16} fill='currentColor' />))}</div>
                 <span className='text-stone-500 text-sm'>(4.9 {t.serviceDetail.rating})</span>
               </div>
-              <p className='text-stone-600 text-base md:text-lg leading-relaxed'>{service.description}</p>
+              <p className='text-stone-600 text-base md:text-lg leading-relaxed whitespace-pre-line'>{service.description}</p>
             </div>
             <div className='border-y border-stone-200 py-4 md:py-6'>
               <div className='flex items-baseline space-x-3'>
@@ -171,7 +171,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
         <div className='border-t border-stone-200 pt-8 md:pt-12 mb-12 md:mb-16'>
           <div className='max-w-4xl'>
             <h3 className='font-serif text-2xl md:text-3xl mb-4 md:mb-6'>{t.serviceDetail.serviceDetails}</h3>
-            <div className='space-y-4 md:space-y-6 text-stone-600 leading-relaxed text-sm md:text-base'>
+            <div className='font-sen space-y-4 md:space-y-6 text-stone-600 leading-relaxed text-sm md:text-base'>
               <p>Our {service.name.toLowerCase()} service is designed to provide you with exceptional results using premium products and techniques. Our experienced professionals ensure that every detail is perfected to your satisfaction.</p>
               <div className='bg-rose-50 border border-rose-100 p-4 md:p-6 rounded-lg'>
                 <h4 className='font-bold text-stone-900 mb-2 flex items-center space-x-2 text-sm md:text-base'>
