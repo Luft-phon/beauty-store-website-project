@@ -21,6 +21,8 @@ import PaymentError from './components/PaymentError';
 import { Camera, Star, Calendar, MapPin, ShoppingBag, Trash2, ArrowRight, Users, Award, Shield, Heart, Sparkles, Trophy, CheckCircle } from 'lucide-react';
 import { FadeInSection } from './components/FadeInSection';
 import { GalleryCarousel } from './components/GalleryCarousel';
+import PolicyPage from './components/PolicyPage';
+import TermsOfServicePage from './components/TermsOfServicePage';
 
 const App: React.FC = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -183,12 +185,13 @@ const App: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-[1400px] mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-[1400px] mx-auto">
             {MOCK_CATEGORIES.map((category) => {
               const categoryTranslation = category.id === 'makeup' ? t.homepage.categories.makeup :
                 category.id === 'Photoshoot' ? t.homepage.categories.photoshoot :
                   category.id === 'PartyEvent' ? t.homepage.categories.partyEvent :
-                    t.homepage.categories.photography;
+                    category.id === 'photography' ? t.homepage.categories.photography :
+                      t.homepage.categories.partyEvent;
               return (
                 <Link
                   key={category.id}
@@ -623,6 +626,8 @@ const App: React.FC = () => {
           <Route path="/booking" element={<BookingPage t={t} cart={cart} clearCart={clearCart} />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/policy" element={<PolicyPage />} />
+          <Route path="/terms" element={<TermsOfServicePage />} />
           <Route path="/admin" element={<AdminDashboard services={services} onUpdateService={handleUpdateService} />} />
         </Routes>
       </Layout>

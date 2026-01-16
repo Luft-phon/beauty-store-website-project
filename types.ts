@@ -4,7 +4,8 @@ export enum Language {
   VI = 'Tiếng Việt',
   FR = 'Français',
   ZH = '中文',
-  KO = '한국어'
+  KO = '한국어',
+  ES = 'Español'
 }
 
 export enum Theme {
@@ -34,7 +35,7 @@ export interface ThemeColors {
 
 export interface Service {
   id: string;
-  category: 'Makeup' | 'Nails' | 'Tattooing' | 'Photography' | 'Bridal' | 'PartyEvent' | 'Photoshoot' | 'Guest' | 'Education';
+  category: 'Makeup' | 'Fee' | 'Products' | 'Photography' | 'Bridal' | 'PartyEvent' | 'Photoshoot' | 'Guest' | 'Education';
   name: string;
   description: string;
   price: number;

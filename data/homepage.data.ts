@@ -60,13 +60,13 @@ export const MOCK_CATEGORIES: CategoryFeature[] = [
     icon: 'camera',
     link: '#/services/photoshoot'
   },
-  {
-    id: 'PartyEvent',
-    name: 'Party / Event',
-    description: 'glamorous makeup services for parties, social events, and special occasions.',
-    icon: 'star',
-    link: '#/services/party'
-  },
+  // {
+  //   id: 'PartyEvent',
+  //   name: 'Party / Event',
+  //   description: 'glamorous makeup services for parties, social events, and special occasions.',
+  //   icon: 'star',
+  //   link: '#/services/party'
+  // },
   {
     id: 'photography',
     name: 'Photography',

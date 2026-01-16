@@ -176,6 +176,32 @@ export const MOCK_SERVICES: Service[] = [
     description: '3 days, 3 hours per day. Held on weekends (Fri-Sun). Includes skincare & makeup products, Professional Brush Set, Brush Case, Beauty Blender, and Mini Beauty Portrait Photoshoot.',
     price: 495,
     image: 'https://picsum.photos/id/338/800/600'
+  },
+  // extra services
+  {
+    id: 'convenience',
+    category: 'Fee',
+    name: 'Convenience Fee',
+    description: 'A travel and convenience fee applies to all appointments requiring travel, starting at s50+ (determined by distance from our location). Fees apply per makeup artist.',
+    price: 595,
+    image: 'https://picsum.photos/id/338/800/600'
+  },
+  // products
+  {
+    id: 'bridal-airbrush',
+    category: 'Products',
+    name: 'Bridal Airbrush Products',
+    description: 'Bridal Airbrush Products are professional-grade makeup solutions designed for flawless, long-lasting bridal looks.\n ✔ Featuring a lightweight, breathable formula, they provide smooth, natural coverage that photographs beautifully and stays fresh all day.',
+    price: 100,
+    image: 'https://picsum.photos/id/338/800/600'
+  },
+  {
+    id: 'event-airbrush',
+    category: 'Products',
+    name: 'Event/Party/ Air brush Products',
+    description: 'Professional makeup products designed for flawless, long-lasting looks at special events and parties.\n ✔ Lightweight and smooth, they deliver even coverage with a radiant finish that holds up under lights, heat, and long wear.',
+    price: 50,
+    image: 'https://picsum.photos/id/338/800/600'
   }
 ];
 
