@@ -75,6 +75,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
               </div>
               <Link to="/gallery" className={navClasses('/gallery')}>{t.nav.gallery}</Link>
               <Link to="/contact" className={navClasses('/contact')}>{t.nav.contact}</Link>
+              {/* <Link to="/services/convenience" className={navClasses('/contact')}>{t.nav.convenience}</Link> */}
 
               {/* Cart Icon */}
               <Link to="/cart" className="relative text-stone-600 hover:text-gold-500 transition-colors">

@@ -23,6 +23,7 @@ import { FadeInSection } from './components/FadeInSection';
 import { GalleryCarousel } from './components/GalleryCarousel';
 import PolicyPage from './components/PolicyPage';
 import TermsOfServicePage from './components/TermsOfServicePage';
+import PaymentPending from './components/PaymentPending';
 
 const App: React.FC = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -401,6 +402,8 @@ const App: React.FC = () => {
                   <img
                     src={member.image}
                     alt={member.name}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
@@ -622,6 +625,7 @@ const App: React.FC = () => {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/payment-canceled" element={<PaymentCanceled />} />
+          <Route path="/payment-pending" element={<PaymentPending />} />
           <Route path="/payment-error" element={<PaymentError />} />
           <Route path="/booking" element={<BookingPage t={t} cart={cart} clearCart={clearCart} />} />
           <Route path="/contact" element={<ContactPage />} />

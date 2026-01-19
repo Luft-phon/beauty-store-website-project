@@ -67,6 +67,7 @@ export interface Translation {
     contact: string;
     booking: string;
     admin: string;
+    // convenience: string;
   };
   hero: {
     title: string;
@@ -200,6 +201,12 @@ export interface Translation {
     confirm: string;
     success: string;
     emptyRedirect: string;
+    address: string;
+    phone: string;
+    travelfee: string;
+    travelmethod1: string;
+    travelmethod2: string;
+    travelmethod3: string;
   };
   services: Record<string, { name: string; description: string; }>;
   testimonials: Record<string, {

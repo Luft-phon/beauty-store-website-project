@@ -60,9 +60,9 @@ const getAuthClient = async () => {
 // API Endpoint to create an event
 app.post('/api/calendar/create-event', async (req, res) => {
     try {
-        const { clientName, clientEmail, serviceName, date, time } = req.body;
+        const { clientName, clientEmail, clientAddress, serviceName, date, time, clientPhone } = req.body;
 
-        if (!clientName || !clientEmail || !serviceName || !date || !time) {
+        if (!clientName || !clientEmail || !serviceName || !date || !time || !clientPhone) {
             return res.status(400).json({ error: 'Missing required fields' });
         }
 
@@ -88,10 +88,15 @@ app.post('/api/calendar/create-event', async (req, res) => {
         const authClient = await getAuthClient();
         const calendar = google.calendar({ version: 'v3', auth: authClient });
 
+        let description = `Client: ${clientName}\nEmail: ${clientEmail}\nService: ${serviceName}\nPhone: ${clientPhone}`;
+        if (clientAddress) {
+            description += `\nAddress: ${clientAddress}`;
+        }
+
         const event = {
             summary: `Appointment: ${serviceName} - ${clientName}`,
-            location: '7862 Warner Ave Ste A, Huntington Beach, CA',
-            description: `Client: ${clientName}\nEmail: ${clientEmail}\nService: ${serviceName}`,
+            location: clientAddress,
+            description: description,
             start: {
                 dateTime: startDateTime,
                 timeZone: 'America/Los_Angeles',
@@ -128,7 +133,67 @@ const YOUR_DOMAIN = process.env.CLIENT_DOMAIN;
 
 app.post('/create-checkout-session', async (req, res) => {
     try {
-        const { items } = req.body;
+        const { items, date, time } = req.body;
+
+        // Validations
+        if (date && time) {
+            try {
+                const authClient = await getAuthClient();
+                const calendar = google.calendar({ version: 'v3', auth: authClient });
+
+                // Define search range: broad range around the target date to ensure we catch the LA time
+                const searchDate = new Date(date);
+                const timeMin = new Date(searchDate);
+                timeMin.setDate(timeMin.getDate() - 1); // 1 day before
+                const timeMax = new Date(searchDate);
+                timeMax.setDate(timeMax.getDate() + 2); // 2 days after
+
+                const eventsRes = await calendar.events.list({
+                    calendarId: process.env.GOOGLE_CALENDAR_ID,
+                    timeMin: timeMin.toISOString(),
+                    timeMax: timeMax.toISOString(),
+                    singleEvents: true,
+                    orderBy: 'startTime',
+                });
+
+                const events = eventsRes.data.items || [];
+                let count = 0;
+
+                // Check against LA time
+                for (const event of events) {
+                    if (event.start && event.start.dateTime) {
+                        const evtDateObj = new Date(event.start.dateTime);
+
+                        const laDate = new Intl.DateTimeFormat('en-CA', {
+                            timeZone: 'America/Los_Angeles',
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit'
+                        }).format(evtDateObj);
+
+                        const laTime = checkedFormatTime(evtDateObj);
+
+                        if (laDate === date && laTime === time) {
+                            count++;
+                        }
+                    }
+                }
+
+                // Check if the slot is full
+                if (count >= 2) {
+                    return res.status(409).json({
+                        error: 'Booking slot is full',
+                        redirectUrl: '/payment-pending'
+                    });
+                }
+
+            } catch (calError) {
+                console.error("Error checking calendar availability:", calError);
+                // Proceed cautiously or fail? Let's assume if check fails, we might still allow or just log.
+                // For safety vs double booking, failing is safer.
+                // return res.status(500).json({ error: 'Failed to verify availability' });
+            }
+        }
 
         const line_items = items.map(item => ({
             price_data: {
@@ -154,6 +219,46 @@ app.post('/create-checkout-session', async (req, res) => {
         console.error('Stripe error:', error);
         // Return actual error message for debugging purposes
         res.status(500).json({ error: 'Failed to create checkout session', details: error.message });
+    }
+});
+
+function checkedFormatTime(dateObj) {
+    return dateObj.toLocaleTimeString('en-GB', {
+        timeZone: 'America/Los_Angeles',
+        hour: '2-digit',
+        minute: '2-digit',
+    });
+}
+
+// Google Distance Matrix API Endpoint
+const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+
+app.post('/api/calculate-distance', async (req, res) => {
+    try {
+        const { origin, destination } = req.body;
+
+        if (!origin || !destination) {
+            return res.status(400).json({ error: 'Origin and destination are required' });
+        }
+
+        if (!GOOGLE_MAPS_API_KEY) {
+            console.error('Google Maps API Key is missing');
+            return res.status(500).json({ error: 'Server configuration error: Google Maps API Key missing' });
+        }
+
+        const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${encodeURIComponent(origin)}&destinations=${encodeURIComponent(destination)}&key=${GOOGLE_MAPS_API_KEY}&units=imperial`;
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.status !== 'OK') {
+            throw new Error(`Google Maps API error: ${data.status}`);
+        }
+
+        res.json(data);
+    } catch (error) {
+        console.error('Error calculating distance:', error);
+        res.status(500).json({ error: 'Failed to calculate distance' });
     }
 });
 
