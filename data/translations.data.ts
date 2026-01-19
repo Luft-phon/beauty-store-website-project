@@ -20,7 +20,8 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       gallery: 'Gallery',
       contact: 'Contact',
       booking: 'BOOKING',
-      admin: 'Admin'
+      admin: 'Admin',
+      // convenience: 'Convenience',
     },
     hero: {
       title: 'Beauté in Every Detail',
@@ -227,7 +228,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       deposit: 'Pay Deposit',
       confirm: 'Confirm Booking',
       success: 'Booking Confirmed!',
-      emptyRedirect: 'Your cart is empty. Please select services first.'
+      emptyRedirect: 'Your cart is empty. Please select services first.',
+      address: 'Location where you need your makeup to be done',
+      phone: 'Phone Number',
+      travelfee: 'Convenience Fee',
+      travelmethod1: 'In-Studio',
+      travelmethod2: 'Travel to you',
+      travelmethod3: 'Out of State'
     },
     services: {
       'photoshoot-combo': {
@@ -353,7 +360,8 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       gallery: 'Thư Viện',
       contact: 'Liên Hệ',
       booking: 'ĐẶT LỊCH',
-      admin: 'Quản Lý'
+      admin: 'Quản Lý',
+      // convenience: 'Tiện ích'
     },
     hero: {
       title: 'Đẹp Trong Từng Đường Nét',
@@ -560,7 +568,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       deposit: 'Đặt Cọc',
       confirm: 'Xác Nhận',
       success: 'Đã Đặt Lịch!',
-      emptyRedirect: 'Giỏ hàng trống. Vui lòng chọn dịch vụ trước.'
+      emptyRedirect: 'Giỏ hàng trống. Vui lòng chọn dịch vụ trước.',
+      address: 'Địa chỉ cần trang điểm',
+      phone: 'Số điện thoại',
+      travelfee: 'Phí di chuyển',
+      travelmethod1: 'Tại Studio Le\'Charme Beauté',
+      travelmethod2: 'Di chuyển đến địa điểm của bạn',
+      travelmethod3: 'Ngoài tiểu bang'
     },
     services: {
       'photoshoot-combo': {
@@ -891,7 +905,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       deposit: 'Acompte',
       confirm: 'Confirmer',
       success: 'Réservation confirmée!',
-      emptyRedirect: 'Votre panier est vide. Veuillez d\'abord sélectionner des services.'
+      emptyRedirect: 'Votre panier est vide. Veuillez d\'abord sélectionner des services.',
+      address: 'Adresse où vous avez besoin de votre maquillage',
+      phone: 'Numéro de téléphone',
+      travelfee: 'Frais de commodité',
+      travelmethod1: 'À notre studio Le\'Charme Beauté',
+      travelmethod2: 'Déplacement à votre domicile',
+      travelmethod3: 'Hors de l\'État'
     },
     services: {
       'photoshoot-combo': {
@@ -1223,7 +1243,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       deposit: '支付定金',
       confirm: '确认预约',
       success: '预约成功!',
-      emptyRedirect: '您的购物车是空的。请先选择服务。'
+      emptyRedirect: '您的购物车是空的。请先选择服务。',
+      address: '需要化妆的地点',
+      phone: '电话号码',
+      travelfee: '便利费',
+      travelmethod1: '在 Le\'Charme Beauté 工作室',
+      travelmethod2: '前往您的地点',
+      travelmethod3: '州外'
     },
     services: {
       'photoshoot-combo': {
@@ -1555,7 +1581,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       deposit: '보증금 결제',
       confirm: '예약 확정',
       success: '예약이 확정되었습니다!',
-      emptyRedirect: '장바구니가 비어 있습니다. 서비스를 먼저 선택해주세요.'
+      emptyRedirect: '장바구니가 비어 있습니다. 서비스를 먼저 선택해주세요.',
+      address: '메이크업이 필요한 장소',
+      phone: '전화번호',
+      travelfee: '편의 옵션',
+      travelmethod1: 'Le\'Charme Beauté 스튜디오',
+      travelmethod2: '고객님 댁으로 이동',
+      travelmethod3: '주외'
     },
     services: {
       'photoshoot-combo': {
@@ -1888,7 +1920,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       deposit: 'Pagar Depósito',
       confirm: 'Confirmar',
       success: '¡Reserva Confirmada!',
-      emptyRedirect: 'Tu carrito está vacío. Por favor selecciona servicios primero.'
+      emptyRedirect: 'Tu carrito está vacío. Por favor selecciona servicios primero.',
+      address: 'Dirección donde necesitas tu maquillaje',
+      phone: 'Número de teléfono',
+      travelfee: 'Tarifa de conveniencia',
+      travelmethod1: 'En el estudio Le\'Charme Beauté',
+      travelmethod2: 'Viaje a tu ubicación',
+      travelmethod3: 'Fuera del estado'
     },
     services: {
       'photoshoot-combo': {

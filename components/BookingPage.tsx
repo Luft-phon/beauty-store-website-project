@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Star, ShoppingBag, Calendar, Loader2 } from 'lucide-react';
+import { Star, ShoppingBag, Calendar, Loader2, MapPin } from 'lucide-react';
 import { Translation, Service } from '../types';
 
 interface BookingPageProps {
@@ -8,14 +8,59 @@ interface BookingPageProps {
     cart: Service[];
     clearCart: () => void;
 }
+
 const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
     const [booked, setBooked] = useState(false);
     const [apiStatus, setApiStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [errorMessage, setErrorMessage] = useState<string>('');
     const [calendarLink, setCalendarLink] = useState<string | null>(null);
+    const [travelFee, setTravelFee] = useState("in-studio");
+    // Address & Distance State
+    const [address, setAddress] = useState('');
+    const [distance, setDistance] = useState<string | null>(null);
+    const [calculatingDistance, setCalculatingDistance] = useState(false);
 
     const totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
     const depositAmount = totalAmount * 0.5;
+
+    // Store Coordinates (7862 Warner Ave Ste A, Huntington Beach, CA 92646)
+    // Store Coordinates (7862 Warner Ave Ste A, Huntington Beach, CA 92646)
+    // For Google API we can just use the address string
+    const STORE_ADDRESS = "7862 Warner Ave Ste A, Huntington Beach, CA 92646";
+
+    const calculateDistance = async () => {
+        if (!address) return;
+        setCalculatingDistance(true);
+        setDistance(null);
+
+        try {
+            // Call our backend to keep API key hidden
+            const response = await fetch('http://localhost:3001/api/calculate-distance', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    origin: address,
+                    destination: STORE_ADDRESS
+                }),
+            });
+
+            const data = await response.json();
+
+            if (data.status === 'OK' && data.rows[0].elements[0].status === 'OK') {
+                const element = data.rows[0].elements[0];
+                setDistance(`${element.distance.text} (${element.duration.text}) from store`);
+            } else {
+                setDistance('Could not calculate distance. Please check the address.');
+            }
+        } catch (error) {
+            console.error('Error calculating distance:', error);
+            setDistance('Error calculating distance');
+        } finally {
+            setCalculatingDistance(false);
+        }
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -25,9 +70,11 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
         const bookingData = {
             clientName: formData.get('name') as string,
             clientEmail: formData.get('email') as string,
+            clientAddress: formData.get('address') as string,
             date: formData.get('date') as string,
             time: formData.get('time') as string,
             serviceName: cart.map(c => c.name).join(', '),
+            clientPhone: formData.get('phone') as string,
         };
 
         // Save booking details for after payment
@@ -47,16 +94,26 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ items: lineItems }),
+                body: JSON.stringify({
+                    items: lineItems,
+                    date: bookingData.date,
+                    time: bookingData.time
+                }),
             });
 
             const data = await response.json();
+
+            if (response.status === 409 && data.redirectUrl) {
+                window.location.href = data.redirectUrl;
+                return;
+            }
 
             if (data.url) {
                 window.location.href = data.url;
             } else {
                 console.error('Stripe session creation failed:', data);
                 setApiStatus('error');
+                setErrorMessage(data.error || 'Payment initialization failed');
             }
         } catch (error) {
             console.error('Payment initialization error:', error);
@@ -134,13 +191,69 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label className="block text-xs uppercase tracking-widest text-stone-500 mb-2">{t.booking.name}</label>
-                                <input required name="name" type="text" className="w-full bg-stone-50 border border-stone-200 p-3 rounded focus:border-gold-500 outline-none" />
+                                <input required name="name" placeholder="John Doe" type="text" className="w-full bg-stone-50 border border-stone-200 p-3 rounded focus:border-gold-500 outline-none" />
                             </div>
                             <div>
                                 <label className="block text-xs uppercase tracking-widest text-stone-500 mb-2">{t.booking.email}</label>
-                                <input required name="email" type="email" className="w-full bg-stone-50 border border-stone-200 p-3 rounded focus:border-gold-500 outline-none" />
+                                <input required name="email" placeholder="hello@gmail.com" type="email" className="w-full bg-stone-50 border border-stone-200 p-3 rounded focus:border-gold-500 outline-none" />
                             </div>
                         </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label className="block text-xs uppercase tracking-widest text-stone-500 mb-2">{t.booking.phone}</label>
+                                <input required name="phone" placeholder="(012) 345-6789" type="text" className="w-full bg-stone-50 border border-stone-200 p-3 rounded focus:border-gold-500 outline-none" />
+                            </div>
+                            <div>
+                                <label className="block text-xs uppercase tracking-widest text-stone-500 mb-2">{t.booking.travelfee}</label>
+                                <select name="travelfee"
+                                    id="travelfee"
+                                    value={travelFee}
+                                    onChange={(e) => setTravelFee(e.target.value)}
+                                    className="w-full bg-stone-50 border border-stone-200 p-3 rounded focus:border-gold-500 outline-none">
+                                    <option value="in-studio">{t.booking.travelmethod1}</option>
+                                    <option value="to-you">{t.booking.travelmethod2}</option>
+                                    <option value="out-of-state">{t.booking.travelmethod3}</option>
+                                </select>
+                            </div>
+                        </div>
+                        {/* Address Input Section */}
+                        {travelFee !== "in-studio" && (
+                            <div>
+                                <label className="block text-xs uppercase tracking-widest text-stone-500 mb-2">{t.booking.address}</label>
+                                <div className="flex gap-2">
+                                    <input
+                                        required
+                                        name="address"
+                                        type="text"
+                                        placeholder="123 Main St, Anytown, USA"
+                                        value={address}
+                                        onChange={(e) => setAddress(e.target.value)}
+                                        // onBlur={calculateDistance} 
+                                        className="w-full bg-stone-50 border border-stone-200 p-3 rounded focus:border-gold-500 outline-none"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={calculateDistance}
+                                        className="px-4 bg-stone-100 border border-stone-200 text-stone-600 rounded hover:bg-gold-50 hover:text-gold-600 hover:border-gold-200 transition-colors"
+                                        title="Calculate Distance"
+                                    >
+                                        <MapPin size={20} />
+                                    </button>
+                                </div>
+                                {calculatingDistance && <p className="text-xs text-stone-400 mt-1 italic">Calculating distance...</p>}
+                                {distance && (
+                                    <p className="text-sm text-gold-600 mt-1 font-medium flex items-center gap-1">
+                                        <MapPin size={14} />
+                                        {distance}
+                                    </p>
+                                )}
+                                <p className="font-sans text-sm text-gray-500 mt-1 font-medium flex items-center gap-1">
+                                    (Your travel fee will be charged on the day of the appointment.)
+                                </p>
+                            </div>
+                        )}
+
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label className="block text-xs uppercase tracking-widest text-stone-500 mb-2">{t.booking.selectDate}</label>

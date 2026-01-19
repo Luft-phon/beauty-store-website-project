@@ -13,6 +13,7 @@ const PaymentSuccess: React.FC = () => {
     type PendingBooking = {
         clientName?: string;
         clientEmail?: string;
+        clientAddress?: string;
         phone?: string;
         serviceName?: string;
         date?: string;
@@ -113,6 +114,15 @@ const PaymentSuccess: React.FC = () => {
                             )}
 
                         </div>
+
+                        {pendingBooking?.clientAddress && (
+                            <div className="flex justify-between">
+                                <span>Address:</span>
+                                <div className="space-y-2 text-sm text-right max-w-[200px]">
+                                    <span>{pendingBooking.clientAddress}</span>
+                                </div>
+                            </div>
+                        )}
                         <div className="flex justify-between">
                             <span>Date:</span>
                             {pendingBooking && (
