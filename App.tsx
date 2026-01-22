@@ -7,7 +7,7 @@ import { INITIAL_SERVICES, TRANSLATIONS, GALLERIES } from './constants';
 import { MOCK_CATEGORIES, MOCK_STATISTICS, MOCK_WHY_CHOOSE_US, MOCK_FEATURED_SERVICE_IDS, MOCK_TESTIMONIALS, MOCK_PROCESS_STEPS, MOCK_COMPANY_INFO } from './data';
 import { applyThemeVariables } from './config/theme.config';
 import Layout from './components/Layout';
-
+import { Analytics } from '@vercel/analytics/react';
 import AdminDashboard from './components/AdminDashboard';
 import ServiceDetail from './components/ServiceDetail';
 import { ServiceCard } from './components/ServiceCard';
@@ -114,6 +114,7 @@ const App: React.FC = () => {
 
     return (
       <div>
+
         {/* Hero */}
         <div className="relative h-[85vh] md:h-[90vh] w-full overflow-hidden">
           <div className="absolute inset-0">
@@ -634,6 +635,7 @@ const App: React.FC = () => {
           <Route path="/terms" element={<TermsOfServicePage />} />
           <Route path="/admin" element={<AdminDashboard services={services} onUpdateService={handleUpdateService} />} />
         </Routes>
+        <Analytics />
       </Layout>
 
     </BrowserRouter>
