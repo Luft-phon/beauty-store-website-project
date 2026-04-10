@@ -19,7 +19,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Photoshoot / Stage Combo',
     description: 'Designed for camera and stage lighting. Includes long-lasting, HD-ready makeup, advanced contouring & highlighting, eye definition, and professional hair styling tailored to your concept. \n ✔ High-end makeup products \n ✔ All types of false lashes included',
     price: 235,
-    image: 'https://picsum.photos/id/1027/800/600'
+    image: '/images/galley/photoshoot/1.jpg'
   },
 
   // Party / Event Makeup & Hair Services (PREMIUM)
@@ -29,7 +29,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Premium Combo',
     description: 'Includes skin cleansing, priming, foundation, eye makeup, contour & blush, brows & lipstick using mid-range makeup products. \n ✔ Natural false lashes included \n ✔ Hair styling: simple curls or straightening (your choice)',
     price: 175,
-    image: 'https://picsum.photos/id/342/800/600'
+    image: '/images/galley/party/9.jpg'
   },
   {
     id: 'premium-makeup',
@@ -37,7 +37,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Premium Makeup Only',
     description: 'Professional makeup application using mid-range products. \n ✔ Natural false lashes included.',
     price: 125,
-    image: 'https://picsum.photos/id/129/800/600'
+    image: '/images/galley/party/2.jpg'
   },
   {
     id: 'premium-hair',
@@ -45,7 +45,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Premium Hair Only',
     description: 'Simple curls or straightening tailored to your event.',
     price: 95,
-    image: 'https://picsum.photos/id/128/800/600'
+    image: '/images/galley/party/3.jpg'
   },
 
   // Party / Event Makeup & Hair Services (DELUXE)
@@ -55,7 +55,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Deluxe Combo',
     description: 'Includes skin cleansing, toner, serum, moisturizing, priming, foundation, eye makeup, full-face contour, blush, powder, highlight & lipstick using high-end makeup products. \n ✔ All types of false lashes included \n ✔ Hair styling: any style of your choice',
     price: 205,
-    image: 'https://picsum.photos/id/338/800/600'
+    image: '/images/galley/party/4.jpg'
   },
   {
     id: 'deluxe-makeup',
@@ -63,7 +63,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Deluxe Makeup Only',
     description: 'Full pampering makeup session using high-end products. \n ✔ All types of false lashes included.',
     price: 155,
-    image: 'https://picsum.photos/id/64/800/600'
+    image: '/images/galley/party/5.jpg'
   },
   {
     id: 'deluxe-hair',
@@ -71,7 +71,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Deluxe Hair Only',
     description: 'Any hairstyle of your choice for your special occasion.',
     price: 115,
-    image: 'https://picsum.photos/id/91/800/600'
+    image: '/images/galley/party/6.jpg'
   },
 
   // Bridal Makeup & Hair Packages
@@ -81,7 +81,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Bridal Makeup & Hair (1 time)',
     description: 'Complete bridal look for your ceremony or reception.',
     price: 550,
-    image: 'https://picsum.photos/id/250/800/600'
+    image: '/images/galley/bridal/1.jpg'
   },
   {
     id: 'bridal-2',
@@ -89,7 +89,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Bridal Makeup & 2 Hair Changes',
     description: '1 morning Makeup & Hair + 1 touchup & 1 hair change.',
     price: 750,
-    image: 'https://picsum.photos/id/331/800/600'
+    image: '/images/galley/bridal/9.jpg'
   },
   {
     id: 'bridal-3',
@@ -97,7 +97,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Bridal Makeup & Hair + Layout Changes',
     description: 'Morning & evening makeup and hair changes to keep you looking perfect all day.',
     price: 800,
-    image: 'https://picsum.photos/id/1012/800/600'
+    image: '/images/galley/bridal/10.jpg'
   },
   {
     id: 'bridal-4',
@@ -105,59 +105,59 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Bridal All-Day Service',
     description: 'MUA will accompany the bride throughout the day and adjust makeup & hair as needed until the evening ceremony ends. \n🎁 Complimentary manicure included',
     price: 1350,
-    image: 'https://picsum.photos/id/1011/800/600'
+    image: '/images/galley/bridal/13.jpg'
   },
 
   // Wedding Party Services
   {
     id: 'wedding-guest-combo',
-    category: 'Guest',
+    category: 'Bridal',
     name: 'Wedding Guest Makeup & Hair',
     description: 'For moms, relatives, bridesmaids, etc.',
     price: 220,
-    image: 'https://picsum.photos/id/823/800/600'
+    image: '/images/galley/bridal/guest/10.jpg'
   },
   {
     id: 'wedding-guest-makeup',
-    category: 'Guest',
+    category: 'Bridal',
     name: 'Wedding Guest Makeup Only',
     description: 'Professional makeup for wedding guests.',
     price: 190,
-    image: 'https://picsum.photos/id/338/800/600'
+    image: '/images/galley/bridal/guest/7.jpg'
   },
   {
     id: 'wedding-guest-hair',
-    category: 'Guest',
+    category: 'Bridal',
     name: 'Wedding Guest Hair Only',
     description: 'Professional hair styling for wedding guests.',
     price: 130,
-    image: 'https://picsum.photos/id/646/800/600'
+    image: '/images/galley/bridal/guest/hair-only/5.jpg'
   },
   {
     id: 'groom-combo',
-    category: 'PartyEvent',
+    category: 'Bridal',
     name: 'Groom Makeup & Hair',
     description: 'Grooming service for the groom.',
     price: 200,
-    image: 'https://picsum.photos/id/91/800/600'
+    image: '/images/galley/groom/2.jpg'
   },
   {
     id: 'groom-makeup',
-    category: 'PartyEvent',
+    category: 'Bridal',
     name: 'Groom Makeup Only',
     description: 'Makeup grooming for the groom.',
     price: 170,
-    image: 'https://picsum.photos/id/1027/800/600'
+    image: '/images/galley/groom/7.jpg'
   },
 
   // Trial & Pre-Wedding
   {
     id: 'bridal-trial',
-    category: 'Bridal',
+    category: 'Photoshoot',
     name: 'Bridal Trial / Pre-Wedding Photoshoot',
     description: '4–6 hours trying different looks and styles. Perfect for pre-wedding photos or finding your wedding day look.',
     price: 400,
-    image: 'https://picsum.photos/id/325/800/600'
+    image: '/images/galley/bridal/10.jpg'
   },
 
   // Education
@@ -167,7 +167,7 @@ export const MOCK_SERVICES: Service[] = [
     name: '1:1 Private Makeup Class',
     description: '3 days, 3 hours per day. Flexible dates/times. Includes skincare & makeup products, Professional Brush Set, Brush Case, Beauty Blender, and Mini Beauty Portrait Photoshoot.',
     price: 595,
-    image: 'https://picsum.photos/id/201/800/600'
+    image: '/images/galley/party/7.jpg'
   },
   {
     id: 'class-group',
@@ -175,7 +175,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Group Makeup Class (4 students)',
     description: '3 days, 3 hours per day. Held on weekends (Fri-Sun). Includes skincare & makeup products, Professional Brush Set, Brush Case, Beauty Blender, and Mini Beauty Portrait Photoshoot.',
     price: 495,
-    image: 'https://picsum.photos/id/338/800/600'
+    image: '/images/galley/party/8.jpg'
   },
   // extra services
   {
@@ -184,7 +184,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Convenience Fee',
     description: 'A travel and convenience fee applies to all appointments requiring travel, starting at s50+ (determined by distance from our location). Fees apply per makeup artist.\n \n ✔ 0-10 Miles: $50 \n ✔ 11-25 Miles: $100 \n ✔ 26-35 Miles: $150 \n ✔ 31-40 Miles: $200 \n ✔ Out of state: $250 Flat Rate \n(Customers are required to take care of flight tickets, hotels and Meals for the Make Up Artist if the location is out of state)',
     price: 0,
-    image: 'https://picsum.photos/id/338/800/600'
+    image: '/images/galley/party/9.jpg'
   },
   // products
   {
@@ -193,7 +193,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Bridal Airbrush Products',
     description: 'Bridal Airbrush Products are professional-grade makeup solutions designed for flawless, long-lasting bridal looks.\n ✔ Featuring a lightweight, breathable formula, they provide smooth, natural coverage that photographs beautifully and stays fresh all day.',
     price: 100,
-    image: 'https://picsum.photos/id/338/800/600'
+    image: '/images/galley/bridal/6.jpg'
   },
   {
     id: 'event-airbrush',
@@ -201,7 +201,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Event/Party/ Air brush Products',
     description: 'Professional makeup products designed for flawless, long-lasting looks at special events and parties.\n ✔ Lightweight and smooth, they deliver even coverage with a radiant finish that holds up under lights, heat, and long wear.',
     price: 50,
-    image: 'https://picsum.photos/id/338/800/600'
+    image: '/images/galley/party/10.jpg'
   }
 ];
 

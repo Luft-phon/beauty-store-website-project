@@ -33,37 +33,75 @@ export interface Testimonial {
 
 export const MOCK_TEAM_MEMBERS: TeamMember[] = [
   {
-    id: '1',
-    name: 'Sarah L.',
-    role: 'Lead Makeup Artist',
-    image: 'https://picsum.photos/id/64/400/400',
-    bio: 'Over 10 years of experience in bridal and editorial makeup'
+    id: 'avy',
+    name: 'Avy Nguyen',
+    role: 'Founder & Master Artist',
+    image: '/images/logo/owner.jpg'
   },
   {
-    id: '2',
-    name: 'David C.',
-    role: 'Senior Photographer',
-    image: 'https://picsum.photos/id/91/400/400',
-    bio: 'Award-winning wedding photographer with a passion for storytelling'
+    id: 'tien',
+    name: 'Tien Truong',
+    role: 'Senior Makeup Artist',
+    image: '/images/member/truong.jpg'
   },
   {
-    id: '3',
-    name: 'Elena R.',
-    role: 'Brow Specialist',
-    image: 'https://picsum.photos/id/338/400/400',
-    bio: 'Certified in microblading and ombre powder techniques'
+    id: 'hannah',
+    name: 'Hannah Nguyen',
+    role: 'Hair Stylist',
+    image: '/images/member/hannah.jpg'
+  },
+  {
+    id: 'vick',
+    name: 'Vick Nguyen',
+    role: 'Photographer',
+    image: '/images/member/vick.jpg'
+  },
+  {
+    id: 'violet',
+    name: 'Violet Nguyen',
+    role: 'Photographer',
+    image: '/images/member/violet.jpg'
+  },
+  {
+    id: 'yani',
+    name: 'Yani Truong',
+    role: 'Photographer',
+    image: '/images/member/yani.jpg'
+  },
+  {
+    id: 'nhi',
+    name: 'Nhi Nguyen',
+    role: 'Photographer',
+    image: '/images/member/nhi.jpg'
   }
 ];
 
 export const MOCK_GALLERY_IMAGES: GalleryImage[] = [
-  { id: '1', url: 'https://picsum.photos/id/1011/600/600', category: 'Wedding', alt: 'Wedding makeup' },
-  { id: '2', url: 'https://picsum.photos/id/1012/600/800', category: 'Bridal', alt: 'Bridal portrait' },
-  { id: '3', url: 'https://picsum.photos/id/331/600/600', category: 'Makeup', alt: 'Event makeup' },
-  { id: '4', url: 'https://picsum.photos/id/325/600/600', category: 'Photography', alt: 'Couple photography' },
-  { id: '5', url: 'https://picsum.photos/id/129/600/800', category: 'Portrait', alt: 'Portrait session' },
-  { id: '6', url: 'https://picsum.photos/id/65/600/600', category: 'Nails', alt: 'Nail art' },
-  { id: '7', url: 'https://picsum.photos/id/823/600/600', category: 'Tattooing', alt: 'Eyebrow tattoo' },
-  { id: '8', url: 'https://picsum.photos/id/646/600/800', category: 'Wedding', alt: 'Wedding moment' }
+  // Bridal
+  { id: '1', url: '/images/galley/bridal/25.jpg', category: 'Bridal', alt: 'Bridal Makeup 1' },
+  { id: '2', url: '/images/galley/bridal/26.jpg', category: 'Bridal', alt: 'Bridal Makeup 2' },
+  { id: '3', url: '/images/galley/bridal/27.jpg', category: 'Bridal', alt: 'Bridal Makeup 3' },
+  { id: '4', url: '/images/galley/bridal/10.jpg', category: 'Bridal', alt: 'Bridal Makeup 4' },
+  { id: '5', url: '/images/galley/bridal/11.jpg', category: 'Bridal', alt: 'Bridal Makeup 5' },
+  { id: '6', url: '/images/galley/bridal/12.jpg', category: 'Bridal', alt: 'Bridal Makeup 6' },
+  // Party
+  { id: '7', url: '/images/galley/photoshoot/20.jpg', category: 'Party', alt: 'Party Makeup 1' },
+  { id: '8', url: '/images/galley/photoshoot/21.jpg', category: 'Party', alt: 'Party Makeup 2' },
+  { id: '9', url: '/images/galley/photoshoot/22.jpg', category: 'Party', alt: 'Party Makeup 3' },
+  { id: '10', url: '/images/galley/groom/5.jpg', category: 'Party', alt: 'Party Makeup 4' },
+  { id: '11', url: '/images/galley/groom/6.jpg', category: 'Party', alt: 'Party Makeup 5' },
+  // Photoshoot
+  { id: '12', url: '/images/galley/photoshoot/1.jpg', category: 'Photoshoot', alt: 'Photoshoot Makeup 1' },
+  { id: '13', url: '/images/galley/photoshoot/2.jpg', category: 'Photoshoot', alt: 'Photoshoot Makeup 2' },
+  { id: '14', url: '/images/galley/photoshoot/15.jpg', category: 'Photoshoot', alt: 'Photoshoot Makeup 3' },
+  { id: '15', url: '/images/galley/photoshoot/4.jpg', category: 'Photoshoot', alt: 'Photoshoot Makeup 4' },
+  { id: '16', url: '/images/galley/photoshoot/5.jpg', category: 'Photoshoot', alt: 'Photoshoot Makeup 5' },
+  // Groom / Others
+  { id: '17', url: '/images/galley/groom/1.jpg', category: 'Groom', alt: 'Groom Styling 1' },
+  { id: '18', url: '/images/galley/groom/2.jpg', category: 'Groom', alt: 'Groom Styling 2' },
+  { id: '19', url: '/images/galley/bridal/6.jpg', category: 'Bridal', alt: 'Bridal Makeup 6' },
+  { id: '20', url: '/images/galley/party/6.jpg', category: 'Party', alt: 'Party Makeup 6' },
+  { id: '20', url: '/images/galley/photoshoot/6.jpg', category: 'Photoshoot', alt: 'Photoshoot Makeup 6' }
 ];
 
 export const MOCK_TESTIMONIALS: Testimonial[] = [

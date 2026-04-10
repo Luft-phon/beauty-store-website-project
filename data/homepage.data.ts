@@ -47,34 +47,28 @@ export const MOCK_HOME_HERO: HomeHeroData = {
 // Category Features
 export const MOCK_CATEGORIES: CategoryFeature[] = [
   {
-    id: 'makeup',
+    id: 'party',
     name: 'Makeup',
     description: 'Professional makeup artistry for all occasions, from natural glam to bold bridal looks.',
     icon: 'star',
-    link: '#/services?category=Makeup'
+    link: '#/services/party'
   },
   {
-    id: 'Photoshoot',
+    id: 'bridal',
+    name: 'Bridal',
+    description: 'Specialized makeup and styling for weddings and special events.',
+    icon: 'star',
+    link: '#/services/bridal'
+  },
+  {
+    id: 'photoshoot',
     name: 'Photoshoot / Stage',
     description: 'Specialized makeup and styling for photoshoots, stage performances, and media events.',
     icon: 'camera',
     link: '#/services/photoshoot'
-  },
-  // {
-  //   id: 'PartyEvent',
-  //   name: 'Party / Event',
-  //   description: 'glamorous makeup services for parties, social events, and special occasions.',
-  //   icon: 'star',
-  //   link: '#/services/party'
-  // },
-  {
-    id: 'photography',
-    name: 'Photography',
-    description: 'Capture your special moments with our professional wedding and portrait photography.',
-    icon: 'camera',
-    link: '#/services?category=Photography'
   }
 ];
+
 
 // Statistics
 export const MOCK_STATISTICS: StatisticItem[] = [
