@@ -35,7 +35,8 @@ export interface ThemeColors {
 
 export interface Service {
   id: string;
-  category: 'Makeup' | 'Fee' | 'Products' | 'Photography' | 'Bridal' | 'PartyEvent' | 'Photoshoot' | 'Guest' | 'Education';
+  category: 'Makeup' | 'Fee' | 'Products' | 'Photography' | 'Bridal' | 'PartyEvent' | 'Photoshoot' | 'Education';
+
   name: string;
   description: string;
   price: number;
@@ -94,10 +95,10 @@ export interface Translation {
       clientReviewsDesc: string;
     };
     categories: {
-      makeup: { name: string; description: string; };
-      photoshoot: { name: string; description: string; };
+      party: { name: string; description: string; };
+      bridal: { name: string; description: string; };
       partyEvent: { name: string; description: string; };
-      photography: { name: string; description: string; };
+      photoshoot: { name: string; description: string; };
     };
     features: {
       quality: { title: string; description: string; };
@@ -136,7 +137,7 @@ export interface Translation {
       name: string;
       role: string;
       bio: string;
-      image: string;
+      image?: string;
     }>;
   };
   contactPage: {

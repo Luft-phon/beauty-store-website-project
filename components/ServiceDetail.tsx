@@ -1,8 +1,9 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Service, Language } from '../types';
 import { TRANSLATIONS } from '../constants';
 import { ArrowLeft, Check, Star, Calendar, Clock, ShoppingBag } from 'lucide-react';
+import { div } from 'framer-motion/client';
 
 interface ServiceDetailProps {
   services: Service[];
@@ -30,12 +31,74 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
     );
   }
 
-  const imageGallery = [
-    service.image,
-    `https://picsum.photos/id/${Math.floor(Math.random() * 500)}/800/600`,
-    `https://picsum.photos/id/${Math.floor(Math.random() * 500)}/800/600`,
-    `https://picsum.photos/id/${Math.floor(Math.random() * 500)}/800/600`,
-  ];
+  const getGalleryImages = () => {
+    let imagesDir = '/images/galley/party';
+    let maxImages = 24;
+    let groupFilter = (s: Service) => s.category === 'PartyEvent';
+
+    if (service.name.toLowerCase().includes('groom')) {
+      imagesDir = '/images/galley/groom';
+      maxImages = 8;
+      groupFilter = (s: Service) => s.name.toLowerCase().includes('groom');
+    } else if (service.name.toLowerCase().includes('hair only')) {
+      imagesDir = '/images/galley/bridal/guest/hair-only';
+      maxImages = 5;
+      groupFilter = (s: Service) => s.name.toLowerCase().includes('hair only');
+    } else if (service.name.toLowerCase().includes('guest')) {
+      imagesDir = '/images/galley/bridal/guest';
+      maxImages = 18;
+      groupFilter = (s: Service) => s.name.toLowerCase().includes('guest');
+    } else if (service.category === 'Bridal') {
+      imagesDir = '/images/galley/bridal';
+      maxImages = 36;
+      groupFilter = (s: Service) => s.category === 'Bridal' && !s.name.toLowerCase().includes('groom');
+    } else if (service.category === 'Photoshoot') {
+      imagesDir = '/images/galley/photoshoot';
+      maxImages = 22;
+      groupFilter = (s: Service) => s.category === 'Photoshoot';
+    } else if (service.category === 'PartyEvent') {
+      imagesDir = '/images/galley/party';
+      maxImages = 24;
+      groupFilter = (s: Service) => s.category === 'PartyEvent';
+    } else {
+      groupFilter = (s: Service) => s.category === service.category;
+    }
+
+    const groupServices = services.filter(groupFilter);
+    const serviceIndex = Math.max(0, groupServices.findIndex(s => s.id === service.id));
+    const totalGroupServices = Math.max(1, groupServices.length);
+
+    const allImages: string[] = [service.image];
+
+    if (maxImages >= totalGroupServices) {
+      // Divide maxImages by the number of services in the group
+      const imagesPerService = Math.floor(maxImages / totalGroupServices);
+
+      const startNum = (serviceIndex * imagesPerService) + 1;
+      let endNum = startNum + imagesPerService - 1;
+
+      // For the last service in the group, give it any remaining images
+      if (serviceIndex === totalGroupServices - 1) {
+        endNum = maxImages;
+      }
+
+      for (let i = startNum; i <= endNum; i++) {
+        allImages.push(`${imagesDir}/${i}.jpg`);
+      }
+    } else {
+      // We have fewer images than services. Distribute 1 image each by looping around.
+      const imageIndex = (serviceIndex % maxImages) + 1;
+      allImages.push(`${imagesDir}/${imageIndex}.jpg`);
+    }
+
+    // Remove duplicates using Set just in case service.image is already in the list
+    return Array.from(new Set(allImages));
+  };
+
+  const imageGallery = getGalleryImages();
+
+
+
 
   const handleAddToCart = () => {
     onAddToCart(service);
@@ -47,7 +110,6 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
     switch (service.category) {
       case 'Makeup':
       case 'PartyEvent':
-      case 'Guest':
       case 'Bridal':
         return ['Professional makeup artist', 'Premium products used', 'Complimentary touch-up kit', 'Photo-ready finish', 'Skin consultation included'];
       case 'Photoshoot':
@@ -67,10 +129,10 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
     switch (service.category) {
       case 'Makeup':
       case 'PartyEvent':
-      case 'Guest':
         return t.serviceDetail.durationMakeup;
       case 'Bridal':
-        return '2-4 hours';
+        return '60-120 min'; // Adjusted for mixed bridal/guest category
+
       case 'Photoshoot':
         return '2-3 hours';
       case 'Education':
@@ -93,19 +155,21 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
       <div className='max-w-7xl mx-auto px-4 pb-12 md:pb-16'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 md:mb-16'>
           <div className='space-y-3 md:space-y-4'>
-            <div className='relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl'>
-              <img src={imageGallery[selectedImage]} alt={service.name} className='w-full h-full object-cover' />
-              <div className='absolute top-3 left-3 md:top-4 md:left-4'>
-                <span className='bg-gold-500 text-white px-3 py-1 md:px-4 text-xs uppercase tracking-widest font-bold'>{service.category}</span>
+            <div className='relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl bg-stone-100/50 flex items-center justify-center p-2'>
+              <img src={imageGallery[selectedImage]} alt={service.name} className='w-full h-full object-contain rounded-md' />
+              <div className='absolute top-3 left-3 md:top-4 md:left-4 z-10'>
+                <span className='bg-gold-500 text-white px-3 py-1 md:px-4 text-xs uppercase tracking-widest font-bold shadow-sm'>{service.category}</span>
               </div>
             </div>
-            <div className='grid grid-cols-4 gap-2'>
+            <div className='grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar'>
               {imageGallery.map((img, idx) => (
-                <button key={idx} onClick={() => setSelectedImage(idx)} className={`aspect-square rounded-md overflow-hidden border-2 transition-all ${selectedImage === idx ? 'border-gold-500 scale-95' : 'border-transparent hover:border-stone-300'}`}>
-                  <img src={img} alt={`${t.serviceDetail.view} ${idx + 1}`} className='w-full h-full object-cover' />
+                <button key={idx} onClick={() => setSelectedImage(idx)} className={`aspect-square rounded-md overflow-hidden border-2 bg-stone-50 flex items-center justify-center p-1 transition-all ${selectedImage === idx ? 'border-gold-500 scale-95' : 'border-transparent hover:border-stone-300 pointer-events-auto'}`}>
+                  <img src={img} alt={`${t.serviceDetail.view} ${idx + 1}`} className='w-full h-full object-contain rounded-sm' />
                 </button>
               ))}
             </div>
+
+
           </div>
           <div className='font-sen space-y-4 md:space-y-6'>
             <div>
@@ -157,14 +221,24 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
               </div>
             </div>
             <div className='space-y-3 pt-2 md:pt-4'>
-              <button onClick={handleAddToCart} disabled={isAdded} className={`w-full py-3 md:py-4 px-6 flex items-center justify-center space-x-3 uppercase text-xs md:text-sm font-bold tracking-widest transition-all duration-300 ${isAdded ? 'bg-green-600 text-white' : 'bg-stone-900 text-white hover:bg-gold-500'}`}>
-                <ShoppingBag size={20} />
-                <span>{isAdded ? t.servicePage.added : t.servicePage.addToCart}</span>
-              </button>
-              <Link to='/booking' className='w-full py-3 md:py-4 px-6 flex items-center justify-center space-x-3 border-2 border-stone-900 text-stone-900 hover:bg-stone-900 hover:!text-white uppercase text-xs md:text-sm font-bold tracking-widest transition-all duration-300'>
-                <Calendar size={20} />
-                <span>{t.serviceDetail.bookNow}</span>
-              </Link>
+              {service.category === 'Bridal' ? (
+                <Link to='/inquiry' className='w-full py-3 md:py-4 px-6 flex items-center justify-center space-x-3 uppercase text-xs md:text-sm font-bold tracking-widest transition-all duration-300 bg-stone-900 text-white hover:bg-gold-500'>
+                  <span>Inquiry</span>
+                </Link>
+              ) : (
+                <button onClick={handleAddToCart} disabled={isAdded} className={`w-full py-3 md:py-4 px-6 flex items-center justify-center space-x-3 uppercase text-xs md:text-sm font-bold tracking-widest transition-all duration-300 ${isAdded ? 'bg-green-600 text-white' : 'bg-stone-900 text-white hover:bg-gold-500'}`}>
+                  <ShoppingBag size={20} />
+                  <span>{isAdded ? t.servicePage.added : t.servicePage.addToCart}</span>
+                </button>
+              )}
+              {service.category === 'Bridal' ? (
+                <div></div>
+              ) : (
+                <Link to='/booking' className='w-full py-3 md:py-4 px-6 flex items-center justify-center space-x-3 border-2 border-stone-900 text-stone-900 hover:bg-stone-900 hover:!text-white uppercase text-xs md:text-sm font-bold tracking-widest transition-all duration-300'>
+                  <Calendar size={20} />
+                  <span>{t.serviceDetail.bookNow}</span>
+                </Link>
+              )}
             </div>
           </div>
         </div>

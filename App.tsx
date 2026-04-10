@@ -4,7 +4,7 @@ import Lenis from 'lenis';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Language, Service, Theme } from './types';
 import { INITIAL_SERVICES, TRANSLATIONS, GALLERIES } from './constants';
-import { MOCK_CATEGORIES, MOCK_STATISTICS, MOCK_WHY_CHOOSE_US, MOCK_FEATURED_SERVICE_IDS, MOCK_TESTIMONIALS, MOCK_PROCESS_STEPS, MOCK_COMPANY_INFO } from './data';
+import { MOCK_CATEGORIES, MOCK_STATISTICS, MOCK_WHY_CHOOSE_US, MOCK_FEATURED_SERVICE_IDS, MOCK_TESTIMONIALS, MOCK_PROCESS_STEPS, MOCK_COMPANY_INFO, MOCK_TEAM_MEMBERS } from './data';
 import { applyThemeVariables } from './config/theme.config';
 import Layout from './components/Layout';
 import { Analytics } from '@vercel/analytics/react';
@@ -24,6 +24,7 @@ import { GalleryCarousel } from './components/GalleryCarousel';
 import PolicyPage from './components/PolicyPage';
 import TermsOfServicePage from './components/TermsOfServicePage';
 import PaymentPending from './components/PaymentPending';
+import InquiryPage from './components/InquiryPage';
 
 const App: React.FC = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -143,7 +144,7 @@ const App: React.FC = () => {
               {t.hero.subtitle}
             </p>
             <Link
-              to="/services"
+              to="/services/party"
               className="font-outfit px-6 sm:px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-stone-900 transition-all duration-175 uppercase tracking-widest text-xs sm:text-sm font-bold animate-in fade-in duration-500 delay-50 inline-flex items-center gap-2 group"
             >
               {t.hero.cta}
@@ -189,15 +190,16 @@ const App: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-[1400px] mx-auto">
             {MOCK_CATEGORIES.map((category) => {
-              const categoryTranslation = category.id === 'makeup' ? t.homepage.categories.makeup :
-                category.id === 'Photoshoot' ? t.homepage.categories.photoshoot :
-                  category.id === 'PartyEvent' ? t.homepage.categories.partyEvent :
-                    category.id === 'photography' ? t.homepage.categories.photography :
-                      t.homepage.categories.partyEvent;
+              const categoryTranslation =
+                category.id === 'party' ? t.homepage.categories.party :
+                  category.id === 'bridal' ? t.homepage.categories.bridal :
+                    category.id === 'photoshoot' ? t.homepage.categories.photoshoot :
+                      t.homepage.categories.partyEvent; // Fallback
+
               return (
                 <Link
                   key={category.id}
-                  to="/services"
+                  to={`/services/${category.id}`}
                   className="group flex flex-col items-center text-center p-10 border-[0.5px] border-[#E5E0D8] bg-white transition-all duration-500 hover:border-[#C8997C] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
                 >
                   <div className="mb-8 text-[#C8997C] group-hover:scale-110 transition-transform duration-500">
@@ -383,7 +385,7 @@ const App: React.FC = () => {
 
         {/* Philosophy */}
         <div className="bg-stone-50 p-12 text-center rounded-lg border border-stone-100 mb-20">
-          <span className="block font-serif text-5xl uppercase font-bold text-stone-900 tracking-tighter pb-4">
+          <span className="block font-serif text-5xl uppercase font-bold text-center text-stone-900 tracking-tighter pb-4">
             {t.aboutPage.philosophyTitle}
           </span>
           <p className="font-sen max-w-3xl mx-auto text-stone-600 text-lg leading-relaxed italic">
@@ -397,22 +399,25 @@ const App: React.FC = () => {
             {t.aboutPage.teamTitle}
           </span>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {t.aboutPage.teamMembers?.map((member, index) => (
-              <div key={index} className="flex flex-col items-center text-center group">
-                <div className="relative mb-6 w-48 h-48 overflow-hidden rounded-full border-4 border-stone-100 shadow-lg group-hover:border-gold-500 transition-all duration-500">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
+            {MOCK_TEAM_MEMBERS.map((member, index) => {
+              const translatedMember = t.aboutPage.teamMembers?.[index];
+              return (
+                <div key={member.id} className="flex flex-col items-center text-center group">
+                  <div className="relative mb-6 w-48 h-48 overflow-hidden rounded-full border-4 border-stone-100 shadow-lg group-hover:border-gold-500 transition-all duration-500">
+                    <img
+                      src={member.image}
+                      alt={translatedMember?.name || member.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                  </div>
+                  <h3 className="font-serif text-2xl text-stone-900 font-bold mb-2">{translatedMember?.name || member.name}</h3>
+                  <span className="font-outfit text-xs uppercase tracking-widest text-gold-600 font-bold mb-4 block">{translatedMember?.role || member.role}</span>
+                  <p className="font-sen text-stone-500 text-sm leading-relaxed max-w-xs">{translatedMember?.bio}</p>
                 </div>
-                <h3 className="font-serif text-2xl text-stone-900 font-bold mb-2">{member.name}</h3>
-                <span className="font-outfit text-xs uppercase tracking-widest text-gold-600 font-bold mb-4 block">{member.role}</span>
-                <p className="font-sen text-stone-500 text-sm leading-relaxed max-w-xs">{member.bio}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -437,18 +442,16 @@ const App: React.FC = () => {
         <h2 className="font-serif uppercase text-5xl text-center mb-12">
           {category === 'PartyEvent' ? 'Party / Event' :
             category === 'Photoshoot' ? 'Photoshoot / Stage' :
-              category === 'Guest' ? 'Guest' :
-                category === 'Bridal' ? 'Bridal' :
-                  category === 'Education' ? 'Private Classes' :
-                    'Services'}
+              category === 'Bridal' ? 'Bridal & Guest Services' :
+                category === 'Education' ? 'Private Classes' :
+                  'Services'}
         </h2>
         {/* Category Navigation Tabs */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <Link to="/services" className={`font-outfit px-6 py-2 uppercase text-xs tracking-widest font-bold border transition-all ${!category ? 'bg-stone-900 text-white border-stone-900' : 'text-stone-600 border-stone-200 hover:border-gold-500 hover:text-gold-500'}`}>All</Link>
+          {/* <Link to="/services" className={`font-outfit px-6 py-2 uppercase text-xs tracking-widest font-bold border transition-all ${!category ? 'bg-stone-900 text-white border-stone-900' : 'text-stone-600 border-stone-200 hover:border-gold-500 hover:text-gold-500'}`}>All</Link> */}
           <Link to="/services/party" className={`font-outfit px-6 py-2 uppercase text-xs tracking-widest font-bold border transition-all ${category === 'PartyEvent' ? 'bg-stone-900 text-white border-stone-900' : 'text-stone-600 border-stone-200 hover:border-gold-500 hover:text-gold-500'}`}>Party Makeup</Link>
           <Link to="/services/photoshoot" className={`font-outfit px-6 py-2 uppercase text-xs tracking-widest font-bold border transition-all ${category === 'Photoshoot' ? 'bg-stone-900 text-white border-stone-900' : 'text-stone-600 border-stone-200 hover:border-gold-500 hover:text-gold-500'}`}>Photoshoot/Stage</Link>
           <Link to="/services/bridal" className={`font-outfit px-6 py-2 uppercase text-xs tracking-widest font-bold border transition-all ${category === 'Bridal' ? 'bg-stone-900 text-white border-stone-900' : 'text-stone-600 border-stone-200 hover:border-gold-500 hover:text-gold-500'}`}>Bridal Packages</Link>
-          <Link to="/services/guest" className={`font-outfit px-6 py-2 uppercase text-xs tracking-widest font-bold border transition-all ${category === 'Guest' ? 'bg-stone-900 text-white border-stone-900' : 'text-stone-600 border-stone-200 hover:border-gold-500 hover:text-gold-500'}`}>Guest Services</Link>
           <Link to="/services/education" className={`font-outfit px-6 py-2 uppercase text-xs tracking-widest font-bold border transition-all ${category === 'Education' ? 'bg-stone-900 text-white border-stone-900' : 'text-stone-600 border-stone-200 hover:border-gold-500 hover:text-gold-500'}`}>Classes</Link>
         </div>
 
@@ -488,7 +491,7 @@ const App: React.FC = () => {
           <ShoppingBag size={64} className="text-stone-300 mb-6" />
           <h2 className="font-serif text-3xl mb-4">{t.cart.empty}</h2>
           <p className="font-sen text-stone-500 mb-8">{t.cart.browseHint}</p>
-          <Link to="/services" className="px-8 py-3 bg-stone-900 text-white uppercase tracking-widest text-sm font-bold hover:bg-gold-500 transition-colors">
+          <Link to="/services/party" className="px-8 py-3 bg-stone-900 text-white uppercase tracking-widest text-sm font-bold hover:bg-gold-500 transition-colors">
             {t.cart.continue}
           </Link>
         </div>
@@ -539,7 +542,7 @@ const App: React.FC = () => {
                 <span>{t.cart.proceed}</span>
                 <ArrowRight size={18} />
               </Link>
-              <Link to="/services" className="block text-center mt-4 text-stone-500 text-sm hover:text-gold-500 underline">
+              <Link to="/services/party" className="block text-center mt-4 text-stone-500 text-sm hover:text-gold-500 underline">
                 {t.cart.continue}
               </Link>
             </div>
@@ -630,6 +633,7 @@ const App: React.FC = () => {
           <Route path="/payment-error" element={<PaymentError />} />
           <Route path="/booking" element={<BookingPage t={t} cart={cart} clearCart={clearCart} />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/inquiry" element={<InquiryPage t={t} />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/policy" element={<PolicyPage />} />
           <Route path="/terms" element={<TermsOfServicePage />} />

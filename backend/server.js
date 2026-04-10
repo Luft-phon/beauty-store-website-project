@@ -4,6 +4,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import path from 'path';
+import nodemailer from 'nodemailer';
 import { fileURLToPath } from 'url';
 import Stripe from 'stripe';
 dotenv.config();
@@ -259,6 +260,52 @@ app.post('/api/calculate-distance', async (req, res) => {
     } catch (error) {
         console.error('Error calculating distance:', error);
         res.status(500).json({ error: 'Failed to calculate distance' });
+    }
+});
+
+// API Endpoint to handle Inquiry emails
+app.post('/api/send-inquiry', async (req, res) => {
+    try {
+        const { name, email, phone, travelfee, date, time, message } = req.body;
+
+        if (!name || !email || !phone) {
+            return res.status(400).json({ error: 'Name, email, and phone are required' });
+        }
+
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.SMTP_USER,
+                pass: process.env.SMTP_PASS
+            }
+        });
+
+        const mailOptions = {
+            from: process.env.SMTP_USER || '"Website Inquiry" <noreply@example.com>',
+            to: 'thanhphongchupanh@gmail.com', // Sends directly to the website owner
+            subject: `New Inquiry from ${name}`,
+            html: `
+                <h2>New Inquiry Received</h2>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <p><strong>Travel Option:</strong> ${travelfee}</p>
+                <p><strong>Date:</strong> ${date}</p>
+                <p><strong>Time:</strong> ${time}</p>
+                <p><strong>Message:</strong><br>${message ? message.replace(/\\n/g, '<br>') : 'No extra message provided.'}</p>
+            `
+        };
+
+        if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+            await transporter.sendMail(mailOptions);
+        } else {
+            console.warn('WARNING: Cannot send email. Configure SMTP_USER and SMTP_PASS in .env file.');
+        }
+
+        res.json({ success: true, message: 'Inquiry handled successfully' });
+    } catch (error) {
+        console.error('Error sending inquiry email:', error);
+        res.status(500).json({ error: 'Failed to send inquiry' });
     }
 });
 
