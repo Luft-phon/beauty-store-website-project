@@ -46,7 +46,9 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, t, addToCart 
 
                 <div className="flex gap-2">
                     {service.category === 'Bridal' ? (
-                        <Link to='/inquiry' className={`font-sen flex-1 py-3 px-4 uppercase text-xs font-bold tracking-widest transition-colors duration-300 ${isAdded
+                        <Link to='/inquiry' 
+                            state={{ serviceName: t.services?.[service.id]?.name || service.name }}
+                            className={`font-sen flex-1 py-3 px-4 uppercase text-xs font-bold tracking-widest transition-colors duration-300 flex justify-center items-center ${isAdded
                             ? 'bg-green-600 text-white'
                             : 'bg-stone-900 text-white hover:bg-gold-500'
                             }`}>

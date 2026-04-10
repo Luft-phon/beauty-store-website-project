@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Translation } from '../types';
 import { Loader2, CheckCircle } from 'lucide-react';
 
@@ -8,6 +9,8 @@ interface InquiryPageProps {
 
 const InquiryPage: React.FC<InquiryPageProps> = ({ t }) => {
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+    const location = useLocation();
+    const serviceName = location.state?.serviceName || '';
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -100,6 +103,10 @@ const InquiryPage: React.FC<InquiryPageProps> = ({ t }) => {
                                 <option value="17:00">05:00 PM</option>
                             </select>
                         </div>
+                    </div>
+                    <div>
+                        <label className="block text-xs uppercase tracking-widest text-stone-500 mb-2">Service of Interest</label>
+                        <input name="serviceName" readOnly={!!serviceName} defaultValue={serviceName} placeholder="E.g. Bridal Makeup" type="text" className={`font-sen w-full bg-[#FAF9F6] border border-stone-200 p-3 rounded focus:border-gold-500 outline-none text-stone-700 ${serviceName ? 'opacity-70 cursor-not-allowed' : ''}`} />
                     </div>
                     <div>
                         <label className="block text-xs uppercase tracking-widest text-stone-500 mb-2">Message</label>

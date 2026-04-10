@@ -266,7 +266,7 @@ app.post('/api/calculate-distance', async (req, res) => {
 // API Endpoint to handle Inquiry emails
 app.post('/api/send-inquiry', async (req, res) => {
     try {
-        const { name, email, phone, travelfee, date, time, message } = req.body;
+        const { name, email, phone, travelfee, date, time, message, serviceName } = req.body;
 
         if (!name || !email || !phone) {
             return res.status(400).json({ error: 'Name, email, and phone are required' });
@@ -292,6 +292,7 @@ app.post('/api/send-inquiry', async (req, res) => {
                 <p><strong>Travel Option:</strong> ${travelfee}</p>
                 <p><strong>Date:</strong> ${date}</p>
                 <p><strong>Time:</strong> ${time}</p>
+                <p><strong>Service:</strong> ${serviceName || 'General Inquiry'}</p>
                 <p><strong>Message:</strong><br>${message ? message.replace(/\\n/g, '<br>') : 'No extra message provided.'}</p>
             `
         };
