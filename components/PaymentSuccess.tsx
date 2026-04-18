@@ -41,8 +41,8 @@ const PaymentSuccess: React.FC = () => {
             setPendingBooking(bookingData);
 
             try {
-                // const response = await fetch(`https://beauty-store-website-project.onrender.com/api/calendar/create-event`, {
-                const response = await fetch('http://localhost:3001/api/calendar/create-event', {
+                const response = await fetch(`https://beauty-store-website-project.onrender.com/api/calendar/create-event`, {
+                    // const response = await fetch('http://localhost:3001/api/calendar/create-event', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(bookingData),
