@@ -176,7 +176,7 @@ app.post('/api/calendar/create-event', async (req, res) => {
         });
 
         // ✅ SEND CONFIRMATION EMAIL
-        await sendConfirmationEmail({ clientName, clientEmail, serviceName, date, time, clientAddress, clientPhone });
+        // await sendConfirmationEmail({ clientName, clientEmail, serviceName, date, time, clientAddress, clientPhone });
 
         res.status(200).json({ success: true });
     } catch (error) {
