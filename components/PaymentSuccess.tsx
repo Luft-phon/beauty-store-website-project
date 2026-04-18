@@ -22,49 +22,72 @@ const PaymentSuccess: React.FC = () => {
 
     const [pendingBooking, setPendingBooking] = useState<PendingBooking | null>(null);
 
+    // useEffect(() => {
+    //     const createEvent = async () => {
+    //         if (hasFetched.current) return;
+    //         hasFetched.current = true;
+
+    //         const raw = localStorage.getItem('pendingBooking');
+
+    //         if (!raw) {
+    //             setStatus('success');
+    //             setMessage('Payment received! Please contact us if you do not receive a booking confirmation.');
+    //             return;
+    //         }
+
+    //         const bookingData = JSON.parse(raw);
+
+    //         // ✅ LƯU VÀO STATE ĐỂ HIỂN THỊ
+    //         setPendingBooking(bookingData);
+
+    //         try {
+    //             const response = await fetch(`https://beauty-store-website-project.onrender.com/api/calendar/create-event`, {
+    //                 // const response = await fetch('http://localhost:3001/api/calendar/create-event', {
+    //                 method: 'POST',
+    //                 headers: { 'Content-Type': 'application/json' },
+    //                 body: JSON.stringify(bookingData),
+    //             });
+
+    //             if (response.ok) {
+    //                 setStatus('success');
+    //                 setMessage('Thank you for your deposit. Your appointment has been secured.');
+    //                 localStorage.removeItem('pendingBooking');
+    //             } else {
+    //                 setStatus('error');
+    //                 setMessage('Payment successful, but we could not automatically create the calendar event.');
+    //             }
+    //         } catch {
+    //             setStatus('error');
+    //             setMessage('Payment successful, but a network error occurred.');
+    //         }
+    //     };
+
+    //     createEvent();
+    // }, []);
     useEffect(() => {
-        const createEvent = async () => {
-            if (hasFetched.current) return;
-            hasFetched.current = true;
+        if (hasFetched.current) return;
+        hasFetched.current = true;
 
-            const raw = localStorage.getItem('pendingBooking');
+        const raw = localStorage.getItem('pendingBooking');
 
-            if (!raw) {
-                setStatus('success');
-                setMessage('Payment received! Please contact us if you do not receive a booking confirmation.');
-                return;
-            }
+        if (!raw) {
+            setStatus('success');
+            setMessage('Payment received! Please contact us if you do not receive a booking confirmation.');
+            return;
+        }
 
-            const bookingData = JSON.parse(raw);
+        const bookingData = JSON.parse(raw);
 
-            // ✅ LƯU VÀO STATE ĐỂ HIỂN THỊ
-            setPendingBooking(bookingData);
+        // vẫn giữ để hiển thị thông tin trên UI nếu bạn cần
+        setPendingBooking(bookingData);
 
-            try {
-                const response = await fetch(`https://beauty-store-website-project.onrender.com/api/calendar/create-event`, {
-                    // const response = await fetch('http://localhost:3001/api/calendar/create-event', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(bookingData),
-                });
+        // KHÔNG tạo lịch ở đây nữa
+        setStatus('success');
+        setMessage('Thank you for your deposit. Your appointment has been secured.');
 
-                if (response.ok) {
-                    setStatus('success');
-                    setMessage('Thank you for your deposit. Your appointment has been secured.');
-                    localStorage.removeItem('pendingBooking');
-                } else {
-                    setStatus('error');
-                    setMessage('Payment successful, but we could not automatically create the calendar event.');
-                }
-            } catch {
-                setStatus('error');
-                setMessage('Payment successful, but a network error occurred.');
-            }
-        };
-
-        createEvent();
+        // có thể xóa localStorage vì webhook đã xử lý
+        localStorage.removeItem('pendingBooking');
     }, []);
-
     return (
         <div className="min-h-[80vh] flex items-center justify-center bg-stone-50 px-4">
             <FadeInSection className="max-w-xl w-full bg-white p-8 md:p-12 rounded-sm shadow-xl border border-stone-100 text-center">

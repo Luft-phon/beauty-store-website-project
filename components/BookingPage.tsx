@@ -77,14 +77,12 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
             clientPhone: formData.get('phone') as string,
         };
 
-        // Save booking details for after payment
         localStorage.setItem('pendingBooking', JSON.stringify(bookingData));
 
         try {
-            // Prepare items for Stripe (50% deposit)
             const lineItems = cart.map(item => ({
                 name: `Deposit: ${item.name}`,
-                price: item.price * 0.5, // 50% deposit
+                price: item.price * 0.5,
                 image: item.image
             }));
 
@@ -97,7 +95,12 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
                 body: JSON.stringify({
                     items: lineItems,
                     date: bookingData.date,
-                    time: bookingData.time
+                    time: bookingData.time,
+                    clientName: bookingData.clientName,
+                    clientEmail: bookingData.clientEmail,
+                    clientPhone: bookingData.clientPhone,
+                    clientAddress: bookingData.clientAddress,
+                    serviceName: bookingData.serviceName
                 }),
             });
 
