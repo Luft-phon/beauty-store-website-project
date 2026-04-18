@@ -148,6 +148,43 @@ app.use(bodyParser.json());
 
 // --- Routes ---
 
+// 1. Google Calendar: Manual Event Creation (Used by Success Page & Postman)
+app.post('/api/calendar/create-event', async (req, res) => {
+    try {
+        const { clientName, clientEmail, clientAddress, serviceName, date, time, clientPhone } = req.body;
+
+        if (!clientName || !clientEmail || !serviceName || !date || !time || !clientPhone) {
+            return res.status(400).json({ error: 'Missing required fields' });
+        }
+
+        const startDateTime = `${date}T${time}:00`;
+        const [h, m] = time.split(':').map(Number);
+        const endDateTime = `${date}T${String(h + 1).padStart(2, '0')}:${m}:00`;
+
+        const authClient = await getAuthClient();
+        const calendar = google.calendar({ version: 'v3', auth: authClient });
+
+        await calendar.events.insert({
+            calendarId: process.env.GOOGLE_CALENDAR_ID,
+            requestBody: {
+                summary: `Appointment: ${serviceName} - ${clientName}`,
+                location: clientAddress,
+                description: `Service: ${serviceName}\nClient: ${clientName}\nPhone: ${clientPhone}\nEmail: ${clientEmail}`,
+                start: { dateTime: startDateTime, timeZone: 'America/Los_Angeles' },
+                end: { dateTime: endDateTime, timeZone: 'America/Los_Angeles' },
+            },
+        });
+
+        // ✅ SEND CONFIRMATION EMAIL
+        await sendConfirmationEmail({ clientName, clientEmail, serviceName, date, time, clientAddress, clientPhone });
+
+        res.status(200).json({ success: true });
+    } catch (error) {
+        console.error('Error creating event:', error.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 app.post('/create-checkout-session', async (req, res) => {
     try {
         const { items, date, time, clientName, clientEmail, clientPhone, clientAddress, serviceName } = req.body;
