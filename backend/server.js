@@ -104,7 +104,7 @@ const sendConfirmationEmail = async ({ clientName, clientEmail, serviceName, dat
 app.use(cors());
 
 // Special handling for Stripe Webhook (needs raw body for signature verification)
-app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
+app.post('/api/stripe/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
     const sig = req.headers['stripe-signature'];
     let event;
     try {
