@@ -24,7 +24,6 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
     const depositAmount = totalAmount * 0.5;
 
     // Store Coordinates (7862 Warner Ave Ste A, Huntington Beach, CA 92646)
-    // Store Coordinates (7862 Warner Ave Ste A, Huntington Beach, CA 92646)
     // For Google API we can just use the address string
     const STORE_ADDRESS = "7862 Warner Ave Ste A, Huntington Beach, CA 92646";
 
@@ -88,8 +87,8 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
                 image: item.image
             }));
 
-            // const response = await fetch(`http://localhost:3001/create-checkout-session`, {
-            const response = await fetch(`https://beauty-store-website-project.onrender.com/create-checkout-session`, {
+            const response = await fetch(`http://localhost:3001/create-checkout-session`, {
+                // const response = await fetch(`https://beauty-store-website-project.onrender.com/create-checkout-session`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

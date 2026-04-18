@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: 'serif', 'Georgia', serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 20px auto; border: 1px solid #eee; padding: 40px; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h2 { color: #947b5c; text-transform: uppercase; letter-spacing: 3px; font-weight: normal; margin: 0; }
+        .content { margin-bottom: 30px; }
+        .details-box { background-color: #fdfcfb; padding: 25px; border-left: 3px solid #947b5c; margin: 25px 0; }
+        .details-box h3 { margin-top: 0; color: #444; font-size: 1.1em; text-transform: uppercase; letter-spacing: 1px; }
+        .detail-row { display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px solid #f0f0f0; pb: 5px; }
+        .label { font-weight: bold; color: #888; text-transform: uppercase; font-size: 0.8em; }
+        .footer { text-align: center; color: #999; font-size: 0.8em; margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; }
+        .note { font-style: italic; color: #777; font-size: 0.9em; margin: 20px 0; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Le Charme Beaute</h2>
+            <div style="font-size: 0.8em; color: #999; margin-top: 5px;">Boutique & Artistry</div>
+        </div>
+
+        <div class="content">
+            <p>Hello <strong>{{clientName}}</strong>,</p>
+            <p>Your booking has been confirmed! We have received your deposit and your appointment is officially secured in our calendar. We look forward to seeing you soon.</p>
+            
+            <div class="details-box">
+                <h3>Appointment Summary</h3>
+                <div style="margin-bottom: 8px;"><span class="label">Service:</span> <br> <strong>{{serviceName}}</strong></div>
+                <div style="margin-bottom: 8px;"><span class="label">Date:</span> <br> <strong>{{date}}</strong></div>
+                <div style="margin-bottom: 8px;"><span class="label">Time:</span> <br> <strong>{{time}}</strong></div>
+                <div style="margin-bottom: 8px;"><span class="label">Location:</span> <br> <strong>{{location}}</strong></div>
+            </div>
+
+            <p class="note">
+                Please arrive 5-10 minutes early. Remaining balance and any applicable travel fees will be collected on the day of service.
+            </p>
+        </div>
+
+        <div class="footer">
+            <p>
+                <strong>Le Charme Beaute Boutique</strong><br>
+                7862 Warner Ave Ste A, Huntington Beach, CA 92646<br>
+                {{clientPhone}}
+            </p>
+            <p style="font-size: 0.7em; margin-top: 20px;">If you need to reschedule, please contact us at least 48 hours in advance.</p>
+        </div>
+    </div>
+</body>
+</html>

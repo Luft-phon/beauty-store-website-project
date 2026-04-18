@@ -4,6 +4,7 @@ import { Menu, X, Globe, Phone, Mail, Instagram, Facebook, ShoppingBag, Youtube 
 import { Language, Service } from '../types';
 import Chatbot from './Chatbot';
 import { TRANSLATIONS } from '../constants';
+import ScrollToTop from './ScrollToTop';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -262,6 +263,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
         </div>
       </footer>
       <Chatbot language={currentLang} services={services} />
+      <ScrollToTop />
     </div>
   );
 };
