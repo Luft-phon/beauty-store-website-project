@@ -14,10 +14,6 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// --- Middleware ---
-app.use(cors());
-app.use(bodyParser.json());
-
 // --- Configuration & Paths ---
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,9 +29,6 @@ const stripe = new Stripe(STRIPE_SECRET_KEY);
 
 // --- Helper Functions ---
 
-/**
- * Validates if a string is a well-formed absolute URL
- */
 const isValidUrl = (url) => {
     try {
         const parsed = new URL(url);
@@ -45,75 +38,48 @@ const isValidUrl = (url) => {
     }
 };
 
-/**
- * Ensures an image path is turned into an absolute URL for Stripe
- */
 const getAbsoluteImageUrl = (imagePath) => {
     if (!imagePath) return null;
     if (isValidUrl(imagePath)) return imagePath;
-
-    // Remove leading slash if it exists to avoid double slashes
     const cleanPath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
     return `${YOUR_DOMAIN}/${cleanPath}`;
 };
 
-/**
- * Gets authenticated JWT client for Google Services
- */
 const getAuthClient = async () => {
-    const GOOGLE_CREDENTIALS_JSON = process.env.GOOGLE_CREDENTIALS_JSON;
-    const GOOGLE_APPLICATION_CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS;
-
+    const jsonStr = process.env.GOOGLE_CREDENTIALS_JSON;
+    const filePtr = process.env.GOOGLE_APPLICATION_CREDENTIALS;
     try {
-        if (GOOGLE_CREDENTIALS_JSON) {
-            const credentials = JSON.parse(GOOGLE_CREDENTIALS_JSON);
+        if (jsonStr) {
+            const credentials = JSON.parse(jsonStr);
             const auth = new google.auth.GoogleAuth({ credentials, scopes: SCOPES });
             return await auth.getClient();
         }
-
-        if (GOOGLE_APPLICATION_CREDENTIALS) {
-            const keyPath = path.resolve(GOOGLE_APPLICATION_CREDENTIALS);
-            const auth = new google.auth.GoogleAuth({ keyFile: keyPath, scopes: SCOPES });
+        if (filePtr) {
+            const auth = new google.auth.GoogleAuth({ keyFile: path.resolve(filePtr), scopes: SCOPES });
             return await auth.getClient();
         }
-
-        throw new Error("No Google Credentials available in environment variables.");
+        throw new Error("No Google Credentials available.");
     } catch (error) {
-        console.error("Error loading credentials:", error.message);
+        console.error("Auth error:", error.message);
         throw error;
     }
 };
 
-/**
- * Formats date for simple time comparison
- */
 const checkedFormatTime = (dateObj) => {
     return dateObj.toLocaleTimeString('en-GB', {
         timeZone: 'America/Los_Angeles',
-        hour: '2-digit',
-        minute: '2-digit',
+        hour: '2-digit', minute: '2-digit',
     });
 };
 
-// --- API Endpoints ---
-
-/**
- * Sends a confirmation email to both the owner and the customer
- */
 const sendConfirmationEmail = async ({ clientName, clientEmail, serviceName, date, time, clientAddress, clientPhone }) => {
     try {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
         });
-
-        const ownerEmail = 'Lecharme.beauteboutique@gmail.com';
         const templatePath = path.join(__dirname, 'templates', 'confirmation_email.html');
-        
-        // Read the HTML file
         let htmlContent = await fs.readFile(templatePath, 'utf8');
-
-        // Replace placeholders with actual data
         htmlContent = htmlContent
             .replace(/{{clientName}}/g, clientName)
             .replace(/{{serviceName}}/g, serviceName)
@@ -122,150 +88,90 @@ const sendConfirmationEmail = async ({ clientName, clientEmail, serviceName, dat
             .replace(/{{location}}/g, clientAddress || 'In-Studio')
             .replace(/{{clientPhone}}/g, clientPhone);
 
-        const mailOptions = {
+        await transporter.sendMail({
             from: process.env.SMTP_USER || '"Le Charme Beauty" <noreply@example.com>',
-            to: [clientEmail, ownerEmail],
+            to: [clientEmail, 'Lecharme.beauteboutique@gmail.com'],
             subject: `Booking Confirmed: ${serviceName} - ${date}`,
             html: htmlContent
-        };
-
-        if (process.env.SMTP_USER && process.env.SMTP_PASS) {
-            await transporter.sendMail(mailOptions);
-            console.log(`Confirmation emails sent via HTML template to ${clientEmail} and admin.`);
-        }
+        });
+        console.log(`Confirmation emails sent to ${clientEmail}`);
     } catch (error) {
-        console.error('Failed to send confirmation email:', error.message);
+        console.error('Email error:', error.message);
     }
 };
 
-// 1. Google Calendar: Create Event
-app.post('/api/calendar/create-event', async (req, res) => {
+// --- Middleware ---
+app.use(cors());
+
+// Special handling for Stripe Webhook (needs raw body for signature verification)
+app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
+    const sig = req.headers['stripe-signature'];
+    let event;
     try {
-        const { clientName, clientEmail, clientAddress, serviceName, date, time, clientPhone } = req.body;
-
-        if (!clientName || !clientEmail || !serviceName || !date || !time || !clientPhone) {
-            return res.status(400).json({ error: 'Missing required fields' });
-        }
-
-        const startDateTime = `${date}T${time}:00`;
-        const [h, m] = time.split(':').map(Number);
-        const endTime = `${String(h + 1).padStart(2, '0')}:${m}`;
-        const endDateTime = `${date}T${endTime}:00`;
-
-        const authClient = await getAuthClient();
-        const calendar = google.calendar({ version: 'v3', auth: authClient });
-
-        const description = [
-            `Client: ${clientName}`,
-            `Email: ${clientEmail}`,
-            `Service: ${serviceName}`,
-            `Phone: ${clientPhone}`,
-            clientAddress ? `Address: ${clientAddress}` : null
-        ].filter(Boolean).join('\n');
-
-        const event = {
-            summary: `Appointment: ${serviceName} - ${clientName}`,
-            location: clientAddress,
-            description,
-            start: { dateTime: startDateTime, timeZone: 'America/Los_Angeles' },
-            end: { dateTime: endDateTime, timeZone: 'America/Los_Angeles' },
-        };
-
-        await calendar.events.insert({
-            calendarId: process.env.GOOGLE_CALENDAR_ID,
-            requestBody: event,
-        });
-
-        // ✅ SEND CONFIRMATION EMAIL
-        await sendConfirmationEmail({ clientName, clientEmail, serviceName, date, time, clientAddress, clientPhone });
-
-        res.status(200).json({ success: true });
-    } catch (error) {
-        console.error('Error creating event:', error.message);
-        res.status(500).json({ error: 'Internal Server Error' });
+        event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
+    } catch (err) {
+        console.error(`Webhook Error: ${err.message}`);
+        return res.status(400).send(`Webhook Error: ${err.message}`);
     }
+
+    if (event.type === 'checkout.session.completed') {
+        const session = event.data.object;
+        const bookingData = session.metadata;
+        console.log('Payment success. Processing booking for:', bookingData.clientName);
+
+        try {
+            const authClient = await getAuthClient();
+            const calendar = google.calendar({ version: 'v3', auth: authClient });
+            const startDateTime = `${bookingData.date}T${bookingData.time}:00`;
+            const [h, m] = bookingData.time.split(':').map(Number);
+            const endDateTime = `${bookingData.date}T${String(h + 1).padStart(2, '0')}:${m}:00`;
+
+            await calendar.events.insert({
+                calendarId: process.env.GOOGLE_CALENDAR_ID,
+                requestBody: {
+                    summary: `Appointment: ${bookingData.serviceName} - ${bookingData.clientName}`,
+                    location: bookingData.clientAddress,
+                    description: `Service: ${bookingData.serviceName}\nClient: ${bookingData.clientName}\nPhone: ${bookingData.clientPhone}\nEmail: ${bookingData.clientEmail}`,
+                    start: { dateTime: startDateTime, timeZone: 'America/Los_Angeles' },
+                    end: { dateTime: endDateTime, timeZone: 'America/Los_Angeles' },
+                },
+            });
+            await sendConfirmationEmail(bookingData);
+        } catch (error) {
+            console.error('Webhook processing error:', error.message);
+        }
+    }
+    res.json({ received: true });
 });
 
-// 2. Stripe: Create Checkout Session
+app.use(bodyParser.json());
+
+// --- Routes ---
+
 app.post('/create-checkout-session', async (req, res) => {
     try {
-        const { items, date, time } = req.body;
+        const { items, date, time, clientName, clientEmail, clientPhone, clientAddress, serviceName } = req.body;
 
-        // Optional: Pre-check calendar availability
-        if (date && time) {
-            try {
-                const authClient = await getAuthClient();
-                const calendar = google.calendar({ version: 'v3', auth: authClient });
-
-                const searchDate = new Date(date);
-                const timeMin = new Date(searchDate);
-                timeMin.setDate(timeMin.getDate() - 1);
-                const timeMax = new Date(searchDate);
-                timeMax.setDate(timeMax.getDate() + 2);
-
-                const eventsRes = await calendar.events.list({
-                    calendarId: process.env.GOOGLE_CALENDAR_ID,
-                    timeMin: timeMin.toISOString(),
-                    timeMax: timeMax.toISOString(),
-                    singleEvents: true,
-                    orderBy: 'startTime',
-                });
-
-                const events = eventsRes.data.items || [];
-                let count = 0;
-
-                for (const event of events) {
-                    if (event.start && event.start.dateTime) {
-                        const evtDateObj = new Date(event.start.dateTime);
-                        const laDate = new Intl.DateTimeFormat('en-CA', {
-                            timeZone: 'America/Los_Angeles',
-                            year: 'numeric', month: '2-digit', day: '2-digit'
-                        }).format(evtDateObj);
-
-                        if (laDate === date && checkedFormatTime(evtDateObj) === time) {
-                            count++;
-                        }
-                    }
-                }
-
-                if (count >= 2) {
-                    return res.status(409).json({
-                        error: 'Booking slot is full',
-                        redirectUrl: '/payment-pending'
-                    });
-                }
-            } catch (calError) {
-                console.error("Availability check skipped:", calError.message);
-            }
-        }
-
-        // Map items to Stripe format
-        const line_items = items.map(item => {
-            const absoluteImageUrl = getAbsoluteImageUrl(item.image);
-            return {
-                price_data: {
-                    currency: 'usd',
-                    product_data: {
-                        name: item.name,
-                        ...(absoluteImageUrl && { images: [absoluteImageUrl] }),
-                    },
-                    unit_amount: Math.round(item.price * 100),
-                },
-                quantity: 1,
-            };
-        });
+        const line_items = items.map(item => ({
+            price_data: {
+                currency: 'usd',
+                product_data: { name: item.name, images: getAbsoluteImageUrl(item.image) ? [getAbsoluteImageUrl(item.image)] : [] },
+                unit_amount: Math.round(item.price * 100),
+            },
+            quantity: 1,
+        }));
 
         const session = await stripe.checkout.sessions.create({
             line_items,
             mode: 'payment',
-            success_url: `${YOUR_DOMAIN}/payment-success`,
+            metadata: { clientName, clientEmail, clientPhone, clientAddress: clientAddress || '', serviceName: serviceName || '', date, time },
+            success_url: `${YOUR_DOMAIN}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${YOUR_DOMAIN}/payment-canceled`,
         });
-
         res.json({ url: session.url });
     } catch (error) {
         console.error('Stripe error:', error.message);
-        res.status(500).json({ error: 'Payment initialization failed', details: error.message });
+        res.status(500).json({ error: 'Payment failed' });
     }
 });
 
