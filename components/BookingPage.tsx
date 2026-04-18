@@ -34,7 +34,8 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
 
         try {
             // Call our backend to keep API key hidden
-            const response = await fetch('http://localhost:3001/api/calculate-distance', {
+            const response = await fetch(`https://beauty-store-website-project.onrender.com/api/calculate-distance`, {
+                // const response = await fetch('http://localhost:3001/api/calculate-distance', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -87,8 +88,8 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
                 image: item.image
             }));
 
-            const response = await fetch(`http://localhost:3001/create-checkout-session`, {
-                // const response = await fetch(`https://beauty-store-website-project.onrender.com/create-checkout-session`, {
+            // const response = await fetch(`http://localhost:3001/create-checkout-session`, {
+            const response = await fetch(`https://beauty-store-website-project.onrender.com/create-checkout-session`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
