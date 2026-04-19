@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Globe, Phone, Mail, Instagram, Facebook, ShoppingBag, Youtube } from 'lucide-react';
 import { Language, Service } from '../types';
-import Chatbot from './Chatbot';
+// import Chatbot from './Chatbot';
 import { TRANSLATIONS } from '../constants';
 import ScrollToTop from './ScrollToTop';
 
@@ -262,7 +262,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
           </div>
         </div>
       </footer>
-      <Chatbot language={currentLang} services={services} />
+{/* <Chatbot language={currentLang} services={services} /> */}
       <ScrollToTop />
     </div>
   );
