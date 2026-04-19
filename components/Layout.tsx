@@ -194,23 +194,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
               {/* Newsletter */}
               <div className="mb-10">
                 <p className="font-sen text-stone-800 text-sm mb-6 leading-relaxed max-w-md">
-                  Sign up to receive email updates with new arrivals, deals and more... unsubscribe anytime.
-                </p>
-                <form className="flex flex-col sm:flex-row gap-0 max-w-sm" onSubmit={(e) => e.preventDefault()}>
-                  <input
-                    type="email"
-                    placeholder="ENTER EMAIL"
-                    className="flex-grow bg-white border border-stone-300 px-4 py-3 text-xs tracking-widest outline-none focus:border-black transition-colors uppercase placeholder:text-stone-400 rounded-none appearance-none"
-                  />
-                  <button
-                    type="submit"
-                    className="bg-black text-white px-8 py-3 text-xs font-bold tracking-widest uppercase hover:bg-stone-800 transition-colors whitespace-nowrap"
-                  >
-                    Submit
-                  </button>
-                </form>
-                <p className="text-[10px] text-stone-500 mt-3 leading-tight max-w-sm">
-                  By clicking "Submit" you agree to receive emails from Le'Charme Beauty and agree to our privacy policy and terms of use.
+                  With a passion for artistry and an eye for detail, our team is dedicated to delivering flawless, long-lasting results for weddings, special events, photoshoots, and everyday elegance.
                 </p>
               </div>
 
@@ -262,7 +246,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
           </div>
         </div>
       </footer>
-{/* <Chatbot language={currentLang} services={services} /> */}
+      {/* <Chatbot language={currentLang} services={services} /> */}
       <ScrollToTop />
     </div>
   );
