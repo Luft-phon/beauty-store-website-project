@@ -106,27 +106,6 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                                             {testimonial.location}
                                         </div>
                                     </div>
-
-                                    <div className="flex gap-8 mt-4">
-                                        <button
-                                            onClick={(e) => { e.stopPropagation(); prevTestimonial(); }}
-                                            className="group p-2 transition-transform duration-300 hover:-translate-x-2 focus:outline-none"
-                                            aria-label="Previous testimonial"
-                                            onMouseDown={(e) => e.stopPropagation()}
-                                            onTouchStart={(e) => e.stopPropagation()}
-                                        >
-                                            <ArrowLeft size={32} className="text-stone-300 group-hover:text-stone-900 transition-colors duration-300" />
-                                        </button>
-                                        <button
-                                            onClick={(e) => { e.stopPropagation(); nextTestimonial(); }}
-                                            className="group p-2 transition-transform duration-300 hover:translate-x-2 focus:outline-none"
-                                            aria-label="Next testimonial"
-                                            onMouseDown={(e) => e.stopPropagation()}
-                                            onTouchStart={(e) => e.stopPropagation()}
-                                        >
-                                            <ArrowRight size={32} className="text-stone-300 group-hover:text-stone-900 transition-colors duration-300" />
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
 
@@ -142,6 +121,34 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                         </div>
                     </div>
                 ))}
+            </div>
+
+            {/* Navigation Buttons (Stationary) */}
+            <div className="max-w-7xl mx-auto px-4 md:px-8 mt-8 flex justify-center md:justify-start">
+                <div className="flex gap-6 items-center">
+                    <button
+                        onClick={prevTestimonial}
+                        className="group p-3 rounded-full border border-stone-200 bg-white shadow-sm hover:border-gold-500 hover:text-gold-500 transition-all duration-300 active:scale-95"
+                        aria-label="Previous testimonial"
+                    >
+                        <ArrowLeft size={24} className="text-stone-400 group-hover:text-gold-500 transition-colors" />
+                    </button>
+                    <div className="flex gap-2">
+                        {testimonials.map((_, i) => (
+                            <div 
+                                key={i}
+                                className={`h-1.5 rounded-full transition-all duration-500 ${i === currentIndex ? 'w-8 bg-gold-500' : 'w-2 bg-stone-200'}`}
+                            />
+                        ))}
+                    </div>
+                    <button
+                        onClick={nextTestimonial}
+                        className="group p-3 rounded-full border border-stone-200 bg-white shadow-sm hover:border-gold-500 hover:text-gold-500 transition-all duration-300 active:scale-95"
+                        aria-label="Next testimonial"
+                    >
+                        <ArrowRight size={24} className="text-stone-400 group-hover:text-gold-500 transition-colors" />
+                    </button>
+                </div>
             </div>
         </div>
     );
