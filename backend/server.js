@@ -13,7 +13,8 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-
+const { Resend } = require('resend');
+const resend = new Resend(process.env.RESEND_API_KEY);
 // --- Configuration & Paths ---
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -74,19 +75,6 @@ const checkedFormatTime = (dateObj) => {
 
 const sendConfirmationEmail = async ({ clientName, clientEmail, serviceName, date, time, clientAddress, clientPhone }) => {
     try {
-        const transporter = nodemailer.createTransport({
-            // Thay vì dùng service: 'gmail', ta cấu hình chi tiết
-            host: 'smtp.gmail.com',
-            port: 465,
-            secure: true, // dùng SSL cho port 465
-            auth: {
-                user: process.env.SMTP_USER,
-                pass: process.env.SMTP_PASS
-            },
-            // ✅ ĐÂY LÀ DÒNG QUAN TRỌNG NHẤT: Ép dùng IPv4
-            family: 4
-        });
-
         const templatePath = path.join(__dirname, 'templates', 'confirmation_email.html');
         let htmlContent = await fs.readFile(templatePath, 'utf8');
 
@@ -98,20 +86,20 @@ const sendConfirmationEmail = async ({ clientName, clientEmail, serviceName, dat
             .replace(/{{location}}/g, clientAddress || 'In-Studio')
             .replace(/{{clientPhone}}/g, clientPhone);
 
-        await transporter.sendMail({
-            from: process.env.SMTP_USER || '"Le Charme Beauty" <noreply@example.com>',
+        // Sử dụng Resend API qua giao thức HTTP an toàn, không lo bị Render chặn
+        const data = await resend.emails.send({
+            from: process.env.SMTP_USER || 'Lecharme.beauteboutique@gmail.com', // Hoặc domain đã verify của bạn
             to: [clientEmail, 'Lecharme.beauteboutique@gmail.com'],
             subject: `Booking Confirmed: ${serviceName} - ${date}`,
             html: htmlContent
         });
 
-        console.log(`✅ Confirmation emails sent to ${clientEmail}`);
+        console.log(`✅ Confirmation emails sent to ${clientEmail}`, data);
     } catch (error) {
-        // Log này sẽ giúp bạn biết chính xác nếu mail vẫn fail sau khi sửa
         console.error('❌ Email error:', error.message);
+        throw error;
     }
 };
-
 // --- Middleware ---
 app.use(cors());
 
