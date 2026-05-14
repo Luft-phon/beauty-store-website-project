@@ -88,7 +88,7 @@ const sendConfirmationEmail = async ({ clientName, clientEmail, serviceName, dat
 
         // Sử dụng Resend API qua giao thức HTTP an toàn, không lo bị Render chặn
         const data = await resend.emails.send({
-            from: process.env.SMTP_USER || 'Lecharme.beauteboutique@gmail.com', // Hoặc domain đã verify của bạn
+            from: 'Le Charme Beauty <booking@lecharmeboutique.com>',
             to: [clientEmail, 'Lecharme.beauteboutique@gmail.com'],
             subject: `Booking Confirmed: ${serviceName} - ${date}`,
             html: htmlContent
