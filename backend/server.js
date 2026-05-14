@@ -8,12 +8,12 @@ import fs from 'fs/promises';
 import nodemailer from 'nodemailer';
 import { fileURLToPath } from 'url';
 import Stripe from 'stripe';
+import { Resend } from 'resend';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const { Resend } = require('resend');
 const resend = new Resend(process.env.RESEND_API_KEY);
 // --- Configuration & Paths ---
 const __filename = fileURLToPath(import.meta.url);
