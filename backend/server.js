@@ -120,45 +120,63 @@ app.post('/api/stripe/webhook', express.raw({ type: 'application/json' }), async
     const sig = req.headers['stripe-signature'];
     let event;
 
+    // 1. Xác thực Webhook (Bước này phải nhanh)
     try {
         event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
     } catch (err) {
-        console.error(`Webhook Error: ${err.message}`);
+        console.error(`❌ Webhook Signature Error: ${err.message}`);
         return res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
-    // 1. Phản hồi ngay cho Stripe
+    // ✅ 2. PHẢN HỒI STRIPE NGAY LẬP TỨC
+    // Stripe nhận được mã 200 này sẽ coi như thành công và không gửi lại (retry) nữa.
     res.json({ received: true });
 
-    // 2. Xử lý logic ngầm - Không dùng await ở cấp độ cao nhất này 
-    // để tránh làm treo hàm callback nếu có vấn đề gì đó
+    // 3. Xử lý logic nặng ở phía sau (Background Processing)
     if (event.type === 'checkout.session.completed') {
-        // Gọi một hàm async riêng để xử lý mà không chặn luồng chính
-        handleBookingAsync(event.data.object);
+        const session = event.data.object;
+        const bookingData = session.metadata;
+
+        // Lưu ý: Không dùng 'await' ở đây đối với toàn bộ khối xử lý 
+        // để Node.js tiếp tục chạy các dòng sau (nếu có) và đóng request.
+        handleBackgroundTasks(bookingData).catch(err =>
+            console.error('❌ Error in background tasks:', err.message)
+        );
     }
 });
 
-// Tách hàm xử lý ra riêng cho sạch code
-async function handleBookingAsync(session) {
-    const bookingData = session.metadata;
-    try {
-        console.log('Processing background tasks for:', bookingData.clientName);
+// Hàm xử lý riêng biệt để code sạch sẽ hơn
+async function handleBackgroundTasks(bookingData) {
+    console.log('⏳ Processing background tasks for:', bookingData.clientName);
 
+    try {
         const authClient = await getAuthClient();
         const calendar = google.calendar({ version: 'v3', auth: authClient });
 
-        // ... (Logic tạo thời gian) ...
+        const startDateTime = `${bookingData.date}T${bookingData.time}:00`;
+        const [h, m] = bookingData.time.split(':').map(Number);
+        const endDateTime = `${bookingData.date}T${String(h + 1).padStart(2, '0')}:${m}:00`;
 
+        // Tác vụ 1: Google Calendar
         await calendar.events.insert({
-            // ... (Cấu hình calendar) ...
+            calendarId: process.env.GOOGLE_CALENDAR_ID,
+            requestBody: {
+                summary: `Appointment: ${bookingData.serviceName} - ${bookingData.clientName}`,
+                location: bookingData.clientAddress,
+                description: `Service: ${bookingData.serviceName}\nClient: ${bookingData.clientName}\nPhone: ${bookingData.clientPhone}\nEmail: ${bookingData.clientEmail}`,
+                start: { dateTime: startDateTime, timeZone: 'America/Los_Angeles' },
+                end: { dateTime: endDateTime, timeZone: 'America/Los_Angeles' },
+            },
         });
+        console.log('✅ Google Calendar event created.');
 
-        // Đảm bảo trong hàm này đã fix lỗi family: 4 (IPv4)
+        // Tác vụ 2: Gửi Email (Đảm bảo đã fix lỗi IPv4/family: 4 trong hàm này)
         await sendConfirmationEmail(bookingData);
+        console.log('✅ Confirmation email sent.');
 
-        console.log('✅ All tasks completed.');
     } catch (error) {
-        console.error('❌ Background Task Error:', error.message);
+        // Lỗi ở đây sẽ hiện trong log của Render nhưng không làm Stripe báo Fail
+        console.error('❌ Background processing failed:', error.message);
     }
 }
 
