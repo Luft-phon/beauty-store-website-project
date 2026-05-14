@@ -75,11 +75,21 @@ const checkedFormatTime = (dateObj) => {
 const sendConfirmationEmail = async ({ clientName, clientEmail, serviceName, date, time, clientAddress, clientPhone }) => {
     try {
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
+            // Thay vì dùng service: 'gmail', ta cấu hình chi tiết
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true, // dùng SSL cho port 465
+            auth: {
+                user: process.env.SMTP_USER,
+                pass: process.env.SMTP_PASS
+            },
+            // ✅ ĐÂY LÀ DÒNG QUAN TRỌNG NHẤT: Ép dùng IPv4
+            family: 4
         });
+
         const templatePath = path.join(__dirname, 'templates', 'confirmation_email.html');
         let htmlContent = await fs.readFile(templatePath, 'utf8');
+
         htmlContent = htmlContent
             .replace(/{{clientName}}/g, clientName)
             .replace(/{{serviceName}}/g, serviceName)
@@ -94,9 +104,11 @@ const sendConfirmationEmail = async ({ clientName, clientEmail, serviceName, dat
             subject: `Booking Confirmed: ${serviceName} - ${date}`,
             html: htmlContent
         });
-        console.log(`Confirmation emails sent to ${clientEmail}`);
+
+        console.log(`✅ Confirmation emails sent to ${clientEmail}`);
     } catch (error) {
-        console.error('Email error:', error.message);
+        // Log này sẽ giúp bạn biết chính xác nếu mail vẫn fail sau khi sửa
+        console.error('❌ Email error:', error.message);
     }
 };
 
