@@ -11,32 +11,46 @@ A **fully-featured beauty salon website** built with React + TypeScript. Perfect
 ### 🎯 Key Features
 
 - 🛍️ **Service Showcase** - Beautiful service catalog with detailed pages
-- 🛒 **Shopping Cart** - Add multiple services to cart
-- 📅 **Booking System** - Integrated appointment scheduling
+- 🛒 **Shopping Cart & Checkout** - Add services to cart and checkout securely
+- 💳 **Secure Online Payments** - Fully integrated with Stripe API and webhooks
+- 📅 **Automated Booking System** - Syncs directly to Google Calendar upon payment
+- 📧 **Automated Emails** - Sends booking confirmations automatically using Resend/Nodemailer
+- 📍 **Smart Travel Fees** - Calculates distance dynamically using OpenRouteService & Nominatim APIs
 - 🤖 **AI Chatbot** - Google Gemini-powered customer support
-- 🌍 **5 Languages** - English, Vietnamese, French, Chinese, Korean
-- 📱 **Responsive Design** - Perfect on all devices
-- � **Modern UI** - Elegant design with Tailwind CSS
-- 👨‍💼 **Admin Dashboard** - Manage services and bookings
-- 📊 **Analytics** - Track bookings and revenue
+- 🌍 **Multi-Language (i18n)** - Custom high-performance translation system (EN, VI, FR, ZH, KO)
+- 📱 **Responsive Design** - Perfect on all devices with Framer Motion animations
+- ✨ **Modern UI** - Elegant design using Tailwind CSS
+- 👨‍💼 **Admin Dashboard & Analytics** - Track bookings and revenue
 
 ### 🔥 What Makes This Special?
 
-✅ **No Backend Required** - Runs entirely in the browser  
-✅ **Easy Content Management** - Update data in simple files  
-✅ **Backend-Ready** - Structured for easy API integration  
-✅ **Production-Ready** - Deploy immediately  
+✅ **Full-Stack Application** - Robust Node.js/Express backend handling payments and API logic
+✅ **Seamless Automation** - Bookings automatically trigger calendar events and emails
+✅ **High Deliverability Emails** - Configured with Resend and a verified domain
+✅ **Easy Content Management** - Update frontend data in simple TypeScript files
+✅ **Production-Ready** - Designed for immediate deployment on platforms like Render
 ✅ **Well-Documented** - Comprehensive guides included
 
 ## ⚝ Technology Stack
-- React 19.2.0 + TypeScript 5.8.2
-- Vite 6.2.0 (Build Tool)
-- React Router DOM 7.9.6 (Navigation)
-- Tailwind CSS (UI Styling via CDN)
-- Lucide React (Icons)
-- Recharts (Analytics Charts)
-- Google Gemini AI (Chatbot Integration)
-- Responsive Design (Mobile-First)
+
+### Frontend
+- **React (v19) + TypeScript** - Core UI library and static typing
+- **Vite** - Fast build tool and dev server
+- **React Router DOM** - Application routing
+- **Tailwind CSS** - Utility-first styling
+- **Framer Motion** - Smooth animations and transitions
+- **Lucide React** - Vector icons
+- **Recharts** - Data visualization and analytics charts
+- **Custom i18n System** - Lightweight TypeScript-based dictionary
+
+### Backend & Integrations
+- **Node.js & Express** - API routing, webhook processing, and server logic
+- **Stripe API** - Payment processing, checkout sessions, and secure webhooks
+- **Resend & Nodemailer** - Transactional email delivery with verified domain support
+- **Google APIs (`googleapis`)** - Automated Google Calendar event creation
+- **Google Gemini AI** - Intelligent chatbot capabilities
+- **OpenRouteService & Nominatim API** - Geocoding and distance matrix routing
+- **Dotenv** - Secure environment variable management
 
 ## 📌 Prerequisite
 - Node.js (v18 or higher)
