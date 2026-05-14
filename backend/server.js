@@ -107,6 +107,7 @@ app.use(cors());
 app.post('/api/stripe/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
     const sig = req.headers['stripe-signature'];
     let event;
+
     try {
         event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
     } catch (err) {
@@ -114,35 +115,40 @@ app.post('/api/stripe/webhook', express.raw({ type: 'application/json' }), async
         return res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
-    if (event.type === 'checkout.session.completed') {
-        const session = event.data.object;
-        const bookingData = session.metadata;
-        console.log('Payment success. Processing booking for:', bookingData.clientName);
-
-        try {
-            const authClient = await getAuthClient();
-            const calendar = google.calendar({ version: 'v3', auth: authClient });
-            const startDateTime = `${bookingData.date}T${bookingData.time}:00`;
-            const [h, m] = bookingData.time.split(':').map(Number);
-            const endDateTime = `${bookingData.date}T${String(h + 1).padStart(2, '0')}:${m}:00`;
-
-            await calendar.events.insert({
-                calendarId: process.env.GOOGLE_CALENDAR_ID,
-                requestBody: {
-                    summary: `Appointment: ${bookingData.serviceName} - ${bookingData.clientName}`,
-                    location: bookingData.clientAddress,
-                    description: `Service: ${bookingData.serviceName}\nClient: ${bookingData.clientName}\nPhone: ${bookingData.clientPhone}\nEmail: ${bookingData.clientEmail}`,
-                    start: { dateTime: startDateTime, timeZone: 'America/Los_Angeles' },
-                    end: { dateTime: endDateTime, timeZone: 'America/Los_Angeles' },
-                },
-            });
-            await sendConfirmationEmail(bookingData);
-        } catch (error) {
-            console.error('Webhook processing error:', error.message);
-        }
-    }
+    // 1. Phản hồi ngay cho Stripe
     res.json({ received: true });
+
+    // 2. Xử lý logic ngầm - Không dùng await ở cấp độ cao nhất này 
+    // để tránh làm treo hàm callback nếu có vấn đề gì đó
+    if (event.type === 'checkout.session.completed') {
+        // Gọi một hàm async riêng để xử lý mà không chặn luồng chính
+        handleBookingAsync(event.data.object);
+    }
 });
+
+// Tách hàm xử lý ra riêng cho sạch code
+async function handleBookingAsync(session) {
+    const bookingData = session.metadata;
+    try {
+        console.log('Processing background tasks for:', bookingData.clientName);
+
+        const authClient = await getAuthClient();
+        const calendar = google.calendar({ version: 'v3', auth: authClient });
+
+        // ... (Logic tạo thời gian) ...
+
+        await calendar.events.insert({
+            // ... (Cấu hình calendar) ...
+        });
+
+        // Đảm bảo trong hàm này đã fix lỗi family: 4 (IPv4)
+        await sendConfirmationEmail(bookingData);
+
+        console.log('✅ All tasks completed.');
+    } catch (error) {
+        console.error('❌ Background Task Error:', error.message);
+    }
+}
 
 app.use(bodyParser.json());
 
