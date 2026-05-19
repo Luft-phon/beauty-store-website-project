@@ -89,7 +89,11 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
                 image: item.image
             }));
 
-            const processingFee = depositAmount > 0 ? (depositAmount * 0.029) + 0.30 : 0;
+            const processingFee =
+                depositAmount > 0
+                    ? ((depositAmount + 0.30) / (1 - 0.029)) - depositAmount
+                    : 0;
+
             if (paymentMethod === 'card' && processingFee > 0) {
                 lineItems.push({
                     name: "Card Processing Fee (2.9% + $0.30)",
