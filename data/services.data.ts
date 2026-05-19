@@ -19,7 +19,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Photoshoot / Stage Combo',
     description: 'Designed for camera and stage lighting. Includes long-lasting, HD-ready makeup, advanced contouring & highlighting, eye definition, and professional hair styling tailored to your concept. \n ✔ High-end makeup products \n ✔ All types of false lashes included',
     price: 235,
-    image: '/images/galley/photoshoot/1.jpg'
+    image: '/images/galley/photoshoot/stage/1.jpg'
   },
 
   // Party / Event Makeup & Hair Services (PREMIUM)
@@ -29,7 +29,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Premium Combo',
     description: 'Includes skin cleansing, priming, foundation, eye makeup, contour & blush, brows & lipstick using mid-range makeup products. \n ✔ Natural false lashes included \n ✔ Hair styling: simple curls or straightening (your choice)',
     price: 175,
-    image: '/images/galley/party/9.jpg'
+    image: '/images/galley/party/premium-combo/1.jpg'
   },
   {
     id: 'premium-makeup',
@@ -37,7 +37,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Premium Makeup Only',
     description: 'Professional makeup application using mid-range products. \n ✔ Natural false lashes included.',
     price: 125,
-    image: '/images/galley/party/2.jpg'
+    image: '/images/galley/party/premium-makeup-only/1.jpg'
   },
   {
     id: 'premium-hair',
@@ -45,7 +45,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Premium Hair Only',
     description: 'Simple curls or straightening tailored to your event.',
     price: 95,
-    image: '/images/galley/party/3.jpg'
+    image: '/images/galley/party/premium-hair-only/1.jpg'
   },
 
   // Party / Event Makeup & Hair Services (DELUXE)
@@ -55,7 +55,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Deluxe Combo',
     description: 'Includes skin cleansing, toner, serum, moisturizing, priming, foundation, eye makeup, full-face contour, blush, powder, highlight & lipstick using high-end makeup products. \n ✔ All types of false lashes included \n ✔ Hair styling: any style of your choice',
     price: 205,
-    image: '/images/galley/party/4.jpg'
+    image: '/images/galley/party/deluxe-combo/1.jpg'
   },
   {
     id: 'deluxe-makeup',
@@ -63,7 +63,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Deluxe Makeup Only',
     description: 'Full pampering makeup session using high-end products. \n ✔ All types of false lashes included.',
     price: 155,
-    image: '/images/galley/party/5.jpg'
+    image: '/images/galley/party/deluxe-makeup-only/1.jpg'
   },
   {
     id: 'deluxe-hair',
@@ -71,7 +71,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Deluxe Hair Only',
     description: 'Any hairstyle of your choice for your special occasion.',
     price: 115,
-    image: '/images/galley/party/6.jpg'
+    image: '/images/galley/party/deluxe-hair-only/1.jpg'
   },
 
   // Bridal Makeup & Hair Packages
@@ -81,7 +81,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Bridal Makeup & Hair (1 time)',
     description: 'Complete bridal look for your ceremony or reception.',
     price: 550,
-    image: '/images/galley/bridal/1.jpg'
+    image: '/images/galley/bridal/bridal-makeup-hair/1.jpg'
   },
   {
     id: 'bridal-2',
@@ -89,7 +89,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Bridal Makeup & 2 Hair Changes',
     description: '1 morning Makeup & Hair + 1 touchup & 1 hair change.',
     price: 750,
-    image: '/images/galley/bridal/9.jpg'
+    image: '/images/galley/bridal/bridal-makeup-2hair/15.jpg'
   },
   {
     id: 'bridal-3',
@@ -97,7 +97,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Bridal Makeup & Hair + Layout Changes',
     description: 'Morning & evening makeup and hair changes to keep you looking perfect all day.',
     price: 800,
-    image: '/images/galley/bridal/10.jpg'
+    image: '/images/galley/bridal/bridal-makeup-hair-layout-changes/1.jpg'
   },
   {
     id: 'bridal-4',
@@ -105,7 +105,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Bridal All-Day Service',
     description: 'MUA will accompany the bride throughout the day and adjust makeup & hair as needed until the evening ceremony ends. \n🎁 Complimentary manicure included',
     price: 1350,
-    image: '/images/galley/bridal/13.jpg'
+    image: '/images/galley/bridal/bridal-all-day/1.jpg'
   },
 
   // Wedding Party Services
@@ -115,7 +115,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Wedding Guest Makeup & Hair',
     description: 'For moms, relatives, bridesmaids, etc.',
     price: 220,
-    image: '/images/galley/bridal/guest/10.jpg'
+    image: '/images/galley/bridal/wedding-guest-makeup-hair/1.jpg'
   },
   {
     id: 'wedding-guest-makeup',
@@ -123,7 +123,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Wedding Guest Makeup Only',
     description: 'Professional makeup for wedding guests.',
     price: 190,
-    image: '/images/galley/bridal/guest/7.jpg'
+    image: '/images/galley/bridal/wedding-guest-makeup/1.jpg'
   },
   {
     id: 'wedding-guest-hair',
@@ -131,7 +131,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Wedding Guest Hair Only',
     description: 'Professional hair styling for wedding guests.',
     price: 130,
-    image: '/images/galley/bridal/guest/hair-only/5.jpg'
+    image: '/images/galley/bridal/wedding-guest-hair-only/1.jpg'
   },
   {
     id: 'groom-combo',
@@ -139,7 +139,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Groom Makeup & Hair',
     description: 'Grooming service for the groom.',
     price: 200,
-    image: '/images/galley/groom/2.jpg'
+    image: '/images/galley/groom/groom-makeup-hair/1.jpg'
   },
   {
     id: 'groom-makeup',
@@ -147,7 +147,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Groom Makeup Only',
     description: 'Makeup grooming for the groom.',
     price: 170,
-    image: '/images/galley/groom/7.jpg'
+    image: '/images/galley/groom/groom-makeup/1.jpg'
   },
 
   // Trial & Pre-Wedding
@@ -157,7 +157,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Bridal Trial / Pre-Wedding Photoshoot',
     description: '4–6 hours trying different looks and styles. Perfect for pre-wedding photos or finding your wedding day look.',
     price: 400,
-    image: '/images/galley/bridal/10.jpg'
+    image: '/images/galley/photoshoot/bridal-trial/1.jpg'
   },
 
   // Education
@@ -167,7 +167,7 @@ export const MOCK_SERVICES: Service[] = [
     name: '1:1 Private Makeup Class',
     description: '3 days, 3 hours per day. Flexible dates/times. Includes skincare & makeup products, Professional Brush Set, Brush Case, Beauty Blender, and Mini Beauty Portrait Photoshoot.',
     price: 595,
-    image: '/images/galley/party/7.jpg'
+    image: '/images/galley/party/premium-combo/2.jpg'
   },
   {
     id: 'class-group',
@@ -175,7 +175,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Group Makeup Class (4 students)',
     description: '3 days, 3 hours per day. Held on weekends (Fri-Sun). Includes skincare & makeup products, Professional Brush Set, Brush Case, Beauty Blender, and Mini Beauty Portrait Photoshoot.',
     price: 495,
-    image: '/images/galley/party/8.jpg'
+    image: '/images/galley/party/premium-combo/5.jpg'
   },
   // extra services
   {

@@ -32,63 +32,35 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
   }
 
   const getGalleryImages = () => {
-    let imagesDir = '/images/galley/party';
-    let maxImages = 24;
-    let groupFilter = (s: Service) => s.category === 'PartyEvent';
+    // Define rules in order of priority (most specific first)
+    const rules = [
+      { match: (s: Service) => s.name.toLowerCase().includes('groom makeup & hair'), dir: '/images/galley/groom/groom-makeup-hair', max: 4 },
+      { match: (s: Service) => s.name.toLowerCase().includes('groom makeup only'), dir: '/images/galley/groom/groom-makeup', max: 4 },
+      { match: (s: Service) => s.name.toLowerCase().includes('groom'), dir: '/images/galley/groom', max: 10 },
+      { match: (s: Service) => s.name.toLowerCase().includes('premium hair only'), dir: '/images/galley/party/premium-hair-only', max: 8 },
+      { match: (s: Service) => s.name.toLowerCase().includes('premium makeup only'), dir: '/images/galley/party/premium-makeup-only', max: 8 },
+      { match: (s: Service) => s.name.toLowerCase().includes('hair only'), dir: '/images/galley/party/deluxe-hair-only', max: 5 },
+      { match: (s: Service) => s.name.toLowerCase().includes('premium combo'), dir: '/images/galley/party/premium-combo', max: 8 },
+      { match: (s: Service) => s.name.toLowerCase().includes('wedding guest makeup & hair'), dir: '/images/galley/bridal/wedding-guest-makeup-hair', max: 17 },
+      { match: (s: Service) => s.name.toLowerCase().includes('wedding guest makeup'), dir: '/images/galley/bridal/wedding-guest-makeup', max: 15 },
+      { match: (s: Service) => s.name.toLowerCase().includes('bridal all-day service'), dir: '/images/galley/bridal/bridal-all-day', max: 7 },
+      { match: (s: Service) => s.name.toLowerCase().includes('bridal makeup & 2 hair changes'), dir: '/images/galley/bridal/bridal-makeup-2hair', max: 13 },
+      { match: (s: Service) => s.name.toLowerCase().includes('bridal makeup & hair + layout changes'), dir: '/images/galley/bridal/bridal-makeup-hair-layout-changes', max: 11 },
+      { match: (s: Service) => s.name.toLowerCase().includes('bridal makeup & hair'), dir: '/images/galley/bridal/bridal-makeup-hair', max: 8 },
+      { match: (s: Service) => s.name.toLowerCase().includes('photoshoot / stage combo'), dir: '/images/galley/photoshoot/stage', max: 21 },
+      { match: (s: Service) => s.name.toLowerCase().includes('bridal trial / pre-wedding photoshoot'), dir: '/images/galley/photoshoot/bridal-trial', max: 8 },
+      { match: (s: Service) => s.name.toLowerCase().includes('deluxe combo'), dir: '/images/galley/party/deluxe-combo', max: 12 },
+      { match: (s: Service) => s.name.toLowerCase().includes('deluxe makeup only'), dir: '/images/galley/party/deluxe-makeup-only', max: 4 },
+      { match: (s: Service) => s.name.toLowerCase().includes('class'), dir: '/images/galley/party/deluxe-makeup-only', max: 4 },
+    ];
 
-    if (service.name.toLowerCase().includes('groom')) {
-      imagesDir = '/images/galley/groom';
-      maxImages = 8;
-      groupFilter = (s: Service) => s.name.toLowerCase().includes('groom');
-    } else if (service.name.toLowerCase().includes('hair only')) {
-      imagesDir = '/images/galley/bridal/guest/hair-only';
-      maxImages = 5;
-      groupFilter = (s: Service) => s.name.toLowerCase().includes('hair only');
-    } else if (service.name.toLowerCase().includes('guest')) {
-      imagesDir = '/images/galley/bridal/guest';
-      maxImages = 18;
-      groupFilter = (s: Service) => s.name.toLowerCase().includes('guest');
-    } else if (service.category === 'Bridal') {
-      imagesDir = '/images/galley/bridal';
-      maxImages = 36;
-      groupFilter = (s: Service) => s.category === 'Bridal' && !s.name.toLowerCase().includes('groom');
-    } else if (service.category === 'Photoshoot') {
-      imagesDir = '/images/galley/photoshoot';
-      maxImages = 22;
-      groupFilter = (s: Service) => s.category === 'Photoshoot';
-    } else if (service.category === 'PartyEvent') {
-      imagesDir = '/images/galley/party';
-      maxImages = 24;
-      groupFilter = (s: Service) => s.category === 'PartyEvent';
-    } else {
-      groupFilter = (s: Service) => s.category === service.category;
-    }
-
-    const groupServices = services.filter(groupFilter);
-    const serviceIndex = Math.max(0, groupServices.findIndex(s => s.id === service.id));
-    const totalGroupServices = Math.max(1, groupServices.length);
+    // Find the first matching rule, or fallback to default
+    const rule = rules.find(r => r.match(service)) || { dir: '/images/galley/party', max: 24 };
 
     const allImages: string[] = [service.image];
 
-    if (maxImages >= totalGroupServices) {
-      // Divide maxImages by the number of services in the group
-      const imagesPerService = Math.floor(maxImages / totalGroupServices);
-
-      const startNum = (serviceIndex * imagesPerService) + 1;
-      let endNum = startNum + imagesPerService - 1;
-
-      // For the last service in the group, give it any remaining images
-      if (serviceIndex === totalGroupServices - 1) {
-        endNum = maxImages;
-      }
-
-      for (let i = startNum; i <= endNum; i++) {
-        allImages.push(`${imagesDir}/${i}.jpg`);
-      }
-    } else {
-      // We have fewer images than services. Distribute 1 image each by looping around.
-      const imageIndex = (serviceIndex % maxImages) + 1;
-      allImages.push(`${imagesDir}/${imageIndex}.jpg`);
+    for (let i = 1; i <= rule.max; i++) {
+      allImages.push(`${rule.dir}/${i}.jpg`);
     }
 
     // Remove duplicates using Set just in case service.image is already in the list
@@ -156,7 +128,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 md:mb-16'>
           <div className='space-y-3 md:space-y-4'>
             <div className='relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl bg-stone-100/50 flex items-center justify-center p-2'>
-              <img src={imageGallery[selectedImage]} alt={service.name} className='w-full h-full object-contain rounded-md' />
+              <img src={imageGallery[selectedImage]} alt={t.services?.[service.id]?.name || service.name} className='w-full h-full object-contain rounded-md' />
               <div className='absolute top-3 left-3 md:top-4 md:left-4 z-10'>
                 <span className='bg-gold-500 text-white px-3 py-1 md:px-4 text-xs uppercase tracking-widest font-bold shadow-sm'>{service.category}</span>
               </div>
@@ -173,12 +145,12 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
           </div>
           <div className='font-sen space-y-4 md:space-y-6'>
             <div>
-              <h1 className='font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-3'>{service.name}</h1>
+              <h1 className='font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 mb-3'>{t.services?.[service.id]?.name || service.name}</h1>
               <div className='flex items-center space-x-2 mb-4 md:mb-6'>
                 <div className='flex text-gold-500'>{[...Array(5)].map((_, i) => (<Star key={i} size={16} fill='currentColor' />))}</div>
                 <span className='text-stone-500 text-sm'>(4.9 {t.serviceDetail.rating})</span>
               </div>
-              <p className='text-stone-600 text-base md:text-lg leading-relaxed whitespace-pre-line'>{service.description}</p>
+              <p className='text-stone-600 text-base md:text-lg leading-relaxed whitespace-pre-line'>{t.services?.[service.id]?.description || service.description}</p>
             </div>
             <div className='border-y border-stone-200 py-4 md:py-6'>
               <div className='flex items-baseline space-x-3'>
@@ -222,7 +194,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
             </div>
             <div className='space-y-3 pt-2 md:pt-4'>
               {service.category === 'Bridal' ? (
-                <Link to='/inquiry' className='w-full py-3 md:py-4 px-6 flex items-center justify-center space-x-3 uppercase text-xs md:text-sm font-bold tracking-widest transition-all duration-300 bg-stone-900 text-white hover:bg-gold-500'>
+                <Link to='/inquiry' state={{ serviceName: t.services?.[service.id]?.name || service.name }} className='w-full py-3 md:py-4 px-6 flex items-center justify-center space-x-3 uppercase text-xs md:text-sm font-bold tracking-widest transition-all duration-300 bg-stone-900 text-white hover:bg-gold-500'>
                   <span>Inquiry</span>
                 </Link>
               ) : (
@@ -246,7 +218,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
           <div className='max-w-4xl'>
             <h3 className='font-serif text-2xl md:text-3xl mb-4 md:mb-6'>{t.serviceDetail.serviceDetails}</h3>
             <div className='font-sen space-y-4 md:space-y-6 text-stone-600 leading-relaxed text-sm md:text-base'>
-              <p>Our {service.name.toLowerCase()} service is designed to provide you with exceptional results using premium products and techniques. Our experienced professionals ensure that every detail is perfected to your satisfaction.</p>
+              <p>Our {(t.services?.[service.id]?.name || service.name).toLowerCase()} service is designed to provide you with exceptional results using premium products and techniques. Our experienced professionals ensure that every detail is perfected to your satisfaction.</p>
               <div className='bg-rose-50 border border-rose-100 p-4 md:p-6 rounded-lg'>
                 <h4 className='font-bold text-stone-900 mb-2 flex items-center space-x-2 text-sm md:text-base'>
                   <span className='text-gold-500'>★</span>

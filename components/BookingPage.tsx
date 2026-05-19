@@ -15,6 +15,7 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
     const [errorMessage, setErrorMessage] = useState<string>('');
     const [calendarLink, setCalendarLink] = useState<string | null>(null);
     const [travelFee, setTravelFee] = useState("in-studio");
+    const [paymentMethod, setPaymentMethod] = useState<'card' | 'bank'>('card');
     // Address & Distance State
     const [address, setAddress] = useState('');
     const [distance, setDistance] = useState<string | null>(null);
@@ -22,6 +23,8 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
 
     const totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
     const depositAmount = totalAmount * 0.5;
+    const processingFee = depositAmount > 0 ? (depositAmount * 0.029) + 0.30 : 0;
+    const finalAmount = paymentMethod === 'card' ? depositAmount + processingFee : depositAmount;
 
     // Store Coordinates (7862 Warner Ave Ste A, Huntington Beach, CA 92646)
     // For Google API we can just use the address string
@@ -86,6 +89,15 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
                 image: item.image
             }));
 
+            const processingFee = depositAmount > 0 ? (depositAmount * 0.029) + 0.30 : 0;
+            if (paymentMethod === 'card' && processingFee > 0) {
+                lineItems.push({
+                    name: "Card Processing Fee (2.9% + $0.30)",
+                    price: Number(processingFee.toFixed(2)),
+                    image: "" as string
+                });
+            }
+
             // const response = await fetch(`http://localhost:3001/create-checkout-session`, {
             const response = await fetch(`https://beauty-store-website-project.onrender.com/create-checkout-session`, {
                 method: 'POST',
@@ -100,7 +112,8 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
                     clientEmail: bookingData.clientEmail,
                     clientPhone: bookingData.clientPhone,
                     clientAddress: bookingData.clientAddress,
-                    serviceName: bookingData.serviceName
+                    serviceName: bookingData.serviceName,
+                    paymentMethodType: paymentMethod
                 }),
             });
 
@@ -181,11 +194,11 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
                         <h3 className="font-serif text-2xl mb-4">{t.booking.summary}</h3>
                         <div className="flex justify-between text-stone-600 mb-2">
                             <span>{cart.length} {t.booking.items}</span>
-                            <span className="font-bold">${totalAmount}</span>
+                            <span className="font-bold">${totalAmount.toFixed(2)}</span>
                         </div>
                         <div className="flex justify-between text-gold-600 font-medium">
                             <span>{t.booking.deposit} Required (50%)</span>
-                            <span>${depositAmount}</span>
+                            <span>${depositAmount.toFixed(2)}</span>
                         </div>
                     </div>
 
@@ -279,6 +292,20 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
                         </div>
 
                         <div className="pt-6 border-t border-stone-100">
+                            <label className="block text-xs uppercase tracking-widest text-stone-500 mb-3">Select Payment Method</label>
+                            <div className="flex flex-col md:flex-row gap-4 mb-6">
+                                <label className={`flex-1 border p-4 rounded cursor-pointer transition-colors ${paymentMethod === 'card' ? 'border-gold-500 bg-gold-50/30' : 'border-stone-200 hover:border-stone-300'}`}>
+                                    <input type="radio" name="payment_method" value="card" checked={paymentMethod === 'card'} onChange={() => setPaymentMethod('card')} className="sr-only" />
+                                    <div className="font-bold text-stone-900 mb-1">Credit / Debit Card</div>
+                                    <div className="text-xs text-stone-500">Includes 2.9% + $0.30 fee</div>
+                                </label>
+                                <label className={`flex-1 border p-4 rounded cursor-pointer transition-colors ${paymentMethod === 'bank' ? 'border-gold-500 bg-gold-50/30' : 'border-stone-200 hover:border-stone-300'}`}>
+                                    <input type="radio" name="payment_method" value="bank" checked={paymentMethod === 'bank'} onChange={() => setPaymentMethod('bank')} className="sr-only" />
+                                    <div className="font-bold text-stone-900 mb-1">US Bank Account (ACH)</div>
+                                    <div className="text-xs text-stone-500">No processing fee</div>
+                                </label>
+                            </div>
+
                             <button
                                 type="submit"
                                 disabled={apiStatus === 'loading'}
@@ -290,7 +317,7 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
                                         Processing...
                                     </>
                                 ) : (
-                                    `Proceed to Payment ($${depositAmount})`
+                                    `Proceed to Payment ($${finalAmount.toFixed(2)})`
                                 )}
                             </button>
                         </div>

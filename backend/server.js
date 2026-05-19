@@ -211,7 +211,7 @@ app.post('/api/calendar/create-event', async (req, res) => {
 
 app.post('/create-checkout-session', async (req, res) => {
     try {
-        const { items, date, time, clientName, clientEmail, clientPhone, clientAddress, serviceName } = req.body;
+        const { items, date, time, clientName, clientEmail, clientPhone, clientAddress, serviceName, paymentMethodType } = req.body;
 
         const line_items = items.map(item => ({
             price_data: {
@@ -223,6 +223,7 @@ app.post('/create-checkout-session', async (req, res) => {
         }));
 
         const session = await stripe.checkout.sessions.create({
+            payment_method_types: paymentMethodType === 'bank' ? ['us_bank_account'] : ['card'],
             line_items,
             mode: 'payment',
             metadata: { clientName, clientEmail, clientPhone, clientAddress: clientAddress || '', serviceName: serviceName || '', date, time },
