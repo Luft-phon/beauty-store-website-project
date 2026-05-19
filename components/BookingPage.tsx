@@ -23,7 +23,7 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
 
     const totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
     const depositAmount = totalAmount * 0.5;
-    const processingFee = depositAmount > 0 ? (depositAmount * 0.029) + 0.30 : 0;
+    const processingFee = depositAmount > 0 ? ((depositAmount + 0.30) / (1 - 0.029)) - depositAmount : 0;
     const finalAmount = paymentMethod === 'card' ? depositAmount + processingFee : depositAmount;
 
     // Store Coordinates (7862 Warner Ave Ste A, Huntington Beach, CA 92646)
