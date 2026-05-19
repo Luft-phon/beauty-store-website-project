@@ -13,7 +13,6 @@
 
 import { MOCK_SERVICES } from './data/services.data';
 import { TRANSLATIONS } from './data/translations.data';
-import { MOCK_GALLERY_IMAGES } from './data/content.data';
 import { LIGHT_SAND_THEME, applyThemeVariables } from './config/theme.config';
 
 // Re-export for backward compatibility
@@ -23,5 +22,5 @@ export { TRANSLATIONS };
 // Theme configuration exports (Light Sand theme only)
 export { LIGHT_SAND_THEME, applyThemeVariables };
 
-// Gallery images export (legacy format)
-export const GALLERIES = MOCK_GALLERY_IMAGES.map(img => img.url);
+// Gallery images export (loading all 15 images from public/images/galley/gallery)
+export const GALLERIES = Array.from({ length: 21 }, (_, i) => `/images/galley/gallery/${i + 1}.jpg`);
