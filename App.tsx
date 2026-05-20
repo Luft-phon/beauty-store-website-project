@@ -426,7 +426,7 @@ const App: React.FC = () => {
         </div>
 
       </div>
-    </FadeInSection>
+    </div>
   );
 
   const ServicesPage = ({ category }: { category?: string }) => {
