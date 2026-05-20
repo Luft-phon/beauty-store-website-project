@@ -143,6 +143,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
           <div className="md:hidden bg-white border-b border-stone-100">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
               <Link to="/" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.home}</Link>
+              <Link to="/about" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.about}</Link>
               {/* Mobile Services Submenu */}
               <div className="w-full text-center">
                 <Link to="/services/party" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.services}</Link>
