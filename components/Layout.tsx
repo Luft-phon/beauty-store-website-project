@@ -22,9 +22,11 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Scroll to top on route change
+// Scroll to top and CLOSE MOBILE MENU on route change
   useEffect(() => {
     window.scrollTo(0, 0);
+    setIsMenuOpen(false); // <--- THÊM DÒNG NÀY LÀ HẾT BỆNH
+    setIsServicesMenuOpen(false); // Khuyến mãi thêm: đóng luôn cả menu con nếu đang mở
   }, [location.pathname]);
 
   const isActive = (path: string) => location.pathname === path;
