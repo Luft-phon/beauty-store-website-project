@@ -133,12 +133,12 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Avy Nguyen',
           role: 'Founder & Master Artist',
-          bio: 'With over 10 years of experience in the beauty industry, Vivian specializes in bridal and editorial makeup, bringing out the unique beauty in every client.'
+          bio: 'With over 10 years of experience in the beauty industry, Avy Nguyen specializes in bridal and editorial makeup, bringing out the unique beauty in every client.'
         },
         {
           name: 'Tien Truong',
           role: 'Senior Makeup Artist',
-          bio: 'Jessica creates flawless, long-lasting looks for any occasion. Her attention to detail ensures you look perfect from every angle.'
+          bio: 'Tien Truong creates flawless, long-lasting looks for any occasion. Her attention to detail ensures you look perfect from every angle.'
         },
         {
           name: 'Hannah Nguyen',
@@ -147,22 +147,17 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         },
         {
           name: 'Vick Nguyen',
-          role: 'Photographer',
-          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
-        },
-        {
-          name: 'Violet Nguyen',
-          role: 'Photographer',
+          role: 'Makeup Artist',
           bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
         },
         {
           name: 'Yani Truong',
-          role: 'Photographer',
+          role: 'Makeup Artist',
           bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
         },
         {
           name: 'Nhi Nguyen',
-          role: 'Photographer',
+          role: 'Makeup Artist',
           bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
         }
       ]
@@ -470,7 +465,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Tien Truong',
           role: 'Chuyên Gia Trang Điểm Cấp Cao',
-          bio: 'Jessica tạo ra những vẻ ngoài hoàn hảo, lâu trôi cho mọi dịp. Sự chú ý đến từng chi tiết của cô ấy đảm bảo bạn trông hoàn hảo từ mọi góc độ.'
+          bio: 'Tien Truong tạo ra những vẻ ngoài hoàn hảo, lâu trôi cho mọi dịp. Sự chú ý đến từng chi tiết của cô ấy đảm bảo bạn trông hoàn hảo từ mọi góc độ.'
         },
         {
           name: 'Hannah Nguyen',
@@ -479,22 +474,17 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         },
         {
           name: 'Vick Nguyen',
-          role: 'Nhiếp Ảnh Gia',
-          bio: 'David ghi lại những khoảnh khắc bằng con mắt nghệ thuật. Cách tiếp cận thoải mái của anh ấy giúp khách hàng cảm thấy dễ chịu, tạo ra những bức chân dung tự nhiên.'
-        },
-        {
-          name: 'Violet Nguyen',
-          role: 'Nhiếp Ảnh Gia',
+          role: 'Nhà Tạo Mẫu Tóc',
           bio: 'David ghi lại những khoảnh khắc bằng con mắt nghệ thuật. Cách tiếp cận thoải mái của anh ấy giúp khách hàng cảm thấy dễ chịu, tạo ra những bức chân dung tự nhiên.'
         },
         {
           name: 'Yani Truong',
-          role: 'Photographer',
+          role: 'Nhà Tạo Mẫu Tóc',
           bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
         },
         {
           name: 'Nhi Nguyen',
-          role: 'Photographer',
+          role: 'Nhà Tạo Mẫu Tóc',
           bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
         }
       ],
@@ -802,7 +792,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Tien Truong',
           role: 'Maquilleuse Senior',
-          bio: 'Jessica crée des looks impeccables et durables pour toutes les occasions.'
+          bio: 'Tien Truong crée des looks impeccables et durables pour toutes les occasions. Son attention aux détails vous assure d\'être parfaite sous tous les angles.'
         },
         {
           name: 'Hannah Nguyen',
@@ -811,20 +801,15 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         },
         {
           name: 'Vick Nguyen',
-          role: 'Photographe',
-          bio: "David capture des moments avec un œil artistique. Son approche détendue met les clients à l'aise."
-        },
-        {
-          name: 'Violet Nguyen',
-          role: 'Photographe',
+          role: 'Coiffeur Styliste',
           bio: "David capture des moments avec un œil artistique. Son approche détendue met les clients à l'aise."
         }, {
           name: 'Yani Truong',
-          role: 'Photographer',
+          role: 'Coiffeur Styliste',
           bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
         }, {
           name: 'Nhi Nguyen',
-          role: 'Photographer',
+          role: 'Coiffeur Styliste',
           bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
         }
       ],
@@ -1127,12 +1112,12 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Avy Nguyen',
           role: '创始人 & 首席艺术家',
-          bio: 'Vivian 拥有超过 10 年的基础美容行业经验，专攻新娘和时尚杂志化妆。'
+          bio: 'Avy 拥有超过 10 年的基础美容行业经验，专攻新娘和时尚杂志化妆。'
         },
         {
           name: 'Tien Truong',
           role: '高级化妆师',
-          bio: 'Jessica 为任何场合打造无瑕、持久的妆容。'
+          bio: 'Tien Truong 为任何场合打造无瑕、持久的妆容。她对细节的关注确保您从每个角度看起来都完美无瑕。'
         },
         {
           name: 'Hannah Nguyen',
@@ -1141,22 +1126,17 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         },
         {
           name: 'Vick Nguyen',
-          role: '摄影师',
-          bio: 'David 用艺术的眼光捕捉瞬间。他轻松的方式让客户感到自在。'
-        },
-        {
-          name: 'Violet Nguyen',
-          role: '摄影师',
-          bio: 'David 用艺术的眼光捕捉瞬间。他轻松的方式让客户感到自在。'
+          role: '发型师',
+          bio: 'Vick 用艺术的眼光捕捉瞬间。他轻松的方式让客户感到自在。'
         },
         {
           name: 'Yani Truong',
-          role: 'Photographer',
-          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
+          role: '摄影师',
+          bio: 'Yani 用艺术的眼光捕捉瞬间。她轻松的方式让客户感到自在，从而拍出自然、美丽的肖像。'
         }, {
           name: 'Nhi Nguyen',
-          role: 'Photographer',
-          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
+          role: '摄影师',
+          bio: 'Nhi 用艺术的眼光捕捉瞬间。她轻松的方式让客户感到自在，从而拍出自然、美丽的肖像。'
         }
       ],
       text: '自 2020 年成立以来，lecharmebeauteboutique 的愿景很简单：创建一个让每位客户都感觉自己最美丽的空间。我们将传统技术与现代艺术相结合，提供卓越的效果。'
@@ -1458,12 +1438,12 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Avy Nguyen',
           role: '설립자 & 마스터 아티스트',
-          bio: '뷰티 업계에서 10년 이상의 경력을 가진 Vivian은 신부 및 화보 메이크업을 전문으로 합니다.'
+          bio: '뷰티 업계에서 10년 이상의 경력을 가진 Avy 신부 및 화보 메이크업을 전문으로 합니다.'
         },
         {
           name: 'Tien Truong',
           role: '수석 메이크업 아티스트',
-          bio: 'Jessica는 모든 경우에 완벽하고 오래 지속되는 룩을 만듭니다.'
+          bio: 'Tien Truong은 모든 경우에 완벽하고 오래 지속되는 룩을 만듭니다. 디테일에 대한 그녀의 관심은 당신이 어떤 각도에서도 완벽해 보이도록 보장합니다.'
         },
         {
           name: 'Hannah Nguyen',
@@ -1472,22 +1452,17 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         },
         {
           name: 'Vick Nguyen',
-          role: '사진 작가',
-          bio: 'David는 예술적인 눈으로 순간을 포착합니다. 편안한 접근 방식은 고객을 편안하게 만듭니다.'
-        },
-        {
-          name: 'Violet Nguyen',
-          role: '사진 작가',
-          bio: 'David는 예술적인 눈으로 순간을 포착합니다. 편안한 접근 방식은 고객을 편안하게 만듭니다.'
+          role: '헤어 스타일리스트',
+          bio: 'Vick은 예술적인 눈으로 순간을 포착합니다. 편안한 접근 방식은 고객을 편안하게 만듭니다.'
         },
         {
           name: 'Yani Truong',
-          role: 'Photographer',
-          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
+          role: '헤어 스타일리스트',
+          bio: 'Yani는 예술적인 눈으로 순간을 포착합니다. 편안한 접근 방식은 고객을 편안하게 만듭니다.'
         }, {
           name: 'Nhi Nguyen',
-          role: 'Photographer',
-          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
+          role: '헤어 스타일리스트',
+          bio: 'Nhi는 예술적인 눈으로 순간을 포착합니다. 편안한 접근 방식은 고객을 편안하게 만듭니다.'
         }
       ],
       text: '2020년에 설립된 lecharmebeauteboutique은 모든 고객이 자신의 가장 아름다운 모습을 발견할 수 있는 공간을 만들겠다는 단순한 비전으로 시작했습니다. 우리는 전통적인 기술과 현대적인 예술성을 결합하여 탁월한 결과를 제공합니다.'
@@ -1789,12 +1764,12 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Avy Nguyen',
           role: 'Fundadora y Artista Principal',
-          bio: 'Con más de 10 años de experiencia en la industria de la belleza, Vivian se especializa en maquillaje nupcial y editorial.'
+          bio: 'Con más de 10 años de experiencia en la industria de la belleza, Avy se especializa en maquillaje nupcial y editorial.'
         },
         {
           name: 'Tien Truong',
           role: 'Maquilladora Senior',
-          bio: 'Jessica crea looks impecables y duraderos para cualquier ocasión.'
+          bio: 'Tien Truong crea looks impecables y duraderos para cualquier ocasión. Su atención al detalle asegura que luzca perfecta desde cualquier ángulo.'
         },
         {
           name: 'Hannah Nguyen',
@@ -1803,23 +1778,18 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         },
         {
           name: 'Vick Nguyen',
-          role: 'Fotógrafo',
-          bio: 'David captura momentos con un ojo artístico. Su enfoque relajado hace que los clientes se sientan cómodos.'
-        },
-        {
-          name: 'Violet Nguyen',
-          role: 'Fotógrafo',
-          bio: 'David captura momentos con un ojo artístico. Su enfoque relajado hace que los clientes se sientan cómodos.'
+          role: 'Estilista de Cabello',
+          bio: 'Vick se encarga decaptura momentos con un ojo artístico. Su enfoque relajado hace que los clientes se sientan cómodos.'
         },
         {
           name: 'Yani Truong',
-          role: 'Photographer',
-          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
+          role: 'Estilista de Cabello',
+          bio: 'Yani se encarga de capturar momentos con un ojo artístico. Su enfoque relajado hace que los clientes se sientan cómodos.'
         },
         {
           name: 'Nhi Nguyen',
-          role: 'Photographer',
-          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
+          role: 'Estilista de Cabello',
+          bio: 'Nhi se encarga de capturar momentos con un ojo artístico. Su enfoque relajado hace que los clientes se sientan cómodos.'
         }
       ],
       text: 'Fundada en 2020, lecharmebeauteboutique comenzó con una visión simple: crear un espacio donde cada cliente se sienta su versión más hermosa. Combinamos técnicas tradicionales con arte moderno.'
