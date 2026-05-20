@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, startTransition } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Globe, Phone, Mail, Instagram, Facebook, ShoppingBag, Youtube } from 'lucide-react';
 import { Language, Service } from '../types';
@@ -131,9 +131,22 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
                   </span>
                 )}
               </Link>
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-stone-600 p-2">
+              {/* <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-stone-600 p-2">
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
+              </button> */}
+              <button 
+  onClick={() => {
+    // 1. Phản hồi UI cho nút bấm ngay lập tức
+    // Nếu bạn có thể tách riêng state của icon hoặc xử lý cục bộ thì tốt, 
+    // còn không, hãy dùng startTransition cho phần render menu nặng.
+    startTransition(() => {
+      setIsMenuOpen(!isMenuOpen);
+    });
+  }} 
+  className="text-stone-600 p-2"
+>
+  {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+</button>
             </div>
           </div>
         </div>
