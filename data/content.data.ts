@@ -107,7 +107,7 @@ export const MOCK_TESTIMONIALS: Testimonial[] = [
     text: 'I absolutely love the products I purchased from this boutique! The quality is exceptional, and my skin has never looked better. The packaging is also beautiful, making it a luxurious experience every time I use them. Highly recommend!',
     service: 'Bridal Makeup',
     date: '2024-11-15',
-    image: '/images/galley/party/9.jpg'
+    image: '/images/galley/party/deluxe-combo/5.jpg'
   },
   {
     id: '2',
@@ -117,7 +117,7 @@ export const MOCK_TESTIMONIALS: Testimonial[] = [
     text: 'Absolutely amazing experience! Sarah did my bridal makeup and I felt like a princess. The attention to detail was incredible and the look lasted all night long.',
     service: 'Wedding Day Coverage',
     date: '2024-10-22',
-    image: '/images/galley/party/10.jpg'
+    image: '/images/galley/party/deluxe-combo/1.jpg'
   },
   {
     id: '3',
@@ -127,7 +127,7 @@ export const MOCK_TESTIMONIALS: Testimonial[] = [
     text: 'David captured our wedding perfectly. Every photo tells a story. We are so grateful for these memories that we will cherish forever.',
     service: 'Wedding Photography',
     date: '2024-11-01',
-    image: '/images/galley/party/11.jpg'
+    image: '/images/galley/bridal/bridal-makeup-hair-layout-changes/3.jpg'
   },
   {
     id: '4',
@@ -137,7 +137,7 @@ export const MOCK_TESTIMONIALS: Testimonial[] = [
     text: 'The best skincare advice I have ever received. My complexion is glowing and I feel so much more confident. Thank you Lumière!',
     service: 'Skincare Consultation',
     date: '2024-12-05',
-    image: '/images/galley/party/18.jpg'
+    image: '/images/galley/bridal/bridal-makeup-hair/4.jpg'
   }
 ];
 
