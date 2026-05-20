@@ -8,6 +8,7 @@ import { MOCK_CATEGORIES, MOCK_STATISTICS, MOCK_WHY_CHOOSE_US, MOCK_FEATURED_SER
 import { applyThemeVariables } from './config/theme.config';
 import Layout from './components/Layout';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import AdminDashboard from './components/AdminDashboard';
 import ServiceDetail from './components/ServiceDetail';
 import { ServiceCard } from './components/ServiceCard';
@@ -639,6 +640,7 @@ const App: React.FC = () => {
           <Route path="/terms" element={<TermsOfServicePage />} />
           <Route path="/admin" element={<AdminDashboard services={services} onUpdateService={handleUpdateService} />} />
         </Routes>
+        <SpeedInsights />
         <Analytics />
       </Layout>
 
