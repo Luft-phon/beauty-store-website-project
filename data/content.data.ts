@@ -53,25 +53,19 @@ export const MOCK_TEAM_MEMBERS: TeamMember[] = [
   {
     id: 'vick',
     name: 'Vick Nguyen',
-    role: 'Photographer',
+    role: 'Makeup Artist',
     image: '/images/member/vick.jpg'
-  },
-  {
-    id: 'violet',
-    name: 'Violet Nguyen',
-    role: 'Photographer',
-    image: '/images/member/violet.jpg'
   },
   {
     id: 'yani',
     name: 'Yani Truong',
-    role: 'Photographer',
+    role: 'Makeup Artist',
     image: '/images/member/yani.jpg'
   },
   {
     id: 'nhi',
     name: 'Nhi Nguyen',
-    role: 'Photographer',
+    role: 'Makeup Artist',
     image: '/images/member/nhi.jpg'
   }
 ];
