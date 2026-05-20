@@ -41,6 +41,9 @@ const App: React.FC = () => {
 
   // Initialize Lenis smooth scrolling
   useEffect(() => {
+    // Skip initialization on touch devices to prevent scrolling/rendering issues
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
