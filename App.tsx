@@ -345,7 +345,7 @@ const App: React.FC = () => {
   };
 
   const AboutPage = () => (
-    <FadeInSection className="animate-in fade-in duration-500">
+    <div className="animate-in fade-in duration-500">
       {/* About Hero */}
       <div className="relative h-[40vh] w-full overflow-hidden">
         <div className="absolute inset-0">
@@ -426,7 +426,7 @@ const App: React.FC = () => {
         </div>
 
       </div>
-    </FadeInSection>
+    </div>
   );
 
   const ServicesPage = ({ category }: { category?: string }) => {
@@ -441,7 +441,7 @@ const App: React.FC = () => {
     const pageTitle = category ? `${category} Services` : t.nav.services;
 
     return (
-      <FadeInSection className="max-w-7xl mx-auto px-4 py-16">
+      <div className="max-w-7xl mx-auto px-4 py-16">
         {/* <h2 className="font-serif uppercase text-5xl text-center mb-12">{pageTitle}</h2> */}
         <h2 className="font-serif uppercase text-5xl text-center mb-12">
           {category === 'PartyEvent' ? 'Party / Event' :
@@ -469,12 +469,12 @@ const App: React.FC = () => {
             />
           ))}
         </div>
-      </FadeInSection>
+      </div>
     );
   };
 
   const GalleryPage = () => (
-    <FadeInSection className="max-w-7xl mx-auto px-4 py-16">
+    <div className="max-w-7xl mx-auto px-4 py-16">
       {/* <h2 className="font-serif text-4xl text-center mb-4">{t.nav.gallery}</h2> */}
       <span className="block font-serif text-5xl uppercase text-center font-bold text-stone-900 tracking-tighter pb-4 ">
         {t.nav.gallery}
@@ -483,7 +483,7 @@ const App: React.FC = () => {
 
       <GalleryCarousel images={GALLERIES} />
 
-    </FadeInSection>
+    </div>
   );
 
   const CartPage = () => {
@@ -503,7 +503,7 @@ const App: React.FC = () => {
     }
 
     return (
-      <FadeInSection className="max-w-5xl mx-auto px-4 py-16">
+      <div className="max-w-5xl mx-auto px-4 py-16">
         <h2 className="font-serif text-4xl text-center mb-12">{t.cart.title}</h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -552,14 +552,14 @@ const App: React.FC = () => {
             </div>
           </div>
         </div>
-      </FadeInSection>
+      </div>
     );
   };
 
 
 
   const ContactPage = () => (
-    <FadeInSection className="max-w-7xl mx-auto px-4 py-16">
+    <div className="max-w-7xl mx-auto px-4 py-16">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div className="space-y-8">
           {/* <h2 className="font-serif text-4xl mb-4">{t.nav.contact}</h2> */}
@@ -607,7 +607,7 @@ const App: React.FC = () => {
 
         </div>
       </div>
-    </FadeInSection>
+    </div>
   );
 
   return (
