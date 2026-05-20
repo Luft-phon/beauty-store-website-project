@@ -143,22 +143,22 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Hannah Nguyen',
           role: 'Hair Stylist',
-          bio: 'A master of modern and classic hairstyles, Michael can create the perfect updo or waves to complement your makeup and complete your look.'
+          bio: 'A master of modern and classic hairstyles, Hannah can create the perfect updo or waves to complement your makeup and complete your look.'
         },
         {
           name: 'Vick Nguyen',
           role: 'Makeup Artist',
-          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
+          bio: 'Vick captures moments with an artistic eye. Her relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
         },
         {
           name: 'Yani Truong',
           role: 'Makeup Artist',
-          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
+          bio: 'Yani captures moments with an artistic eye. Her relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
         },
         {
           name: 'Nhi Nguyen',
           role: 'Makeup Artist',
-          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
+          bio: 'Nhi captures moments with an artistic eye. Her relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
         }
       ]
     },
@@ -460,7 +460,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Avy Nguyen',
           role: 'Nhà Sáng Lập & Chuyên Gia Chính',
-          bio: 'Với hơn 10 năm kinh nghiệm trong ngành làm đẹp, Vivian chuyên về trang điểm cô dâu và tạp chí, làm nổi bật vẻ đẹp độc đáo của mỗi khách hàng.'
+          bio: 'Với hơn 10 năm kinh nghiệm trong ngành làm đẹp, Avy Nguyen chuyên về trang điểm cô dâu và tạp chí, làm nổi bật vẻ đẹp độc đáo của mỗi khách hàng.'
         },
         {
           name: 'Tien Truong',
@@ -470,22 +470,22 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Hannah Nguyen',
           role: 'Nhà Tạo Mẫu Tóc',
-          bio: 'Bậc thầy của các kiểu tóc hiện đại và cổ điển, Michael có thể tạo ra kiểu tóc búi hoặc sóng nước hoàn hảo để bổ sung cho lớp trang điểm của bạn.'
+          bio: 'Bậc thầy của các kiểu tóc hiện đại và cổ điển, Hannah có thể tạo ra kiểu tóc búi hoặc sóng nước hoàn hảo để bổ sung cho lớp trang điểm và hoàn thiện vẻ ngoài của bạn.'
         },
         {
           name: 'Vick Nguyen',
-          role: 'Nhà Tạo Mẫu Tóc',
-          bio: 'David ghi lại những khoảnh khắc bằng con mắt nghệ thuật. Cách tiếp cận thoải mái của anh ấy giúp khách hàng cảm thấy dễ chịu, tạo ra những bức chân dung tự nhiên.'
+          role: 'Chuyên Gia Trang Điểm',
+          bio: 'Vick ghi lại những khoảnh khắc bằng con mắt nghệ thuật. Cách tiếp cận thoải mái của cô ấy giúp khách hàng cảm thấy dễ chịu, tạo ra những bức chân dung tự nhiên và xinh đẹp.'
         },
         {
           name: 'Yani Truong',
-          role: 'Nhà Tạo Mẫu Tóc',
-          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
+          role: 'Chuyên Gia Trang Điểm',
+          bio: 'Yani ghi lại những khoảnh khắc bằng con mắt nghệ thuật. Cách tiếp cận thoải mái của cô ấy giúp khách hàng cảm thấy dễ chịu, tạo ra những bức chân dung tự nhiên và xinh đẹp.'
         },
         {
           name: 'Nhi Nguyen',
-          role: 'Nhà Tạo Mẫu Tóc',
-          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
+          role: 'Chuyên Gia Trang Điểm',
+          bio: 'Nhi ghi lại những khoảnh khắc bằng con mắt nghệ thuật. Cách tiếp cận thoải mái của cô ấy giúp khách hàng cảm thấy dễ chịu, tạo ra những bức chân dung tự nhiên và xinh đẹp.'
         }
       ],
       text: 'Được thành lập vào năm 2020, lecharmebeauteboutique bắt đầu với một tầm nhìn đơn giản: tạo ra một không gian nơi mọi khách hàng đều cảm thấy mình xinh đẹp nhất. Chúng tôi kết hợp kỹ thuật truyền thống với nghệ thuật hiện đại để mang lại'
@@ -787,7 +787,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Avy Nguyen',
           role: 'Fondatrice & Artiste Principale',
-          bio: "Avec plus de 10 ans d'expérience dans l'industrie de la beauté, Vivian se spécialise dans le maquillage de mariée et éditorial."
+          bio: "Avec plus de 10 ans d'expérience dans l'industrie de la beauté, Avy Nguyen se spécialise dans le maquillage de mariée et éditorial, faisant ressortir la beauté unique de chaque client."
         },
         {
           name: 'Tien Truong',
@@ -797,20 +797,20 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Hannah Nguyen',
           role: 'Coiffeur Styliste',
-          bio: 'Un maître des coiffures modernes et classiques, Michael peut créer le chignon ou les ondulations parfaits.'
+          bio: 'Un maître des coiffures modernes et classiques, Hannah peut créer le chignon ou les ondulations parfaits pour compléter votre maquillage et parfaire votre look.'
         },
         {
           name: 'Vick Nguyen',
-          role: 'Coiffeur Styliste',
-          bio: "David capture des moments avec un œil artistique. Son approche détendue met les clients à l'aise."
+          role: 'Maquilleuse',
+          bio: "Vick capture des moments avec un œil artistique. Son approche détendue met les clients à l'aise, pour des portraits naturels et magnifiques."
         }, {
           name: 'Yani Truong',
-          role: 'Coiffeur Styliste',
-          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
+          role: 'Maquilleuse',
+          bio: "Yani capture des moments avec un œil artistique. Son approche détendue met les clients à l'aise, pour des portraits naturels et magnifiques."
         }, {
           name: 'Nhi Nguyen',
-          role: 'Coiffeur Styliste',
-          bio: 'David captures moments with an artistic eye. His relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
+          role: 'Maquilleuse',
+          bio: "Nhi capture des moments avec un œil artistique. Son approche détendue met les clients à l'aise, pour des portraits naturels et magnifiques."
         }
       ],
       text: 'Depuis sa fondation en 2020, lecharmebeauteboutique a commencé avec une vision simple : créer un espace où chaque client se sent la plus belle version d\'elle-même. Nous combinons techniques traditionnelles et art moderne.'
@@ -1112,7 +1112,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Avy Nguyen',
           role: '创始人 & 首席艺术家',
-          bio: 'Avy 拥有超过 10 年的基础美容行业经验，专攻新娘和时尚杂志化妆。'
+          bio: '拥有超过10年的美容行业经验，Avy Nguyen 专攻新娘和时尚杂志化妆，展现每位客户独特的美。'
         },
         {
           name: 'Tien Truong',
@@ -1122,20 +1122,20 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Hannah Nguyen',
           role: '发型师',
-          bio: '现代和经典发型的大师，Michael 可以打造完美的发髻或卷发。'
+          bio: '现代和经典发型的大师，Hannah 可以打造完美的发髻或卷发，搭配您的妆容并完善您的造型。'
         },
         {
           name: 'Vick Nguyen',
-          role: '发型师',
-          bio: 'Vick 用艺术的眼光捕捉瞬间。他轻松的方式让客户感到自在。'
+          role: '化妆师',
+          bio: 'Vick 用艺术的眼光捕捉瞬间。她轻松的方式让客户感到自在，从而拍出自然、美丽的肖像。'
         },
         {
           name: 'Yani Truong',
-          role: '摄影师',
+          role: '化妆师',
           bio: 'Yani 用艺术的眼光捕捉瞬间。她轻松的方式让客户感到自在，从而拍出自然、美丽的肖像。'
         }, {
           name: 'Nhi Nguyen',
-          role: '摄影师',
+          role: '化妆师',
           bio: 'Nhi 用艺术的眼光捕捉瞬间。她轻松的方式让客户感到自在，从而拍出自然、美丽的肖像。'
         }
       ],
@@ -1438,7 +1438,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Avy Nguyen',
           role: '설립자 & 마스터 아티스트',
-          bio: '뷰티 업계에서 10년 이상의 경력을 가진 Avy 신부 및 화보 메이크업을 전문으로 합니다.'
+          bio: '뷰티 업계에서 10년 이상의 경력을 가진 Avy Nguyen은 신부 및 화보 메이크업을 전문으로 하며 각 고객의 고유한 아름다움을 이끌어냅니다.'
         },
         {
           name: 'Tien Truong',
@@ -1448,21 +1448,21 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Hannah Nguyen',
           role: '헤어 스타일리스트',
-          bio: '현대적이고 클래식한 헤어스타일의 장인인 Michael은 완벽한 업두나 웨이브를 연출합니다.'
+          bio: '현대적이고 클래식한 헤어스타일의 장인인 Hannah는 메이크업을 보완하고 룩을 완성하는 완벽한 업두나 웨이브를 연출할 수 있습니다.'
         },
         {
           name: 'Vick Nguyen',
-          role: '헤어 스타일리스트',
-          bio: 'Vick은 예술적인 눈으로 순간을 포착합니다. 편안한 접근 방식은 고객을 편안하게 만듭니다.'
+          role: '메이크업 아티스트',
+          bio: 'Vick은 예술적인 눈으로 순간을 포착합니다. 그녀의 편안한 접근 방식은 고객을 편안하게 만들어 자연스럽고 아름다운 인물 사진을 완성합니다.'
         },
         {
           name: 'Yani Truong',
-          role: '헤어 스타일리스트',
-          bio: 'Yani는 예술적인 눈으로 순간을 포착합니다. 편안한 접근 방식은 고객을 편안하게 만듭니다.'
+          role: '메이크업 아티스트',
+          bio: 'Yani는 예술적인 눈으로 순간을 포착합니다. 그녀의 편안한 접근 방식은 고객을 편안하게 만들어 자연스럽고 아름다운 인물 사진을 완성합니다.'
         }, {
           name: 'Nhi Nguyen',
-          role: '헤어 스타일리스트',
-          bio: 'Nhi는 예술적인 눈으로 순간을 포착합니다. 편안한 접근 방식은 고객을 편안하게 만듭니다.'
+          role: '메이크업 아티스트',
+          bio: 'Nhi는 예술적인 눈으로 순간을 포착합니다. 그녀의 편안한 접근 방식은 고객을 편안하게 만들어 자연스럽고 아름다운 인물 사진을 완성합니다.'
         }
       ],
       text: '2020년에 설립된 lecharmebeauteboutique은 모든 고객이 자신의 가장 아름다운 모습을 발견할 수 있는 공간을 만들겠다는 단순한 비전으로 시작했습니다. 우리는 전통적인 기술과 현대적인 예술성을 결합하여 탁월한 결과를 제공합니다.'
@@ -1764,7 +1764,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Avy Nguyen',
           role: 'Fundadora y Artista Principal',
-          bio: 'Con más de 10 años de experiencia en la industria de la belleza, Avy se especializa en maquillaje nupcial y editorial.'
+          bio: 'Con más de 10 años de experiencia en la industria de la belleza, Avy Nguyen se especializa en maquillaje nupcial y editorial, resaltando la belleza única de cada cliente.'
         },
         {
           name: 'Tien Truong',
@@ -1774,22 +1774,22 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Hannah Nguyen',
           role: 'Estilista de Cabello',
-          bio: 'Maestra de peinados modernos y clásicos, Michael puede crear el recogido u ondas perfectos.'
+          bio: 'Maestra de peinados modernos y clásicos, Hannah puede crear el recogido u ondas perfectos para complementar su maquillaje y completar su look.'
         },
         {
           name: 'Vick Nguyen',
-          role: 'Estilista de Cabello',
-          bio: 'Vick se encarga decaptura momentos con un ojo artístico. Su enfoque relajado hace que los clientes se sientan cómodos.'
+          role: 'Maquilladora',
+          bio: 'Vick captura momentos con un ojo artístico. Su enfoque relajado hace que los clientes se sientan cómodos, resultando en hermosos retratos naturales.'
         },
         {
           name: 'Yani Truong',
-          role: 'Estilista de Cabello',
-          bio: 'Yani se encarga de capturar momentos con un ojo artístico. Su enfoque relajado hace que los clientes se sientan cómodos.'
+          role: 'Maquilladora',
+          bio: 'Yani captura momentos con un ojo artístico. Su enfoque relajado hace que los clientes se sientan cómodos, resultando en hermosos retratos naturales.'
         },
         {
           name: 'Nhi Nguyen',
-          role: 'Estilista de Cabello',
-          bio: 'Nhi se encarga de capturar momentos con un ojo artístico. Su enfoque relajado hace que los clientes se sientan cómodos.'
+          role: 'Maquilladora',
+          bio: 'Nhi captura momentos con un ojo artístico. Su enfoque relajado hace que los clientes se sientan cómodos, resultando en hermosos retratos naturales.'
         }
       ],
       text: 'Fundada en 2020, lecharmebeauteboutique comenzó con una visión simple: crear un espacio donde cada cliente se sienta su versión más hermosa. Combinamos técnicas tradicionales con arte moderno.'
