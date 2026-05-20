@@ -167,7 +167,7 @@ export const MOCK_SERVICES: Service[] = [
     name: '1:1 Private Makeup Class',
     description: '3 days, 3 hours per day. Flexible dates/times. Includes skincare & makeup products, Professional Brush Set, Brush Case, Beauty Blender, and Mini Beauty Portrait Photoshoot.',
     price: 595,
-    image: '/images/galley/party/premium-combo/2.jpg'
+    image: '/images/galley/classes/1v1/1.jpg'
   },
   {
     id: 'class-group',
@@ -175,7 +175,7 @@ export const MOCK_SERVICES: Service[] = [
     name: 'Group Makeup Class (4 students)',
     description: '3 days, 3 hours per day. Held on weekends (Fri-Sun). Includes skincare & makeup products, Professional Brush Set, Brush Case, Beauty Blender, and Mini Beauty Portrait Photoshoot.',
     price: 495,
-    image: '/images/galley/party/premium-combo/5.jpg'
+    image: '/images/galley/classes/group/1.jpg'
   },
   // extra services
   {

@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Service, Language } from '../types';
 import { TRANSLATIONS } from '../constants';
 import { ArrowLeft, Check, Star, Calendar, Clock, ShoppingBag } from 'lucide-react';
-import { div } from 'framer-motion/client';
+// import { div } from 'framer-motion/client';
 
 interface ServiceDetailProps {
   services: Service[];
@@ -51,7 +51,8 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ services, onAddToCart, cu
       { match: (s: Service) => s.name.toLowerCase().includes('bridal trial / pre-wedding photoshoot'), dir: '/images/galley/photoshoot/bridal-trial', max: 8 },
       { match: (s: Service) => s.name.toLowerCase().includes('deluxe combo'), dir: '/images/galley/party/deluxe-combo', max: 12 },
       { match: (s: Service) => s.name.toLowerCase().includes('deluxe makeup only'), dir: '/images/galley/party/deluxe-makeup-only', max: 4 },
-      { match: (s: Service) => s.name.toLowerCase().includes('class'), dir: '/images/galley/party/deluxe-makeup-only', max: 4 },
+      { match: (s: Service) => s.name.toLowerCase().includes('1:1 private makeup class'), dir: '/images/galley/classes/1v1', max: 12 },
+      { match: (s: Service) => s.name.toLowerCase().includes('group makeup class (4 students)'), dir: '/images/galley/classes/group', max: 10 },
     ];
 
     // Find the first matching rule, or fallback to default

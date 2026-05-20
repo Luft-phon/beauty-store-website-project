@@ -37,7 +37,7 @@ const isValidUrl = (url) => {
     } catch (err) {
         return false;
     }
-};
+}; 
 
 const getAbsoluteImageUrl = (imagePath) => {
     if (!imagePath) return null;
