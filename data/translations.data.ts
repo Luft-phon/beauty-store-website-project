@@ -142,8 +142,8 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         },
         {
           name: 'Hannah Nguyen',
-          role: 'Hair Stylist',
-          bio: 'A master of modern and classic hairstyles, Hannah can create the perfect updo or waves to complement your makeup and complete your look.'
+          role: 'Makeup Stylist',
+          bio: 'A master of both modern and classic makeup artistry, Hannah creates refined, harmonious makeup looks that complement your hairstyle and personal style, helping you achieve a radiant look for every special moment.'
         },
         {
           name: 'Vick Nguyen',
@@ -153,7 +153,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Yani Truong',
           role: 'Makeup Artist',
-          bio: 'Yani captures moments with an artistic eye. Her relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
+          bio: 'Yani combines an artistic touch with a gentle approach, ensuring every client feels relaxed while she highlights their natural beauty.'
         },
         {
           name: 'Nhi Nguyen',
@@ -469,8 +469,8 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         },
         {
           name: 'Hannah Nguyen',
-          role: 'Nhà Tạo Mẫu Tóc',
-          bio: 'Bậc thầy của các kiểu tóc hiện đại và cổ điển, Hannah có thể tạo ra kiểu tóc búi hoặc sóng nước hoàn hảo để bổ sung cho lớp trang điểm và hoàn thiện vẻ ngoài của bạn.'
+          role: 'Chuyên Gia Trang Điểm',
+          bio: 'Bậc thầy trong nghệ thuật trang điểm hiện đại và cổ điển, Hannah mang đến những layout makeup tinh tế, hài hòa với kiểu tóc và phong cách cá nhân, giúp bạn hoàn thiện vẻ ngoài rạng rỡ trong từng khoảnh khắc.'
         },
         {
           name: 'Vick Nguyen',
@@ -480,7 +480,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Yani Truong',
           role: 'Chuyên Gia Trang Điểm',
-          bio: 'Yani ghi lại những khoảnh khắc bằng con mắt nghệ thuật. Cách tiếp cận thoải mái của cô ấy giúp khách hàng cảm thấy dễ chịu, tạo ra những bức chân dung tự nhiên và xinh đẹp.'
+          bio: 'Yani kết hợp nét nghệ thuật với phong cách nhẹ nhàng, đảm bảo mọi khách hàng cảm thấy thư thái khi cô ấy tôn vinh vẻ đẹp tự nhiên của họ.'
         },
         {
           name: 'Nhi Nguyen',
@@ -796,18 +796,20 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         },
         {
           name: 'Hannah Nguyen',
-          role: 'Coiffeur Styliste',
-          bio: 'Un maître des coiffures modernes et classiques, Hannah peut créer le chignon ou les ondulations parfaits pour compléter votre maquillage et parfaire votre look.'
+          role: 'Maquilleuse',
+          bio: 'Experte dans l’art du maquillage moderne et classique, Hannah crée des looks raffinés et harmonieux qui complètent votre coiffure et votre style personnel, vous aidant à rayonner à chaque moment spécial.'
         },
         {
           name: 'Vick Nguyen',
           role: 'Maquilleuse',
           bio: "Vick capture des moments avec un œil artistique. Son approche détendue met les clients à l'aise, pour des portraits naturels et magnifiques."
-        }, {
+        },
+        {
           name: 'Yani Truong',
           role: 'Maquilleuse',
-          bio: "Yani capture des moments avec un œil artistique. Son approche détendue met les clients à l'aise, pour des portraits naturels et magnifiques."
-        }, {
+          bio: "Yani allie une touche artistique à une approche douce, garantissant que chaque cliente se sente détendue pendant qu'elle sublime sa beauté naturelle."
+        },
+        {
           name: 'Nhi Nguyen',
           role: 'Maquilleuse',
           bio: "Nhi capture des moments avec un œil artistique. Son approche détendue met les clients à l'aise, pour des portraits naturels et magnifiques."
@@ -1121,8 +1123,8 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         },
         {
           name: 'Hannah Nguyen',
-          role: '发型师',
-          bio: '现代和经典发型的大师，Hannah 可以打造完美的发髻或卷发，搭配您的妆容并完善您的造型。'
+          role: '化妆师',
+          bio: 'Hannah 精通现代与经典妆容艺术，能够打造精致和谐的妆容，与您的发型和个人风格完美搭配，助您在每一个特别时刻展现迷人光彩。'
         },
         {
           name: 'Vick Nguyen',
@@ -1447,8 +1449,8 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         },
         {
           name: 'Hannah Nguyen',
-          role: '헤어 스타일리스트',
-          bio: '현대적이고 클래식한 헤어스타일의 장인인 Hannah는 메이크업을 보완하고 룩을 완성하는 완벽한 업두나 웨이브를 연출할 수 있습니다.'
+          role: '메이크업 아티스트',
+          bio: '현대적이면서도 클래식한 메이크업 아티스트인 Hannah는 헤어스타일과 개인의 스타일에 조화롭게 어울리는 세련된 메이크업을 완성해, 특별한 순간마다 빛나는 아름다움을 선사합니다.'
         },
         {
           name: 'Vick Nguyen',
@@ -1773,8 +1775,8 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         },
         {
           name: 'Hannah Nguyen',
-          role: 'Estilista de Cabello',
-          bio: 'Maestra de peinados modernos y clásicos, Hannah puede crear el recogido u ondas perfectos para complementar su maquillaje y completar su look.'
+          role: 'Estilista de Cabello', // Already correct
+          bio: 'Maestra en el arte del maquillaje moderno y clásico, Hannah crea looks refinados y armoniosos que complementan tu peinado y estilo personal, ayudándote a lucir radiante en cada momento especial.'
         },
         {
           name: 'Vick Nguyen',
@@ -1784,7 +1786,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Yani Truong',
           role: 'Maquilladora',
-          bio: 'Yani captura momentos con un ojo artístico. Su enfoque relajado hace que los clientes se sientan cómodos, resultando en hermosos retratos naturales.'
+          bio: 'Yani combina un toque artístico con un enfoque amable, asegurando que cada cliente se sienta relajado mientras resalta su belleza natural.'
         },
         {
           name: 'Nhi Nguyen',
