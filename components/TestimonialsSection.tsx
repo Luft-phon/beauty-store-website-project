@@ -114,7 +114,7 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({
                                 <img
                                     src={testimonial.image}
                                     alt={`Portrait of ${testimonial.author}`}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-contain"
                                     draggable="false"
                                 />
                             </div>
