@@ -142,13 +142,13 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         },
         {
           name: 'Hannah Nguyen',
-          role: 'Makeup Stylist',
+          role: 'Makeup Artist',
           bio: 'A master of both modern and classic makeup artistry, Hannah creates refined, harmonious makeup looks that complement your hairstyle and personal style, helping you achieve a radiant look for every special moment.'
         },
         {
           name: 'Vick Nguyen',
           role: 'Makeup Artist',
-          bio: 'Vick captures moments with an artistic eye. Her relaxed approach puts clients at ease, resulting in natural, beautiful portraits.'
+          bio: 'Vick creates refined, natural makeup looks tailored to each client’s unique personality. With skillful techniques, a modern aesthetic, and a thoughtful approach, she helps every client feel confident, radiant, and beautifully themselves.'
         },
         {
           name: 'Yani Truong',
@@ -475,7 +475,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Vick Nguyen',
           role: 'Chuyên Gia Trang Điểm',
-          bio: 'Vick ghi lại những khoảnh khắc bằng con mắt nghệ thuật. Cách tiếp cận thoải mái của cô ấy giúp khách hàng cảm thấy dễ chịu, tạo ra những bức chân dung tự nhiên và xinh đẹp.'
+          bio: 'Vick tôn vinh vẻ đẹp riêng của mỗi khách hàng bằng sự tinh tế và gu thẩm mỹ chuyên nghiệp. Với phong cách làm việc nhẹ nhàng, tận tâm, cô giúp khách hàng cảm thấy tự tin, thoải mái và rạng rỡ trong từng khoảnh khắc.'
         },
         {
           name: 'Yani Truong',
@@ -802,7 +802,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Vick Nguyen',
           role: 'Maquilleuse',
-          bio: "Vick capture des moments avec un œil artistique. Son approche détendue met les clients à l'aise, pour des portraits naturels et magnifiques."
+          bio: "Vick crée des maquillages raffinés et naturels, adaptés à la personnalité unique de chaque cliente. Grâce à son savoir-faire, son sens esthétique moderne et son approche attentionnée, elle aide chacune à se sentir confiante, rayonnante et pleinement elle-même."
         },
         {
           name: 'Yani Truong',
@@ -1129,7 +1129,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Vick Nguyen',
           role: '化妆师',
-          bio: 'Vick 用艺术的眼光捕捉瞬间。她轻松的方式让客户感到自在，从而拍出自然、美丽的肖像。'
+          bio: 'Vick 为每位客户打造精致、自然，并贴合个人气质的妆容。凭借娴熟的技巧、现代的审美和细致贴心的服务，她帮助每一位客户展现自信、闪耀且独特的美'
         },
         {
           name: 'Yani Truong',
@@ -1455,7 +1455,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Vick Nguyen',
           role: '메이크업 아티스트',
-          bio: 'Vick은 예술적인 눈으로 순간을 포착합니다. 그녀의 편안한 접근 방식은 고객을 편안하게 만들어 자연스럽고 아름다운 인물 사진을 완성합니다.'
+          bio: 'Vick은 각 고객의 개성과 분위기에 맞춘 세련되고 자연스러운 메이크업을 선보입니다. 섬세한 기술과 현대적인 감각, 그리고 진심 어린 태도로 고객이 자신감 있고 빛나는 모습으로 아름다움을 표현할 수 있도록 돕습니다.'
         },
         {
           name: 'Yani Truong',
@@ -1781,7 +1781,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
         {
           name: 'Vick Nguyen',
           role: 'Maquilladora',
-          bio: 'Vick captura momentos con un ojo artístico. Su enfoque relajado hace que los clientes se sientan cómodos, resultando en hermosos retratos naturales.'
+          bio: 'Vick crea looks de maquillaje refinados y naturales, adaptados a la personalidad única de cada clienta. Con técnicas expertas, una estética moderna y un trato atento, ayuda a cada persona a sentirse segura, radiante y auténticamente bella.'
         },
         {
           name: 'Yani Truong',
