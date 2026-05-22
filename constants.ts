@@ -23,4 +23,4 @@ export { TRANSLATIONS };
 export { LIGHT_SAND_THEME, applyThemeVariables };
 
 // Gallery images export (loading all 15 images from public/images/galley/gallery)
-export const GALLERIES = Array.from({ length: 21 }, (_, i) => `/images/galley/gallery/${i + 1}.jpg`);
+export const GALLERIES = Array.from({ length: 55 }, (_, i) => `/images/galley/gallery/${i + 1}.jpg`);
