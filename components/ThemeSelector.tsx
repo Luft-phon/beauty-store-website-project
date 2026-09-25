@@ -1,6 +1,5 @@
 import React from 'react';
 import { Theme } from '../types';
-import { THEME_CONFIGS } from '../config/theme.config';
 import { Palette } from 'lucide-react';
 
 interface ThemeSelectorProps {
@@ -8,8 +7,41 @@ interface ThemeSelectorProps {
   onThemeChange: (theme: Theme) => void;
 }
 
-const ThemeSelector: React.FC<ThemeSelectorProps> = ({ currentTheme, onThemeChange }) => {
+const formatThemeName = (theme: Theme) => {
+  return String(theme)
+    .replace(/[-_]/g, ' ')
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+};
+
+const getThemeDescription = (theme: Theme) => {
+  const value = String(theme).toLowerCase();
+
+  if (value.includes('sand')) {
+    return 'Natural & Earthy';
+  }
+
+  if (value.includes('beige')) {
+    return 'Warm & Cozy';
+  }
+
+  if (value.includes('white') || value.includes('light')) {
+    return 'Clean & Minimal';
+  }
+
+  if (value.includes('dark')) {
+    return 'Elegant & Dark';
+  }
+
+  return '';
+};
+
+const ThemeSelector: React.FC<ThemeSelectorProps> = ({
+  currentTheme,
+  onThemeChange,
+}) => {
   const [isOpen, setIsOpen] = React.useState(false);
+
+  const themes = Object.values(Theme) as Theme[];
 
   return (
     <div className="relative">
@@ -20,8 +52,9 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ currentTheme, onThemeChan
         title="Change Theme"
       >
         <Palette size={20} />
+
         <span className="hidden sm:inline text-sm font-medium">
-          {THEME_CONFIGS[currentTheme].displayName}
+          {formatThemeName(currentTheme)}
         </span>
       </button>
 
@@ -38,75 +71,82 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ currentTheme, onThemeChan
             className="absolute right-0 mt-2 w-56 rounded-md shadow-lg z-50 overflow-hidden"
             style={{
               backgroundColor: 'var(--color-background)',
-              border: '1px solid var(--color-border)'
+              border: '1px solid var(--color-border)',
             }}
           >
             <div
               className="px-4 py-3 border-b"
               style={{
                 borderColor: 'var(--color-border)',
-                color: 'var(--color-textDark)'
+                color: 'var(--color-textDark)',
               }}
             >
-              <p className="text-sm font-semibold">Select Color Theme</p>
+              <p className="text-sm font-semibold">
+                Select Color Theme
+              </p>
             </div>
 
             <div className="py-2">
-              {Object.values(Theme).map((theme) => {
-                const config = THEME_CONFIGS[theme];
+              {themes.map((theme) => {
                 const isSelected = currentTheme === theme;
 
                 return (
                   <button
-                    key={theme}
+                    key={String(theme)}
                     onClick={() => {
                       onThemeChange(theme);
                       setIsOpen(false);
                     }}
                     className="w-full px-4 py-3 text-left flex items-center gap-3 transition-colors"
                     style={{
-                      backgroundColor: isSelected ? 'var(--color-primaryLight)' : 'transparent',
-                      color: 'var(--color-text)'
+                      backgroundColor: isSelected
+                        ? 'var(--color-primaryLight)'
+                        : 'transparent',
+                      color: 'var(--color-text)',
                     }}
                     onMouseEnter={(e) => {
                       if (!isSelected) {
-                        e.currentTarget.style.backgroundColor = 'var(--color-backgroundAlt)';
+                        e.currentTarget.style.backgroundColor =
+                          'var(--color-backgroundAlt)';
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (!isSelected) {
-                        e.currentTarget.style.backgroundColor = 'transparent';
+                        e.currentTarget.style.backgroundColor =
+                          'transparent';
                       }
                     }}
                   >
-                    {/* Color Preview */}
+                    {/* Generic Color Preview */}
                     <div className="flex gap-1">
                       <div
                         className="w-6 h-6 rounded border"
                         style={{
-                          backgroundColor: config.colors.primary,
-                          borderColor: config.colors.border
+                          backgroundColor: 'var(--color-primary)',
+                          borderColor: 'var(--color-border)',
                         }}
                       />
+
                       <div
                         className="w-6 h-6 rounded border"
                         style={{
-                          backgroundColor: config.colors.accent,
-                          borderColor: config.colors.border
+                          backgroundColor: 'var(--color-accent)',
+                          borderColor: 'var(--color-border)',
                         }}
                       />
                     </div>
 
                     {/* Theme Name */}
                     <div className="flex-1">
-                      <p className="text-sm font-medium">{config.displayName}</p>
+                      <p className="text-sm font-medium">
+                        {formatThemeName(theme)}
+                      </p>
+
                       <p
                         className="text-xs"
                         style={{ color: 'var(--color-textLight)' }}
                       >
-                        {theme === Theme.WARM_BEIGE && 'Warm & Cozy'}
-                        {theme === Theme.LIGHT_SAND && 'Natural & Earthy'}
-                        {theme === Theme.OFF_WHITE && 'Clean & Minimal'}
+                        {getThemeDescription(theme)}
                       </p>
                     </div>
 
@@ -114,7 +154,9 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ currentTheme, onThemeChan
                     {isSelected && (
                       <div
                         className="w-2 h-2 rounded-full"
-                        style={{ backgroundColor: 'var(--color-accent)' }}
+                        style={{
+                          backgroundColor: 'var(--color-accent)',
+                        }}
                       />
                     )}
                   </button>
@@ -127,7 +169,7 @@ const ThemeSelector: React.FC<ThemeSelectorProps> = ({ currentTheme, onThemeChan
               style={{
                 borderColor: 'var(--color-border)',
                 color: 'var(--color-textLight)',
-                backgroundColor: 'var(--color-backgroundAlt)'
+                backgroundColor: 'var(--color-backgroundAlt)',
               }}
             >
               <p>Theme preference is saved automatically</p>

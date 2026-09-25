@@ -1,0 +1,79 @@
+name: CI — Lint & Build
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  # ─────────────────────────────────────────────
+  # Job 1: Frontend — TypeScript check & Vite build
+  # ─────────────────────────────────────────────
+  frontend:
+    name: Frontend (Vite / React)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: TypeScript type-check
+        run: npx tsc --noEmit
+
+      - name: Build frontend
+        run: npm run build
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dist
+          path: dist/
+          retention-days: 7
+
+  # ─────────────────────────────────────────────
+  # Job 2: Backend — automated test suite (Vitest)
+  # ─────────────────────────────────────────────
+  backend-tests:
+    name: Backend Tests (Vitest)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run backend test suite
+        run: npm test
+        env:
+          # Safe dummy values — all external API calls (Stripe, fetch/ORS/Nominatim,
+          # Google Calendar, Resend) are mocked in tests. No real secrets required.
+          NODE_ENV: test
+          CLIENT_DOMAIN: http://localhost:5173
+          STRIPE_SECRET_KEY: sk_test_dummy_ci_key
+          STRIPE_WEBHOOK_SECRET: whsec_dummy_ci
+          ORS_API_KEY: dummy_ors_ci
+          RESEND_API_KEY: dummy_resend_ci
+          SMTP_USER: dummy@example.com
+          SMTP_PASS: dummy_pass_ci
+          GOOGLE_CALENDAR_ID: dummy_calendar_ci
+          PORT: 3099
