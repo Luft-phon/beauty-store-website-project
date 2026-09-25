@@ -116,7 +116,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     contactPage: {
       text: "We would love to hear from you. Whether it's for a bridal consultation or a quick inquiry about our brow services, our team is ready to assist.",
       location: 'Studio Location',
-      locationText: '7862 Warner Ave Ste A, Huntington Beach, CA, United States, California',
+      locationText: '7201 Garden Grove Blvd Unit A, Garden Grove, CA, United States, 92841',
       dm: 'DM us to reserve your spot',
       dmText: 'lecharme.beauteboutique@gmail.com',
     },
