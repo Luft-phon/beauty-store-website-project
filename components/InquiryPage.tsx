@@ -20,7 +20,7 @@ const InquiryPage: React.FC<InquiryPageProps> = ({ t }) => {
             const formData = new FormData(e.target as HTMLFormElement);
             const data = Object.fromEntries(formData.entries());
 
-            const response = await fetch('http://localhost:3001/api/send-inquiry', {
+            const response = await fetch('https://beauty-store-website-project.onrender.com/api/send-inquiry', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),

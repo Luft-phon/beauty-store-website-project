@@ -1,281 +1,318 @@
-# Project Structure Overview
+# ARCHITECTURE.md — Le Charme Beauté Boutique
 
-This document explains the new organized architecture for easy data management and backend integration.
-
-## 📂 Directory Structure
-
-```
-beauty-store-website-project/
-│
-├── 📁 data/                        # ✨ All mock data (easy to edit!)
-│   ├── services.data.ts           # Service listings, pricing, details
-│   ├── content.data.ts            # Gallery, team, testimonials, company info
-│   ├── translations.data.ts       # Multi-language support
-│   └── index.ts                   # Central data exports
-│
-├── 📁 services/
-│   ├── 📁 api/                    # 🔌 Backend integration layer
-│   │   ├── servicesApi.ts        # Service CRUD operations
-│   │   ├── bookingApi.ts         # Booking operations
-│   │   ├── contentApi.ts         # Content retrieval
-│   │   └── index.ts              # Centralized API exports
-│   └── geminiService.ts           # Chatbot integration
-│
-├── 📁 components/                  # React components
-│   ├── AdminDashboard.tsx         
-│   ├── Chatbot.tsx                
-│   ├── Layout.tsx                 
-│   ├── ServiceDetail.tsx
-│   └── ThemeSelector.tsx          # Color theme switcher
-│
-├── 📁 config/                      # ⚙️ Configuration
-│   ├── app.config.ts              # App settings, feature flags, API config
-│   └── theme.config.ts            # Color theme configurations
-│
-├── 🔧 constants.ts                 # Legacy exports (backward compatibility)
-├── 🎨 types.ts                     # TypeScript type definitions
-├── 💅 theme.css                    # Global theme styles
-├── 🚀 App.tsx                      # Main application
-├── 📄 index.tsx                    # Entry point
-├── 📋 vite.config.ts              # Vite configuration
-└── 📦 package.json                # Dependencies
-```
-
-## 🎯 Key Features of This Architecture
-
-### 1. **Separation of Concerns** ✨
-- **Data** is separated from **Logic** and **UI**
-- Easy to find and update content
-- Clean, maintainable codebase
-
-### 2. **Easy Data Management** 📝
-```typescript
-// Want to add a new service? Just edit data/services.data.ts!
-export const MOCK_SERVICES: Service[] = [
-  {
-    id: '7',
-    category: 'Makeup',
-    name: 'New Service',
-    price: 199,
-    // ...
-  }
-];
-```
-
-### 3. **Backend-Ready** 🔌
-```typescript
-// Current: Mock data
-export const getAllServices = async () => {
-  return Promise.resolve(MOCK_SERVICES);
-};
-
-// Future: Real API (just update the function!)
-export const getAllServices = async () => {
-  const response = await fetch(`${API_URL}/services`);
-  return response.json();
-};
-```
-
-### 4. **Configuration Management** ⚙️
-```typescript
-// config/app.config.ts
-export const config = {
-  features: {
-    enableChat: true,        // Toggle chatbot
-    enableAdminPanel: true,  // Toggle admin features
-    // ... more flags
-  }
-};
-```
-
-## 🔄 Data Flow
-
-```
-┌─────────────┐
-│   User UI   │
-└──────┬──────┘
-       │
-       ↓
-┌─────────────┐
-│ Components  │ (App.tsx, ServiceDetail.tsx, etc.)
-└──────┬──────┘
-       │
-       ↓
-┌─────────────┐
-│ API Layer   │ (services/api/*.ts)
-└──────┬──────┘
-       │
-       ↓
-┌─────────────┐
-│  Mock Data  │ (data/*.ts) → Will become → Backend API
-└─────────────┘
-```
-
-## 📖 Quick Reference Guides
-
-### For Content Updates
-👉 **See:** [DATA_MANAGEMENT_GUIDE.md](./DATA_MANAGEMENT_GUIDE.md)
-- How to add/edit services
-- How to update gallery images
-- How to manage team members
-- How to update translations
-
-### For Backend Integration
-👉 **See:** [BACKEND_MIGRATION_GUIDE.md](./BACKEND_MIGRATION_GUIDE.md)
-- Database schema
-- API endpoint specifications
-- Step-by-step migration process
-- Code examples
-
-## 🎨 Component Architecture
-
-### Component Imports
-Components now import from organized locations:
-
-```typescript
-// ✅ Good: Import from centralized API
-import { servicesApi } from '../services/api';
-
-// ✅ Good: Import data if needed
-import { MOCK_SERVICES } from '../data';
-
-// ✅ Good: Import config
-import { config } from '../config/app.config';
-
-// ❌ Avoid: Direct imports from multiple files
-```
-
-## 🔐 Environment Variables
-
-Create a `.env` file for configuration:
-
-```env
-# API Configuration
-VITE_API_BASE_URL=http://localhost:3000/api
-VITE_ENABLE_MOCK_DATA=true
-
-# Gemini AI (for chatbot)
-VITE_GOOGLE_GEMINI_API_KEY=your_api_key_here
-
-# Payment (when ready)
-VITE_PAYMENT_PUBLIC_KEY=your_payment_key
-```
-
-## 🚀 Getting Started
-
-### 1. Install Dependencies
-```bash
-npm install
-```
-
-### 2. Start Development Server
-```bash
-npm run dev
-```
-
-### 3. Update Data
-Edit files in the `/data` folder - changes appear immediately!
-
-### 4. Toggle Features
-Edit `config/app.config.ts` to enable/disable features
-
-## 📱 Feature Flags
-
-Control which features are enabled:
-
-```typescript
-// config/app.config.ts
-features: {
-  enableChat: true,          // Chatbot functionality
-  enableAdminPanel: true,    // Admin dashboard
-  enableMultiLanguage: true, // Language switcher
-  enableBooking: true,       // Booking system
-  enableCart: true,          // Shopping cart
-}
-```
-
-## 🔧 Maintenance
-
-### Adding a New Service
-1. Open `data/services.data.ts`
-2. Add service to `MOCK_SERVICES` array
-3. Add details to `MOCK_SERVICE_DETAILS` array
-4. Save and refresh browser ✨
-
-### Updating Translations
-1. Open `data/translations.data.ts`
-2. Add new key to all language objects
-3. Update type in `types.ts` if needed
-4. Save and refresh browser ✨
-
-### Changing Configuration
-1. Open `config/app.config.ts`
-2. Update settings
-3. Restart dev server if needed
-
-## 📊 Type Safety
-
-All data structures are typed in `types.ts`:
-
-```typescript
-export interface Service {
-  id: string;
-  category: 'Makeup' | 'Nails' | 'Tattooing' | 'Photography';
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-}
-```
-
-TypeScript ensures data consistency across the app! 🎯
-
-## 🎓 Best Practices
-
-1. **Always use unique IDs** for services, bookings, etc.
-2. **Follow existing data structures** when adding new items
-3. **Test changes** in the browser after updates
-4. **Keep backup** of data files before major changes
-5. **Use TypeScript types** for type safety
-6. **Document changes** in comments when needed
-
-## 📝 Migration Checklist
-
-When ready to add a backend:
-
-- [ ] Set up backend server
-- [ ] Create database tables
-- [ ] Implement API endpoints
-- [ ] Update `.env` with API URL
-- [ ] Replace mock data in `services/api/` files
-- [ ] Test each endpoint
-- [ ] Deploy!
-
-See [BACKEND_MIGRATION_GUIDE.md](./BACKEND_MIGRATION_GUIDE.md) for details.
-
-## 🆘 Troubleshooting
-
-### Changes Not Appearing?
-1. Save the file
-2. Hard refresh browser (Ctrl+Shift+R)
-3. Check console for errors
-
-### TypeScript Errors?
-1. Check `types.ts` for required properties
-2. Ensure all required fields are provided
-3. Follow existing data structure examples
-
-### Need Help?
-- Check inline comments in data files
-- Review the guide documents
-- Check console for detailed error messages
-
-## 📚 Additional Resources
-
-- [React Documentation](https://react.dev/)
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
-- [Vite Documentation](https://vitejs.dev/)
+> **Tech Lead note** — Tài liệu này được viết với mục đích: 1 năm sau đọc lại vẫn hiểu ngay hệ thống đang làm gì, tại sao được thiết kế như vậy, và những điểm cần chú ý khi mở rộng.
+>
+> **Last updated**: 2026-09-25
 
 ---
 
-**Ready to customize your application?** Start with the [DATA_MANAGEMENT_GUIDE.md](./DATA_MANAGEMENT_GUIDE.md)! 🚀
+## 1. Bức Tranh Tổng Thể (Business Overview)
+
+**Le Charme Beauté Boutique** là website đặt lịch & thanh toán cho dịch vụ makeup/beauty tại Huntington Beach, CA.
+
+Khách hàng chọn dịch vụ → thêm vào giỏ → điền thông tin đặt lịch → thanh toán deposit (50%) qua Stripe → nhận email xác nhận. Phía biz chủ tiệm nhận thông báo lịch tự động lên Google Calendar.
+
+**Đây là trang web vận hành thực tế cho một tiệm beauty nhỏ, không phải MVP thử nghiệm.**
+
+---
+
+## 2. Kiến Trúc Hệ Thống
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                      VERCEL (Frontend)                      │
+│                                                             │
+│   React 19 + Vite + TypeScript + TailwindCSS (CDN)         │
+│   ├── React Router v7  (SPA, client-side routing)          │
+│   ├── Stripe.js        (payment UI elements)               │
+│   ├── Framer Motion    (animations)                        │
+│   ├── Lenis            (smooth scroll)                     │
+│   ├── Recharts         (admin charts)                      │
+│   └── @google/genai    (Gemini AI — chatbot, disabled)     │
+└──────────────────────┬──────────────────────────────────────┘
+                       │ HTTPS REST
+                       ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   RENDER.COM (Backend)                      │
+│                                                             │
+│   Express 5 (Node.js, ES modules) — single file server.js  │
+│   ├── POST /create-checkout-session   → Stripe API         │
+│   ├── POST /api/stripe/webhook        ← Stripe webhook     │
+│   ├── POST /api/calculate-distance    → Nominatim + ORS    │
+│   ├── POST /api/send-inquiry          → Gmail SMTP         │
+│   └── POST /api/calendar/create-event → Google Calendar    │
+└──────────────────────────────────────────────────────────────┘
+        │                    │                    │
+        ▼                    ▼                    ▼
+   Stripe API          Google Calendar       Resend / Gmail
+   (Payments)          (Booking records)     (Email notifications)
+```
+
+> **Không có database.** Đây là quyết định có chủ ý cho một tiệm nhỏ — không cần infra phức tạp. Dữ liệu booking tồn tại trong Google Calendar; dữ liệu dịch vụ là TypeScript constants.
+
+---
+
+## 3. Các Entity Chính
+
+### 3.1 `Service` — Dịch Vụ
+
+```typescript
+interface Service {
+  id: string;
+  category: 'Bridal' | 'PartyEvent' | 'Photoshoot' | 'Education' | 'Makeup' | 'Fee' | 'Products' | 'Photography';
+  name: string;
+  description: string;
+  price: number;   // USD
+  image: string;   // path to /public/images/
+}
+```
+
+**22 dịch vụ** được hardcode trong `data/services.data.ts`:
+
+| Category | Số lượng | Giá |
+|---|---|---|
+| Bridal (cô dâu) | 8 | $130 – $1,350 |
+| PartyEvent (tiệc) | 6 | $95 – $205 |
+| Photoshoot (chụp ảnh) | 2 | $235 – $400 |
+| Education (dạy) | 2 | $495 – $595 |
+| Fee / Products | 3 | $0 – $100 |
+
+> **Quan trọng**: Dịch vụ `Bridal` có luồng riêng — không cho phép add-to-cart, thay vào đó redirect sang `/inquiry` để khách điền form liên hệ chi tiết.
+
+### 3.2 `Booking` — Lịch Đặt
+
+```typescript
+interface Booking {
+  id: string;
+  customerName: string;
+  date: string;
+  time: string;
+  serviceIds: string[];
+  depositPaid: boolean;
+  totalAmount: number;
+}
+```
+
+**Booking không được lưu vào database.** Lifecycle của một booking:
+1. Tồn tại trong `localStorage` (key: `pendingBooking`) trong lúc thanh toán
+2. Sau khi Stripe webhook kích hoạt → ghi vào Google Calendar
+3. `localStorage` được xóa sau khi trang `/payment-success` load xong
+
+### 3.3 `Cart` — Giỏ Hàng
+
+Cart là `Service[]` array — state thuần React (`useState` trong `App.tsx`). **Không persist** — refresh trang là mất. Đây là khoản nợ kỹ thuật cần giải quyết nếu tỉ lệ abandoned cart trở thành vấn đề.
+
+### 3.4 `Translation` — Đa Ngôn Ngữ
+
+```typescript
+enum Language { EN, VI, FR, ZH, KO, ES }
+```
+
+Custom i18n không dùng thư viện ngoài. Toàn bộ string UI nằm trong `data/translations.data.ts` dưới dạng `Record<Language, Translation>`. Language state sống ở `App.tsx`, truyền xuống qua props.
+
+---
+
+## 4. Luồng Dữ Liệu Cốt Lõi
+
+### 4.1 Luồng Thanh Toán (Happy Path)
+
+```
+[Khách] Chọn dịch vụ → Add to Cart (App.tsx state)
+           │
+           ▼
+[/booking] Điền form: tên, email, phone, ngày giờ, địa chỉ
+           │  POST /api/calculate-distance (Nominatim → ORS)
+           │  → Travel fee tính theo khoảng cách thực tế
+           │
+           ▼
+[Frontend] POST /create-checkout-session
+           Body: { items, customerInfo, depositAmount }
+           Deposit = 50% tổng + 2.9% + $0.30 phí thẻ (nếu dùng card)
+           │
+           ▼
+[Backend]  Tạo Stripe Checkout Session → trả về { url }
+           Đồng thời lưu metadata: tên, email, phone, ngày giờ, dịch vụ
+           │
+           ▼
+[Frontend] Redirect sang Stripe-hosted checkout page
+           Lưu pendingBooking vào localStorage trước khi redirect
+           │
+           ├── Khách thanh toán thành công
+           │     ▼
+           │   Stripe gọi webhook → POST /api/stripe/webhook
+           │     Backend verify signature → respond 200 ngay lập tức
+           │     Background async:
+           │       ├── Tạo Google Calendar event (googleapis)
+           │       └── Gửi confirmation email (Resend API)
+           │     Stripe redirect → /payment-success
+           │     Frontend đọc localStorage.pendingBooking → hiển thị chi tiết
+           │     Xóa localStorage.pendingBooking
+           │
+           └── Khách hủy → /payment-canceled
+               Lỗi kỹ thuật → /payment-error
+```
+
+### 4.2 Luồng Inquiry (Bridal Services)
+
+```
+[Khách] Xem ServiceDetail → category === 'Bridal'
+           → Button "Book Now" redirect sang /inquiry (không qua cart)
+           │
+           ▼
+[/inquiry] Form: tên, email, phone, travel fee, ngày giờ, serviceName, message
+           │ POST /api/send-inquiry  ← CẢNH BÁO: đang trỏ localhost:3001!
+           │
+           ▼
+[Backend]  Gửi email qua Gmail SMTP (Nodemailer)
+           Người nhận: lecharme.beauteboutique@gmail.com
+           Template: backend/templates/inquiry_email.html
+```
+
+### 4.3 Luồng Dữ Liệu Tĩnh (Static Data)
+
+```
+data/services.data.ts  ──► constants.ts (re-export) ──► App.tsx (state init)
+                                                              │
+                                                              ▼
+                                                    Truyền xuống qua props
+                                                    → ServiceCard, ServiceDetail,
+                                                      BookingPage, AdminDashboard
+```
+
+---
+
+## 5. Cấu Trúc Thư Mục (Annotated)
+
+```
+beauty-store-website-project/
+├── App.tsx                  ← Global router + state (cart, language, theme)
+├── index.tsx                ← ReactDOM entry point
+├── index.html               ← Vite shell; Tailwind CDN + importmap (dev)
+├── types.ts                 ← Single source of truth cho TypeScript types
+├── constants.ts             ← Legacy barrel, giữ lại cho backward compat
+│
+├── config/
+│   ├── app.config.ts        ← Feature flags, API base URL, env vars
+│   └── theme.config.ts      ← Design tokens → CSS custom properties
+│
+├── data/                    ← Toàn bộ "database" của app (static TS)
+│   ├── services.data.ts     ← 22 dịch vụ (source of truth)
+│   ├── content.data.ts      ← Team, testimonials, company info
+│   ├── homepage.data.ts     ← Stats, feature blocks
+│   └── translations.data.ts ← Toàn bộ i18n strings (EN/VI/FR/ZH/KO/ES)
+│
+├── components/              ← React components (feature-based, flat)
+│   ├── Layout.tsx           ← Navbar + Footer wrapper
+│   ├── BookingPage.tsx      ← Multi-step booking form + Stripe initiation
+│   ├── ServiceDetail.tsx    ← Service info, gallery, add-to-cart
+│   ├── InquiryPage.tsx      ← Bridal contact form (⚠️ localhost bug)
+│   ├── AdminDashboard.tsx   ← Bảng quản trị nội bộ (không có auth thật)
+│   ├── Chatbot.tsx          ← Gemini AI chatbot (currently disabled)
+│   └── Payment*.tsx         ← Các trang kết quả thanh toán
+│
+├── services/
+│   ├── geminiService.ts     ← Gemini API wrapper (chatbot "Lumi")
+│   └── api/                 ← Stub API layer (localStorage mock — chờ backend migration)
+│       ├── servicesApi.ts
+│       ├── bookingApi.ts
+│       └── contentApi.ts
+│
+└── backend/
+    ├── server.js            ← Express server đơn file — toàn bộ backend logic
+    └── templates/
+        ├── confirmation_email.html
+        └── inquiry_email.html
+```
+
+---
+
+## 6. Biến Môi Trường
+
+### Frontend (prefix `VITE_`)
+| Biến | Mô tả |
+|---|---|
+| `VITE_API_BASE_URL` | Base URL của backend API (default: `/api`) |
+| `VITE_ENABLE_MOCK_DATA` | Dùng mock data hay gọi API thật |
+| `VITE_PAYMENT_PUBLIC_KEY` | Stripe publishable key |
+| `VITE_GEMINI_API_KEY` | Gemini API key (cho chatbot Lumi) |
+
+### Backend (Node.js `process.env`)
+| Biến | Mô tả |
+|---|---|
+| `PORT` | Server port (default: 3001) |
+| `CLIENT_DOMAIN` | Frontend URL (Vercel URL, dùng cho Stripe redirect) |
+| `STRIPE_SECRET_KEY` | Stripe secret key |
+| `STRIPE_WEBHOOK_SECRET` | Webhook signature verification |
+| `RESEND_API_KEY` | Resend email service |
+| `GOOGLE_CREDENTIALS_JSON` | Google service account JSON (dưới dạng string) |
+| `GOOGLE_CALENDAR_ID` | ID lịch Google Calendar của tiệm |
+| `ORS_API_KEY` | OpenRouteService (tính khoảng cách di chuyển) |
+| `SMTP_USER` / `SMTP_PASS` | Gmail SMTP (cho inquiry emails) |
+
+---
+
+## 7. Quyết Định Kiến Trúc & Lý Do
+
+| Quyết định | Lý do | Trade-off |
+|---|---|---|
+| **Không dùng database** | Tiệm nhỏ, volume thấp, zero infra cost | Không có lịch sử booking; không thể query |
+| **Google Calendar làm "database" booking** | Chủ tiệm đã dùng Google Calendar hàng ngày | Khó scale; không phải RDBMS |
+| **Static TypeScript cho service data** | Deploy instant, zero latency, type-safe | Mỗi lần thêm dịch vụ phải deploy lại code |
+| **Một file `server.js` cho toàn bộ backend** | Đơn giản, dễ debug, đủ dùng cho scale hiện tại | Khó mở rộng khi thêm route phức tạp |
+| **Bridal → Inquiry (không qua cart)** | Dịch vụ cô dâu cần tư vấn riêng, giá custom | UX khác biệt so với dịch vụ thường |
+| **Stub API layer (`services/api/`)** | Chuẩn bị cho backend migration dễ dàng | Hiện dùng localStorage — mất data khi reload |
+| **Tailwind qua CDN** | Không cần build step cho CSS | CDN load delay; không tree-shake; không custom config đầy đủ |
+| **Deposit 50%** | Giảm no-show, đảm bảo commitment | Cần refund policy rõ ràng khi hủy |
+
+---
+
+## 8. Điểm Cần Chú Ý (Known Issues & Tech Debt)
+
+> **🔴 Bug cần fix ngay:**
+> - Cart state không persist — refresh trang mất giỏ hàng
+
+> **🟡 Bảo mật:**
+> - Admin panel dùng `password === 'admin'` hardcode ở client-side — hoàn toàn không có bảo mật thật
+> - Backend CORS: `app.use(cors())` không giới hạn origin — mọi domain đều gọi được
+> - Price edits trong Admin chỉ tồn tại in-memory — không persist, reload là mất
+
+> **🟢 Tính năng sẵn sàng bật:**
+> - **Chatbot "Lumi"** (`Chatbot.tsx`) đã code xong với Gemini 2.5 Flash, chỉ cần uncomment trong `Layout.tsx` và cung cấp `VITE_GEMINI_API_KEY`
+> - Stub API layer đã có interface đầy đủ — khi có backend thật chỉ cần thay implementation, không cần đổi calling code
+
+---
+
+## 9. Luồng Deploy
+
+```
+Developer pushes code
+       │
+       ├── Frontend (auto-deploy Vercel)
+       │     npm run build → Vite bundles → Vercel CDN
+       │     Domain: lecharmebeautique.com (hoặc *.vercel.app)
+       │
+       └── Backend (manual deploy / Render auto-deploy từ GitHub)
+             npm run server → nodemon backend/server.js
+             Domain: beauty-store-website-project.onrender.com
+             ⚠️ Render free tier sleep sau 15 phút inactivity → cold start ~30s
+```
+
+> **Không có CI/CD pipeline**, không có test suite. Deploy bằng cách push lên GitHub rồi Vercel/Render tự pick up.
+
+---
+
+## 10. Roadmap Mở Rộng (Khi Cần)
+
+Theo thứ tự ưu tiên nghiệp vụ:
+
+1. **Fix InquiryPage localhost bug** — critical, blocking production inquiries
+2. **Persist cart to localStorage** — giảm abandoned cart do refresh
+3. **Thêm real database** (PlanetScale/Supabase) khi cần lịch sử booking, CRM
+4. **Bật Chatbot Lumi** — code đã sẵn sàng, chỉ cần env var + uncomment
+5. **Secure Admin panel** — JWT hoặc Clerk/NextAuth khi cần multi-user
+6. **Migrate service data sang CMS** (Sanity/Contentful) khi chủ tiệm muốn tự edit
+7. **Test suite** — ít nhất E2E test cho payment flow
+
+---
+
+*Tài liệu này phản ánh trạng thái hệ thống tại 2026-09-25. Cập nhật mỗi khi có thay đổi kiến trúc lớn.*
