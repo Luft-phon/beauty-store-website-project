@@ -26,10 +26,6 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
     const processingFee = depositAmount > 0 ? ((depositAmount + 0.30) / (1 - 0.029)) - depositAmount : 0;
     const finalAmount = paymentMethod === 'card' ? depositAmount + processingFee : depositAmount;
 
-    // Store Coordinates (7862 Warner Ave Ste A, Huntington Beach, CA 92646)
-    // For Google API we can just use the address string
-    const STORE_ADDRESS = "7862 Warner Ave Ste A, Huntington Beach, CA 92646";
-
     const calculateDistance = async () => {
         if (!address) return;
         setCalculatingDistance(true);
@@ -37,15 +33,14 @@ const BookingPage: React.FC<BookingPageProps> = ({ t, cart, clearCart }) => {
 
         try {
             // Call our backend to keep API key hidden
-            const response = await fetch(`https://beauty-store-website-project.onrender.com/api/calculate-distance`, {
-                // const response = await fetch('http://localhost:3001/api/calculate-distance', {
+            // const response = await fetch(`https://beauty-store-website-project.onrender.com/api/calculate-distance`, {
+                const response = await fetch('http://localhost:3001/api/calculate-distance', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    origin: address,
-                    destination: STORE_ADDRESS
+                    destination: address.trim()
                 }),
             });
 
