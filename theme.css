@@ -332,3 +332,239 @@ html {
 .animate-fade-up {
   animation: fade-up 0.5s ease-out forwards;
 }
+
+/* Homepage editorial refresh */
+.homepage {
+  background: #fffdfa;
+  color: #3b302a;
+}
+
+.home-kicker {
+  color: #a46f55;
+  font-family: Sen, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.home-kicker--light {
+  color: #e3b098;
+}
+
+.home-button {
+  align-items: center;
+  display: inline-flex;
+  font-family: Sen, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  gap: 0.7rem;
+  letter-spacing: 0.14em;
+  padding: 1rem 1.3rem;
+  text-transform: uppercase;
+  transition: transform 200ms ease, background-color 200ms ease, color 200ms ease;
+}
+
+.home-button:hover {
+  transform: translateY(-2px);
+}
+
+.home-button--dark {
+  background: #3b302a;
+  color: #fff !important;
+}
+
+.home-button--dark:hover {
+  background: #b98267;
+}
+
+.home-button--light {
+  border: 1px solid #d7b5a4;
+  color: #fff !important;
+}
+
+.home-button--light:hover {
+  background: #fff;
+  color: #3b302a !important;
+}
+
+.home-button--peach {
+  background: #dba087;
+  color: #342720 !important;
+}
+
+.home-button--peach:hover {
+  background: #f4c4ad;
+}
+
+.home-text-link {
+  align-items: center;
+  color: #58453d;
+  display: inline-flex;
+  font-family: Sen, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  gap: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.home-text-link span {
+  color: #b98267;
+  font-size: 1.1rem;
+  transition: transform 200ms ease;
+}
+
+.home-text-link:hover span {
+  transform: translate(2px, -2px);
+}
+
+.home-service-card {
+  display: block;
+}
+
+.home-service-card img {
+  filter: saturate(0.88);
+}
+
+.home-service-card:hover img {
+  filter: saturate(1);
+}
+
+.home-round-arrow {
+  align-items: center;
+  border: 1px solid #d5c4b9;
+  border-radius: 999px;
+  color: #6d5144;
+  display: flex;
+  flex: 0 0 auto;
+  height: 2.6rem;
+  justify-content: center;
+  transition: all 220ms ease;
+  width: 2.6rem;
+}
+
+.home-service-card:hover .home-round-arrow {
+  background: #b98267;
+  border-color: #b98267;
+  color: #fff;
+  transform: rotate(-35deg);
+}
+
+.home-final-cta img {
+  filter: saturate(0.72);
+}
+
+@keyframes home-ken-burns {
+  0%, 100% { transform: scale(1.03) translate3d(0, 0, 0); }
+  50% { transform: scale(1.12) translate3d(-1.2%, -0.8%, 0); }
+}
+
+@keyframes home-float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(13px, -18px, 0) rotate(7deg); }
+}
+
+@keyframes home-scroll-line {
+  0% { transform: scaleY(0); transform-origin: top; }
+  42% { transform: scaleY(1); transform-origin: top; }
+  43% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@keyframes home-editorial-float {
+  0%, 100% { transform: scale(1.02) translateY(0); }
+  50% { transform: scale(1.06) translateY(-7px); }
+}
+
+.home-hero-video {
+  animation: home-ken-burns 19s ease-in-out infinite;
+  transform-origin: 50% 40%;
+}
+
+.home-hero-orb {
+  animation: home-float 7s ease-in-out infinite;
+  background: #dfad91;
+  border-radius: 999px;
+  height: 9.5rem;
+  opacity: 0.3;
+  position: absolute;
+  right: 7%;
+  top: 14%;
+  width: 9.5rem;
+  z-index: -1;
+}
+
+.home-scroll-cue {
+  align-items: center;
+  bottom: 2rem;
+  color: #9f7968;
+  font-family: Sen, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  gap: 0.75rem;
+  letter-spacing: 0.16em;
+  position: absolute;
+  text-transform: uppercase;
+}
+
+.home-scroll-cue i {
+  background: #9f7968;
+  display: block;
+  height: 2rem;
+  width: 1px;
+}
+
+.home-scroll-cue i {
+  animation: home-scroll-line 1.8s ease-in-out infinite;
+}
+
+.home-service-card {
+  transition: transform 300ms ease;
+}
+
+.home-service-card:hover {
+  transform: translateY(-8px);
+}
+
+.home-editorial-image {
+  animation: home-editorial-float 12s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.home-process-row {
+  transition: background-color 220ms ease, padding-left 220ms ease;
+}
+
+.home-process-row:hover {
+  background: #f8eee7;
+  padding-left: 0.8rem;
+}
+
+.home-cta-image {
+  animation: home-ken-burns 22s ease-in-out infinite reverse;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-video,
+  .home-hero-orb,
+  .home-editorial-image,
+  .home-cta-image,
+  .home-scroll-cue i {
+    animation: none;
+  }
+
+  .home-service-card,
+  .home-process-row,
+  .home-button {
+    transition: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .home-button {
+    padding: 0.9rem 1.1rem;
+  }
+}
