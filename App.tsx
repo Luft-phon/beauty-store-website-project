@@ -101,13 +101,13 @@ const App: React.FC = () => {
                 personal.
               </h1>
               <p className="mt-8 max-w-md font-sen text-base leading-7 text-[#6e5b50] sm:text-lg">
-                Artful makeup and hair for the moments you will never forget—created around your features, your style, and your story.
+                {t.homepage.hero.subtitle}
               </p>
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <Link to="/booking" className="home-button home-button--dark">
                   {t.hero.cta} <ArrowRight size={17} />
                 </Link>
-                <Link to="/gallery" className="home-text-link">View our work <span>↗</span></Link>
+                <Link to="/gallery" className="home-text-link">{t.homepage.hero.cta} <span>↗</span></Link>
               </div>
             </motion.div>
             <div className="home-scroll-cue hidden lg:flex"><span>Scroll to explore</span><i /></div>
@@ -145,15 +145,15 @@ const App: React.FC = () => {
           <FadeInSection className="mb-14 flex flex-col justify-between gap-7 md:flex-row md:items-end">
             <div className="max-w-2xl">
               <p className="home-kicker mb-5">The Le’Charme experience</p>
-              <h2 className="font-serif text-5xl leading-[.94] tracking-[-.04em] text-[#382d27] sm:text-6xl">A look that feels<br /><em className="font-light text-[#bd876b]">like you, elevated.</em></h2>
+              <h2 className="font-serif text-5xl leading-[.94] tracking-[-.04em] text-[#382d27] sm:text-6xl">{t.homepage.items.title1}<br /><em className="font-light text-[#bd876b]">{t.homepage.items.title2}</em></h2>
             </div>
-            <p className="max-w-sm font-sen text-sm leading-6 text-[#756158]">Every appointment begins with listening. Then we bring the detail, the artistry, and the calm confidence.</p>
+            <p className="max-w-sm font-sen text-sm leading-6 text-[#756158]">{t.homepage.items.subtitle}</p>
           </FadeInSection>
           <div className="grid gap-5 md:grid-cols-3">
             {[
-              { title: 'Event Makeup', detail: 'Soft glam to full glam, tailored for your moment.', image: '/images/galley/party/premium-makeup-only/1.jpg', link: '/services/party', number: '01' },
-              { title: 'Bridal Beauty', detail: 'Timeless, camera-ready beauty for every chapter.', image: '/images/galley/bridal/bridal-makeup-2hair/1.jpg', link: '/services/bridal', number: '02' },
-              { title: 'Photoshoot & Stage', detail: 'High-impact artistry built for the lens.', image: '/images/galley/photoshoot/stage/1.jpg', link: '/services/photoshoot', number: '03' },
+              { title: t.homepage.items.item1Title, detail: t.homepage.items.item1SubTitle, image: '/images/galley/party/premium-makeup-only/1.jpg', link: '/services/party', number: '01' },
+              { title: t.homepage.items.item2Title, detail: t.homepage.items.item2SubTitle, image: '/images/galley/bridal/bridal-makeup-2hair/1.jpg', link: '/services/bridal', number: '02' },
+              { title: t.homepage.items.item3Title, detail: t.homepage.items.item3SubTitle, image: '/images/galley/photoshoot/stage/1.jpg', link: '/services/photoshoot', number: '03' },
             ].map((service, index) => (
               <motion.div
                 key={service.title}
@@ -194,8 +194,8 @@ const App: React.FC = () => {
             </motion.div>
             <div>
               <p className="home-kicker home-kicker--light mb-6">A beauty studio with heart</p>
-              <h2 className="font-serif text-5xl leading-[.94] tracking-[-.04em] sm:text-6xl">The art is in the <em className="font-light text-[#dba78d]">details.</em></h2>
-              <p className="mt-8 max-w-xl font-sen text-base leading-7 text-[#decfc7]">From a quiet in-studio appointment to a full wedding morning, we make beauty feel effortless. Our artists pair thoughtful technique with a personal approach, so you can arrive relaxed and leave unmistakably radiant.</p>
+              <h2 className="font-serif text-5xl leading-[.94] tracking-[-.04em] sm:text-6xl">{t.homepage.artist.title1} <em className="font-light text-[#dba78d]">{t.homepage.artist.title2}.</em></h2>
+              <p className="mt-8 max-w-xl font-sen text-base leading-7 text-[#decfc7]">{t.homepage.artist.subTitle}</p>
               <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-8 border-t border-[#786056] pt-8 sm:grid-cols-4">
                 {MOCK_STATISTICS.map((stat) => (
                   <div key={stat.id}>
@@ -204,7 +204,7 @@ const App: React.FC = () => {
                   </div>
                 ))}
               </div>
-              <Link to="/about" className="home-button home-button--light mt-10">Meet the artists <ArrowRight size={17} /></Link>
+              <Link to="/about" className="home-button home-button--light mt-10">{t.homepage.artist.cta} <ArrowRight size={17} /></Link>
             </div>
           </FadeInSection>
         </section>

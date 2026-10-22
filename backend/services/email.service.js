@@ -54,11 +54,15 @@ export const sendConfirmationEmail = async ({
         .replace(/{{clientPhone}}/g, clientPhone);
 
     const data = await resend.emails.send({
-        from: 'Le Charme Beauty <booking@lecharmeboutique.com>',
-        to: [clientEmail, 'Lecharme.beauteboutique@gmail.com'],
-        subject: `Booking Confirmed: ${serviceName} - ${date}`,
-        html: htmlContent,
-    });
+    from: 'Le Charme Beauty <booking@lecharmeboutique.com>',
+    to: [clientEmail],
+    bcc: [
+        'Lecharme.beauteboutique@gmail.com',
+        'thanhphongchupanh@gmail.com'
+    ],
+    subject: `Booking Confirmed: ${serviceName} - ${date}`,
+    html: htmlContent,
+});
 
     console.log(`✅ Confirmation email sent to ${clientEmail}`, data);
 };

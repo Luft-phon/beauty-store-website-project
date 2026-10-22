@@ -76,6 +76,28 @@ export interface Translation {
     cta: string;
   };
   homepage: {
+    hero: {
+      title: string;
+      subtitle: string;
+      cta: string;
+    };
+    items: {
+      title1: string;
+      title2: string;
+      subtitle: string;
+      item1Title: string;
+      item1SubTitle: string;
+      item2Title: string;
+      item2SubTitle: string;
+      item3Title: string;
+      item3SubTitle: string;
+    };
+    artist: {
+      title1: string;
+      title2: string;
+      subTitle: string;
+      cta: string;
+    };
     statistics: {
       clients: string;
       rating: string;
