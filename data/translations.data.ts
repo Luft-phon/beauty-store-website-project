@@ -29,6 +29,28 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       cta: 'Book Appointment'
     },
     homepage: {
+      hero: {
+        title: 'Beauty, made personal',
+        subtitle: 'Artful makeup and hair for the moments you will never forget—created around your features, your style, and your story.',
+        cta: 'View our work'
+      },
+      items: {
+        title1: 'A look that feels',
+        title2: 'like you, elevated.',
+        subtitle: 'Every appointment begins with listening. Then we bring the detail, the artistry, and the calm confidence.',
+        item1Title: 'Event Makeup',
+        item1SubTitle: 'Soft glam to full glam, tailored for your moment.',
+        item2Title: 'Bridal Beauty',
+        item2SubTitle: 'Timeless, camera-ready beauty for every chapter.',
+        item3Title: 'Photoshoot & Stage',
+        item3SubTitle: 'High-impact artistry built for the lens.'
+      },
+      artist: {
+        title1: 'The art is in the',
+        title2: 'details',
+        subTitle: 'From a quiet in-studio appointment to a full wedding morning, we make beauty feel effortless. Our artists pair thoughtful technique with a personal approach, so you can arrive relaxed and leave unmistakably radiant.',
+        cta: 'Meet the artists'
+      },
       statistics: {
         clients: 'Happy Clients',
         rating: 'Average Rating',
@@ -357,6 +379,28 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       cta: 'Đặt Lịch Ngay'
     },
     homepage: {
+      hero: {
+        title: 'Vẻ đẹp mang đậm dấu ấn cá nhân',
+        subtitle: 'Nghệ thuật trang điểm và làm tóc cho những khoảnh khắc bạn sẽ không bao giờ quên — được tạo ra quanh nét riêng, phong cách và câu chuyện của bạn.',
+        cta: 'Xem tác phẩm của chúng tôi'
+      },
+      items: {
+        title1: 'Một diện mạo',
+        title2: 'được nâng tầm theo cách của bạn.',
+        subtitle: 'Mỗi cuộc hẹn bắt đầu bằng việc lắng nghe. Sau đó chúng tôi mang đến sự tỉ mỉ, nghệ thuật và sự tự tin bình tĩnh.',
+        item1Title: 'Trang Điểm Sự Kiện',
+        item1SubTitle: 'Từ glam nhẹ đến glam hoàn toàn, được điều chỉnh cho khoảnh khắc của bạn.',
+        item2Title: 'Vẻ Đẹp Cô Dâu',
+        item2SubTitle: 'Vẻ đẹp vượt thời gian, sẵn sàng cho máy ảnh cho từng chương.',
+        item3Title: 'Chụp Ảnh & Sân Khấu',
+        item3SubTitle: 'Nghệ thuật tác động mạnh được tạo ra cho ống kính.'
+      },
+      artist: {
+        title1: 'Nghệ thuật nằm ở',
+        title2: 'chi tiết',
+        subTitle: 'Từ một buổi hẹn yên tĩnh tại studio đến một buổi sáng đám cưới hoàn chỉnh, chúng tôi làm cho vẻ đẹp trở nên dễ dàng. Các nghệ sĩ của chúng tôi kết hợp kỹ thuật chu đáo với phương pháp tiếp cận cá nhân, để bạn có thể đến trong trạng thái thư giãn và rời đi rạng ngời.',
+        cta: 'Gặp gỡ các nghệ sĩ'
+      },
       statistics: {
         clients: 'Khách Hàng Hài Lòng',
         rating: 'Đánh Giá Trung Bình',
@@ -684,6 +728,28 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       cta: 'Prendre Rendez-vous'
     },
     homepage: {
+      hero: {
+        title: 'La beauté, rendue personnelle',
+        subtitle: 'Maquillage et coiffure artistiques pour les moments que vous n\'oublierez jamais — créés autour de vos traits, votre style et votre histoire.',
+        cta: 'Voir notre travail'
+      },
+      items: {
+        title1: 'Un look qui vous ressemble,',
+        title2: 'sublimé.',
+        subtitle: 'Chaque rendez-vous commence par une écoute attentive. Ensuite, nous apportons le détail, l\'artisanat et la confiance tranquille.',
+        item1Title: 'Maquillage Événement',
+        item1SubTitle: 'Du glam naturel au glam total, adapté à votre moment.',
+        item2Title: 'Beauté Nuptiale',
+        item2SubTitle: 'Une beauté intemporelle, prête pour la caméra, pour chaque chapitre.',
+        item3Title: 'Photoshoot & Scène',
+        item3SubTitle: 'Un artisanat à fort impact conçu pour l\'objectif.'
+      },
+      artist: {
+        title1: 'L\'art est dans les',
+        title2: 'détails',
+        subTitle: 'D\'un rendez-vous calme en studio à une matinée de mariage complète, nous rendons la beauté sans effort. Nos artistes allient une technique réfléchie à une approche personnelle, pour que vous puissiez arriver détendue et repartir indéniablement radieuse.',
+        cta: 'Rencontrer les artistes'
+      },
       statistics: {
         clients: 'Clients Satisfaits',
         rating: 'Note Moyenne',
@@ -1011,6 +1077,28 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       cta: '立即预约'
     },
     homepage: {
+      hero: {
+        title: '美，由你定义',
+        subtitle: '专为您的特征、风格和故事而创作——让您永生难忘的精致化妆与发型艺术。',
+        cta: '欣赏我们的作品'
+      },
+      items: {
+        title1: '一种感觉像你的',
+        title2: '精致造型。',
+        subtitle: '每次预约都从倾听开始。然后我们带来细节、艺术和沉稳的自信。',
+        item1Title: '活动妆容',
+        item1SubTitle: '从淡雅到全妆，为您的时刻量身定制。',
+        item2Title: '新娘美容',
+        item2SubTitle: '永恒的、上镜的美丽，适合每一个篇章。',
+        item3Title: '写真 & 舞台',
+        item3SubTitle: '为镜头打造的高冲击力艺术。'
+      },
+      artist: {
+        title1: '艺术在于',
+        title2: '细节',
+        subTitle: '从安静的工作室预约到完整的婚礼早晨，我们让美丽变得毫不费力。我们的艺术家将深思熟虑的技术与个人化的方式相结合，让您可以轻松到来，光彩照人地离开。',
+        cta: '认识我们的艺术家'
+      },
       statistics: {
         clients: '满意客户',
         rating: '平均评分',
@@ -1337,6 +1425,28 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       cta: '예약하기'
     },
     homepage: {
+      hero: {
+        title: '아름다움, 나만을 위한',
+        subtitle: '당신의 이목구비, 스타일, 그리고 이야기를 중심으로 창조된 — 결코 잊지 못할 순간을 위한 예술적인 메이크업과 헤어.',
+        cta: '작품 감상하기'
+      },
+      items: {
+        title1: '나다운 느낌의',
+        title2: '격상된 룩.',
+        subtitle: '모든 예약은 경청에서 시작됩니다. 그런 다음 세심함, 아티스트리, 그리고 차분한 자신감을 가져다드립니다.',
+        item1Title: '이벤트 메이크업',
+        item1SubTitle: '자연스러운 글램부터 풀 글램까지, 당신의 순간에 맞춤 제작.',
+        item2Title: '브라이덜 뷰티',
+        item2SubTitle: '모든 챕터를 위한 시간을 초월한 카메라 준비 완료 아름다움.',
+        item3Title: '포토슈트 & 무대',
+        item3SubTitle: '렌즈를 위해 만들어진 강렬한 아티스트리.'
+      },
+      artist: {
+        title1: '예술은',
+        title2: '디테일에 있습니다',
+        subTitle: '조용한 스튜디오 예약부터 완전한 웨딩 아침까지, 우리는 아름다움을 손쉽게 만듭니다. 우리의 아티스트들은 사려 깊은 기술과 개인적인 접근을 결합하여, 편안하게 도착하고 눈에 띄게 빛나며 떠날 수 있도록 합니다.',
+        cta: '아티스트 만나기'
+      },
       statistics: {
         clients: '만족한 고객',
         rating: '평균 평점',
@@ -1663,6 +1773,28 @@ export const TRANSLATIONS: Record<Language, Translation> = {
       cta: 'Reservar Cita'
     },
     homepage: {
+      hero: {
+        title: 'La belleza, hecha personal',
+        subtitle: 'Maquillaje y peinado artístico para los momentos que nunca olvidarás — creado alrededor de tus rasgos, tu estilo y tu historia.',
+        cta: 'Ver nuestro trabajo'
+      },
+      items: {
+        title1: 'Un look que se siente',
+        title2: 'como tú, elevado.',
+        subtitle: 'Cada cita comienza con escuchar. Luego aportamos el detalle, el arte y la confianza serena.',
+        item1Title: 'Maquillaje de Evento',
+        item1SubTitle: 'Desde glam suave hasta glam total, adaptado a tu momento.',
+        item2Title: 'Belleza Nupcial',
+        item2SubTitle: 'Belleza atemporal y lista para la cámara para cada capítulo.',
+        item3Title: 'Sesión de Fotos & Escenario',
+        item3SubTitle: 'Arte de alto impacto creado para el objetivo.'
+      },
+      artist: {
+        title1: 'El arte está en los',
+        title2: 'detalles',
+        subTitle: 'Desde una cita tranquila en el estudio hasta una mañana de boda completa, hacemos que la belleza se sienta sin esfuerzo. Nuestros artistas combinan una técnica reflexiva con un enfoque personal, para que puedas llegar relajada y partir inconfundiblemente radiante.',
+        cta: 'Conoce a los artistas'
+      },
       statistics: {
         clients: 'Clientes Felices',
         rating: 'Calificación',
