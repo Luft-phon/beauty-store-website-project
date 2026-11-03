@@ -1,9 +1,61 @@
-/* Global Theme Styles */
+/* Global Theme & Scroll Craft Editorial Floor */
+
+:root {
+  --sc-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --sc-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --sc-shadow-color: 24 28% 14%;
+  --sc-e1: 0 1px 2px hsl(var(--sc-shadow-color) / 0.08),
+           0 4px 12px -2px hsl(var(--sc-shadow-color) / 0.08);
+  --sc-e2: 0 4px 8px hsl(var(--sc-shadow-color) / 0.08),
+           0 16px 32px -8px hsl(var(--sc-shadow-color) / 0.14);
+  --sc-e3: 0 8px 16px hsl(var(--sc-shadow-color) / 0.10),
+           0 28px 56px -12px hsl(var(--sc-shadow-color) / 0.22);
+  --sc-edge: inset 0 1px 0 rgba(255, 253, 250, 0.65);
+}
+
+/* Browser surfaces (Scroll Craft taste.md: selection, caret, focus ring, tabular numerals) */
+::selection {
+  background: #B98267;
+  color: #FFFDFA;
+}
+
+:root {
+  caret-color: #B98267;
+  accent-color: #B98267;
+}
+
+:focus-visible {
+  outline: 2px solid #B98267;
+  outline-offset: 3px;
+}
+
+.sc-nums,
+table,
+[data-sc-count] {
+  font-variant-numeric: tabular-nums;
+}
+
+.sc-balance {
+  text-wrap: balance;
+}
 
 /* Apply theme colors to body and root elements */
 body {
   background-color: var(--color-background);
   color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+/* Subtle atmospheric grain overlay for dark & paper grounds */
+.sc-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>");
 }
 
 /* Update Tailwind's stone colors to use theme variables */
@@ -111,16 +163,27 @@ body {
 /* Card and container backgrounds */
 .bg-white\/90 {
   background-color: var(--color-background) !important;
-  opacity: 0.9;
+  opacity: 0.94;
 }
 
-/* Shadow colors */
-.shadow-sm,
+/* Shadow colors with natural offset & tint (taste.md Depth) */
+.shadow-sm {
+  box-shadow: var(--sc-e1);
+}
 .shadow-md,
-.shadow-lg,
+.shadow-lg {
+  box-shadow: var(--sc-e2);
+}
 .shadow-xl,
 .hover\:shadow-xl:hover {
-  box-shadow: 0 4px 6px var(--color-shadow), 0 1px 3px var(--color-shadow);
+  box-shadow: var(--sc-e3);
+}
+
+.sc-surface-card {
+  box-shadow: var(--sc-e1), var(--sc-edge);
+}
+.sc-surface-card:hover {
+  box-shadow: var(--sc-e2), var(--sc-edge);
 }
 
 /* Button styles */
@@ -152,18 +215,13 @@ textarea.border-stone-200 {
   color: var(--color-accent) !important;
 }
 
-/* Gradient overlays - maintain but work with theme */
-
-
 /* Price tags and badges */
 .bg-red-500 {
   background-color: #ef4444;
-  /* Keep red for delete/remove actions */
 }
 
 .hover\:text-red-500:hover {
   color: #ef4444;
-  /* Keep red for delete/remove actions */
 }
 
 /* Ensure proper contrast for text on backgrounds */
@@ -181,24 +239,12 @@ textarea.border-stone-200 {
 
 /* CTA Banner specific styles */
 .bg-gradient-to-br {
-  /* Gradients for banners use theme overlay */
   background: linear-gradient(to bottom right, var(--color-textDark), var(--color-text)) !important;
 }
 
 /* Ensure icons inherit theme colors */
 svg {
   color: inherit;
-}
-
-/* Responsive utilities maintain theme */
-@media (max-width: 768px) {
-  /* Theme colors apply across all breakpoints */
-}
-
-/* Testimonial and card hover states */
-.hover\:border-gold-200:hover {
-  border-color: var(--color-accent) !important;
-  opacity: 0.7;
 }
 
 /* Statistics and metrics */
@@ -210,13 +256,6 @@ svg {
 /* Footer and secondary text */
 .text-stone-300 {
   color: var(--color-primaryLight) !important;
-}
-
-/* Ensure theme transitions smoothly */
-* {
-  transition-property: background-color, border-color, color;
-  transition-duration: 300ms;
-  transition-timing-function: ease-in-out;
 }
 
 /* Prevent transition on page load */
@@ -291,56 +330,30 @@ html.lenis body {
   pointer-events: none;
 }
 
-/* Hide Scrollbar */
-::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
-}
-
-html {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-/* Custom Animations */
-@keyframes ping-slow {
-  0% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  70%, 100% {
-    transform: scale(2);
-    opacity: 0;
+/* Subtle themed scrollbar (taste.md Browser surfaces) */
+@supports (scrollbar-color: auto) {
+  html {
+    scrollbar-color: rgba(185, 130, 103, 0.35) transparent;
+    scrollbar-width: thin;
   }
 }
 
-.animate-ping-slow {
-  animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-up {
-  animation: fade-up 0.5s ease-out forwards;
-}
-
-/* Homepage editorial refresh */
+/* Homepage Chaptered Editorial Architecture */
 .homepage {
-  background: #fffdfa;
-  color: #3b302a;
+  background: #FFFDFA;
+  color: #342923;
+}
+
+/* Dark ground compensation (taste.md Typography: slightly more line-height & tracking on dark ground) */
+.sc-dark-chapter {
+  background-color: #2B211C;
+  color: #F6EDE6;
+  letter-spacing: 0.006em;
+  line-height: 1.66;
 }
 
 .home-kicker {
-  color: #a46f55;
+  color: #A46F55;
   font-family: Sen, sans-serif;
   font-size: 10px;
   font-weight: 700;
@@ -350,7 +363,7 @@ html {
 }
 
 .home-kicker--light {
-  color: #e3b098;
+  color: #E3B098;
 }
 
 .home-button {
@@ -361,46 +374,55 @@ html {
   font-weight: 700;
   gap: 0.7rem;
   letter-spacing: 0.14em;
-  padding: 1rem 1.3rem;
+  padding: 1rem 1.4rem;
   text-transform: uppercase;
-  transition: transform 200ms ease, background-color 200ms ease, color 200ms ease;
+  white-space: nowrap;
+  transition: transform 150ms var(--sc-ease-out), background-color 150ms var(--sc-ease-out), color 150ms var(--sc-ease-out);
 }
 
-.home-button:hover {
-  transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+  .home-button:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.home-button:active {
+  transform: scale(0.97);
 }
 
 .home-button--dark {
-  background: #3b302a;
+  background: #342923;
   color: #fff !important;
+  box-shadow: var(--sc-e1);
 }
 
 .home-button--dark:hover {
-  background: #b98267;
+  background: #B98267;
 }
 
 .home-button--light {
-  border: 1px solid #d7b5a4;
+  border: 1px solid #D7B5A4;
   color: #fff !important;
 }
 
 .home-button--light:hover {
   background: #fff;
-  color: #3b302a !important;
+  color: #342923 !important;
 }
 
 .home-button--peach {
-  background: #dba087;
-  color: #342720 !important;
+  background: #DBA087;
+  color: #2B201A !important;
+  box-shadow: var(--sc-e2);
 }
 
 .home-button--peach:hover {
-  background: #f4c4ad;
+  background: #F2C2AC;
 }
 
 .home-text-link {
   align-items: center;
-  color: #58453d;
+  color: #58453D;
   display: inline-flex;
   font-family: Sen, sans-serif;
   font-size: 11px;
@@ -411,160 +433,73 @@ html {
 }
 
 .home-text-link span {
-  color: #b98267;
+  color: #B98267;
   font-size: 1.1rem;
-  transition: transform 200ms ease;
+  transition: transform 160ms var(--sc-ease-out);
 }
 
-.home-text-link:hover span {
-  transform: translate(2px, -2px);
+@media (hover: hover) and (pointer: fine) {
+  .home-text-link:hover span {
+    transform: translate(2px, -2px);
+  }
 }
 
 .home-service-card {
   display: block;
+  transition: transform 240ms var(--sc-ease-out);
 }
 
-.home-service-card img {
-  filter: saturate(0.88);
-}
-
-.home-service-card:hover img {
-  filter: saturate(1);
+@media (hover: hover) and (pointer: fine) {
+  .home-service-card:hover {
+    transform: translateY(-4px);
+  }
 }
 
 .home-round-arrow {
   align-items: center;
-  border: 1px solid #d5c4b9;
+  border: 1px solid #D5C4B9;
   border-radius: 999px;
-  color: #6d5144;
+  color: #6D5144;
   display: flex;
   flex: 0 0 auto;
   height: 2.6rem;
   justify-content: center;
-  transition: all 220ms ease;
+  transition: transform 180ms var(--sc-ease-out), background-color 180ms var(--sc-ease-out), border-color 180ms var(--sc-ease-out), color 180ms var(--sc-ease-out);
   width: 2.6rem;
 }
 
-.home-service-card:hover .home-round-arrow {
-  background: #b98267;
-  border-color: #b98267;
-  color: #fff;
-  transform: rotate(-35deg);
-}
-
-.home-final-cta img {
-  filter: saturate(0.72);
-}
-
-@keyframes home-ken-burns {
-  0%, 100% { transform: scale(1.03) translate3d(0, 0, 0); }
-  50% { transform: scale(1.12) translate3d(-1.2%, -0.8%, 0); }
-}
-
-@keyframes home-float {
-  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-  50% { transform: translate3d(13px, -18px, 0) rotate(7deg); }
-}
-
-@keyframes home-scroll-line {
-  0% { transform: scaleY(0); transform-origin: top; }
-  42% { transform: scaleY(1); transform-origin: top; }
-  43% { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
-}
-
-@keyframes home-editorial-float {
-  0%, 100% { transform: scale(1.02) translateY(0); }
-  50% { transform: scale(1.06) translateY(-7px); }
-}
-
-.home-hero-video {
-  animation: home-ken-burns 19s ease-in-out infinite;
-  transform-origin: 50% 40%;
-}
-
-.home-hero-orb {
-  animation: home-float 7s ease-in-out infinite;
-  background: #dfad91;
-  border-radius: 999px;
-  height: 9.5rem;
-  opacity: 0.3;
-  position: absolute;
-  right: 7%;
-  top: 14%;
-  width: 9.5rem;
-  z-index: -1;
-}
-
-.home-scroll-cue {
-  align-items: center;
-  bottom: 2rem;
-  color: #9f7968;
-  font-family: Sen, sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  gap: 0.75rem;
-  letter-spacing: 0.16em;
-  position: absolute;
-  text-transform: uppercase;
-}
-
-.home-scroll-cue i {
-  background: #9f7968;
-  display: block;
-  height: 2rem;
-  width: 1px;
-}
-
-.home-scroll-cue i {
-  animation: home-scroll-line 1.8s ease-in-out infinite;
-}
-
-.home-service-card {
-  transition: transform 300ms ease;
-}
-
-.home-service-card:hover {
-  transform: translateY(-8px);
-}
-
-.home-editorial-image {
-  animation: home-editorial-float 12s ease-in-out infinite;
-  transform-origin: center;
+@media (hover: hover) and (pointer: fine) {
+  .home-service-card:hover .home-round-arrow {
+    background: #B98267;
+    border-color: #B98267;
+    color: #fff;
+    transform: rotate(-35deg);
+  }
 }
 
 .home-process-row {
-  transition: background-color 220ms ease, padding-left 220ms ease;
+  transition: background-color 180ms var(--sc-ease-out), transform 180ms var(--sc-ease-out);
 }
 
-.home-process-row:hover {
-  background: #f8eee7;
-  padding-left: 0.8rem;
-}
-
-.home-cta-image {
-  animation: home-ken-burns 22s ease-in-out infinite reverse;
-  transform-origin: center;
+@media (hover: hover) and (pointer: fine) {
+  .home-process-row:hover {
+    background: #F8EEE7;
+    transform: translateX(6px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-hero-video,
-  .home-hero-orb,
-  .home-editorial-image,
-  .home-cta-image,
-  .home-scroll-cue i {
-    animation: none;
-  }
-
   .home-service-card,
   .home-process-row,
-  .home-button {
-    transition: none;
+  .home-button,
+  .home-round-arrow {
+    transition: none !important;
+    transform: none !important;
   }
 }
 
 @media (max-width: 639px) {
   .home-button {
-    padding: 0.9rem 1.1rem;
+    padding: 0.9rem 1.15rem;
   }
 }

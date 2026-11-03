@@ -1,8 +1,7 @@
 import React, { useState, useEffect, startTransition } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Globe, Phone, Mail, Instagram, Facebook, ShoppingBag, Youtube } from 'lucide-react';
+import { Menu, X, Globe, Instagram, Facebook, ShoppingBag } from 'lucide-react';
 import { Language, Service } from '../types';
-// import Chatbot from './Chatbot';
 import { TRANSLATIONS } from '../constants';
 import ScrollToTop from './ScrollToTop';
 
@@ -14,7 +13,7 @@ interface LayoutProps {
   services: Service[];
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange, cartCount, services }) => {
+const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange, cartCount }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesMenuOpen, setIsServicesMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
@@ -22,38 +21,45 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
   const location = useLocation();
   const navigate = useNavigate();
 
-// Scroll to top and CLOSE MOBILE MENU on route change
+  // Scroll to top and close mobile menu on route change
   useEffect(() => {
     window.scrollTo(0, 0);
-    setIsMenuOpen(false); // <--- THÊM DÒNG NÀY LÀ HẾT BỆNH
-    setIsServicesMenuOpen(false); // Khuyến mãi thêm: đóng luôn cả menu con nếu đang mở
+    setIsMenuOpen(false);
+    setIsServicesMenuOpen(false);
   }, [location.pathname]);
 
   const isActive = (path: string) => location.pathname === path;
 
   const navClasses = (path: string) => `
-    font-serif uppercase tracking-widest text-base font-semibold transition-colors duration-300
-    ${isActive(path) ? 'text-gold-500' : 'text-stone-600 hover:text-gold-500'}
+    font-serif uppercase tracking-widest text-sm font-semibold transition-colors duration-150
+    ${isActive(path) ? 'text-[#B98267]' : 'text-[#5E4D44] hover:text-[#B98267]'}
   `;
 
   return (
-    <div className="min-h-screen flex flex-col bg-stone-50">
+    <div className="min-h-screen flex flex-col bg-[#FFFDFA]">
       {/* Navbar */}
-      <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-stone-100 shadow-sm">
+      <nav className="fixed w-full z-50 bg-[#FFFDFA]/92 backdrop-blur-md border-b border-[#E3D7CB]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
 
             {/* Logo */}
-            <div className="flex-shrink-0 flex items-center cursor-pointer flex-col" onClick={() => navigate('/')}>
-              <span className="font-serif text-2xl font-bold text-stone-900 tracking-tighter">LE ' CHARME</span>
-              <span className="font-serif text-1xl font-bold text-stone-900 tracking-tighter tracking-widest uppercase">Beauté Boutique</span>
-              {/* <img src="/images/logo/logo4.png" alt="LE'CHARME" className="w-24 h-24 object-cover rounded-md" /> */}
+            <div
+              className="flex-shrink-0 flex items-start cursor-pointer flex-col"
+              onClick={() => navigate('/')}
+            >
+              <span className="font-serif text-2xl font-bold text-[#342923] tracking-tight leading-none">
+                LE ’ CHARME
+              </span>
+              <span className="font-sen text-[10px] font-bold text-[#856F63] tracking-[0.22em] uppercase mt-1">
+                Beauté Boutique
+              </span>
             </div>
 
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center space-x-8">
               <Link to="/" className={navClasses('/')}>{t.nav.home}</Link>
               <Link to="/about" className={navClasses('/about')}>{t.nav.about}</Link>
+
               {/* Services Dropdown */}
               <div
                 className="relative group"
@@ -65,55 +71,59 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
                 </div>
 
                 {/* Dropdown Menu */}
-                <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 w-48 transition-all duration-300 ${isServicesMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-                  <div className="bg-white shadow-xl border border-stone-100 rounded-sm overflow-hidden py-2 w-64">
-                    {/* <Link to="/services" className="block px-4 py-3 text-sm uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">All Services</Link> */}
-                    <Link to="/services/party" className="block px-4 py-3 text-sm uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Party / Event Makeup</Link>
-                    <Link to="/services/photoshoot" className="block px-4 py-3 text-sm uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Photoshoot / Stage</Link>
-                    <Link to="/services/bridal" className="block px-4 py-3 text-sm uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Bridal Packages</Link>
-                    <Link to="/services/guest" className="block px-4 py-3 text-sm uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Guest Services</Link>
-                    <Link to="/services/education" className="block px-4 py-3 text-sm uppercase tracking-widest hover:bg-stone-50 hover:text-gold-500 transition-colors">Personal Makeup Classes</Link>
+                <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64 transition-all duration-150 ${isServicesMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-1'}`}>
+                  <div className="bg-[#FFFDFA] shadow-xl border border-[#DFD1C5] overflow-hidden py-2">
+                    <Link to="/services/party" className="block px-5 py-3 text-xs font-sen uppercase tracking-[0.16em] text-[#342923] hover:bg-[#F4ECE5] hover:text-[#B98267] transition-colors">Party / Event Makeup</Link>
+                    <Link to="/services/photoshoot" className="block px-5 py-3 text-xs font-sen uppercase tracking-[0.16em] text-[#342923] hover:bg-[#F4ECE5] hover:text-[#B98267] transition-colors">Photoshoot / Stage</Link>
+                    <Link to="/services/bridal" className="block px-5 py-3 text-xs font-sen uppercase tracking-[0.16em] text-[#342923] hover:bg-[#F4ECE5] hover:text-[#B98267] transition-colors">Bridal Packages</Link>
+                    <Link to="/services/guest" className="block px-5 py-3 text-xs font-sen uppercase tracking-[0.16em] text-[#342923] hover:bg-[#F4ECE5] hover:text-[#B98267] transition-colors">Guest Services</Link>
+                    <Link to="/services/education" className="block px-5 py-3 text-xs font-sen uppercase tracking-[0.16em] text-[#342923] hover:bg-[#F4ECE5] hover:text-[#B98267] transition-colors">Personal Makeup Classes</Link>
                   </div>
                 </div>
               </div>
+
               <Link to="/gallery" className={navClasses('/gallery')}>{t.nav.gallery}</Link>
               <Link to="/contact" className={navClasses('/contact')}>{t.nav.contact}</Link>
-              {/* <Link to="/services/convenience" className={navClasses('/contact')}>{t.nav.convenience}</Link> */}
 
               {/* Cart Icon */}
-              <Link to="/cart" className="relative text-stone-600 hover:text-gold-500 transition-colors">
+              <Link to="/cart" className="relative text-[#5E4D44] hover:text-[#B98267] transition-colors" aria-label="Shopping cart">
                 <ShoppingBag size={20} />
                 {cartCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-gold-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                  <span className="absolute -top-2 -right-2 bg-[#B98267] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full sc-nums tabular-nums">
                     {cartCount}
                   </span>
                 )}
               </Link>
 
-              <Link to="/booking" className="rounded-[3px] px-5 py-2 bg-stone-900 text-white text-base uppercase tracking-widest hover:bg-gold-500 transition-colors">
+              <Link
+                to="/booking"
+                className="px-5 py-2.5 bg-[#342923] text-white font-sen text-xs font-bold uppercase tracking-[0.16em] hover:bg-[#B98267] active:scale-[0.97] transition-all duration-150 whitespace-nowrap"
+              >
                 {t.nav.booking}
               </Link>
 
               {/* Language Switcher */}
               <div className="relative">
                 <button
+                  type="button"
                   onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                  className="flex items-center space-x-1 text-stone-600 hover:text-gold-500"
+                  className="flex items-center space-x-1 text-[#5E4D44] hover:text-[#B98267] transition-colors"
                 >
-                  <Globe size={18} />
-                  <span className="text-xs">{currentLang.split(' ')[0]}</span>
+                  <Globe size={17} />
+                  <span className="text-xs font-sen">{currentLang.split(' ')[0]}</span>
                 </button>
 
                 {isLangMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg py-1 border border-stone-100">
+                  <div className="absolute right-0 mt-3 w-36 bg-[#FFFDFA] shadow-lg py-1.5 border border-[#DFD1C5]">
                     {Object.values(Language).map((lang) => (
                       <button
                         key={lang}
+                        type="button"
                         onClick={() => {
                           onLanguageChange(lang);
                           setIsLangMenuOpen(false);
                         }}
-                        className="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-50 w-full text-left"
+                        className="block px-4 py-2 text-xs font-sen text-[#342923] hover:bg-[#F4ECE5] w-full text-left"
                       >
                         {lang}
                       </button>
@@ -125,58 +135,58 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
 
             {/* Mobile menu button */}
             <div className="md:hidden flex items-center space-x-4">
-              <Link to="/cart" className="relative text-stone-600 hover:text-gold-500">
+              <Link to="/cart" className="relative text-[#5E4D44] hover:text-[#B98267]" aria-label="Shopping cart">
                 <ShoppingBag size={20} />
                 {cartCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-gold-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                  <span className="absolute -top-2 -right-2 bg-[#B98267] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full sc-nums tabular-nums">
                     {cartCount}
                   </span>
                 )}
               </Link>
-              {/* <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-stone-600 p-2">
+              <button
+                type="button"
+                onClick={() => {
+                  startTransition(() => {
+                    setIsMenuOpen(!isMenuOpen);
+                  });
+                }}
+                aria-label="Toggle menu"
+                className="text-[#342923] p-2"
+              >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button> */}
-              <button 
-  onClick={() => {
-    // 1. Phản hồi UI cho nút bấm ngay lập tức
-    // Nếu bạn có thể tách riêng state của icon hoặc xử lý cục bộ thì tốt, 
-    // còn không, hãy dùng startTransition cho phần render menu nặng.
-    startTransition(() => {
-      setIsMenuOpen(!isMenuOpen);
-    });
-  }} 
-  className="text-stone-600 p-2"
->
-  {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-</button>
+              </button>
             </div>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white border-b border-stone-100">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
-              <Link to="/" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.home}</Link>
-              <Link to="/about" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.about}</Link>
+          <div className="md:hidden bg-[#FFFDFA] border-b border-[#E3D7CB]">
+            <div className="px-4 pt-3 pb-5 space-y-1.5 flex flex-col items-center">
+              <Link to="/" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-[#342923] hover:text-[#B98267] uppercase text-xs font-sen font-bold tracking-[0.18em]">{t.nav.home}</Link>
+              <Link to="/about" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-[#342923] hover:text-[#B98267] uppercase text-xs font-sen font-bold tracking-[0.18em]">{t.nav.about}</Link>
               {/* Mobile Services Submenu */}
               <div className="w-full text-center">
-                <Link to="/services/party" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.services}</Link>
-                <div className="bg-stone-50 py-2 space-y-2">
-                  <Link to="/services/party" onClick={() => setIsMenuOpen(false)} className="block text-xs text-stone-500 hover:text-gold-500 uppercase tracking-widest">Party / Event</Link>
-                  <Link to="/services/photoshoot" onClick={() => setIsMenuOpen(false)} className="block text-xs text-stone-500 hover:text-gold-500 uppercase tracking-widest">Photoshoot / Stage</Link>
-                  <Link to="/services/bridal" onClick={() => setIsMenuOpen(false)} className="block text-xs text-stone-500 hover:text-gold-500 uppercase tracking-widest">Bridal Packages</Link>
-                  <Link to="/services/guest" onClick={() => setIsMenuOpen(false)} className="block text-xs text-stone-500 hover:text-gold-500 uppercase tracking-widest">Guest Services</Link>
-                  <Link to="/services/education" onClick={() => setIsMenuOpen(false)} className="block text-xs text-stone-500 hover:text-gold-500 uppercase tracking-widest">Classes</Link>
+                <Link to="/services/party" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-[#342923] hover:text-[#B98267] uppercase text-xs font-sen font-bold tracking-[0.18em]">{t.nav.services}</Link>
+                <div className="bg-[#F6EFE8] py-2.5 space-y-2 border-y border-[#E3D7CB]">
+                  <Link to="/services/party" onClick={() => setIsMenuOpen(false)} className="block text-[11px] font-sen text-[#5E4D44] hover:text-[#B98267] uppercase tracking-widest">Party / Event</Link>
+                  <Link to="/services/photoshoot" onClick={() => setIsMenuOpen(false)} className="block text-[11px] font-sen text-[#5E4D44] hover:text-[#B98267] uppercase tracking-widest">Photoshoot / Stage</Link>
+                  <Link to="/services/bridal" onClick={() => setIsMenuOpen(false)} className="block text-[11px] font-sen text-[#5E4D44] hover:text-[#B98267] uppercase tracking-widest">Bridal Packages</Link>
+                  <Link to="/services/guest" onClick={() => setIsMenuOpen(false)} className="block text-[11px] font-sen text-[#5E4D44] hover:text-[#B98267] uppercase tracking-widest">Guest Services</Link>
+                  <Link to="/services/education" onClick={() => setIsMenuOpen(false)} className="block text-[11px] font-sen text-[#5E4D44] hover:text-[#B98267] uppercase tracking-widest">Classes</Link>
                 </div>
               </div>
-              <Link to="/gallery" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.gallery}</Link>
-              <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-stone-600 hover:text-gold-500 uppercase text-sm tracking-widest">{t.nav.contact}</Link>
-              <Link to="/booking" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 font-bold text-gold-700 uppercase text-sm tracking-widest">{t.nav.booking}</Link>
-              {/* <Link to="/admin" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-gray-400 uppercase text-xs tracking-widest">{t.nav.admin}</Link> */}
-              <div className="flex space-x-2 py-2">
+              <Link to="/gallery" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-[#342923] hover:text-[#B98267] uppercase text-xs font-sen font-bold tracking-[0.18em]">{t.nav.gallery}</Link>
+              <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-[#342923] hover:text-[#B98267] uppercase text-xs font-sen font-bold tracking-[0.18em]">{t.nav.contact}</Link>
+              <Link to="/booking" onClick={() => setIsMenuOpen(false)} className="block px-6 py-2.5 mt-2 bg-[#342923] text-white font-sen font-bold uppercase text-xs tracking-[0.18em]">{t.nav.booking}</Link>
+              <div className="flex flex-wrap justify-center gap-1.5 pt-3">
                 {Object.values(Language).map((lang) => (
-                  <button key={lang} onClick={() => { onLanguageChange(lang); setIsMenuOpen(false); }} className="text-xs border border-stone-200 px-2 py-1 rounded">
+                  <button
+                    key={lang}
+                    type="button"
+                    onClick={() => { onLanguageChange(lang); setIsMenuOpen(false); }}
+                    className="text-[11px] font-sen border border-[#D8C9BC] px-2.5 py-1 text-[#342923]"
+                  >
                     {lang === Language.VI ? 'VI' : lang === Language.EN ? 'EN' : lang.substring(0, 2).toUpperCase()}
                   </button>
                 ))}
@@ -191,78 +201,86 @@ const Layout: React.FC<LayoutProps> = ({ children, currentLang, onLanguageChange
         {children}
       </main>
 
-      {/* Footer */}
-      <footer className="bg-white text-stone-900 pt-16 pb-12 border-t border-stone-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Editorial Colophon Footer */}
+      <footer className="bg-[#FAF6F1] text-[#342923] pt-16 pb-12 border-t border-[#DFD1C5]">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="flex flex-col lg:flex-row justify-between gap-12 lg:gap-24">
 
-            {/* Left Column: Brand, Newsletter, Socials */}
+            {/* Left Column: Brand, Atelier Note, Socials */}
             <div className="flex-1 max-w-lg">
-              {/* Logo */}
-              <div className="mb-12">
-                {/* <Link to="/" className="font-bebasNeue text-6xl tracking-tighter uppercase font-bold text-black" onClick={() => window.scrollTo(0, 0)}>
-                  LE'CHARME
-                </Link> */}
-                <img src="/images/logo/logo4.png" alt="LE'CHARME" className="w-[250px] h-[100px] object-cover rounded-md" />
-
+              <div className="mb-8">
+                <img src="/images/logo/logo4.png" alt="LE'CHARME" className="w-[220px] h-[88px] object-cover border border-[#E3D7CB]" />
               </div>
 
-              {/* Newsletter */}
-              <div className="mb-10">
-                <p className="font-sen text-stone-800 text-sm mb-6 leading-relaxed max-w-md">
-                  With a passion for artistry and an eye for detail, our team is dedicated to delivering flawless, long-lasting results for weddings, special events, photoshoots, and everyday elegance.
-                </p>
-              </div>
+              <p className="font-sen text-[#5E4D44] text-sm mb-8 leading-relaxed max-w-md">
+                With a passion for artistry and an eye for detail, our team is dedicated to delivering flawless, long-lasting results for weddings, special events, photoshoots, and everyday elegance.
+              </p>
 
               {/* Social Icons */}
-              <div className="flex items-center space-x-6 mt-12">
-                <a href="https://www.instagram.com/lecharme.beauteboutique" className="bg-black text-white p-2 rounded-full hover:bg-stone-700 transition-colors">
+              <div className="flex items-center space-x-4">
+                <a
+                  href="https://www.instagram.com/lecharme.beauteboutique"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="bg-[#342923] text-white p-2.5 rounded-full hover:bg-[#B98267] transition-colors duration-150"
+                >
                   <Instagram size={16} />
                 </a>
-                <a href="https://www.facebook.com/lecharmebeauteboutique" className="bg-black text-white p-2 rounded-full hover:bg-stone-700 transition-colors">
+                <a
+                  href="https://www.facebook.com/lecharmebeauteboutique"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="bg-[#342923] text-white p-2.5 rounded-full hover:bg-[#B98267] transition-colors duration-150"
+                >
                   <Facebook size={16} fill="white" className="stroke-none" />
                 </a>
               </div>
             </div>
 
             {/* Right Columns: Links */}
-            <div className="flex flex-row gap-16 lg:gap-32">
+            <div className="flex flex-row gap-16 lg:gap-28">
               {/* Site Map */}
               <div>
-                <h4 className="uppercase tracking-widest text-xs font-bold mb-6 text-stone-900">Site Map</h4>
-                <ul className="space-y-3 text-sm text-stone-600">
-                  <li><Link to="/about" className="font-sen hover:text-black transition-colors">About Us</Link></li>
-                  <li><Link to="/services/party" className="font-sen hover:text-black transition-colors">Services</Link></li>
-                  <li><Link to="/gallery" className="font-sen hover:text-black transition-colors">Gallery</Link></li>
-                  <li><Link to="/booking" className="font-sen hover:text-black transition-colors">Book Now</Link></li>
-                  <li><Link to="/contact" className="font-sen hover:text-black transition-colors">Find A Studio</Link></li>
+                <h4 className="font-mono uppercase tracking-[0.2em] text-[11px] font-bold mb-6 text-[#A46F55]">
+                  Site Map
+                </h4>
+                <ul className="space-y-3 text-sm text-[#5E4D44]">
+                  <li><Link to="/about" className="font-sen hover:text-[#342923] transition-colors">About Us</Link></li>
+                  <li><Link to="/services/party" className="font-sen hover:text-[#342923] transition-colors">Services</Link></li>
+                  <li><Link to="/gallery" className="font-sen hover:text-[#342923] transition-colors">Gallery</Link></li>
+                  <li><Link to="/booking" className="font-sen hover:text-[#342923] transition-colors">Book Appointment</Link></li>
+                  <li><Link to="/contact" className="font-sen hover:text-[#342923] transition-colors">Find A Studio</Link></li>
                 </ul>
               </div>
 
               {/* Assistance */}
               <div>
-                <h4 className="uppercase tracking-widest text-xs font-bold mb-6 text-stone-900">Assistance</h4>
-                <ul className="space-y-3 text-sm text-stone-600">
-                  <li><Link to="/contact" className="font-sen hover:text-black transition-colors">Contact</Link></li>
-                  <li><Link to="/terms" className="font-sen hover:text-black transition-colors">Terms of Service</Link></li>
-                  <li><Link to="/policy" className="font-sen hover:text-black transition-colors">Privacy Policy</Link></li>
+                <h4 className="font-mono uppercase tracking-[0.2em] text-[11px] font-bold mb-6 text-[#A46F55]">
+                  Assistance
+                </h4>
+                <ul className="space-y-3 text-sm text-[#5E4D44]">
+                  <li><Link to="/contact" className="font-sen hover:text-[#342923] transition-colors">Contact</Link></li>
+                  <li><Link to="/inquiry" className="font-sen hover:text-[#342923] transition-colors">Bridal Inquiry</Link></li>
+                  <li><Link to="/terms" className="font-sen hover:text-[#342923] transition-colors">Terms of Service</Link></li>
+                  <li><Link to="/policy" className="font-sen hover:text-[#342923] transition-colors">Privacy Policy</Link></li>
                 </ul>
               </div>
             </div>
 
           </div>
 
-          <div className="mt-20 pt-8 border-t border-stone-100 flex flex-col md:flex-row justify-between items-center text-[10px] text-stone-400 uppercase tracking-widest">
+          <div className="mt-16 pt-8 border-t border-[#E3D7CB] flex flex-col md:flex-row justify-between items-center text-[10px] font-mono text-[#856F63] uppercase tracking-[0.18em]">
             <div className="flex space-x-4 mb-4 md:mb-0">
-              <span>&copy; {new Date().getFullYear()} Le'Charme Beauty Boutique</span>
+              <span>&copy; {new Date().getFullYear()} Le’Charme Beauté Boutique · Huntington Beach, CA</span>
             </div>
             <div>
-              <span className="cursor-pointer hover:text-black"><Globe size={14} className="inline mr-1" /> United States (USD $)</span>
+              <span><Globe size={13} className="inline mr-1" /> United States (USD $)</span>
             </div>
           </div>
         </div>
       </footer>
-      {/* <Chatbot language={currentLang} services={services} /> */}
       <ScrollToTop />
     </div>
   );
