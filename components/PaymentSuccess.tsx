@@ -1,13 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { CheckCircle, Home, ArrowRight, Loader2, XCircle } from 'lucide-react';
+import { CheckCircle, Home, ArrowRight, Loader2, XCircle, Clock } from 'lucide-react';
 import { FadeInSection } from './FadeInSection';
+
+const BACKEND_BASE_URL = 'https://beauty-store-website-project.onrender.com';
 
 const PaymentSuccess: React.FC = () => {
     const [searchParams] = useSearchParams();
+    const sessionId = searchParams.get('session_id');
     const paymentIntent = searchParams.get('payment_intent');
-    const [status, setStatus] = useState<'processing' | 'success' | 'error'>('processing');
-    const [message, setMessage] = useState('Verifying payment and securing your appointment...');
+    const [status, setStatus] = useState<'processing' | 'success' | 'pending' | 'error'>('processing');
+    const [message, setMessage] = useState('Verifying payment status with our server...');
     const hasFetched = useRef(false);
 
     type PendingBooking = {
@@ -22,86 +25,95 @@ const PaymentSuccess: React.FC = () => {
 
     const [pendingBooking, setPendingBooking] = useState<PendingBooking | null>(null);
 
-    // useEffect(() => {
-    //     const createEvent = async () => {
-    //         if (hasFetched.current) return;
-    //         hasFetched.current = true;
-
-    //         const raw = localStorage.getItem('pendingBooking');
-
-    //         if (!raw) {
-    //             setStatus('success');
-    //             setMessage('Payment received! Please contact us if you do not receive a booking confirmation.');
-    //             return;
-    //         }
-
-    //         const bookingData = JSON.parse(raw);
-
-    //         // ✅ LƯU VÀO STATE ĐỂ HIỂN THỊ
-    //         setPendingBooking(bookingData);
-
-    //         try {
-    //             const response = await fetch(`https://beauty-store-website-project.onrender.com/api/calendar/create-event`, {
-    //                 // const response = await fetch('http://localhost:3001/api/calendar/create-event', {
-    //                 method: 'POST',
-    //                 headers: { 'Content-Type': 'application/json' },
-    //                 body: JSON.stringify(bookingData),
-    //             });
-
-    //             if (response.ok) {
-    //                 setStatus('success');
-    //                 setMessage('Thank you for your deposit. Your appointment has been secured.');
-    //                 localStorage.removeItem('pendingBooking');
-    //             } else {
-    //                 setStatus('error');
-    //                 setMessage('Payment successful, but we could not automatically create the calendar event.');
-    //             }
-    //         } catch {
-    //             setStatus('error');
-    //             setMessage('Payment successful, but a network error occurred.');
-    //         }
-    //     };
-
-    //     createEvent();
-    // }, []);
     useEffect(() => {
         if (hasFetched.current) return;
         hasFetched.current = true;
 
         const raw = localStorage.getItem('pendingBooking');
+        if (raw) {
+            try {
+                setPendingBooking(JSON.parse(raw));
+            } catch {
+                // Ignore malformed localStorage data
+            }
+            localStorage.removeItem('pendingBooking');
+        }
 
-        if (!raw) {
-            setStatus('success');
-            setMessage('Payment received! Please contact us if you do not receive a booking confirmation.');
+        // If no Stripe session_id is present in the URL, do NOT claim verified payment confirmation
+        if (!sessionId) {
+            setStatus('pending');
+            setMessage(
+                'Your checkout submission was received. Your appointment will be confirmed by email once payment is verified by Stripe.'
+            );
             return;
         }
 
-        const bookingData = JSON.parse(raw);
+        const verifySessionStatus = async () => {
+            try {
+                const response = await fetch(
+                    `${BACKEND_BASE_URL}/api/stripe/session-status?session_id=${encodeURIComponent(sessionId)}`,
+                    { method: 'GET' }
+                );
 
-        // vẫn giữ để hiển thị thông tin trên UI nếu bạn cần
-        setPendingBooking(bookingData);
+                if (!response.ok) {
+                    setStatus('pending');
+                    setMessage(
+                        'Checkout completed! We are finalizing your payment verification with Stripe and will send your confirmation email shortly.'
+                    );
+                    return;
+                }
 
-        // KHÔNG tạo lịch ở đây nữa
-        setStatus('success');
-        setMessage('Thank you for your deposit. Your appointment has been secured.');
+                const data = await response.json();
+                if (data.bookingData) {
+                    setPendingBooking(prev => prev || data.bookingData);
+                }
 
-        // có thể xóa localStorage vì webhook đã xử lý
-        localStorage.removeItem('pendingBooking');
-    }, []);
+                if (data.status === 'PAID') {
+                    setStatus('success');
+                    setMessage('Thank you for your deposit. Your payment is verified and your appointment has been secured.');
+                } else if (data.status === 'PAYMENT_FAILED' || data.status === 'CANCELED') {
+                    setStatus('error');
+                    setMessage('Your payment could not be completed. No confirmation was issued. Please try again or contact us.');
+                } else {
+                    // PENDING_PAYMENT (e.g. US Bank Account ACH settlement in progress)
+                    setStatus('pending');
+                    setMessage(
+                        'Your payment is currently processing (ACH bank transfers take 2–4 business days to settle). You will receive your booking confirmation email automatically once Stripe confirms settlement.'
+                    );
+                }
+            } catch {
+                setStatus('pending');
+                setMessage(
+                    'Checkout completed! Your appointment confirmation email will be sent automatically once our server verifies payment with Stripe.'
+                );
+            }
+        };
+
+        verifySessionStatus();
+    }, [sessionId]);
+
     return (
         <div className="min-h-[80vh] flex items-center justify-center bg-stone-50 px-4">
             <FadeInSection className="max-w-xl w-full bg-white p-8 md:p-12 rounded-sm shadow-xl border border-stone-100 text-center">
-                <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 border ${status === 'success' ? 'bg-green-50 border-green-100' :
+                <div className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 border ${
+                    status === 'success' ? 'bg-green-50 border-green-100' :
                     status === 'error' ? 'bg-red-50 border-red-100' :
-                        'bg-gold-50 border-gold-100'
-                    }`}>
+                    'bg-gold-50 border-gold-100'
+                }`}>
                     {status === 'success' && <CheckCircle size={48} className="text-green-600" />}
                     {status === 'error' && <XCircle size={48} className="text-red-600" />}
+                    {status === 'pending' && <Clock size={48} className="text-gold-600" />}
                     {status === 'processing' && <Loader2 size={48} className="text-gold-600 animate-spin" />}
                 </div>
 
                 <h1 className="font-serif text-3xl md:text-4xl text-stone-900 mb-4">
-                    {status === 'processing' ? 'Processing...' : status === 'error' ? 'Booking Issue' : 'Payment Successful!'}
+                    {status === 'processing'
+                        ? 'Verifying Payment...'
+                        : status === 'error'
+                            ? 'Payment Not Confirmed'
+                            : status === 'pending'
+                                ? 'Payment Processing'
+                                : 'Payment Successful!'}
                 </h1>
 
                 <p className="font-sen text-stone-600 mb-8 text-lg leading-relaxed">
@@ -113,17 +125,26 @@ const PaymentSuccess: React.FC = () => {
                     <div className="space-y-3 font-sen text-sm text-stone-600">
                         <div className="flex justify-between">
                             <span>Status:</span>
-                            <span className={`${status === 'success' ? 'text-green-600' :
+                            <span className={`${
+                                status === 'success' ? 'text-green-600' :
                                 status === 'error' ? 'text-red-600' :
-                                    'text-gold-600'
-                                } font-bold uppercase tracking-wider`}>
-                                {status === 'success' ? 'Confirmed' : status === 'error' ? 'Attention Needed' : 'Finalizing...'}
+                                'text-gold-600'
+                            } font-bold uppercase tracking-wider`}>
+                                {status === 'success'
+                                    ? 'Confirmed'
+                                    : status === 'error'
+                                        ? 'Not Confirmed'
+                                        : status === 'pending'
+                                            ? 'Pending Verification'
+                                            : 'Verifying...'}
                             </span>
                         </div>
-                        {paymentIntent && (
+                        {(paymentIntent || sessionId) && (
                             <div className="flex justify-between">
                                 <span>Ref Code:</span>
-                                <span className="font-mono text-stone-400">{paymentIntent.slice(-8).toUpperCase()}</span>
+                                <span className="font-mono text-stone-400">
+                                    {(paymentIntent || sessionId || '').slice(-8).toUpperCase()}
+                                </span>
                             </div>
                         )}
                         <div className="flex justify-between">
@@ -135,7 +156,6 @@ const PaymentSuccess: React.FC = () => {
                                     </div>
                                 </div>
                             )}
-
                         </div>
 
                         {pendingBooking?.clientAddress && (
