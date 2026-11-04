@@ -67,3 +67,11 @@ export const releaseStripeSessionProcessing = (sessionId) => {
     if (!sessionId) return;
     processingSessions.delete(sessionId);
 };
+
+/**
+ * Resets in-memory session idempotency state between automated tests.
+ */
+export const resetStripeIdempotencyForTests = () => {
+    processedSessions.clear();
+    processingSessions.clear();
+};
