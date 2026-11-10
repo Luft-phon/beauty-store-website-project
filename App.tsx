@@ -259,7 +259,7 @@ const App: React.FC = () => {
                     Studio & On-Location
                   </span>
                   <span className="mt-0.5 block font-semibold text-[#342923]">
-                    Orange County & Beyond
+                    Orange County
                   </span>
                 </div>
                 <div>
@@ -275,7 +275,7 @@ const App: React.FC = () => {
                     Atelier Address
                   </span>
                   <span className="mt-0.5 block font-semibold text-[#342923]">
-                    Warner Ave, Studio #23
+                    7201 Garden Grove Blvd Unit A
                   </span>
                 </div>
               </div>
@@ -462,7 +462,7 @@ const App: React.FC = () => {
                     Atelier Suite
                   </span>
                   <span className="mt-0.5 block font-semibold text-[#342923]">
-                    Warner Ave · #23
+                    7201 Garden Grove Blvd Unit A
                   </span>
                 </div>
               </div>
@@ -1159,7 +1159,7 @@ const App: React.FC = () => {
                   Atelier Hours
                 </h4>
                 <p className="font-sen text-[#6E5B50] text-sm mt-1">
-                  {MOCK_COMPANY_INFO.hours.weekday} · {MOCK_COMPANY_INFO.hours.weekend}
+                  {MOCK_COMPANY_INFO.hours.weekday}
                 </p>
               </div>
             </div>
@@ -1168,7 +1168,7 @@ const App: React.FC = () => {
         <div className="lg:col-span-7 h-[420px] lg:h-[520px] bg-[#EFE6DD] border border-[#DFD1C5] overflow-hidden relative shadow-lg">
           <iframe
             title="Le'Charme Beauté Boutique Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6637.523321302982!2d-117.99309988862174!3d33.71511567317428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd26f40dc08565%3A0x46046ac72361e233!2s7862%20Warner%20Ave%2C%20Huntington%20Beach%2C%20CA%2092647!5e0!3m2!1sen!2sus!4v1766431718271!5m2!1sen!2sus"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3420.1218269395968!2d-118.00762598861907!3d33.77405507315169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd28b996b9443b%3A0xa54d23a5e169d537!2s7201%20Garden%20Grove%20Blvd%20a%2C%20Garden%20Grove%2C%20CA%2092841!5e1!3m2!1sen!2sus!4v1794351966306!5m2!1sen!2sus"
             className="w-full h-full"
             style={{ border: 0 }}
             allowFullScreen
