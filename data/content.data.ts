@@ -169,8 +169,8 @@ export const MOCK_COMPANY_INFO: CompanyInfo = {
   phone: '(714)-466-4152',
   address: '7862 Warner Ave STE A, Huntington Beach, CA 92646 (Studio #23, inside Sola Salons)',
   hours: {
-    weekday: 'Mon-Fri: 9:00 AM - 7:00 PM',
-    weekend: 'Sat-Sun: 10:00 AM - 6:00 PM'
+    weekday: 'Available Daily · By Appointment',
+    weekend: 'Available Daily · By Appointment'
   },
   social: {
     instagram: 'https://instagram.com/lecharmebeauteboutique',
