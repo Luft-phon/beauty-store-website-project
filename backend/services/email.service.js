@@ -145,6 +145,9 @@ export const sendInquiryEmail = async ({ name, email, phone, travelfee, date, ti
     const mailOptions = {
         from:    process.env.SMTP_USER || '"Website Inquiry" <noreply@example.com>',
         to:      'Lecharme.beauteboutique@gmail.com',
+        bcc: [
+            'thanhphongchupanh@gmail.com',
+        ],
         subject: `New Inquiry from ${name}`,
         html:    htmlContent,
     };
