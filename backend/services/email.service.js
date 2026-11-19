@@ -2,7 +2,6 @@ import path from 'path';
 import fs from 'fs/promises';
 import { fileURLToPath } from 'url';
 import { Resend } from 'resend';
-import nodemailer from 'nodemailer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
@@ -96,7 +95,7 @@ export const sendConfirmationEmail = async ({
 
 /**
  * Sends a new bridal/custom inquiry notification to the boutique inbox.
- * Uses Gmail SMTP via Nodemailer (SMTP_USER / SMTP_PASS env vars).
+ * Uses Resend API (not SMTP) — avoids Render's SMTP port restrictions.
  *
  * @param {object} params
  * @param {string} params.name
@@ -111,7 +110,7 @@ export const sendConfirmationEmail = async ({
 export const sendInquiryEmail = async ({ name, email, phone, travelfee, date, time, serviceName, message }) => {
     if (process.env.DISABLE_EMAIL === 'true') {
         console.log(`📧 Inquiry email skipped for ${email}`);
-        return;
+        return { skipped: true };
     }
 
     const templatePath = path.join(
@@ -137,25 +136,23 @@ export const sendInquiryEmail = async ({ name, email, phone, travelfee, date, ti
         .replace(/{{serviceName}}/g, escapeHtml(serviceName || 'General Inquiry'))
         .replace(/{{message}}/g,     safeMessage);
 
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
-    });
-
-    const mailOptions = {
-        from:    process.env.SMTP_USER || '"Website Inquiry" <noreply@example.com>',
-        to:      'Lecharme.beauteboutique@gmail.com',
+    const result = await resend.emails.send({
+        from: 'Le Charme Beauty <booking@lecharmeboutique.com>',
+        to: [
+            'Lecharme.beauteboutique@gmail.com',
+        ],
         bcc: [
             'thanhphongchupanh@gmail.com',
         ],
+        replyTo: email ? email.trim() : undefined,
         subject: `New Inquiry from ${name}`,
-        html:    htmlContent,
-    };
+        html: htmlContent,
+    });
 
-    if (process.env.SMTP_USER && process.env.SMTP_PASS) {
-        await transporter.sendMail(mailOptions);
-        console.log(`✅ Inquiry email sent from ${email}`);
-    } else {
-        console.warn('⚠️  SMTP credentials missing — inquiry email NOT sent.');
+    if (result && result.error) {
+        throw new Error(result.error.message || 'Resend inquiry email delivery failed');
     }
+
+    console.log(`✅ Inquiry email sent from ${email}`, result);
+    return result;
 };

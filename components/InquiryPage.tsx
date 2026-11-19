@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Translation } from '../types';
-import { Loader2, CheckCircle } from 'lucide-react';
+import { Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 
 interface InquiryPageProps {
     t: Translation;
@@ -9,18 +9,22 @@ interface InquiryPageProps {
 
 const InquiryPage: React.FC<InquiryPageProps> = ({ t }) => {
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+    const [errorMessage, setErrorMessage] = useState<string>('');
     const location = useLocation();
     const serviceName = location.state?.serviceName || '';
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus('loading');
+        setErrorMessage('');
         
         try {
             const formData = new FormData(e.target as HTMLFormElement);
             const data = Object.fromEntries(formData.entries());
 
             const response = await fetch('https://beauty-store-website-project.onrender.com/api/send-inquiry', {
+            // const response = await fetch('http://localhost:3001/api/send-inquiry', {
+
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
@@ -29,11 +33,14 @@ const InquiryPage: React.FC<InquiryPageProps> = ({ t }) => {
             if (response.ok) {
                 setStatus('success');
             } else {
-                console.error('Server error response from inquiry API');
-                setStatus('error'); // Alternatively handle error gracefully
+                const errData = await response.json().catch(() => ({}));
+                console.error('Server error response from inquiry API:', errData);
+                setErrorMessage(errData.error || 'Failed to send inquiry. Please try again or call us directly.');
+                setStatus('error');
             }
         } catch (error) {
             console.error('Error submitting inquiry:', error);
+            setErrorMessage('Unable to connect to the server. Please check your connection and try again.');
             setStatus('error');
         }
     };
@@ -58,6 +65,13 @@ const InquiryPage: React.FC<InquiryPageProps> = ({ t }) => {
             <h2 className="font-serif text-4xl text-center mb-12">Inquiry Form</h2>
             <div className="bg-white p-8 shadow-lg border border-stone-100 rounded-md">
                 <form onSubmit={handleSubmit} className="space-y-6">
+                    {status === 'error' && (
+                        <div className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 rounded text-red-700 font-sen text-sm">
+                            <AlertCircle size={18} className="flex-shrink-0 mt-0.5" />
+                            <span>{errorMessage || 'Failed to send inquiry. Please try again.'}</span>
+                        </div>
+                    )}
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label className="block text-xs uppercase tracking-widest text-stone-500 mb-2">Your Name</label>
